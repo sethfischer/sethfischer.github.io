@@ -1,0 +1,26 @@
+seth.fischer.nz
+===============
+
+Developer
+---------
+
+Seth Fischer  
+https://github.com/sethfischer  
+https://bitbucket.org/sethfischer  
+https://www.drupal.org/u/sethfischer  
+Wellington, New Zealand
+
+Technology
+----------
+
+Components: Pelican, Twitter Bootstrap  
+
+Acknowledgments
+---------------
+
+* Theme based on pelican-bootstrap3
+
+  Author: DandyDev  
+  License: MIT  
+  URL: https://github.com/DandyDev/pelican-bootstrap3  
+
