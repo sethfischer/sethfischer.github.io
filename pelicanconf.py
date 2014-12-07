@@ -37,6 +37,7 @@ DEFAULT_PAGINATION = False
 STATIC_PATHS = [
     'images',
     'extra/CNAME',
+    'extra/googledce9df78937f634a.html',
     'extra/humans.txt',
     'extra/robots.txt',
     'extra/custom.css',
@@ -44,10 +45,13 @@ STATIC_PATHS = [
 
 EXTRA_PATH_METADATA = {
     'extra/CNAME': {'path': 'CNAME'},
+    'extra/googledce9df78937f634a.html': {'path': 'googledce9df78937f634a.html'},
     'extra/humans.txt': {'path': 'humans.txt'},
     'extra/robots.txt': {'path': 'robots.txt'},
     'extra/custom.css': {'path': 'static/custom.css'},
 }
+
+READERS = {"html": None}
 
 MD_EXTENSIONS = [
     'toc',
