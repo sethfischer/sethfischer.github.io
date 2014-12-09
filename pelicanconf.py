@@ -67,4 +67,5 @@ DISPLAY_TAGS_ON_SIDEBAR = False
 DISPLAY_RECENT_POSTS_ON_SIDEBAR = True
 GITHUB_USER = 'sethfischer'
 GITHUB_SHOW_USER_LINK = True
+GITHUB_REPO_URL = 'https://github.com/sethfischer/sethfischer.github.io'
 
