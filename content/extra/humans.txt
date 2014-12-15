@@ -15,8 +15,8 @@ Technology
 
 Components: Pelican, Twitter Bootstrap  
 
-Acknowledgments
----------------
+Acknowledgements
+----------------
 
 * Theme based on pelican-bootstrap3
 
