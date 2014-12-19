@@ -34,7 +34,7 @@ site with the next core update.
 
 ## Clone Drupal 8
 
-    :::bash
+    :::console
     $ git clone -b 8.0.x --single-branch http://git.drupal.org/project/drupal.git
     $ git remote rename origin upstream
     $ git remote add origin [url]
@@ -44,7 +44,7 @@ site with the next core update.
 
 ## Create the files directory and set permissions
 
-    :::bash
+    :::console
     $ mkdir sites/default/files
 
 To work efficiently with drush the files in `sites/default/files` should be
@@ -55,7 +55,7 @@ Those familiar with the Symfony 2 documentation will recognise the following
 shell commands which have been adapted from the
 [Installing and Configuring Symfony][9] chapter of the The Symfony Book.
 
-    :::bash
+    :::console
     $ HTTPDUSER=`ps aux | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1`
     $ sudo setfacl -R -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX sites/default/files
     $ sudo setfacl -dR -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX sites/default/files
@@ -64,7 +64,7 @@ shell commands which have been adapted from the
 
 Before setting the access control only the drush user will have `rw` permissions:
 
-    :::bash
+    :::console
     $ getfacl sites/default/files
     # file: cache
     # owner: drushuser
@@ -76,7 +76,7 @@ Before setting the access control only the drush user will have `rw` permissions
 After setting the access control both the web server user and drush user will
 have `rw` permissions:
 
-    :::bash
+    :::console
     $ getfacl sites/default/files
     # file: cache
     # owner: drushuser
@@ -97,7 +97,7 @@ have `rw` permissions:
 
 ## Create database
 
-    :::sql
+    :::console
     $ mysql -uroot -p
     mysql> CREATE DATABASE db;
     mysql> CREATE USER 'dbuser'@'localhost' IDENTIFIED BY 'password';
@@ -108,7 +108,7 @@ have `rw` permissions:
 
 ## Site installation
 
-    :::bash
+    :::console
     $ drush site-install standard --db-url=mysql://dbuser:password@localhost/db --site-name=drupal8
     $ drush upwd admin --password=password
 
@@ -118,7 +118,7 @@ password "password".
 
 ## Configure a Drush alias
 
-    :::bash
+    :::console
     $ cp ~/.composer/vendor/drush/drush/examples/example.aliases.drushrc.php ~/.drush/aliases.drushrc.php
     $ drush site-alias @self --full --with-optional >> ~/.drush/aliases.drushrc.php
 
@@ -142,13 +142,13 @@ Edit `~/.drush/aliases.drushrc.php` and enter your site's URI.
 
 Check that your system meets the minimum core requirements:
 
-    :::bash
+    :::console
     $ drush @drupal8 core-requirements
 
 Check the status of the site installation by running `drush @drupal8 status`.
 The output will be similar to the following:
 
-    :::bash
+    :::console
     $ drush @drupal8 status
      Drupal version         :  8.0.0-dev
      Site URI               :  http://drupal8
@@ -188,13 +188,13 @@ Two useful modules for developers are [devel][10] and [examples][11].
 
 ### Devel
 
-    :::bash
+    :::console
     $ drush @drupal8 pm-download devel
     $ drush @drupal8 pm-enable devel
 
 ### Examples
 
-    :::bash
+    :::console
     $ drush @drupal8 pm-download examples
     $ drush @drupal8 pm-enable examples
 
@@ -207,14 +207,14 @@ required) before enabling it.
 As the Drupal 8 pushes on through beta releases you should regularly merge in
 the latest code:
 
-    :::bash
+    :::console
     (master)$ git checkout master
     (master)$ git fetch upstream
     (master)$ git merge 8.0.x
 
 Remember to rebuild the site after each merge:
 
-    :::bash
+    :::console
     $ drush cache-rebuild
 
 Before all issues tagged with "D8 upgrade path" have been closed you may find
