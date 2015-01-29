@@ -204,8 +204,8 @@ required) before enabling it.
 
 ## Regularly update Drupal core
 
-As the Drupal 8 pushes on through beta releases you should regularly merge in
-the latest code:
+As Drupal 8 pushes on through beta releases you should regularly merge in the
+latest code:
 
     :::console
     (master)$ git checkout master
@@ -222,7 +222,7 @@ that you are required to repeat the site installation commands as described
 above after updating Drupal core.
 
 
-## Additional resources
+## Further reading
 
   * [Building a Drupal site with Git][12]
   * [Git Reference][13]
