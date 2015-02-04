@@ -10,13 +10,15 @@ Software: Drupal: 8.0.0-beta3
 Software: Drush: 7.0-dev
 Software: Git: 1.7.10.4
 Software: PHP: 5.4.35-0+deb7u2
-Summary: Now that Drupal 8 is in beta phase it is a great time for site developers to start exploring the API. This article serves as an introduction to installing and configuring Drupal 8 using Git and Drush.
+Summary: Now that Drupal 8 is in beta phase it is a great time for site
+    developers to start exploring the API. This article serves as an
+    introduction to installing and configuring Drupal 8 using Git and Drush.
 
 
 Now that [Drupal 8][1] is in beta phase it is time for site developers to start
-exploring the API. This article describes the installation of configuration of
+exploring the API. This article describes the installation and configuration of
 Drupal 8 using Git and Drush. Bear in mind that as of 2014-11-28 there were 22
-[issues tagged with D8 upgrade path][2] so it may be necessary to rebuild your
+[issues tagged with D8 upgrade path][2], so it may be necessary to rebuild your
 site with the next core update.
 
 
