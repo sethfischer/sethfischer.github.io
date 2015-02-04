@@ -1,8 +1,228 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>sethfischer</title><link>http://seth.fischer.nz/</link><description></description><atom:link href="http://seth.fischer.nz/feeds/seth-fischer.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 29 Nov 2014 20:33:00 +1300</lastBuildDate><item><title>Getting started with Drupal 8</title><link>http://seth.fischer.nz/drupal-8-getting-started/</link><description>&lt;p&gt;Now that &lt;a href="https://www.drupal.org/drupal-8.0"&gt;Drupal 8&lt;/a&gt; is in beta phase it is time for site developers to start
-exploring the API. This article describes the installation of configuration of
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>sethfischer</title><link>http://seth.fischer.nz/</link><description></description><atom:link href="http://seth.fischer.nz/feeds/seth-fischer.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 23 Jan 2015 19:20:00 +1300</lastBuildDate><item><title>A Drupal 8 workflow using the Git subtree merge strategy</title><link>http://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merging/</link><description>&lt;p&gt;Often there are components of a Drupal website that should not be located in
+the document root such as configuration files, deployment scripts, and
+functional tests. By utilising Git subtrees, a Drupal installation root (or web
+server document root) may be below the root of the main repository, and
+upstream changes to Drupal core may be conveniently merged with
+&lt;code&gt;git read-tree&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="toc"&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#initialise-git-repository"&gt;Initialise Git repository&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#add-upstream-remote"&gt;Add upstream remote&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#checkout-a-local-copy-of-the-upstream-branch"&gt;Checkout a local copy of the upstream branch&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#pull-upstream-into-a-subdirectory-in-the-master-branch"&gt;Pull upstream into a subdirectory in the master branch&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#create-a-gitingore-for-drupal-core"&gt;Create a .gitingore for Drupal core&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#create-directories-above-the-document-root"&gt;Create directories above the document root&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#create-the-files-directory-and-set-permissions"&gt;Create the files directory and set permissions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#create-database"&gt;Create database&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#site-installation"&gt;Site installation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#drupal-configuration-directories"&gt;Drupal configuration directories&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#export-configuration"&gt;Export configuration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#update-drupal-core"&gt;Update Drupal core&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#further-reading"&gt;Further reading&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;h2 id="initialise-git-repository"&gt;Initialise Git repository&lt;/h2&gt;
+&lt;p&gt;Initialise Git repository and add your &lt;code&gt;.gitignore&lt;/code&gt;, &lt;code&gt;README&lt;/code&gt;, and &lt;code&gt;LICENSE&lt;/code&gt;
+files.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; mkdir myproject
+&lt;span class="gp"&gt;$&lt;/span&gt; &lt;span class="nb"&gt;cd &lt;/span&gt;myproject
+&lt;span class="gp"&gt;$&lt;/span&gt; git init
+&lt;span class="go"&gt;Initialized empty Git repository in /var/www/myproject/.git/&lt;/span&gt;
+&lt;span class="gp"&gt;$&lt;/span&gt; vi README.md
+&lt;span class="gp"&gt;$&lt;/span&gt; git add README.md
+&lt;span class="gp"&gt;$&lt;/span&gt; git commit -m &lt;span class="s2"&gt;&amp;quot;Add README.md&amp;quot;&lt;/span&gt;
+&lt;span class="go"&gt;[master (root-commit) 3a30763] Add README.txt&lt;/span&gt;
+&lt;span class="go"&gt; 1 file changed, 1 insertion(+)&lt;/span&gt;
+&lt;span class="go"&gt; create mode 100644 README.txt&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id="add-upstream-remote"&gt;Add upstream remote&lt;/h2&gt;
+&lt;p&gt;Add the drupal.org git repository as a remote with the name &lt;code&gt;upstream&lt;/code&gt;. To
+improve efficiency specify that only the &lt;code&gt;8.0.x&lt;/code&gt; branch is to be tracked with
+the &lt;code&gt;-t&lt;/code&gt; option.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; git remote add -t 8.0.x upstream http://git.drupal.org/project/drupal.git
+&lt;span class="gp"&gt;$&lt;/span&gt; git fetch upstream
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id="checkout-a-local-copy-of-the-upstream-branch"&gt;Checkout a local copy of the upstream branch&lt;/h2&gt;
+&lt;p&gt;Checkout a local copy of the &lt;code&gt;upstream/8.0.x&lt;/code&gt; branch.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; git checkout -b upstream upstream/8.0.x
+&lt;span class="go"&gt;Branch upstream set up to track remote branch 8.0.x from upstream by rebasing.&lt;/span&gt;
+&lt;span class="go"&gt;Switched to a new branch &amp;#39;upstream&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id="pull-upstream-into-a-subdirectory-in-the-master-branch"&gt;Pull upstream into a subdirectory in the master branch&lt;/h2&gt;
+&lt;p&gt;The &lt;code&gt;upstream/8.0.x&lt;/code&gt; branch is pulled in as a subdirectory of the master
+branch using the &lt;code&gt;git read-tree&lt;/code&gt; command. The name of the subdirectory is
+specified with the &lt;code&gt;--prefix&lt;/code&gt; option; in this case &lt;code&gt;drupal/&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; git checkout master
+&lt;span class="gp"&gt;$&lt;/span&gt; git merge -s ours --no-commit upstream/8.0.x
+&lt;span class="go"&gt;Automatic merge went well; stopped before committing as requested&lt;/span&gt;
+&lt;span class="gp"&gt;$&lt;/span&gt; git &lt;span class="nb"&gt;read&lt;/span&gt;-tree --prefix&lt;span class="o"&gt;=&lt;/span&gt;drupal/ -u upstream/8.0.x
+&lt;span class="gp"&gt;$&lt;/span&gt; git commit
+&lt;span class="go"&gt;[master bd410e7] Merge remote-tracking branch &amp;#39;upstream/8.0.x&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The upstream branch will now be a subdirectory of the master branch.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; tree -L 2
+&lt;span class="go"&gt;.&lt;/span&gt;
+&lt;span class="go"&gt;|-- drupal&lt;/span&gt;
+&lt;span class="go"&gt;|   |-- composer.json&lt;/span&gt;
+&lt;span class="go"&gt;|   |-- core&lt;/span&gt;
+&lt;span class="go"&gt;|   |-- example.gitignore&lt;/span&gt;
+&lt;span class="go"&gt;|   |-- index.php&lt;/span&gt;
+&lt;span class="go"&gt;|   |-- modules&lt;/span&gt;
+&lt;span class="go"&gt;|   |-- profiles&lt;/span&gt;
+&lt;span class="go"&gt;|   |-- README.txt&lt;/span&gt;
+&lt;span class="go"&gt;|   |-- robots.txt&lt;/span&gt;
+&lt;span class="go"&gt;|   |-- sites&lt;/span&gt;
+&lt;span class="go"&gt;|   |-- themes&lt;/span&gt;
+&lt;span class="go"&gt;|   `-- web.config&lt;/span&gt;
+&lt;span class="go"&gt;`-- README.md&lt;/span&gt;
+
+&lt;span class="go"&gt;6 directories, 7 files&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id="create-a-gitingore-for-drupal-core"&gt;Create a .gitingore for Drupal core&lt;/h2&gt;
+&lt;p&gt;Drupal core has an example .gitignore file which provides an excellent starting
+point and is sufficient for most projects.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;cp drupal/example.gitignore drupal/.gitignore
+&lt;span class="nv"&gt;$ &lt;/span&gt;git add drupal/.gitignore
+&lt;span class="nv"&gt;$ &lt;/span&gt;git commit -m &lt;span class="s2"&gt;&amp;quot;Add .gitignore for Drupal core&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id="create-directories-above-the-document-root"&gt;Create directories above the document root&lt;/h2&gt;
+&lt;p&gt;As the document root is now below the repository root, files and and
+directories may be commited to the repository without exposing them to the web
+server.&lt;/p&gt;
+&lt;p&gt;In this example — when configuring the web server — the document root will be
+set to &lt;code&gt;/var/www/myproject/drupal&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; mkdir -p config/active config/staging config/deploy
+&lt;span class="gp"&gt;$&lt;/span&gt; tree -L 2
+&lt;span class="go"&gt;.&lt;/span&gt;
+&lt;span class="go"&gt;|-- config&lt;/span&gt;
+&lt;span class="go"&gt;|   |-- active&lt;/span&gt;
+&lt;span class="go"&gt;|   |-- deploy&lt;/span&gt;
+&lt;span class="go"&gt;|   `-- staging&lt;/span&gt;
+&lt;span class="go"&gt;|-- drupal&lt;/span&gt;
+&lt;span class="go"&gt;|   |-- composer.json&lt;/span&gt;
+&lt;span class="go"&gt;|   |-- core&lt;/span&gt;
+&lt;span class="go"&gt;|   |-- example.gitignore&lt;/span&gt;
+&lt;span class="go"&gt;|   |-- index.php&lt;/span&gt;
+&lt;span class="go"&gt;|   |-- modules&lt;/span&gt;
+&lt;span class="go"&gt;|   |-- profiles&lt;/span&gt;
+&lt;span class="go"&gt;|   |-- README.txt&lt;/span&gt;
+&lt;span class="go"&gt;|   |-- robots.txt&lt;/span&gt;
+&lt;span class="go"&gt;|   |-- sites&lt;/span&gt;
+&lt;span class="go"&gt;|   |-- themes&lt;/span&gt;
+&lt;span class="go"&gt;|   `-- web.config&lt;/span&gt;
+&lt;span class="go"&gt;`-- README.md&lt;/span&gt;
+
+&lt;span class="go"&gt;9 directories, 7 files&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id="create-the-files-directory-and-set-permissions"&gt;Create the files directory and set permissions&lt;/h2&gt;
+&lt;p&gt;The Drupal &lt;code&gt;files&lt;/code&gt; directory must be manually created.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; mkdir drupal/sites/default/files
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;To work efficiently with drush the files in &lt;code&gt;sites/default/files&lt;/code&gt; should be
+writeable both by the web server and command-line user. An alternative to
+&lt;code&gt;chmod -R 777 sites/default/files&lt;/code&gt; is to use &lt;a href="https://wiki.debian.org/Permissions#Access_Control_Lists_in_Linux"&gt;Access Control Lists&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; &lt;span class="nv"&gt;HTTPDUSER&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;ps aux &lt;span class="p"&gt;|&lt;/span&gt; grep -E &lt;span class="s1"&gt;&amp;#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="go"&gt;grep -v root | head -1 | cut -d\  -f1`&lt;/span&gt;
+&lt;span class="gp"&gt;$&lt;/span&gt; sudo setfacl -R -m u:&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$HTTPDUSER&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;:rwX -m u:&lt;span class="sb"&gt;`&lt;/span&gt;whoami&lt;span class="sb"&gt;`&lt;/span&gt;:rwX sites/default/files
+&lt;span class="gp"&gt;$&lt;/span&gt; sudo setfacl -dR -m u:&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$HTTPDUSER&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;:rwX -m u:&lt;span class="sb"&gt;`&lt;/span&gt;whoami&lt;span class="sb"&gt;`&lt;/span&gt;:rwX sites/default/files
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;HTTPDUSER&lt;/code&gt; is usually &lt;code&gt;www-data&lt;/code&gt; on Debian-based distributions.&lt;/p&gt;
+&lt;p&gt;It may be convenient to add similar ACL permissions to the &lt;code&gt;config/active&lt;/code&gt;,
+&lt;code&gt;config/staging&lt;/code&gt;, and &lt;code&gt;config/deploy&lt;/code&gt; directories.&lt;/p&gt;
+&lt;h2 id="create-database"&gt;Create database&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; mysql -uroot -p
+&lt;span class="go"&gt;mysql&amp;gt; CREATE DATABASE db;&lt;/span&gt;
+&lt;span class="go"&gt;mysql&amp;gt; CREATE USER &amp;#39;dbuser&amp;#39;@&amp;#39;localhost&amp;#39; IDENTIFIED BY &amp;#39;password&amp;#39;;&lt;/span&gt;
+&lt;span class="go"&gt;mysql&amp;gt; GRANT ALL PRIVILEGES ON db.* TO &amp;#39;dbuser&amp;#39;@&amp;#39;localhost&amp;#39;;&lt;/span&gt;
+&lt;span class="go"&gt;mysql&amp;gt; FLUSH PRIVILEGES;&lt;/span&gt;
+&lt;span class="go"&gt;mysql&amp;gt; \q&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id="site-installation"&gt;Site installation&lt;/h2&gt;
+&lt;p&gt;Install the site with the standard install profile and change the admin
+password.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drush site-install standard --db-url&lt;span class="o"&gt;=&lt;/span&gt;mysql://dbuser:password@localhost/db &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="go"&gt;--site-name=drupal8&lt;/span&gt;
+&lt;span class="gp"&gt;$&lt;/span&gt; drush upwd admin --password&lt;span class="o"&gt;=&lt;/span&gt;password
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id="drupal-configuration-directories"&gt;Drupal configuration directories&lt;/h2&gt;
+&lt;p&gt;Edit &lt;code&gt;sites/default/settings.php&lt;/code&gt; and update the location of the configuration
+directories.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
+
+&lt;span class="c1"&gt;// Default config directories provided by the installer.&lt;/span&gt;
+&lt;span class="nv"&gt;$config_directories&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;active&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;../config/active&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="nv"&gt;$config_directories&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;staging&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;../config/staging&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="c1"&gt;// Config directory used for deployments.&lt;/span&gt;
+&lt;span class="nv"&gt;$config_directories&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;deploy&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;../config/deploy&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id="export-configuration"&gt;Export configuration&lt;/h2&gt;
+&lt;p&gt;Export the configuration from the database into the &lt;code&gt;deploy&lt;/code&gt; configuration 
+directory.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; &lt;span class="nb"&gt;cd &lt;/span&gt;drupal/
+&lt;span class="gp"&gt;$&lt;/span&gt; drush config-export deploy
+&lt;span class="go"&gt;Configuration successfully exported to ../config/deploy.             [success]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Once exported, this configuration may be committed to the Git repository. As
+part of the deployment process the configuration may be imported with the
+command &lt;code&gt;drush config-import deploy&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id="update-drupal-core"&gt;Update Drupal core&lt;/h2&gt;
+&lt;p&gt;To merge upstream change to Drupal core the &lt;a href="http://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging"&gt;Git subtree merge strategy&lt;/a&gt; is
+used.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; git pull -s subtree upstream 8.0.x
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The above command will merge the history of &lt;code&gt;upstream&lt;/code&gt; with the main
+repository. If it is not preferable to merge histories the &lt;code&gt;--squash&lt;/code&gt; and
+&lt;code&gt;--no-commit&lt;/code&gt; options can be used along with the &lt;code&gt;-s subtree&lt;/code&gt; strategy option:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; git checkout master
+&lt;span class="gp"&gt;$&lt;/span&gt; git merge --squash -s subtree --no-commit upstream
+&lt;span class="go"&gt;Squash commit -- not updating HEAD&lt;/span&gt;
+&lt;span class="go"&gt;Automatic merge went well; stopped before committing as requested&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Remember to rebuild the cache after each merge:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drush cache-rebuild
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id="further-reading"&gt;Further reading&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging"&gt;Git Tools - Subtree Merging&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.kernel.org/pub/software/scm/git/docs/howto/using-merge-subtree.html"&gt;How to use the subtree merge strategy&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Seth Fischer</dc:creator><pubDate>Fri, 23 Jan 2015 19:20:00 +1300</pubDate><guid>tag:seth.fischer.nz,2015-01-23:drupal-8-workflow-using-git-subtree-merging/</guid><category>Drupal 8</category><category>Drupal</category></item><item><title>Getting started with Drupal 8</title><link>http://seth.fischer.nz/drupal-8-getting-started/</link><description>&lt;p&gt;Now that &lt;a href="https://www.drupal.org/drupal-8.0"&gt;Drupal 8&lt;/a&gt; is in beta phase it is time for site developers to start
+exploring the API. This article describes the installation and configuration of
 Drupal 8 using Git and Drush. Bear in mind that as of 2014-11-28 there were 22
-&lt;a href="https://www.drupal.org/project/issues/search/drupal?project_issue_followers=&amp;amp;status%5B%5D=1&amp;amp;status%5B%5D=13&amp;amp;status%5B%5D=8&amp;amp;status%5B%5D=14&amp;amp;status%5B%5D=15&amp;amp;status%5B%5D=4&amp;amp;priorities%5B%5D=400&amp;amp;categories%5B%5D=1&amp;amp;categories%5B%5D=2&amp;amp;version%5B%5D=8.x&amp;amp;issue_tags_op=%3D&amp;amp;issue_tags=D8+upgrade+path"&gt;issues tagged with D8 upgrade path&lt;/a&gt; so it may be necessary to rebuild your
+&lt;a href="https://www.drupal.org/project/issues/search/drupal?project_issue_followers=&amp;amp;status%5B%5D=1&amp;amp;status%5B%5D=13&amp;amp;status%5B%5D=8&amp;amp;status%5B%5D=14&amp;amp;status%5B%5D=15&amp;amp;status%5B%5D=4&amp;amp;priorities%5B%5D=400&amp;amp;categories%5B%5D=1&amp;amp;categories%5B%5D=2&amp;amp;version%5B%5D=8.x&amp;amp;issue_tags_op=%3D&amp;amp;issue_tags=D8+upgrade+path"&gt;issues tagged with D8 upgrade path&lt;/a&gt;, so it may be necessary to rebuild your
 site with the next core update.&lt;/p&gt;
 &lt;div class="toc"&gt;
 &lt;ul&gt;
@@ -18,7 +238,7 @@ site with the next core update.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;a href="#regularly-update-drupal-core"&gt;Regularly update Drupal core&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#additional-resources"&gt;Additional resources&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#further-reading"&gt;Further reading&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;h2 id="before-starting"&gt;Before starting&lt;/h2&gt;
@@ -30,16 +250,16 @@ site with the next core update.&lt;/p&gt;
 &lt;li&gt;using composer, &lt;a href="https://github.com/drush-ops/drush#installupdate---composer" title="How to install Drush 7.x (dev)"&gt;install Drush 7.x (dev)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="clone-drupal-8"&gt;Clone Drupal 8&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;git clone -b 8.0.x --single-branch http://git.drupal.org/project/drupal.git
-&lt;span class="nv"&gt;$ &lt;/span&gt;git remote rename origin upstream
-&lt;span class="nv"&gt;$ &lt;/span&gt;git remote add origin &lt;span class="o"&gt;[&lt;/span&gt;url&lt;span class="o"&gt;]&lt;/span&gt;
-&lt;span class="nv"&gt;$ &lt;/span&gt;git checkout -b master
-&lt;span class="nv"&gt;$ &lt;/span&gt;cp example.gitignore .gitignore
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; git clone -b 8.0.x --single-branch http://git.drupal.org/project/drupal.git
+&lt;span class="gp"&gt;$&lt;/span&gt; git remote rename origin upstream
+&lt;span class="gp"&gt;$&lt;/span&gt; git remote add origin &lt;span class="o"&gt;[&lt;/span&gt;url&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;span class="gp"&gt;$&lt;/span&gt; git checkout -b master
+&lt;span class="gp"&gt;$&lt;/span&gt; cp example.gitignore .gitignore
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2 id="create-the-files-directory-and-set-permissions"&gt;Create the files directory and set permissions&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;mkdir sites/default/files
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; mkdir sites/default/files
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -49,66 +269,66 @@ writeable both by the web server and command line user. An alternative to
 &lt;p&gt;Those familiar with the Symfony 2 documentation will recognise the following
 shell commands which have been adapted from the
 &lt;a href="http://Symfony.com/doc/2.3/book/installation.html#configuration-and-set-up"&gt;Installing and Configuring Symfony&lt;/a&gt; chapter of the The Symfony Book.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ HTTPDUSER&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;ps aux &lt;span class="p"&gt;|&lt;/span&gt; grep -E &lt;span class="s1"&gt;&amp;#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; grep -v root &lt;span class="p"&gt;|&lt;/span&gt; head -1 &lt;span class="p"&gt;|&lt;/span&gt; cut -d&lt;span class="se"&gt;\ &lt;/span&gt; -f1&lt;span class="sb"&gt;`&lt;/span&gt;
-&lt;span class="nv"&gt;$ &lt;/span&gt;sudo setfacl -R -m u:&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$HTTPDUSER&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;:rwX -m u:&lt;span class="sb"&gt;`&lt;/span&gt;whoami&lt;span class="sb"&gt;`&lt;/span&gt;:rwX sites/default/files
-&lt;span class="nv"&gt;$ &lt;/span&gt;sudo setfacl -dR -m u:&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$HTTPDUSER&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;:rwX -m u:&lt;span class="sb"&gt;`&lt;/span&gt;whoami&lt;span class="sb"&gt;`&lt;/span&gt;:rwX sites/default/files
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; &lt;span class="nv"&gt;HTTPDUSER&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;ps aux &lt;span class="p"&gt;|&lt;/span&gt; grep -E &lt;span class="s1"&gt;&amp;#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; grep -v root &lt;span class="p"&gt;|&lt;/span&gt; head -1 &lt;span class="p"&gt;|&lt;/span&gt; cut -d&lt;span class="se"&gt;\ &lt;/span&gt; -f1&lt;span class="sb"&gt;`&lt;/span&gt;
+&lt;span class="gp"&gt;$&lt;/span&gt; sudo setfacl -R -m u:&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$HTTPDUSER&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;:rwX -m u:&lt;span class="sb"&gt;`&lt;/span&gt;whoami&lt;span class="sb"&gt;`&lt;/span&gt;:rwX sites/default/files
+&lt;span class="gp"&gt;$&lt;/span&gt; sudo setfacl -dR -m u:&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$HTTPDUSER&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;:rwX -m u:&lt;span class="sb"&gt;`&lt;/span&gt;whoami&lt;span class="sb"&gt;`&lt;/span&gt;:rwX sites/default/files
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;code&gt;HTTPDUSER&lt;/code&gt; is usually &lt;code&gt;www-data&lt;/code&gt; on Debian-based distributions.&lt;/p&gt;
 &lt;p&gt;Before setting the access control only the drush user will have &lt;code&gt;rw&lt;/code&gt; permissions:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;getfacl sites/default/files
-&lt;span class="c"&gt;# file: cache&lt;/span&gt;
-&lt;span class="c"&gt;# owner: drushuser&lt;/span&gt;
-&lt;span class="c"&gt;# group: drushuser&lt;/span&gt;
-user::rwx
-group::rwx
-other::rwx
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; getfacl sites/default/files
+&lt;span class="gp"&gt;#&lt;/span&gt; file: cache
+&lt;span class="gp"&gt;#&lt;/span&gt; owner: drushuser
+&lt;span class="gp"&gt;#&lt;/span&gt; group: drushuser
+&lt;span class="go"&gt;user::rwx&lt;/span&gt;
+&lt;span class="go"&gt;group::rwx&lt;/span&gt;
+&lt;span class="go"&gt;other::rwx&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;After setting the access control both the web server user and drush user will
 have &lt;code&gt;rw&lt;/code&gt; permissions:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;getfacl sites/default/files
-&lt;span class="c"&gt;# file: cache&lt;/span&gt;
-&lt;span class="c"&gt;# owner: drushuser&lt;/span&gt;
-&lt;span class="c"&gt;# group: drushuser&lt;/span&gt;
-user::rwx
-user:www-data:rwx
-user:drushuser:rwx
-group::rwx
-mask::rwx
-other::rwx
-default:user::rwx
-default:user:www-data:rwx
-default:user:drushuser:rwx
-default:group::rwx
-default:mask::rwx
-default:other::rwx
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; getfacl sites/default/files
+&lt;span class="gp"&gt;#&lt;/span&gt; file: cache
+&lt;span class="gp"&gt;#&lt;/span&gt; owner: drushuser
+&lt;span class="gp"&gt;#&lt;/span&gt; group: drushuser
+&lt;span class="go"&gt;user::rwx&lt;/span&gt;
+&lt;span class="go"&gt;user:www-data:rwx&lt;/span&gt;
+&lt;span class="go"&gt;user:drushuser:rwx&lt;/span&gt;
+&lt;span class="go"&gt;group::rwx&lt;/span&gt;
+&lt;span class="go"&gt;mask::rwx&lt;/span&gt;
+&lt;span class="go"&gt;other::rwx&lt;/span&gt;
+&lt;span class="go"&gt;default:user::rwx&lt;/span&gt;
+&lt;span class="go"&gt;default:user:www-data:rwx&lt;/span&gt;
+&lt;span class="go"&gt;default:user:drushuser:rwx&lt;/span&gt;
+&lt;span class="go"&gt;default:group::rwx&lt;/span&gt;
+&lt;span class="go"&gt;default:mask::rwx&lt;/span&gt;
+&lt;span class="go"&gt;default:other::rwx&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2 id="create-database"&gt;Create database&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;mysql&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;uroot&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;
-&lt;span class="n"&gt;mysql&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;DATABASE&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="n"&gt;mysql&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;USER&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt; &lt;span class="n"&gt;IDENTIFIED&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;password&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="n"&gt;mysql&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;GRANT&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt; &lt;span class="k"&gt;PRIVILEGES&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;TO&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="n"&gt;mysql&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;FLUSH&lt;/span&gt; &lt;span class="k"&gt;PRIVILEGES&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="n"&gt;mysql&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;q&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; mysql -uroot -p
+&lt;span class="go"&gt;mysql&amp;gt; CREATE DATABASE db;&lt;/span&gt;
+&lt;span class="go"&gt;mysql&amp;gt; CREATE USER &amp;#39;dbuser&amp;#39;@&amp;#39;localhost&amp;#39; IDENTIFIED BY &amp;#39;password&amp;#39;;&lt;/span&gt;
+&lt;span class="go"&gt;mysql&amp;gt; GRANT ALL PRIVILEGES ON db.* TO &amp;#39;dbuser&amp;#39;@&amp;#39;localhost&amp;#39;;&lt;/span&gt;
+&lt;span class="go"&gt;mysql&amp;gt; FLUSH PRIVILEGES;&lt;/span&gt;
+&lt;span class="go"&gt;mysql&amp;gt; \q&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2 id="site-installation"&gt;Site installation&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;drush site-install standard --db-url&lt;span class="o"&gt;=&lt;/span&gt;mysql://dbuser:password@localhost/db --site-name&lt;span class="o"&gt;=&lt;/span&gt;drupal8
-&lt;span class="nv"&gt;$ &lt;/span&gt;drush upwd admin --password&lt;span class="o"&gt;=&lt;/span&gt;password
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drush site-install standard --db-url&lt;span class="o"&gt;=&lt;/span&gt;mysql://dbuser:password@localhost/db --site-name&lt;span class="o"&gt;=&lt;/span&gt;drupal8
+&lt;span class="gp"&gt;$&lt;/span&gt; drush upwd admin --password&lt;span class="o"&gt;=&lt;/span&gt;password
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Drupal 8 beta is now configured and you may login with the username "admin" and
 password "password".&lt;/p&gt;
 &lt;h2 id="configure-a-drush-alias"&gt;Configure a Drush alias&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;cp ~/.composer/vendor/drush/drush/examples/example.aliases.drushrc.php ~/.drush/aliases.drushrc.php
-&lt;span class="nv"&gt;$ &lt;/span&gt;drush site-alias @self --full --with-optional &amp;gt;&amp;gt; ~/.drush/aliases.drushrc.php
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; cp ~/.composer/vendor/drush/drush/examples/example.aliases.drushrc.php ~/.drush/aliases.drushrc.php
+&lt;span class="gp"&gt;$&lt;/span&gt; drush site-alias @self --full --with-optional &amp;gt;&amp;gt; ~/.drush/aliases.drushrc.php
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -131,80 +351,80 @@ password "password".&lt;/p&gt;
 
 
 &lt;p&gt;Check that your system meets the minimum core requirements:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;drush @drupal8 core-requirements
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drush @drupal8 core-requirements
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Check the status of the site installation by running &lt;code&gt;drush @drupal8 status&lt;/code&gt;.
 The output will be similar to the following:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;drush @drupal8 status
- Drupal version         :  8.0.0-dev
- Site URI               :  http://drupal8
- Database driver        :  mysql
- Database hostname      :  localhost
- Database port          :
- Database username      :  drupal8
- Database name          :  drupal8
- Database               :  Connected
- Drupal bootstrap       :  Successful
- Drupal user            :  Anonymous
- Default theme          :  bartik
- Administration theme   :  seven
- PHP executable         :  /usr/bin/php
- PHP configuration      :  /etc/php5/cli/php.ini
- PHP OS                 :  Linux
- Drush version          :  7.0-dev
- Drush temp directory   :  /tmp
- Drush configuration    :
- Drush &lt;span class="nb"&gt;alias &lt;/span&gt;files      :  /home/user/.drush/aliases.drushrc.php
- Drupal root            :  /var/www/drupal8
- Site path              :  sites/default
- File directory path    :  sites/default/files
- Temporary file         :  /tmp
- directory path
- Active config path     :  sites/default/files/config_jP-uX_4rcMWllW18FM124krsM
-                           An44d1rdD2t5zXZLAaQcrXQjUATnoTTQ5gtw-iH5fqcmlTFCQ/ac
-                           tive
- Staging config path    :  sites/default/files/config_jP-uX_4rcMWllW18FM124krsM
-                           An44d1rdD2t5zXZLAaQcrXQjUATnoTTQ5gtw-iH5fqcmlTFCQ/st
-                           aging
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drush @drupal8 status
+&lt;span class="go"&gt; Drupal version         :  8.0.0-dev&lt;/span&gt;
+&lt;span class="go"&gt; Site URI               :  http://drupal8&lt;/span&gt;
+&lt;span class="go"&gt; Database driver        :  mysql&lt;/span&gt;
+&lt;span class="go"&gt; Database hostname      :  localhost&lt;/span&gt;
+&lt;span class="go"&gt; Database port          :&lt;/span&gt;
+&lt;span class="go"&gt; Database username      :  drupal8&lt;/span&gt;
+&lt;span class="go"&gt; Database name          :  drupal8&lt;/span&gt;
+&lt;span class="go"&gt; Database               :  Connected&lt;/span&gt;
+&lt;span class="go"&gt; Drupal bootstrap       :  Successful&lt;/span&gt;
+&lt;span class="go"&gt; Drupal user            :  Anonymous&lt;/span&gt;
+&lt;span class="go"&gt; Default theme          :  bartik&lt;/span&gt;
+&lt;span class="go"&gt; Administration theme   :  seven&lt;/span&gt;
+&lt;span class="go"&gt; PHP executable         :  /usr/bin/php&lt;/span&gt;
+&lt;span class="go"&gt; PHP configuration      :  /etc/php5/cli/php.ini&lt;/span&gt;
+&lt;span class="go"&gt; PHP OS                 :  Linux&lt;/span&gt;
+&lt;span class="go"&gt; Drush version          :  7.0-dev&lt;/span&gt;
+&lt;span class="go"&gt; Drush temp directory   :  /tmp&lt;/span&gt;
+&lt;span class="go"&gt; Drush configuration    :&lt;/span&gt;
+&lt;span class="go"&gt; Drush alias files      :  /home/user/.drush/aliases.drushrc.php&lt;/span&gt;
+&lt;span class="go"&gt; Drupal root            :  /var/www/drupal8&lt;/span&gt;
+&lt;span class="go"&gt; Site path              :  sites/default&lt;/span&gt;
+&lt;span class="go"&gt; File directory path    :  sites/default/files&lt;/span&gt;
+&lt;span class="go"&gt; Temporary file         :  /tmp&lt;/span&gt;
+&lt;span class="go"&gt; directory path&lt;/span&gt;
+&lt;span class="go"&gt; Active config path     :  sites/default/files/config_jP-uX_4rcMWllW18FM124krsM&lt;/span&gt;
+&lt;span class="go"&gt;                           An44d1rdD2t5zXZLAaQcrXQjUATnoTTQ5gtw-iH5fqcmlTFCQ/ac&lt;/span&gt;
+&lt;span class="go"&gt;                           tive&lt;/span&gt;
+&lt;span class="go"&gt; Staging config path    :  sites/default/files/config_jP-uX_4rcMWllW18FM124krsM&lt;/span&gt;
+&lt;span class="go"&gt;                           An44d1rdD2t5zXZLAaQcrXQjUATnoTTQ5gtw-iH5fqcmlTFCQ/st&lt;/span&gt;
+&lt;span class="go"&gt;                           aging&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2 id="install-contrib-modules"&gt;Install contrib modules&lt;/h2&gt;
 &lt;p&gt;Two useful modules for developers are &lt;a href="https://www.drupal.org/project/devel"&gt;devel&lt;/a&gt; and &lt;a href="https://www.drupal.org/project/examples"&gt;examples&lt;/a&gt;.&lt;/p&gt;
 &lt;h3 id="devel"&gt;Devel&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;drush @drupal8 pm-download devel
-&lt;span class="nv"&gt;$ &lt;/span&gt;drush @drupal8 pm-enable devel
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drush @drupal8 pm-download devel
+&lt;span class="gp"&gt;$&lt;/span&gt; drush @drupal8 pm-enable devel
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3 id="examples"&gt;Examples&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;drush @drupal8 pm-download examples
-&lt;span class="nv"&gt;$ &lt;/span&gt;drush @drupal8 pm-enable examples
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drush @drupal8 pm-download examples
+&lt;span class="gp"&gt;$&lt;/span&gt; drush @drupal8 pm-enable examples
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;The single command &lt;code&gt;drush @drupal8 pm-enable module&lt;/code&gt; will download module (if
 required) before enabling it.&lt;/p&gt;
 &lt;h2 id="regularly-update-drupal-core"&gt;Regularly update Drupal core&lt;/h2&gt;
-&lt;p&gt;As the Drupal 8 pushes on through beta releases you should regularly merge in
-the latest code:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;(&lt;/span&gt;master&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;git checkout master
-&lt;span class="o"&gt;(&lt;/span&gt;master&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;git fetch upstream
-&lt;span class="o"&gt;(&lt;/span&gt;master&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;git merge 8.0.x
+&lt;p&gt;As Drupal 8 pushes on through beta releases you should regularly merge in the
+latest code:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;(master)$&lt;/span&gt; git checkout master
+&lt;span class="gp"&gt;(master)$&lt;/span&gt; git fetch upstream
+&lt;span class="gp"&gt;(master)$&lt;/span&gt; git merge 8.0.x
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Remember to rebuild the site after each merge:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;drush cache-rebuild
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drush cache-rebuild
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Before all issues tagged with "D8 upgrade path" have been closed you may find
 that you are required to repeat the site installation commands as described
 above after updating Drupal core.&lt;/p&gt;
-&lt;h2 id="additional-resources"&gt;Additional resources&lt;/h2&gt;
+&lt;h2 id="further-reading"&gt;Further reading&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://www.drupal.org/node/803746"&gt;Building a Drupal site with Git&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://gitref.org/"&gt;Git Reference&lt;/a&gt;&lt;/li&gt;

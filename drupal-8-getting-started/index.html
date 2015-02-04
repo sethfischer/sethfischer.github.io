@@ -110,9 +110,9 @@ sethfischer            </a>
 </footer><!-- /.post-info -->                    </div>
                 </div>
                 <p>Now that <a href="https://www.drupal.org/drupal-8.0">Drupal 8</a> is in beta phase it is time for site developers to start
-exploring the API. This article describes the installation of configuration of
+exploring the API. This article describes the installation and configuration of
 Drupal 8 using Git and Drush. Bear in mind that as of 2014-11-28 there were 22
-<a href="https://www.drupal.org/project/issues/search/drupal?project_issue_followers=&amp;status%5B%5D=1&amp;status%5B%5D=13&amp;status%5B%5D=8&amp;status%5B%5D=14&amp;status%5B%5D=15&amp;status%5B%5D=4&amp;priorities%5B%5D=400&amp;categories%5B%5D=1&amp;categories%5B%5D=2&amp;version%5B%5D=8.x&amp;issue_tags_op=%3D&amp;issue_tags=D8+upgrade+path">issues tagged with D8 upgrade path</a> so it may be necessary to rebuild your
+<a href="https://www.drupal.org/project/issues/search/drupal?project_issue_followers=&amp;status%5B%5D=1&amp;status%5B%5D=13&amp;status%5B%5D=8&amp;status%5B%5D=14&amp;status%5B%5D=15&amp;status%5B%5D=4&amp;priorities%5B%5D=400&amp;categories%5B%5D=1&amp;categories%5B%5D=2&amp;version%5B%5D=8.x&amp;issue_tags_op=%3D&amp;issue_tags=D8+upgrade+path">issues tagged with D8 upgrade path</a>, so it may be necessary to rebuild your
 site with the next core update.</p>
 <div class="toc">
 <ul>
@@ -128,7 +128,7 @@ site with the next core update.</p>
 </ul>
 </li>
 <li><a href="#regularly-update-drupal-core">Regularly update Drupal core</a></li>
-<li><a href="#additional-resources">Additional resources</a></li>
+<li><a href="#further-reading">Further reading</a></li>
 </ul>
 </div>
 <h2 id="before-starting">Before starting</h2>
@@ -140,16 +140,16 @@ site with the next core update.</p>
 <li>using composer, <a href="https://github.com/drush-ops/drush#installupdate---composer" title="How to install Drush 7.x (dev)">install Drush 7.x (dev)</a></li>
 </ul>
 <h2 id="clone-drupal-8">Clone Drupal 8</h2>
-<div class="highlight"><pre><span class="nv">$ </span>git clone -b 8.0.x --single-branch http://git.drupal.org/project/drupal.git
-<span class="nv">$ </span>git remote rename origin upstream
-<span class="nv">$ </span>git remote add origin <span class="o">[</span>url<span class="o">]</span>
-<span class="nv">$ </span>git checkout -b master
-<span class="nv">$ </span>cp example.gitignore .gitignore
+<div class="highlight"><pre><span class="gp">$</span> git clone -b 8.0.x --single-branch http://git.drupal.org/project/drupal.git
+<span class="gp">$</span> git remote rename origin upstream
+<span class="gp">$</span> git remote add origin <span class="o">[</span>url<span class="o">]</span>
+<span class="gp">$</span> git checkout -b master
+<span class="gp">$</span> cp example.gitignore .gitignore
 </pre></div>
 
 
 <h2 id="create-the-files-directory-and-set-permissions">Create the files directory and set permissions</h2>
-<div class="highlight"><pre><span class="nv">$ </span>mkdir sites/default/files
+<div class="highlight"><pre><span class="gp">$</span> mkdir sites/default/files
 </pre></div>
 
 
@@ -159,66 +159,66 @@ writeable both by the web server and command line user. An alternative to
 <p>Those familiar with the Symfony 2 documentation will recognise the following
 shell commands which have been adapted from the
 <a href="http://Symfony.com/doc/2.3/book/installation.html#configuration-and-set-up">Installing and Configuring Symfony</a> chapter of the The Symfony Book.</p>
-<div class="highlight"><pre><span class="nv">$ HTTPDUSER</span><span class="o">=</span><span class="sb">`</span>ps aux <span class="p">|</span> grep -E <span class="s1">&#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&#39;</span> <span class="p">|</span> grep -v root <span class="p">|</span> head -1 <span class="p">|</span> cut -d<span class="se">\ </span> -f1<span class="sb">`</span>
-<span class="nv">$ </span>sudo setfacl -R -m u:<span class="s2">&quot;</span><span class="nv">$HTTPDUSER</span><span class="s2">&quot;</span>:rwX -m u:<span class="sb">`</span>whoami<span class="sb">`</span>:rwX sites/default/files
-<span class="nv">$ </span>sudo setfacl -dR -m u:<span class="s2">&quot;</span><span class="nv">$HTTPDUSER</span><span class="s2">&quot;</span>:rwX -m u:<span class="sb">`</span>whoami<span class="sb">`</span>:rwX sites/default/files
+<div class="highlight"><pre><span class="gp">$</span> <span class="nv">HTTPDUSER</span><span class="o">=</span><span class="sb">`</span>ps aux <span class="p">|</span> grep -E <span class="s1">&#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&#39;</span> <span class="p">|</span> grep -v root <span class="p">|</span> head -1 <span class="p">|</span> cut -d<span class="se">\ </span> -f1<span class="sb">`</span>
+<span class="gp">$</span> sudo setfacl -R -m u:<span class="s2">&quot;</span><span class="nv">$HTTPDUSER</span><span class="s2">&quot;</span>:rwX -m u:<span class="sb">`</span>whoami<span class="sb">`</span>:rwX sites/default/files
+<span class="gp">$</span> sudo setfacl -dR -m u:<span class="s2">&quot;</span><span class="nv">$HTTPDUSER</span><span class="s2">&quot;</span>:rwX -m u:<span class="sb">`</span>whoami<span class="sb">`</span>:rwX sites/default/files
 </pre></div>
 
 
 <p><code>HTTPDUSER</code> is usually <code>www-data</code> on Debian-based distributions.</p>
 <p>Before setting the access control only the drush user will have <code>rw</code> permissions:</p>
-<div class="highlight"><pre><span class="nv">$ </span>getfacl sites/default/files
-<span class="c"># file: cache</span>
-<span class="c"># owner: drushuser</span>
-<span class="c"># group: drushuser</span>
-user::rwx
-group::rwx
-other::rwx
+<div class="highlight"><pre><span class="gp">$</span> getfacl sites/default/files
+<span class="gp">#</span> file: cache
+<span class="gp">#</span> owner: drushuser
+<span class="gp">#</span> group: drushuser
+<span class="go">user::rwx</span>
+<span class="go">group::rwx</span>
+<span class="go">other::rwx</span>
 </pre></div>
 
 
 <p>After setting the access control both the web server user and drush user will
 have <code>rw</code> permissions:</p>
-<div class="highlight"><pre><span class="nv">$ </span>getfacl sites/default/files
-<span class="c"># file: cache</span>
-<span class="c"># owner: drushuser</span>
-<span class="c"># group: drushuser</span>
-user::rwx
-user:www-data:rwx
-user:drushuser:rwx
-group::rwx
-mask::rwx
-other::rwx
-default:user::rwx
-default:user:www-data:rwx
-default:user:drushuser:rwx
-default:group::rwx
-default:mask::rwx
-default:other::rwx
+<div class="highlight"><pre><span class="gp">$</span> getfacl sites/default/files
+<span class="gp">#</span> file: cache
+<span class="gp">#</span> owner: drushuser
+<span class="gp">#</span> group: drushuser
+<span class="go">user::rwx</span>
+<span class="go">user:www-data:rwx</span>
+<span class="go">user:drushuser:rwx</span>
+<span class="go">group::rwx</span>
+<span class="go">mask::rwx</span>
+<span class="go">other::rwx</span>
+<span class="go">default:user::rwx</span>
+<span class="go">default:user:www-data:rwx</span>
+<span class="go">default:user:drushuser:rwx</span>
+<span class="go">default:group::rwx</span>
+<span class="go">default:mask::rwx</span>
+<span class="go">default:other::rwx</span>
 </pre></div>
 
 
 <h2 id="create-database">Create database</h2>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">mysql</span> <span class="o">-</span><span class="n">uroot</span> <span class="o">-</span><span class="n">p</span>
-<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">db</span><span class="p">;</span>
-<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">CREATE</span> <span class="k">USER</span> <span class="s1">&#39;dbuser&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;password&#39;</span><span class="p">;</span>
-<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">PRIVILEGES</span> <span class="k">ON</span> <span class="n">db</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;dbuser&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
-<span class="n">mysql</span><span class="o">&gt;</span> <span class="n">FLUSH</span> <span class="k">PRIVILEGES</span><span class="p">;</span>
-<span class="n">mysql</span><span class="o">&gt;</span> <span class="err">\</span><span class="n">q</span>
+<div class="highlight"><pre><span class="gp">$</span> mysql -uroot -p
+<span class="go">mysql&gt; CREATE DATABASE db;</span>
+<span class="go">mysql&gt; CREATE USER &#39;dbuser&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;password&#39;;</span>
+<span class="go">mysql&gt; GRANT ALL PRIVILEGES ON db.* TO &#39;dbuser&#39;@&#39;localhost&#39;;</span>
+<span class="go">mysql&gt; FLUSH PRIVILEGES;</span>
+<span class="go">mysql&gt; \q</span>
 </pre></div>
 
 
 <h2 id="site-installation">Site installation</h2>
-<div class="highlight"><pre><span class="nv">$ </span>drush site-install standard --db-url<span class="o">=</span>mysql://dbuser:password@localhost/db --site-name<span class="o">=</span>drupal8
-<span class="nv">$ </span>drush upwd admin --password<span class="o">=</span>password
+<div class="highlight"><pre><span class="gp">$</span> drush site-install standard --db-url<span class="o">=</span>mysql://dbuser:password@localhost/db --site-name<span class="o">=</span>drupal8
+<span class="gp">$</span> drush upwd admin --password<span class="o">=</span>password
 </pre></div>
 
 
 <p>Drupal 8 beta is now configured and you may login with the username "admin" and
 password "password".</p>
 <h2 id="configure-a-drush-alias">Configure a Drush alias</h2>
-<div class="highlight"><pre><span class="nv">$ </span>cp ~/.composer/vendor/drush/drush/examples/example.aliases.drushrc.php ~/.drush/aliases.drushrc.php
-<span class="nv">$ </span>drush site-alias @self --full --with-optional &gt;&gt; ~/.drush/aliases.drushrc.php
+<div class="highlight"><pre><span class="gp">$</span> cp ~/.composer/vendor/drush/drush/examples/example.aliases.drushrc.php ~/.drush/aliases.drushrc.php
+<span class="gp">$</span> drush site-alias @self --full --with-optional &gt;&gt; ~/.drush/aliases.drushrc.php
 </pre></div>
 
 
@@ -241,80 +241,80 @@ password "password".</p>
 
 
 <p>Check that your system meets the minimum core requirements:</p>
-<div class="highlight"><pre><span class="nv">$ </span>drush @drupal8 core-requirements
+<div class="highlight"><pre><span class="gp">$</span> drush @drupal8 core-requirements
 </pre></div>
 
 
 <p>Check the status of the site installation by running <code>drush @drupal8 status</code>.
 The output will be similar to the following:</p>
-<div class="highlight"><pre><span class="nv">$ </span>drush @drupal8 status
- Drupal version         :  8.0.0-dev
- Site URI               :  http://drupal8
- Database driver        :  mysql
- Database hostname      :  localhost
- Database port          :
- Database username      :  drupal8
- Database name          :  drupal8
- Database               :  Connected
- Drupal bootstrap       :  Successful
- Drupal user            :  Anonymous
- Default theme          :  bartik
- Administration theme   :  seven
- PHP executable         :  /usr/bin/php
- PHP configuration      :  /etc/php5/cli/php.ini
- PHP OS                 :  Linux
- Drush version          :  7.0-dev
- Drush temp directory   :  /tmp
- Drush configuration    :
- Drush <span class="nb">alias </span>files      :  /home/user/.drush/aliases.drushrc.php
- Drupal root            :  /var/www/drupal8
- Site path              :  sites/default
- File directory path    :  sites/default/files
- Temporary file         :  /tmp
- directory path
- Active config path     :  sites/default/files/config_jP-uX_4rcMWllW18FM124krsM
-                           An44d1rdD2t5zXZLAaQcrXQjUATnoTTQ5gtw-iH5fqcmlTFCQ/ac
-                           tive
- Staging config path    :  sites/default/files/config_jP-uX_4rcMWllW18FM124krsM
-                           An44d1rdD2t5zXZLAaQcrXQjUATnoTTQ5gtw-iH5fqcmlTFCQ/st
-                           aging
+<div class="highlight"><pre><span class="gp">$</span> drush @drupal8 status
+<span class="go"> Drupal version         :  8.0.0-dev</span>
+<span class="go"> Site URI               :  http://drupal8</span>
+<span class="go"> Database driver        :  mysql</span>
+<span class="go"> Database hostname      :  localhost</span>
+<span class="go"> Database port          :</span>
+<span class="go"> Database username      :  drupal8</span>
+<span class="go"> Database name          :  drupal8</span>
+<span class="go"> Database               :  Connected</span>
+<span class="go"> Drupal bootstrap       :  Successful</span>
+<span class="go"> Drupal user            :  Anonymous</span>
+<span class="go"> Default theme          :  bartik</span>
+<span class="go"> Administration theme   :  seven</span>
+<span class="go"> PHP executable         :  /usr/bin/php</span>
+<span class="go"> PHP configuration      :  /etc/php5/cli/php.ini</span>
+<span class="go"> PHP OS                 :  Linux</span>
+<span class="go"> Drush version          :  7.0-dev</span>
+<span class="go"> Drush temp directory   :  /tmp</span>
+<span class="go"> Drush configuration    :</span>
+<span class="go"> Drush alias files      :  /home/user/.drush/aliases.drushrc.php</span>
+<span class="go"> Drupal root            :  /var/www/drupal8</span>
+<span class="go"> Site path              :  sites/default</span>
+<span class="go"> File directory path    :  sites/default/files</span>
+<span class="go"> Temporary file         :  /tmp</span>
+<span class="go"> directory path</span>
+<span class="go"> Active config path     :  sites/default/files/config_jP-uX_4rcMWllW18FM124krsM</span>
+<span class="go">                           An44d1rdD2t5zXZLAaQcrXQjUATnoTTQ5gtw-iH5fqcmlTFCQ/ac</span>
+<span class="go">                           tive</span>
+<span class="go"> Staging config path    :  sites/default/files/config_jP-uX_4rcMWllW18FM124krsM</span>
+<span class="go">                           An44d1rdD2t5zXZLAaQcrXQjUATnoTTQ5gtw-iH5fqcmlTFCQ/st</span>
+<span class="go">                           aging</span>
 </pre></div>
 
 
 <h2 id="install-contrib-modules">Install contrib modules</h2>
 <p>Two useful modules for developers are <a href="https://www.drupal.org/project/devel">devel</a> and <a href="https://www.drupal.org/project/examples">examples</a>.</p>
 <h3 id="devel">Devel</h3>
-<div class="highlight"><pre><span class="nv">$ </span>drush @drupal8 pm-download devel
-<span class="nv">$ </span>drush @drupal8 pm-enable devel
+<div class="highlight"><pre><span class="gp">$</span> drush @drupal8 pm-download devel
+<span class="gp">$</span> drush @drupal8 pm-enable devel
 </pre></div>
 
 
 <h3 id="examples">Examples</h3>
-<div class="highlight"><pre><span class="nv">$ </span>drush @drupal8 pm-download examples
-<span class="nv">$ </span>drush @drupal8 pm-enable examples
+<div class="highlight"><pre><span class="gp">$</span> drush @drupal8 pm-download examples
+<span class="gp">$</span> drush @drupal8 pm-enable examples
 </pre></div>
 
 
 <p>The single command <code>drush @drupal8 pm-enable module</code> will download module (if
 required) before enabling it.</p>
 <h2 id="regularly-update-drupal-core">Regularly update Drupal core</h2>
-<p>As the Drupal 8 pushes on through beta releases you should regularly merge in
-the latest code:</p>
-<div class="highlight"><pre><span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git checkout master
-<span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git fetch upstream
-<span class="o">(</span>master<span class="o">)</span><span class="nv">$ </span>git merge 8.0.x
+<p>As Drupal 8 pushes on through beta releases you should regularly merge in the
+latest code:</p>
+<div class="highlight"><pre><span class="gp">(master)$</span> git checkout master
+<span class="gp">(master)$</span> git fetch upstream
+<span class="gp">(master)$</span> git merge 8.0.x
 </pre></div>
 
 
 <p>Remember to rebuild the site after each merge:</p>
-<div class="highlight"><pre><span class="nv">$ </span>drush cache-rebuild
+<div class="highlight"><pre><span class="gp">$</span> drush cache-rebuild
 </pre></div>
 
 
 <p>Before all issues tagged with "D8 upgrade path" have been closed you may find
 that you are required to repeat the site installation commands as described
 above after updating Drupal core.</p>
-<h2 id="additional-resources">Additional resources</h2>
+<h2 id="further-reading">Further reading</h2>
 <ul>
 <li><a href="https://www.drupal.org/node/803746">Building a Drupal site with Git</a></li>
 <li><a href="http://gitref.org/">Git Reference</a></li>
@@ -349,6 +349,11 @@ above after updating Drupal core.</p>
             <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
                 <ul class="list-group" id="recentposts">
                     <li class="list-group-item">
+                        <a href="http://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merging/">
+                            A Drupal 8 workflow using the Git subtree merge strategy
+                        </a>
+                    </li>
+                    <li class="list-group-item">
                         <a href="http://seth.fischer.nz/drupal-8-getting-started/">
                             Getting started with Drupal 8
                         </a>
@@ -359,12 +364,12 @@ above after updating Drupal core.</p>
 
             <li class="list-group-item"><a href="http://seth.fischer.nz/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
                 <ul class="list-group " id="tags">
-                    <li class="list-group-item tag-4">
+                    <li class="list-group-item tag-1">
                         <a href="http://seth.fischer.nz/tag/drupal.html">
                             Drupal
                         </a>
                     </li>
-                    <li class="list-group-item tag-4">
+                    <li class="list-group-item tag-1">
                         <a href="http://seth.fischer.nz/tag/drupal-8.html">
                             Drupal 8
                         </a>
@@ -388,7 +393,7 @@ above after updating Drupal core.</p>
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2014 Seth Fischer
+         <div class="col-xs-10">&copy; 2015 Seth Fischer
             &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>              <p><small>  <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by/4.0/80x15.png" /></a>

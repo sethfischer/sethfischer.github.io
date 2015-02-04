@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en"
+>
+<head>
+    <title>A Drupal 8 workflow using the Git subtree merge strategy - sethfischer</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="http://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merging/">
+
+        <meta name="author" content="Seth Fischer" />
+        <meta name="keywords" content="Drupal 8,Drupal" />
+        <meta name="description" content="Often there are components of a Drupal website that should not be located in the document root such as configuration files. It is convenient to keep these files in version control but outside of the Drupal root. By utilising Git subtrees, a Drupal installation root may be below the root of the main repository, and upstream changes to Drupal core conveniently merged with git read-tree." />
+
+        <meta property="og:site_name" content="sethfischer" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="A Drupal 8 workflow using the Git subtree merge strategy"/>
+        <meta property="og:url" content="http://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merging/"/>
+        <meta property="og:description" content="Often there are components of a Drupal website that should not be located in the document root such as configuration files. It is convenient to keep these files in version control but outside of the Drupal root. By utilising Git subtrees, a Drupal installation root may be below the root of the main repository, and upstream changes to Drupal core conveniently merged with git read-tree."/>
+        <meta property="article:published_time" content="2015-01-23" />
+            <meta property="article:section" content="Drupal" />
+            <meta property="article:tag" content="Drupal 8" />
+            <meta property="article:tag" content="Drupal" />
+            <meta property="article:author" content="Seth Fischer" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://seth.fischer.nz/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="http://seth.fischer.nz/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://seth.fischer.nz/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://seth.fischer.nz/theme/css/style.css" type="text/css"/>
+        <link href="http://seth.fischer.nz/static/custom.css" rel="stylesheet">
+
+        <link href="http://seth.fischer.nz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="sethfischer ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://seth.fischer.nz/" class="navbar-brand">
+sethfischer            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                         <li><a href="http://seth.fischer.nz/pages/about.html">
+                             About
+                          </a></li>
+                        <li class="active">
+                            <a href="http://seth.fischer.nz/category/drupal.html">Drupal</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="http://seth.fischer.nz/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merging/"
+                       rel="bookmark"
+                       title="Permalink to A Drupal 8 workflow using the Git subtree merge strategy">
+                        A Drupal 8 workflow using the Git subtree merge strategy
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2015-01-23T19:20:00+13:00"> Fri 23 January 2015</time>
+    </span>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="http://seth.fischer.nz/tag/drupal-8.html">Drupal 8</a>
+        /
+	<a href="http://seth.fischer.nz/tag/drupal.html">Drupal</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>Often there are components of a Drupal website that should not be located in
+the document root such as configuration files, deployment scripts, and
+functional tests. By utilising Git subtrees, a Drupal installation root (or web
+server document root) may be below the root of the main repository, and
+upstream changes to Drupal core may be conveniently merged with
+<code>git read-tree</code>.</p>
+<div class="toc">
+<ul>
+<li><a href="#initialise-git-repository">Initialise Git repository</a></li>
+<li><a href="#add-upstream-remote">Add upstream remote</a></li>
+<li><a href="#checkout-a-local-copy-of-the-upstream-branch">Checkout a local copy of the upstream branch</a></li>
+<li><a href="#pull-upstream-into-a-subdirectory-in-the-master-branch">Pull upstream into a subdirectory in the master branch</a></li>
+<li><a href="#create-a-gitingore-for-drupal-core">Create a .gitingore for Drupal core</a></li>
+<li><a href="#create-directories-above-the-document-root">Create directories above the document root</a></li>
+<li><a href="#create-the-files-directory-and-set-permissions">Create the files directory and set permissions</a></li>
+<li><a href="#create-database">Create database</a></li>
+<li><a href="#site-installation">Site installation</a></li>
+<li><a href="#drupal-configuration-directories">Drupal configuration directories</a></li>
+<li><a href="#export-configuration">Export configuration</a></li>
+<li><a href="#update-drupal-core">Update Drupal core</a></li>
+<li><a href="#further-reading">Further reading</a></li>
+</ul>
+</div>
+<h2 id="initialise-git-repository">Initialise Git repository</h2>
+<p>Initialise Git repository and add your <code>.gitignore</code>, <code>README</code>, and <code>LICENSE</code>
+files.</p>
+<div class="highlight"><pre><span class="gp">$</span> mkdir myproject
+<span class="gp">$</span> <span class="nb">cd </span>myproject
+<span class="gp">$</span> git init
+<span class="go">Initialized empty Git repository in /var/www/myproject/.git/</span>
+<span class="gp">$</span> vi README.md
+<span class="gp">$</span> git add README.md
+<span class="gp">$</span> git commit -m <span class="s2">&quot;Add README.md&quot;</span>
+<span class="go">[master (root-commit) 3a30763] Add README.txt</span>
+<span class="go"> 1 file changed, 1 insertion(+)</span>
+<span class="go"> create mode 100644 README.txt</span>
+</pre></div>
+
+
+<h2 id="add-upstream-remote">Add upstream remote</h2>
+<p>Add the drupal.org git repository as a remote with the name <code>upstream</code>. To
+improve efficiency specify that only the <code>8.0.x</code> branch is to be tracked with
+the <code>-t</code> option.</p>
+<div class="highlight"><pre><span class="gp">$</span> git remote add -t 8.0.x upstream http://git.drupal.org/project/drupal.git
+<span class="gp">$</span> git fetch upstream
+</pre></div>
+
+
+<h2 id="checkout-a-local-copy-of-the-upstream-branch">Checkout a local copy of the upstream branch</h2>
+<p>Checkout a local copy of the <code>upstream/8.0.x</code> branch.</p>
+<div class="highlight"><pre><span class="gp">$</span> git checkout -b upstream upstream/8.0.x
+<span class="go">Branch upstream set up to track remote branch 8.0.x from upstream by rebasing.</span>
+<span class="go">Switched to a new branch &#39;upstream&#39;</span>
+</pre></div>
+
+
+<h2 id="pull-upstream-into-a-subdirectory-in-the-master-branch">Pull upstream into a subdirectory in the master branch</h2>
+<p>The <code>upstream/8.0.x</code> branch is pulled in as a subdirectory of the master
+branch using the <code>git read-tree</code> command. The name of the subdirectory is
+specified with the <code>--prefix</code> option; in this case <code>drupal/</code>.</p>
+<div class="highlight"><pre><span class="gp">$</span> git checkout master
+<span class="gp">$</span> git merge -s ours --no-commit upstream/8.0.x
+<span class="go">Automatic merge went well; stopped before committing as requested</span>
+<span class="gp">$</span> git <span class="nb">read</span>-tree --prefix<span class="o">=</span>drupal/ -u upstream/8.0.x
+<span class="gp">$</span> git commit
+<span class="go">[master bd410e7] Merge remote-tracking branch &#39;upstream/8.0.x&#39;</span>
+</pre></div>
+
+
+<p>The upstream branch will now be a subdirectory of the master branch.</p>
+<div class="highlight"><pre><span class="gp">$</span> tree -L 2
+<span class="go">.</span>
+<span class="go">|-- drupal</span>
+<span class="go">|   |-- composer.json</span>
+<span class="go">|   |-- core</span>
+<span class="go">|   |-- example.gitignore</span>
+<span class="go">|   |-- index.php</span>
+<span class="go">|   |-- modules</span>
+<span class="go">|   |-- profiles</span>
+<span class="go">|   |-- README.txt</span>
+<span class="go">|   |-- robots.txt</span>
+<span class="go">|   |-- sites</span>
+<span class="go">|   |-- themes</span>
+<span class="go">|   `-- web.config</span>
+<span class="go">`-- README.md</span>
+
+<span class="go">6 directories, 7 files</span>
+</pre></div>
+
+
+<h2 id="create-a-gitingore-for-drupal-core">Create a .gitingore for Drupal core</h2>
+<p>Drupal core has an example .gitignore file which provides an excellent starting
+point and is sufficient for most projects.</p>
+<div class="highlight"><pre><span class="nv">$ </span>cp drupal/example.gitignore drupal/.gitignore
+<span class="nv">$ </span>git add drupal/.gitignore
+<span class="nv">$ </span>git commit -m <span class="s2">&quot;Add .gitignore for Drupal core&quot;</span>
+</pre></div>
+
+
+<h2 id="create-directories-above-the-document-root">Create directories above the document root</h2>
+<p>As the document root is now below the repository root, files and and
+directories may be commited to the repository without exposing them to the web
+server.</p>
+<p>In this example — when configuring the web server — the document root will be
+set to <code>/var/www/myproject/drupal</code>.</p>
+<div class="highlight"><pre><span class="gp">$</span> mkdir -p config/active config/staging config/deploy
+<span class="gp">$</span> tree -L 2
+<span class="go">.</span>
+<span class="go">|-- config</span>
+<span class="go">|   |-- active</span>
+<span class="go">|   |-- deploy</span>
+<span class="go">|   `-- staging</span>
+<span class="go">|-- drupal</span>
+<span class="go">|   |-- composer.json</span>
+<span class="go">|   |-- core</span>
+<span class="go">|   |-- example.gitignore</span>
+<span class="go">|   |-- index.php</span>
+<span class="go">|   |-- modules</span>
+<span class="go">|   |-- profiles</span>
+<span class="go">|   |-- README.txt</span>
+<span class="go">|   |-- robots.txt</span>
+<span class="go">|   |-- sites</span>
+<span class="go">|   |-- themes</span>
+<span class="go">|   `-- web.config</span>
+<span class="go">`-- README.md</span>
+
+<span class="go">9 directories, 7 files</span>
+</pre></div>
+
+
+<h2 id="create-the-files-directory-and-set-permissions">Create the files directory and set permissions</h2>
+<p>The Drupal <code>files</code> directory must be manually created.</p>
+<div class="highlight"><pre><span class="gp">$</span> mkdir drupal/sites/default/files
+</pre></div>
+
+
+<p>To work efficiently with drush the files in <code>sites/default/files</code> should be
+writeable both by the web server and command-line user. An alternative to
+<code>chmod -R 777 sites/default/files</code> is to use <a href="https://wiki.debian.org/Permissions#Access_Control_Lists_in_Linux">Access Control Lists</a>.</p>
+<div class="highlight"><pre><span class="gp">$</span> <span class="nv">HTTPDUSER</span><span class="o">=</span><span class="sb">`</span>ps aux <span class="p">|</span> grep -E <span class="s1">&#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&#39;</span> <span class="p">|</span> <span class="se">\</span>
+<span class="go">grep -v root | head -1 | cut -d\  -f1`</span>
+<span class="gp">$</span> sudo setfacl -R -m u:<span class="s2">&quot;</span><span class="nv">$HTTPDUSER</span><span class="s2">&quot;</span>:rwX -m u:<span class="sb">`</span>whoami<span class="sb">`</span>:rwX sites/default/files
+<span class="gp">$</span> sudo setfacl -dR -m u:<span class="s2">&quot;</span><span class="nv">$HTTPDUSER</span><span class="s2">&quot;</span>:rwX -m u:<span class="sb">`</span>whoami<span class="sb">`</span>:rwX sites/default/files
+</pre></div>
+
+
+<p><code>HTTPDUSER</code> is usually <code>www-data</code> on Debian-based distributions.</p>
+<p>It may be convenient to add similar ACL permissions to the <code>config/active</code>,
+<code>config/staging</code>, and <code>config/deploy</code> directories.</p>
+<h2 id="create-database">Create database</h2>
+<div class="highlight"><pre><span class="gp">$</span> mysql -uroot -p
+<span class="go">mysql&gt; CREATE DATABASE db;</span>
+<span class="go">mysql&gt; CREATE USER &#39;dbuser&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;password&#39;;</span>
+<span class="go">mysql&gt; GRANT ALL PRIVILEGES ON db.* TO &#39;dbuser&#39;@&#39;localhost&#39;;</span>
+<span class="go">mysql&gt; FLUSH PRIVILEGES;</span>
+<span class="go">mysql&gt; \q</span>
+</pre></div>
+
+
+<h2 id="site-installation">Site installation</h2>
+<p>Install the site with the standard install profile and change the admin
+password.</p>
+<div class="highlight"><pre><span class="gp">$</span> drush site-install standard --db-url<span class="o">=</span>mysql://dbuser:password@localhost/db <span class="se">\</span>
+<span class="go">--site-name=drupal8</span>
+<span class="gp">$</span> drush upwd admin --password<span class="o">=</span>password
+</pre></div>
+
+
+<h2 id="drupal-configuration-directories">Drupal configuration directories</h2>
+<p>Edit <code>sites/default/settings.php</code> and update the location of the configuration
+directories.</p>
+<div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Default config directories provided by the installer.</span>
+<span class="nv">$config_directories</span><span class="p">[</span><span class="s1">&#39;active&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;../config/active&#39;</span><span class="p">;</span>
+<span class="nv">$config_directories</span><span class="p">[</span><span class="s1">&#39;staging&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;../config/staging&#39;</span><span class="p">;</span>
+
+<span class="c1">// Config directory used for deployments.</span>
+<span class="nv">$config_directories</span><span class="p">[</span><span class="s1">&#39;deploy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;../config/deploy&#39;</span><span class="p">;</span>
+</pre></div>
+
+
+<h2 id="export-configuration">Export configuration</h2>
+<p>Export the configuration from the database into the <code>deploy</code> configuration 
+directory.</p>
+<div class="highlight"><pre><span class="gp">$</span> <span class="nb">cd </span>drupal/
+<span class="gp">$</span> drush config-export deploy
+<span class="go">Configuration successfully exported to ../config/deploy.             [success]</span>
+</pre></div>
+
+
+<p>Once exported, this configuration may be committed to the Git repository. As
+part of the deployment process the configuration may be imported with the
+command <code>drush config-import deploy</code>.</p>
+<h2 id="update-drupal-core">Update Drupal core</h2>
+<p>To merge upstream change to Drupal core the <a href="http://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging">Git subtree merge strategy</a> is
+used.</p>
+<div class="highlight"><pre><span class="gp">$</span> git pull -s subtree upstream 8.0.x
+</pre></div>
+
+
+<p>The above command will merge the history of <code>upstream</code> with the main
+repository. If it is not preferable to merge histories the <code>--squash</code> and
+<code>--no-commit</code> options can be used along with the <code>-s subtree</code> strategy option:</p>
+<div class="highlight"><pre><span class="gp">$</span> git checkout master
+<span class="gp">$</span> git merge --squash -s subtree --no-commit upstream
+<span class="go">Squash commit -- not updating HEAD</span>
+<span class="go">Automatic merge went well; stopped before committing as requested</span>
+</pre></div>
+
+
+<p>Remember to rebuild the cache after each merge:</p>
+<div class="highlight"><pre><span class="gp">$</span> drush cache-rebuild
+</pre></div>
+
+
+<h2 id="further-reading">Further reading</h2>
+<ul>
+<li><a href="http://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging">Git Tools - Subtree Merging</a></li>
+<li><a href="https://www.kernel.org/pub/software/scm/git/docs/howto/using-merge-subtree.html">How to use the subtree merge strategy</a></li>
+</ul>
+            </div>
+            <!-- /.entry-content -->
+    <h2>Changelog</h2>
+
+    <p>
+        <a href="https://github.com/sethfischer/sethfischer.github.io/commits/source/content/drupal/drupal-8-workflow-using-git-subtree-merging.md">
+            View history on GitHub
+        </a>
+    </p>
+
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+
+<section class="well well-sm">
+    <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+              <ul class="list-group" id="social">
+                <li class="list-group-item"><a href="https://github.com/sethfischer"><i class="fa fa-github-square fa-lg"></i> GitHub</a></li>
+                <li class="list-group-item"><a href="https://bitbucket.org/sethfischer"><i class="fa fa-bitbucket-square fa-lg"></i> Bitbucket</a></li>
+                <li class="list-group-item"><a href="https://drupal.org/u/sethfischer"><i class="fa fa-drupal fa-lg"></i> Drupal</a></li>
+              </ul>
+            </li>
+
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+                <ul class="list-group" id="recentposts">
+                    <li class="list-group-item">
+                        <a href="http://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merging/">
+                            A Drupal 8 workflow using the Git subtree merge strategy
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="http://seth.fischer.nz/drupal-8-getting-started/">
+                            Getting started with Drupal 8
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="list-group-item"><a href="http://seth.fischer.nz/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                <ul class="list-group " id="tags">
+                    <li class="list-group-item tag-1">
+                        <a href="http://seth.fischer.nz/tag/drupal.html">
+                            Drupal
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="http://seth.fischer.nz/tag/drupal-8.html">
+                            Drupal 8
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+    <li class="list-group-item"><h4><i class="fa fa-github fa-lg"></i><span class="icon-label">GitHub Repos</span></h4>
+        <div id="gh_repos">
+            <p class="list-group-item">Status updating...</p>
+        </div>
+            <a href="https://github.com/sethfischer">@sethfischer</a> on GitHub
+    </li>
+    </ul>
+</section>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2015 Seth Fischer
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>              <p><small>  <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+    Content
+  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>, except where indicated otherwise.
+</small></p>
+         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="http://seth.fischer.nz/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://seth.fischer.nz/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://seth.fischer.nz/theme/js/respond.min.js"></script>
+
+    <!-- GitHub JS -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if (!window.jXHR) {
+                var jxhr = document.createElement('script');
+                jxhr.type = 'text/javascript';
+                jxhr.src = 'http://seth.fischer.nz/theme/js/jXHR.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(jxhr, s);
+            }
+
+            github.showRepos({
+                user: 'sethfischer',
+                count: 5,
+                skip_forks: false,
+                target: '#gh_repos'
+            });
+        });
+    </script>
+    <script src="http://seth.fischer.nz/theme/js/github.js" type="text/javascript"></script>
+    <!-- End GitHub JS Code -->
+
+</body>
+</html>
