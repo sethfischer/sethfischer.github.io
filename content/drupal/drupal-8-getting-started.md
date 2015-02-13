@@ -212,7 +212,7 @@ latest code:
     :::console
     (master)$ git checkout master
     (master)$ git fetch upstream
-    (master)$ git merge 8.0.x
+    (master)$ git merge upstream/8.0.x
 
 Remember to rebuild the site after each merge:
 
