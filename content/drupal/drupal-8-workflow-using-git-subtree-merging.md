@@ -161,8 +161,8 @@ writeable both by the web server and command-line user. An alternative to
     :::console
     $ HTTPDUSER=`ps aux | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | \
     grep -v root | head -1 | cut -d\  -f1`
-    $ sudo setfacl -R -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX sites/default/files
-    $ sudo setfacl -dR -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX sites/default/files
+    $ sudo setfacl -R -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX drupal/sites/default/files
+    $ sudo setfacl -dR -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX drupal/sites/default/files
 
 `HTTPDUSER` is usually `www-data` on Debian-based distributions.
 
@@ -187,6 +187,7 @@ Install the site with the standard install profile and change the admin
 password.
 
     :::console
+    $ cd drupal
     $ drush site-install standard --db-url=mysql://dbuser:password@localhost/db \
     --site-name=drupal8
     $ drush upwd admin --password=password
