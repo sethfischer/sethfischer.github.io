@@ -65,7 +65,7 @@ MD_EXTENSIONS = [
 PLUGIN_PATHS = [
     os.path.join(os.environ.get('HOME'), 'projects/pelican-plugins')
 ]
-PLUGINS = ['assets']
+PLUGINS = ['assets', 'sitemap']
 
 THEME = os.path.join(os.environ.get('HOME'), 'projects/pelican-bootstrap3')
 CUSTOM_CSS = 'static/custom.css'
