@@ -67,6 +67,20 @@ PLUGIN_PATHS = [
 ]
 PLUGINS = ['assets', 'sitemap']
 
+SITEMAP = {
+    'format': 'xml',
+    'priorities': {
+        'articles': 0.5,
+        'indexes': 0.5,
+        'pages': 0.5
+    },
+    'changefreqs': {
+        'articles': 'monthly',
+        'indexes': 'daily',
+        'pages': 'monthly'
+    }
+}
+
 THEME = os.path.join(os.environ.get('HOME'), 'projects/pelican-bootstrap3')
 CUSTOM_CSS = 'static/custom.css'
 CC_LICENSE = 'CC-BY'
