@@ -26,6 +26,7 @@
 .fa-arrow-up:before,
 .fa-bitbucket:before,
 .fa-calendar:before,
+.fa-cc-by:before,
 .fa-clock-o:before,
 .fa-code-fork:before,
 .fa-drupal:before,
@@ -52,6 +53,7 @@
 .fa-arrow-up:before { content: "\f100"; }
 .fa-bitbucket:before { content: "\f111"; }
 .fa-calendar:before { content: "\f102"; }
+.fa-cc-by:before { content: "\f114"; }
 .fa-clock-o:before { content: "\f10f"; }
 .fa-code-fork:before { content: "\f110"; }
 .fa-drupal:before { content: "\f103"; }
