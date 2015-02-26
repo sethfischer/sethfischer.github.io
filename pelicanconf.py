@@ -81,6 +81,10 @@ SITEMAP = {
     }
 }
 
+ASSET_BUNDLES = (
+    ('pygments', ['css/pygments/native.css'], {}),
+)
+
 THEME = os.path.join(os.environ.get('HOME'), 'projects/pelican-bootstrap3')
 CUSTOM_CSS = 'static/custom.css'
 CC_LICENSE = 'CC-BY'
