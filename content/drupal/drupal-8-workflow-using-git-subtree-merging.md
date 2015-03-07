@@ -253,10 +253,11 @@ Remember to rebuild the cache after each merge:
 
   * [Git Tools - Subtree Merging][3]
   * [How to use the subtree merge strategy][4]
-
+  * [Deploying Drupal 8 with Fabric][5]
 
 [1]: https://wiki.debian.org/Permissions#Access_Control_Lists_in_Linux
 [2]: http://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging
 [3]: http://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging
 [4]: https://www.kernel.org/pub/software/scm/git/docs/howto/using-merge-subtree.html
+[5]: |filename|drupal-8-fabric-deploy.md
 
