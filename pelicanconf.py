@@ -15,7 +15,7 @@ TIMEZONE = 'Pacific/Auckland'
 DEFAULT_LANG = u'en'
 
 ARTICLE_URL = '{slug}/'
-ARTICLE_SAVE_AS ='{slug}/index.html'
+ARTICLE_SAVE_AS = '{slug}/index.html'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -87,7 +87,11 @@ ASSET_BUNDLES = (
 
 THEME = os.path.join(os.environ.get('HOME'), 'projects/pelican-bootstrap3')
 CUSTOM_CSS = 'static/custom.css'
-CC_LICENSE = 'CC-BY'
+
+CC_LICENSE_DERIVATIVES = 'Yes'
+CC_LICENSE_COMMERCIAL = 'Yes'
+CC_ATTR_MARKUP = False
+
 SHOW_DATE_MODIFIED = True
 DISPLAY_TAGS_ON_SIDEBAR = True
 DISPLAY_RECENT_POSTS_ON_SIDEBAR = True
