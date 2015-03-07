@@ -1,5 +1,455 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>sethfischer</title><link>http://seth.fischer.nz/</link><description></description><atom:link href="http://seth.fischer.nz/feeds/seth-fischer.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 23 Jan 2015 19:20:00 +1300</lastBuildDate><item><title>A Drupal 8 workflow using the Git subtree merge strategy</title><link>http://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merging/</link><description>&lt;p&gt;Often there are components of a Drupal website that should not be located in
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>sethfischer</title><link>http://seth.fischer.nz/</link><description></description><atom:link href="http://seth.fischer.nz/feeds/seth-fischer.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 06 Feb 2015 09:38:00 +1300</lastBuildDate><item><title>Deploying Drupal 8 with Fabric</title><link>http://seth.fischer.nz/drupal-8-fabric-deploy.html</link><description>&lt;p&gt;An automated build and deployment process saves time and, more importantly,
+provides a safeguard against failed deployments. &lt;a href="http://www.fabfile.org/"&gt;Fabric&lt;/a&gt; is a tool that can
+be used to automate application deployment and related tasks. This article
+describes using Fabric to deploy a Drupal&amp;nbsp;8 site.&lt;/p&gt;
+&lt;p&gt;Visit &lt;a href="https://github.com/sethfischer/fabric-deploy"&gt;github.com/sethfischer/fabric-deploy&lt;/a&gt; for the most recent version of
+the fabfile which is an adaptation of &lt;a href="https://github.com/halcyonCorsair/fabric-deploy"&gt;fabric-deploy by halcyonCorsair&lt;/a&gt; — a
+fabfile for the deployment of Drupal&amp;nbsp;7 sites.&lt;/p&gt;
+&lt;div class="toc"&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#drupal-project-structure"&gt;Drupal project structure&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#synchronise-site-uuid-across-instances"&gt;Synchronise site UUID across instances&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#exclude-files-from-release-tarball"&gt;Exclude files from release tarball&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#target-host-configuration"&gt;Target host configuration&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#user-account"&gt;User account&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#directory-structure"&gt;Directory structure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#dependencies"&gt;Dependencies&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#manual-configuration"&gt;Manual configuration&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#fabfile"&gt;Fabfile&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#configuration"&gt;Configuration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#available-commands"&gt;Available commands&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#usage"&gt;Usage&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#source-code"&gt;Source code&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#further-reading"&gt;Further reading&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;h2 id="drupal-project-structure"&gt;Drupal project structure&lt;/h2&gt;
+&lt;p&gt;The fabfile is designed to deploy a site having a project structure as
+described in &lt;a href="http://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merging.html"&gt;A Drupal&amp;nbsp;8 workflow using the Git subtree merge strategy&lt;/a&gt;,
+but may be easily adapted to accommodate another project structure.&lt;/p&gt;
+&lt;h3 id="synchronise-site-uuid-across-instances"&gt;Synchronise site &lt;abbr title="Universally unique identifier"&gt;UUID&lt;/abbr&gt; across instances&lt;/h3&gt;
+&lt;p&gt;So that configuration can be shared between instances of the site (development,
+staging, production) they must share a common &lt;abbr title="Universally unique identifier"&gt;UUID&lt;/abbr&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drush cget system.site
+&lt;span class="go"&gt;uuid: cdd9a662-e53d-0944-be57-8765c04d38f1&lt;/span&gt;
+&lt;span class="go"&gt;name: example.com&lt;/span&gt;
+&lt;span class="go"&gt;mail: admin@example.com&lt;/span&gt;
+&lt;span class="go"&gt;slogan: &amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class="go"&gt;page:&lt;/span&gt;
+&lt;span class="go"&gt;  403: &amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class="go"&gt;  404: &amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class="go"&gt;  front: node&lt;/span&gt;
+&lt;span class="go"&gt;admin_compact_mode: false&lt;/span&gt;
+&lt;span class="go"&gt;weight_select_max: 100&lt;/span&gt;
+&lt;span class="go"&gt;langcode: en&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The site &lt;abbr title="Universally unique identifier"&gt;UUID&lt;/abbr&gt; may be edited with the command &lt;code&gt;drush cedit system.site&lt;/code&gt;. For a
+robust approach to synchronising UUIDs across instances of a site see
+&lt;a href="http://dcycleproject.org/blog/68/approach-code-driven-development-drupal-8"&gt;An approach to code-driven development in Drupal 8&lt;/a&gt; by &lt;a href="https://github.com/alberto56/"&gt;Albert Albala&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id="exclude-files-from-release-tarball"&gt;Exclude files from release tarball&lt;/h3&gt;
+&lt;p&gt;As an enhancement files can be excluded from the release tarball by including a
+&lt;code&gt;.gitattributes&lt;/code&gt; file in the root of the repository and specifying the
+&lt;a href="http://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes#Exporting-Your-Repository"&gt;export-ignore attribute&lt;/a&gt; for files that should not be included in the
+release. Use this
+&lt;a href="https://gist.github.com/sethfischer/bdda9753837ab1da680a"&gt;.gitattributes export-ignore template for Druapl&amp;nbsp;8 projects&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="target-host-configuration"&gt;Target host configuration&lt;/h2&gt;
+&lt;h3 id="user-account"&gt;User account&lt;/h3&gt;
+&lt;p&gt;The user who executes the deployment must have ssh access to the target host
+and permissions to execute commands as both the &lt;code&gt;root&lt;/code&gt; and web server user —
+usually &lt;code&gt;www-data&lt;/code&gt; on Debian–based systems.&lt;/p&gt;
+&lt;h3 id="directory-structure"&gt;Directory structure&lt;/h3&gt;
+&lt;p&gt;Variable data such as the Drupal &lt;code&gt;files/&lt;/code&gt; directory, &lt;code&gt;settings.php&lt;/code&gt;, and
+&lt;code&gt;services.yml&lt;/code&gt; is located in &lt;code&gt;/var/lib/www/example.com/&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; tree -AF /var/lib/www/example.com/
+&lt;span class="go"&gt;/var/lib/www/example.com/&lt;/span&gt;
+&lt;span class="go"&gt;├── files/&lt;/span&gt;
+&lt;span class="go"&gt;├── services.yml&lt;/span&gt;
+&lt;span class="go"&gt;└── settings.php&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The Drupal site code base is installed in &lt;code&gt;/var/www/&lt;/code&gt; with symlinks to the
+variable data being created during deployment.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; tree -AFL &lt;span class="m"&gt;4&lt;/span&gt; /var/www/example.com/
+&lt;span class="go"&gt;/var/www/example.com/&lt;/span&gt;
+&lt;span class="go"&gt;├── current -&amp;gt; /var/www/example.com/releases/tag_x/&lt;/span&gt;
+&lt;span class="go"&gt;└── releases/&lt;/span&gt;
+&lt;span class="go"&gt;    └── tag_x/&lt;/span&gt;
+&lt;span class="go"&gt;        ├── config/&lt;/span&gt;
+&lt;span class="go"&gt;        │   ├── active/&lt;/span&gt;
+&lt;span class="go"&gt;        │   ├── deploy/&lt;/span&gt;
+&lt;span class="go"&gt;        │   └── staging/&lt;/span&gt;
+&lt;span class="go"&gt;        ├── drupal/&lt;/span&gt;
+&lt;span class="go"&gt;        │   ├── composer.json&lt;/span&gt;
+&lt;span class="go"&gt;        │   ├── core/&lt;/span&gt;
+&lt;span class="go"&gt;        │   ├── example.gitignore&lt;/span&gt;
+&lt;span class="go"&gt;        │   ├── index.php&lt;/span&gt;
+&lt;span class="go"&gt;        │   ├── modules/&lt;/span&gt;
+&lt;span class="go"&gt;        │   ├── profiles/&lt;/span&gt;
+&lt;span class="go"&gt;        │   ├── README.txt&lt;/span&gt;
+&lt;span class="go"&gt;        │   ├── robots.txt&lt;/span&gt;
+&lt;span class="go"&gt;        │   ├── sites/&lt;/span&gt;
+&lt;span class="go"&gt;        │   ├── themes/&lt;/span&gt;
+&lt;span class="go"&gt;        │   └── web.config&lt;/span&gt;
+&lt;span class="go"&gt;        └── README.md&lt;/span&gt;
+
+&lt;span class="gp"&gt;$&lt;/span&gt; tree -AFL /var/www/example.com/releases/tag_x/drupal/sites/default/
+&lt;span class="go"&gt;/var/www/example.com/releases/tag_x/drupal/sites/default/&lt;/span&gt;
+&lt;span class="go"&gt;├── files -&amp;gt; /var/lib/www/uat.reptiles.veri.co.nz/files/&lt;/span&gt;
+&lt;span class="go"&gt;├── services.yml -&amp;gt; /var/lib/www/uat.reptiles.veri.co.nz/services.yml&lt;/span&gt;
+&lt;span class="go"&gt;└── settings.php -&amp;gt; /var/lib/www/uat.reptiles.veri.co.nz/settings.php&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="dependencies"&gt;Dependencies&lt;/h3&gt;
+&lt;p&gt;The following tools must be installed on the target host:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.debian.org/SSH"&gt;OpenSSH server&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://docs.drush.org/en/master/install/#composer-one-drush-for-all-projects"&gt;Drush&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="manual-configuration"&gt;Manual configuration&lt;/h3&gt;
+&lt;p&gt;The database, &lt;code&gt;settings.php&lt;/code&gt; and &lt;code&gt;services.yml&lt;/code&gt; must be manually created on the
+target host before the first deployment.&lt;/p&gt;
+&lt;p&gt;Create the database and database user:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; ssh host
+&lt;span class="gp"&gt;$&lt;/span&gt; mysql -uroot -p
+&lt;span class="go"&gt;mysql&amp;gt; CREATE DATABASE db;&lt;/span&gt;
+&lt;span class="go"&gt;mysql&amp;gt; CREATE USER &amp;#39;dbuser&amp;#39;@&amp;#39;localhost&amp;#39; IDENTIFIED BY &amp;#39;password&amp;#39;;&lt;/span&gt;
+&lt;span class="go"&gt;mysql&amp;gt; GRANT ALL PRIVILEGES ON db.* TO &amp;#39;dbuser&amp;#39;@&amp;#39;localhost&amp;#39;;&lt;/span&gt;
+&lt;span class="go"&gt;mysql&amp;gt; FLUSH PRIVILEGES;&lt;/span&gt;
+&lt;span class="go"&gt;mysql&amp;gt; \q&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Copy &lt;code&gt;sites/default/settings.php&lt;/code&gt; and &lt;code&gt;sites/default/services.yml&lt;/code&gt;to the target
+host and edit as appropriate according to the environment.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; scp settings.php host:/var/lib/www/example.com/settings.php
+&lt;span class="gp"&gt;$&lt;/span&gt; scp services.yml host:/var/lib/www/example.com/services.yml
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id="fabfile"&gt;Fabfile&lt;/h2&gt;
+&lt;p&gt;Source code is hosted at &lt;a href="https://github.com/sethfischer/fabric-deploy"&gt;github.com/sethfischer/fabric-deploy&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id="configuration"&gt;Configuration&lt;/h3&gt;
+&lt;p&gt;Configuration is expressed via &lt;a href="http://yaml.org/"&gt;YAML&lt;/a&gt; with one file per project. Below is an
+example configuration file.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;%&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;example.yml&lt;/span&gt;
+
+&lt;span class="l-Scalar-Plain"&gt;% global configuration common to all environments&lt;/span&gt;
+&lt;span class="l-Scalar-Plain"&gt;_global&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="l-Scalar-Plain"&gt;repository&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;     &lt;span class="l-Scalar-Plain"&gt;ssh+git://github.com/user/repo.git&lt;/span&gt;
+    &lt;span class="l-Scalar-Plain"&gt;build_dir&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;      &lt;span class="l-Scalar-Plain"&gt;/home/tmp/builds&lt;/span&gt;
+    &lt;span class="l-Scalar-Plain"&gt;remote_tmp_dir&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;/tmp&lt;/span&gt;
+
+&lt;span class="err"&gt;%&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;staging environment&lt;/span&gt;
+&lt;span class="l-Scalar-Plain"&gt;staging&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="l-Scalar-Plain"&gt;hosts&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+        &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;staging.example.com&lt;/span&gt;
+    &lt;span class="l-Scalar-Plain"&gt;remote_tmp_dir&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;/tmp&lt;/span&gt;
+
+&lt;span class="err"&gt;%&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;production environment&lt;/span&gt;
+&lt;span class="l-Scalar-Plain"&gt;prod&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="l-Scalar-Plain"&gt;hosts&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+        &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;example.com&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="available-commands"&gt;Available commands&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;fab -f drupal8 -l&lt;/code&gt; will list the available commands with a short description:&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;deploy&lt;/dt&gt;
+&lt;dd&gt;Deploy release&lt;/dd&gt;
+&lt;dt&gt;init_deploy&lt;/dt&gt;
+&lt;dd&gt;Deploy initial release&lt;/dd&gt;
+&lt;dt&gt;init_host&lt;/dt&gt;
+&lt;dd&gt;Initialise directory structure on target host&lt;/dd&gt;
+&lt;dt&gt;site&lt;/dt&gt;
+&lt;dd&gt;Load configuration from YAML file&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;h3 id="usage"&gt;Usage&lt;/h3&gt;
+&lt;p&gt;Initialise directory structure on the &lt;code&gt;uat&lt;/code&gt; host of &lt;code&gt;example.com&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; fab -f drupal8 site:example.com,uat init_host
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Deploy &lt;code&gt;tag_x&lt;/code&gt; for &lt;code&gt;example.com&lt;/code&gt; to &lt;code&gt;uat&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; fab -f drupal8 site:example.com,uat deploy:tag_x
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="source-code"&gt;Source code&lt;/h3&gt;
+&lt;p&gt;For the latest code &lt;code&gt;git clone https://github.com/sethfischer/fabric-deploy&lt;/code&gt; or
+&lt;a href="https://github.com/sethfischer/fabric-deploy/fork"&gt;create a fork&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+&lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Fabric deploy for Drupal 8&lt;/span&gt;
+
+&lt;span class="sd"&gt;https://github.com/sethfischer/fabric-deploy&lt;/span&gt;
+&lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;fabric.api&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;lcd&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;put&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;runs_once&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; \
+    &lt;span class="n"&gt;task&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;fabric.colors&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;red&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;fabric.utils&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;abort&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;warn&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;yaml&lt;/span&gt;
+
+
+&lt;span class="nd"&gt;@task&lt;/span&gt;
+&lt;span class="nd"&gt;@runs_once&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;site&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;site_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;tier&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Load configuration from YAML file&lt;/span&gt;
+&lt;span class="sd"&gt;    :param site_name: Site name&lt;/span&gt;
+&lt;span class="sd"&gt;    :type site_name: str&lt;/span&gt;
+&lt;span class="sd"&gt;    :param tier: Staging tier&lt;/span&gt;
+&lt;span class="sd"&gt;    :type tier: str&lt;/span&gt;
+&lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;site_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;site_name&lt;/span&gt;
+    &lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tier&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tier&lt;/span&gt;
+
+    &lt;span class="n"&gt;site_config_filename&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;config/{site_name}.yml&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;site_config_file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;site_config_filename&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;r&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="ne"&gt;IOError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;abort&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Unable to read {site_config_filename}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;site_config_filename&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;site_config_filename&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;site_config_data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;yaml&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;safe_load&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;site_config_file&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;site_config_file&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+        &lt;span class="n"&gt;global_config_data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;site_config_data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;_global&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;update&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;global_config_data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="n"&gt;tier_config_data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;site_config_data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tier&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;update&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tier_config_data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;site_build_dir&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;build_dir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;site_name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;site_repo_dir&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;site_build_dir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;repo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tar_basename&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;{site_name}.tar&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tar_gz_basename&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;{tar_basename}.gz&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tar_pathname&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;site_build_dir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tar_basename&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tar_gz_pathname&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;site_build_dir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tar_gz_basename&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="nd"&gt;@task&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;init_host&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Initialise directory structure on target host&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;project_dir&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;/var/www/{host}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;release_dir&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;{project_dir}/releases&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;project_dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;project_dir&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;data_dir&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;/var/lib/www/{host}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;mkdir -p {release_dir}/&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;release_dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;release_dir&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;chown -R www-data:www-data {project_dir}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;project_dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;project_dir&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+    &lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;mkdir -p {data_dir}/files&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data_dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;data_dir&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;chown -R www-data:www-data {data_dir}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data_dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;data_dir&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+    &lt;span class="n"&gt;warn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Database must be manually created.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;warn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;{data_dir}/settings.php must be manually created.&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;data_dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;data_dir&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="n"&gt;warn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;{data_dir}/services.yml must be manually created.&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;data_dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;data_dir&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+
+&lt;span class="nd"&gt;@task&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;init_deploy&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tag&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Deploy initial release&lt;/span&gt;
+&lt;span class="sd"&gt;    :param tag: Git tags from which to build release&lt;/span&gt;
+&lt;span class="sd"&gt;    :type tag: str&lt;/span&gt;
+&lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;build_exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tag&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tag&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;upload&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;extract&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;symlink_settings&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;symlink_release&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;run_drush&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;state-set system.maintenance 1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;run_drush&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;config-import deploy&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;run_drush&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;updatedb&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;run_drush&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;cache-rebuild&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;run_drush&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;state-set system.maintenance 0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="nd"&gt;@task&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;deploy&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tag&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Deploy release&lt;/span&gt;
+&lt;span class="sd"&gt;    :param tag: Git tags from which to build release&lt;/span&gt;
+&lt;span class="sd"&gt;    :type tag: str&lt;/span&gt;
+&lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;build_exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tag&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tag&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;upload&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;extract&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;run_drush&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;state-set system.maintenance 1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;symlink_settings&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;symlink_release&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;run_drush&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;config-import deploy&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;run_drush&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;updatedb&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;run_drush&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;cache-rebuild&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;run_drush&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;state-set system.maintenance 0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;make_dirs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;directory&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Create directories recursively&lt;/span&gt;
+&lt;span class="sd"&gt;    :param directory: Directory to be created&lt;/span&gt;
+&lt;span class="sd"&gt;    :type directory: str&lt;/span&gt;
+&lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;directory&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;makedirs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;directory&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;build_exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tag&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Test if release has previously been deployed&lt;/span&gt;
+&lt;span class="sd"&gt;    :param tag: Git tags from which to build release&lt;/span&gt;
+&lt;span class="sd"&gt;    :type tag: str&lt;/span&gt;
+&lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;project_dir&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;/var/www/{host}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;release_dir&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;{project_dir}/releases&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;project_dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;project_dir&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;warn_only&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;! test -d {release_dir}/{tag}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;release_dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;release_dir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;tag&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;tag&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;failed&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;abort&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;red&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Release has previously been deployed.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+
+&lt;span class="nd"&gt;@runs_once&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;build&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tag&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Build release tarball&lt;/span&gt;
+&lt;span class="sd"&gt;    :param tag: Git tags from which to build release&lt;/span&gt;
+&lt;span class="sd"&gt;    :type tag: str&lt;/span&gt;
+&lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;release_tag&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tag&lt;/span&gt;
+
+    &lt;span class="n"&gt;make_dirs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;site_repo_dir&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;lcd&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;site_repo_dir&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;warn_only&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+            &lt;span class="n"&gt;inside_work_tree&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;git rev-parse --is-inside-work-tree&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;inside_work_tree&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;failed&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;git clone {repository} .&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;git pull&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;succeeded&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;git archive &amp;#39;&lt;/span&gt;
+                   &lt;span class="s"&gt;&amp;#39;--format=tar &amp;#39;&lt;/span&gt;
+                   &lt;span class="s"&gt;&amp;#39;--output={tar_pathname} &amp;#39;&lt;/span&gt;
+                   &lt;span class="s"&gt;&amp;#39;--prefix={release_tag}/ &amp;#39;&lt;/span&gt;
+                   &lt;span class="s"&gt;&amp;#39;{release_tag}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+            &lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;gzip --force -9 {tar_pathname}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;upload&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Copy tarball to target host&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;put&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tar_gz_pathname&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;remote_tmp_dir&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;extract&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Extract tarball into release directory&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;project_dir&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;/var/www/{host}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;release_dir&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;{project_dir}/releases&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;project_dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;project_dir&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sudo_user&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;www-data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;tar_cmd&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;tar &amp;#39;&lt;/span&gt;
+                   &lt;span class="s"&gt;&amp;#39;--gzip &amp;#39;&lt;/span&gt;
+                   &lt;span class="s"&gt;&amp;#39;--extract &amp;#39;&lt;/span&gt;
+                   &lt;span class="s"&gt;&amp;#39;--verbose &amp;#39;&lt;/span&gt;
+                   &lt;span class="s"&gt;&amp;#39;--file {remote_tmp_dir}/{tar_gz_basename} &amp;#39;&lt;/span&gt;
+                   &lt;span class="s"&gt;&amp;#39;--directory {release_dir}/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tar_cmd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;remote_tmp_dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;remote_tmp_dir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;tar_gz_basename&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tar_gz_basename&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;release_dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;release_dir&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+    &lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;rm {remote_tmp_dir}/{tar_gz_basename}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;symlink_settings&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Symlink configuration files and variable data&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;project_dir&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;/var/www/{host}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;release_dir&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;{project_dir}/releases&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;project_dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;project_dir&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;sites_default&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;{release_dir}/{release_tag}/drupal/sites/default&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;release_dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;release_dir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;release_tag&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;release_tag&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;data_dir&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;/var/lib/www/{host}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sudo_user&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;www-data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;files_target&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;{data_dir}/files&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data_dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;data_dir&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;files_dir&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;{sites_default}/files&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sites_default&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;sites_default&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;ln -nfs {files_target} {files_dir}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;files_target&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;files_target&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;files_dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;files_dir&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+        &lt;span class="n"&gt;settings_target&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;{data_dir}/settings.php&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data_dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;data_dir&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;settings_file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;{sites_default}/settings.php&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;sites_default&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;sites_default&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;ln -nfs {settings_target} {settings_file}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;settings_target&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;settings_target&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;settings_file&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;settings_file&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+        &lt;span class="n"&gt;services_target&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;{data_dir}/services.yml&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data_dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;data_dir&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;services_file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;{sites_default}/services.yml&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;sites_default&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;sites_default&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;ln -nfs {services_target} {services_file}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;services_target&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;services_target&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;services_file&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;services_file&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+    &lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;chown www-data:www-data {settings_target}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;settings_target&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;settings_target&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;chmod 0400 {settings_target}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;settings_target&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;settings_target&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+    &lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;chown www-data:www-data {services_target}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;services_target&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;services_target&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;chmod 0400 {services_target}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;services_target&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;services_target&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;symlink_release&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Symlink release&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;release_dir&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;/var/www/{host}/releases/{release_tag}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;current&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;/var/www/{host}/current&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sudo_user&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;www-data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;ln -nfs {release_dir} {current}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;release_dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;release_dir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;current&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;current&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;run_drush&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;command&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Run a Drush command&lt;/span&gt;
+&lt;span class="sd"&gt;    :param command: Drush command to run&lt;/span&gt;
+&lt;span class="sd"&gt;    :type command: str&lt;/span&gt;
+&lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sudo_user&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;www-data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;sudo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;drush -u 1 -y -r {drupal_root} {command}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;drupal_root&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/var/www/{host}/current/drupal&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+            &lt;span class="n"&gt;command&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;command&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id="further-reading"&gt;Further reading&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.drushcommands.com/drush-7x/"&gt;Drush 7.x commands&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://docs.fabfile.org/en/1.10/"&gt;Fabric’s documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.drupal.org/node/1613424"&gt;Drupal core issue: Allow a site to be installed from existing configuration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.drupal.org/documentation/administer/config"&gt;Managing configuration in Drupal 8&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Seth Fischer</dc:creator><pubDate>Fri, 06 Feb 2015 09:38:00 +1300</pubDate><guid>tag:seth.fischer.nz,2015-02-06:drupal-8-fabric-deploy.html</guid><category>Drupal 8</category><category>Drupal</category><category>Fabric</category><category>Python</category></item><item><title>A Drupal 8 workflow using the Git subtree merge strategy</title><link>http://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merging.html</link><description>&lt;p&gt;Often there are components of a Drupal website that should not be located in
 the document root such as configuration files, deployment scripts, and
 functional tests. By utilising Git subtrees, a Drupal installation root (or web
 server document root) may be below the root of the main repository, and
@@ -220,7 +670,8 @@ repository. If it is not preferable to merge histories the &lt;code&gt;--squash&
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="http://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging"&gt;Git Tools - Subtree Merging&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.kernel.org/pub/software/scm/git/docs/howto/using-merge-subtree.html"&gt;How to use the subtree merge strategy&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Seth Fischer</dc:creator><pubDate>Fri, 23 Jan 2015 19:20:00 +1300</pubDate><guid>tag:seth.fischer.nz,2015-01-23:drupal-8-workflow-using-git-subtree-merging/</guid><category>Drupal 8</category><category>Drupal</category></item><item><title>Getting started with Drupal 8</title><link>http://seth.fischer.nz/drupal-8-getting-started/</link><description>&lt;p&gt;Now that &lt;a href="https://www.drupal.org/drupal-8.0"&gt;Drupal 8&lt;/a&gt; is in beta phase it is time for site developers to start
+&lt;li&gt;&lt;a href="http://seth.fischer.nz/drupal-8-fabric-deploy.html"&gt;Deploying Drupal 8 with Fabric&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Seth Fischer</dc:creator><pubDate>Fri, 23 Jan 2015 19:20:00 +1300</pubDate><guid>tag:seth.fischer.nz,2015-01-23:drupal-8-workflow-using-git-subtree-merging.html</guid><category>Drupal 8</category><category>Drupal</category></item><item><title>Getting started with Drupal 8</title><link>http://seth.fischer.nz/drupal-8-getting-started.html</link><description>&lt;p&gt;Now that &lt;a href="https://www.drupal.org/drupal-8.0"&gt;Drupal 8&lt;/a&gt; is in beta phase it is time for site developers to start
 exploring the API. This article describes the installation and configuration of
 Drupal 8 using Git and Drush. Bear in mind that as of 2014-11-28 there were 22
 &lt;a href="https://www.drupal.org/project/issues/search/drupal?project_issue_followers=&amp;amp;status%5B%5D=1&amp;amp;status%5B%5D=13&amp;amp;status%5B%5D=8&amp;amp;status%5B%5D=14&amp;amp;status%5B%5D=15&amp;amp;status%5B%5D=4&amp;amp;priorities%5B%5D=400&amp;amp;categories%5B%5D=1&amp;amp;categories%5B%5D=2&amp;amp;version%5B%5D=8.x&amp;amp;issue_tags_op=%3D&amp;amp;issue_tags=D8+upgrade+path"&gt;issues tagged with D8 upgrade path&lt;/a&gt;, so it may be necessary to rebuild your
@@ -429,4 +880,4 @@ above after updating Drupal core.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://www.drupal.org/node/803746"&gt;Building a Drupal site with Git&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://gitref.org/"&gt;Git Reference&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Seth Fischer</dc:creator><pubDate>Sat, 29 Nov 2014 20:33:00 +1300</pubDate><guid>tag:seth.fischer.nz,2014-11-28:drupal-8-getting-started/</guid><category>Drupal 8</category><category>Drupal</category></item></channel></rss>
+&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Seth Fischer</dc:creator><pubDate>Sat, 29 Nov 2014 20:33:00 +1300</pubDate><guid>tag:seth.fischer.nz,2014-11-28:drupal-8-getting-started.html</guid><category>Drupal 8</category><category>Drupal</category></item></channel></rss>
