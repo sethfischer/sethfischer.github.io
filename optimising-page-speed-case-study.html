@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <title>Optimising page speed: A case study - sethfischer</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="http://seth.fischer.nz/optimising-page-speed-case-study.html">
+
+        <meta name="author" content="Seth Fischer" />
+        <meta name="description" content="As an exercise in optimising page speed the Pelican theme pelican-bootstrap3 by Daan Debie was customised according to the specific requirements of seth.fischer.nz. The customisations reduced the total number of requests on the index page by 66% and the page size was reduced by 62%." />
+
+        <meta property="og:site_name" content="sethfischer" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Optimising page speed: A case study"/>
+        <meta property="og:url" content="http://seth.fischer.nz/optimising-page-speed-case-study.html"/>
+        <meta property="og:description" content="As an exercise in optimising page speed the Pelican theme pelican-bootstrap3 by Daan Debie was customised according to the specific requirements of seth.fischer.nz. The customisations reduced the total number of requests on the index page by 66% and the page size was reduced by 62%."/>
+        <meta property="article:published_time" content="2015-03-27" />
+            <meta property="article:section" content="Misc" />
+            <meta property="article:author" content="Seth Fischer" />
+
+
+        <link href="http://seth.fischer.nz/theme/css/styles.30ea8718.min.css" rel="stylesheet" />
+
+        <link href="http://seth.fischer.nz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="sethfischer ATOM Feed"/>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://seth.fischer.nz/" class="navbar-brand">
+sethfischer            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                         <li><a href="http://seth.fischer.nz/pages/about.html">
+                             About
+                          </a></li>
+                        <li >
+                            <a href="http://seth.fischer.nz/category/drupal.html">Drupal</a>
+                        </li>
+                        <li class="active">
+                            <a href="http://seth.fischer.nz/category/misc.html">Misc</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="http://seth.fischer.nz/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="http://seth.fischer.nz/optimising-page-speed-case-study.html"
+                       rel="bookmark"
+                       title="Permalink to Optimising page speed: A case study">
+                        Optimising page speed: A case study
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2015-03-27T20:47:00+13:00"> Fri 27 March 2015</time>
+    </span>
+
+
+
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>As an exercise in optimising page speed the <a href="http://docs.getpelican.com/">Pelican</a> theme
+<a href="https://github.com/DandyDev/pelican-bootstrap3">pelican-bootstrap3</a> by Daan Debie was customised in order to improve page
+speed. The customisations reduced the total number of requests on the index
+page by 66% and the page size was reduced by 62%.</p>
+<div class="toc">
+<ul>
+<li><a href="#pre-optimisation">Pre-optimisation</a></li>
+<li><a href="#optimisations">Optimisations</a><ul>
+<li><a href="#custom-font">Custom font</a></li>
+<li><a href="#custom-bootstrap">Custom Bootstrap</a></li>
+<li><a href="#reduce-ajax-requests">Reduce AJAX requests</a></li>
+<li><a href="#custom-jquery">Custom jQuery</a></li>
+<li><a href="#merge-and-minify-assets">Merge and minify assets</a></li>
+<li><a href="#eliminate-unnecessary-resources-and-dns-lookups">Eliminate unnecessary resources and DNS lookups</a></li>
+</ul>
+</li>
+<li><a href="#post-optimisation">Post-optimisation</a></li>
+<li><a href="#hosting-environment">Hosting environment</a></li>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#further-reading">Further reading</a></li>
+</ul>
+</div>
+<h2 id="pre-optimisation">Pre-optimisation</h2>
+<p>Before optimisation, as configured for this site, the index page generated 17
+requests and had a total page size of 182.9&nbsp;kB.</p>
+<table>
+<thead>
+<tr>
+<th>http://seth.fischer.nz/</th>
+<th>Pre-optimisation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Requests</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Requests (SSL)</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Redirects</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Page size</td>
+<td>182.9&nbsp;kB</td>
+</tr>
+<tr>
+<td>Pingdom performance grade</td>
+<td>81/100</td>
+</tr>
+<tr>
+<td>Google PageSpeed score (mobile)</td>
+<td>74/100</td>
+</tr>
+<tr>
+<td>Google PageSpeed score (desktop)</td>
+<td>87/100</td>
+</tr>
+</tbody>
+</table>
+<figure>
+    <img src="/images/seth.fischer.nz_2015-03-15_1905_pingdom.png"
+        width="582"
+        height="133"
+        alt="Pingdom speed test summary pre-optimisation; Performance grade: 81/100; Requests: 17; Load time: 591&nbsp;ms; Page size 182.9&nbsp;kB"/>
+    <figcaption>Pingdom speed test summary pre-optimisation.</figcaption>
+</figure>
+
+<p>Full details are available in the <a href="http://seth.fischer.nz/files/seth.fischer.nz_2015-03-15_1905.har">pre-optimisation HAR file</a>.</p>
+<h2 id="optimisations">Optimisations</h2>
+<p>Six main  optimisations were made as detailed below. Unless stated the file
+sizes specified are for minified but uncompressed versions of the file.</p>
+<h3 id="custom-font">Custom font</h3>
+<p>Improvements:</p>
+<dl class="dl-horizontal">
+    <dt>Page size</dt>
+    <dd>−96.1&nbsp;kB</dd>
+</dl>
+
+<p><a href="https://github.com/FortAwesome/Font-Awesome">FontAwesome</a> version 4.1.0 contains a total of 439 icons giving
+<code>fontawesome-webfont.woff</code> a file size of 83.8&nbsp;kB. A custom font
+(<code>font-custom.woff</code>) containing only the 12 icons that were required reduced
+the size to to 7.4&nbsp;kB.</p>
+<p>The associated style sheet <code>font-awesome.min.css</code> with a file size of
+20.8&nbsp;kB was replaced with <code>font-custom.css</code> having a file size of
+1.1&nbsp;kB.</p>
+<p><a href="http://fontcustom.com/">Font Custom</a> was used to create the custom font and Font Custom vectors
+were obtained from <a href="https://github.com/encharm/Font-Awesome-SVG-PNG">Font-Awesome-SVG-PNG</a> by Code Charm.</p>
+<p>Font Custom configuration is stored in <code>fontcustom.yml</code>, or can be integrated
+into a <a href="http://gruntjs.com/">Grunt</a> build with <a href="https://github.com/sapegin/grunt-webfont">grunt-webfont</a> by Artem Sapegin. See the next
+section for the <code>Gruntfile.js</code> which includes a <code>grunt-webfont</code> task.</p>
+<h3 id="custom-bootstrap">Custom Bootstrap</h3>
+<p>Improvements:</p>
+<dl class="dl-horizontal">
+    <dt>Page size</dt>
+    <dd>−15.3&nbsp;kB</dd>
+</dl>
+
+<p>A custom build of <a href="http://getbootstrap.com/">Bootstrap</a> was built with <a href="http://compass-style.org/">Compass</a>. By excluding ten
+unused components from the build <code>bootstrap.min.css</code> was reduced from
+109.5&nbsp;kB to 94.2&nbsp;kB.</p>
+<p>The Bootstrap build process was included as a Grunt task using
+<a href="https://github.com/gruntjs/grunt-contrib-compass">grunt-contrib-compass</a> by Sindre Sorhus.</p>
+<p>Below is the <code>Gruntfile.js</code> for this theme which includes both a
+<code>grunt-webfont</code> task and a <code>grunt-contrib-compass</code> task.</p>
+<div class="highlight"><pre><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
+    <span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
+
+    <span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
+        <span class="nx">compass</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">dist</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">config</span><span class="o">:</span> <span class="s1">&#39;config.rb&#39;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nx">webfont</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">icons</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">src</span><span class="o">:</span> <span class="s1">&#39;fontcustom/vectors/*.svg&#39;</span><span class="p">,</span>
+                <span class="nx">dest</span><span class="o">:</span> <span class="s1">&#39;static/font&#39;</span><span class="p">,</span>
+                <span class="nx">destCss</span><span class="o">:</span> <span class="s1">&#39;static/css&#39;</span><span class="p">,</span>
+                <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">htmlDemo</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                    <span class="nx">hashes</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                    <span class="nx">font</span><span class="o">:</span> <span class="s1">&#39;font-custom&#39;</span><span class="p">,</span>
+                    <span class="nx">types</span><span class="o">:</span> <span class="s1">&#39;eot,woff,svg,ttf&#39;</span><span class="p">,</span>
+                    <span class="nx">syntax</span><span class="o">:</span> <span class="s1">&#39;bem&#39;</span><span class="p">,</span>
+                    <span class="nx">templateOptions</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">baseClass</span><span class="o">:</span> <span class="s1">&#39;fa&#39;</span><span class="p">,</span>
+                        <span class="nx">classPrefix</span><span class="o">:</span> <span class="s1">&#39;fa-&#39;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+
+    <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-contrib-compass&#39;</span><span class="p">);</span>
+    <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-webfont&#39;</span><span class="p">);</span>
+
+    <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s2">&quot;default&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;compass&quot;</span><span class="p">,</span> <span class="s2">&quot;webfont&quot;</span><span class="p">]);</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<h3 id="reduce-ajax-requests">Reduce AJAX requests</h3>
+<p>Improvements:</p>
+<dl class="dl-horizontal">
+    <dt>Requests (SSL)</dt>
+    <dd>−1</dd>
+</dl>
+
+<p>The original theme included a script which obtained a list of GitHub
+repositories directly from the <a href="https://developer.github.com/">GitHub API</a>. To reduce the overhead of a
+SSL request the list of GitHub repositories was generated during the build
+process with <a href="https://github.com/kura/pelican-githubprojects">pelican-githubprojects</a> by Kura.</p>
+<h3 id="custom-jquery">Custom jQuery</h3>
+<p>Improvements:</p>
+<dl class="dl-horizontal">
+    <dt>Page size</dt>
+    <dd>−18.5&nbsp;kB</dd>
+</dl>
+
+<p>A custom build of <a href="https://github.com/jquery/jquery">jQuery</a> was created according to the instructions in the
+<a href="https://github.com/jquery/jquery/blob/master/README.md">jQuery README file</a>.</p>
+<p>By excluding the modules ajax, deprecated, offset, and effects, <code>jquery.min.js</code>
+was reduced from 84.2&nbsp;kB to 65.7&nbsp;kB.</p>
+<p>Below is the Grunt command used to build <code>jquery-custom.min.js</code>.</p>
+<div class="highlight"><pre><span class="go">jquery((2.1.3))$ grunt custom:-ajax,-deprecated,-offset,-effects</span>
+</pre></div>
+
+
+<h3 id="merge-and-minify-assets">Merge and minify assets</h3>
+<p>Improvements:</p>
+<dl class="dl-horizontal">
+    <dt>Requests</dt>
+    <dd>−5</dd>
+</dl>
+
+<p>Both JavaScript and CSS were combined using <a href="https://github.com/miracle2k/webassets">webassets</a> via the
+<a href="https://github.com/getpelican/pelican-plugins">Pelican assets plug-in</a>.</p>
+<p>Five CSS files were merged into a single file and compressed with the
+<a href="http://yui.github.io/yuicompressor/">YUI Compressor</a>.</p>
+<div class="highlight"><pre><span class="cp">{%</span> <span class="k">assets</span> <span class="nv">filters</span><span class="o">=</span><span class="s2">&quot;yui_css&quot;</span><span class="o">,</span> <span class="nv">output</span><span class="o">=</span><span class="s2">&quot;css/styles.%(version)s.min.css&quot;</span><span class="o">,</span> <span class="s2">&quot;css/bootstrap-custom.css&quot;</span><span class="o">,</span> <span class="s2">&quot;css/font-custom.css&quot;</span><span class="o">,</span> <span class="s2">&quot;css/github-repos.css&quot;</span><span class="o">,</span> <span class="s2">&quot;css/style.css&quot;</span><span class="o">,</span> <span class="s2">&quot;pygments&quot;</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;link href=&quot;</span><span class="cp">{{</span> <span class="nv">SITEURL</span> <span class="cp">}}</span><span class="x">/</span><span class="cp">{{</span> <span class="nv">ASSET_URL</span> <span class="cp">}}</span><span class="x">&quot; rel=&quot;stylesheet&quot; /&gt;</span>
+<span class="cp">{%</span> <span class="k">endassets</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+
+
+<p>Three JavaScript files were merged and compressed, again with the YUI
+Compressor.</p>
+<div class="highlight"><pre><span class="cp">{%</span> <span class="k">assets</span> <span class="nv">filters</span><span class="o">=</span><span class="s2">&quot;yui_js&quot;</span><span class="o">,</span> <span class="nv">output</span><span class="o">=</span><span class="s2">&quot;js/scripts.%(version)s.min.js&quot;</span><span class="o">,</span> <span class="s2">&quot;js/jquery/jquery-custom.min.js&quot;</span><span class="o">,</span> <span class="s2">&quot;js/bootstrap/transition.js&quot;</span><span class="o">,</span> <span class="s2">&quot;js/bootstrap/collapse.js&quot;</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    &lt;script src=&quot;</span><span class="cp">{{</span> <span class="nv">SITEURL</span> <span class="cp">}}</span><span class="x">/</span><span class="cp">{{</span> <span class="nv">ASSET_URL</span> <span class="cp">}}</span><span class="x">&quot;&gt;&lt;/script&gt;</span>
+<span class="cp">{%</span> <span class="k">endassets</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+
+
+<p>While the homepage of this site did not include images, page size can often be
+significantly reduced by optimising images. For example, the two Pingdom screen
+shots were were reduced by <a href="http://pmt.sourceforge.net/pngcrush/">pngcrush</a> to approximately 27&nbsp;% of the
+original size.</p>
+<h3 id="eliminate-unnecessary-resources-and-dns-lookups">Eliminate unnecessary resources and DNS lookups</h3>
+<p>Improvements:</p>
+<dl class="dl-horizontal">
+    <dt>Requests</dt>
+    <dd>−4</dd>
+    <dt>Redirects</dt>
+    <dd>−1</dd>
+    <dt>Page size</dt>
+    <dd>−8.5&nbsp;kB</dd>
+    <dt>DNS look-ups</dt>
+    <dd>−1</dd>
+</dl>
+
+<p>Some unnecessary resources were removed from the page including:</p>
+<ul>
+<li>The Creative Commons licence badge was removed saving two requests (one of
+    which was a 301 redirect) and 483&nbsp;B.</li>
+<li>The JavaScript files <code>github.js</code> (1.5&nbsp;kB) and <code>jXHR.js</code> (2.5&nbsp;kB)
+    were removed as they were replaced by pelican-githubprojects.</li>
+<li><code>respond.js</code> (4.0&nbsp;kB) was removed as it was decided not to support
+     older browsers.</li>
+</ul>
+<h2 id="post-optimisation">Post-optimisation</h2>
+<p>Below is a table summarising the changes made to improve page speed.</p>
+<table>
+<thead>
+<tr>
+<th>http://seth.fischer.nz/</th>
+<th>Pre-optimisation</th>
+<th>Post-optimisation</th>
+<th>Improvement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Requests</td>
+<td>16</td>
+<td>6</td>
+<td>−10 requests</td>
+</tr>
+<tr>
+<td>Requests (SSL)</td>
+<td>1</td>
+<td>0</td>
+<td>−1 request</td>
+</tr>
+<tr>
+<td>Redirects</td>
+<td>1</td>
+<td>0</td>
+<td>−1 redirect</td>
+</tr>
+<tr>
+<td>Page size</td>
+<td>182.9&nbsp;kB</td>
+<td>69.0&nbsp;kB</td>
+<td>−113.9&nbsp;kB</td>
+</tr>
+<tr>
+<td>Pingdom performance grade</td>
+<td>81/100</td>
+<td>88/100</td>
+<td>+7/100</td>
+</tr>
+<tr>
+<td>Google PageSpeed score (mobile)</td>
+<td>74/100</td>
+<td>89/100</td>
+<td>+15/100</td>
+</tr>
+<tr>
+<td>Google PageSpeed score (desktop)</td>
+<td>87/100</td>
+<td>95/100</td>
+<td>+8/100</td>
+</tr>
+</tbody>
+</table>
+<figure>
+    <img src="/images/seth.fischer.nz_2015-03-16_2149_pingdom.png"
+        width="582"
+        height="133"
+        alt="Pingdom speed test summary post-optimisation; Performance grade: 88/100; Requests: 6; Load time: 194&nbsp;ms; Page size 69.0&nbsp;kB"/>
+    <figcaption>Pingdom speed test summary post-optimisation.</figcaption>
+</figure>
+
+<p>Full details are available in the <a href="|filename|/files/seth.fischer.nz_2015-03-11.har">post-optimisation HAR file</a>.</p>
+<h2 id="hosting-environment">Hosting environment</h2>
+<p>This site is currently hosted by <a href="https://pages.github.com/">GitHub Pages</a>. Besides free-of-charge
+managed hosting, GitHub Pages also offers all the advantages of their global
+content delivery network.</p>
+<p>GitHub Pages compresses *.html, *.css, and *.js files using gzip and set the
+appropriate HTTP header <code>Content-Encoding: gzip</code>.</p>
+<p>A disadvantage of using GitHub Pages as a hosting platform (in relation to
+page speed) is the inability to modify HTTP headers to control client-side
+caching.</p>
+<p>The cache control HTTP headers set by GitHub Pages at the time of writing were:</p>
+<table>
+<thead>
+<tr>
+<th>Content-Type</th>
+<th>Cache-Control</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>text/html</td>
+<td>max-age=600</td>
+</tr>
+<tr>
+<td>text/css</td>
+<td>max-age=600</td>
+</tr>
+<tr>
+<td>application/javascript</td>
+<td>max-age=600</td>
+</tr>
+</tbody>
+</table>
+<p>If supported by the hosting environment a far future expires header i.e.
+<code>Cache-Control: "max-age=31536000"</code> (one year) could safely be added to content
+types text/css and application/javascript as the webassets plug-in adds a
+version identifier to the filename of those content types.</p>
+<h2 id="summary">Summary</h2>
+<p>These optimisations have reduced the page size by 113.9&nbsp;kB and the number
+of requests by twelve. These improvements result in a significantly
+improved page load time.</p>
+<p>As a result of the modifications made to achieve these improvements the
+functionality and flexibility of the original theme has been reduced. In
+addition, due to the extensive nature of the modifications merging upstream
+commits is no longer a trivial task.</p>
+<p>The ease of use of the original theme has also been affected by introducing the
+following dependencies:</p>
+<ul>
+<li><strong>Build from source</strong><ul>
+<li>jQuery</li>
+</ul>
+</li>
+<li><strong>Node packages</strong><ul>
+<li>Grunt</li>
+<li>grunt-contrib-compass</li>
+<li>grunt-webfont</li>
+</ul>
+</li>
+<li><strong>Pelican plug-ins</strong><ul>
+<li>pelican-assets</li>
+<li>pelican-githubprojects</li>
+</ul>
+</li>
+<li><strong>Ruby gems</strong><ul>
+<li>bootstrap-sass</li>
+<li>compass</li>
+<li>fontcustom</li>
+<li>sass</li>
+</ul>
+</li>
+</ul>
+<h2 id="further-reading">Further reading</h2>
+<ul>
+<li><a href="https://w3c.github.io/web-performance/specs/HAR/Overview.html">HTTP Archive (HAR) format specification</a></li>
+<li><a href="http://webassets.readthedocs.org/en/latest/expiring.html">URL Expiry (cache busting)</a> webassets documentation</li>
+<li><a href="https://developers.google.com/speed/pagespeed/">Make the web faster</a> Google Developers documentation</li>
+<li><a href="https://developer.yahoo.com/performance/rules.html">Best Practices for Speeding Up Your Web Site</a> Yahoo! Developer Network</li>
+<li><a href="https://pages.github.com/">GitHub Pages</a></li>
+<li><a href="http://tools.pingdom.com/fpt/">Pingdom tools website speed test</a></li>
+</ul>
+            </div>
+            <!-- /.entry-content -->
+    <h2>Changelog</h2>
+
+    <p>
+        <a href="https://github.com/sethfischer/sethfischer.github.io/commits/source/content/misc/optimising-page-speed-case-study.md">
+            View history on GitHub
+        </a>
+    </p>
+
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+
+<section class="well well-sm">
+    <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h4><i class="fa fa-code-fork fa-lg"></i><span class="icon-label">Code</span></h4>
+              <ul class="list-group" id="social">
+                <li class="list-group-item"><a href="https://github.com/sethfischer"><i class="fa fa-github fa-lg"></i> GitHub</a></li>
+                <li class="list-group-item"><a href="https://bitbucket.org/sethfischer"><i class="fa fa-bitbucket fa-lg"></i> Bitbucket</a></li>
+                <li class="list-group-item"><a href="https://drupal.org/u/sethfischer"><i class="fa fa-drupal fa-lg"></i> Drupal</a></li>
+              </ul>
+            </li>
+
+            <li class="list-group-item"><h4><i class="fa fa-clock-o fa-lg"></i><span class="icon-label">Recent articles</span></h4>
+                <ul class="list-group" id="recentposts">
+                    <li class="list-group-item">
+                        <a href="http://seth.fischer.nz/optimising-page-speed-case-study.html">
+                            Optimising page speed: A case study
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="http://seth.fischer.nz/drupal-8-fabric-deploy.html">
+                            Deploying Drupal 8 with Fabric
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="http://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merging.html">
+                            A Drupal 8 workflow using the Git subtree merge strategy
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="http://seth.fischer.nz/drupal-8-getting-started.html">
+                            Getting started with Drupal 8
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="list-group-item"><a href="http://seth.fischer.nz/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                <ul class="list-group " id="tags">
+                    <li class="list-group-item tag-1">
+                        <a href="http://seth.fischer.nz/tag/drupal.html">
+                            Drupal
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-1">
+                        <a href="http://seth.fischer.nz/tag/drupal-8.html">
+                            Drupal 8
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="http://seth.fischer.nz/tag/python.html">
+                            Python
+                        </a>
+                    </li>
+                    <li class="list-group-item tag-4">
+                        <a href="http://seth.fischer.nz/tag/fabric.html">
+                            Fabric
+                        </a>
+                    </li>
+                </ul>
+            </li>
+    <li class="list-group-item">
+        <h4>
+            <i class="fa fa-github fa-lg"></i>
+            <span class="icon-label">GitHub repos</span>
+        </h4>
+        <div id="gh_repos">
+            <ul class="list-group" id="github">
+                    <li class="list-group-item">
+                        <h5>
+                            <a href="https://github.com/sethfischer/dotfiles">dotfiles</a>
+                                <small>Shell</small>
+                        </h5>
+                        <p><small>Seth Fischer's dot files.</small></p>
+                    </li>
+                    <li class="list-group-item">
+                        <h5>
+                            <a href="https://github.com/sethfischer/fabric-deploy">fabric-deploy</a>
+                                <small>Python</small>
+                        </h5>
+                        <p><small>Fabric deploy scripts</small></p>
+                    </li>
+                    <li class="list-group-item">
+                        <h5>
+                            <a href="https://github.com/sethfischer/lastbackup">lastbackup</a>
+                                <small>PHP</small>
+                        </h5>
+                        <p><small>A SquirrelMail plug-in to display the time of the most recent backup.</small></p>
+                    </li>
+                    <li class="list-group-item">
+                        <h5>
+                            <a href="https://github.com/sethfischer/latex-intro-cli">latex-intro-cli</a>
+                                <small>TeX</small>
+                        </h5>
+                        <p><small>An introduction to LaTeX and a selection of command line tools for producing PDF documents.</small></p>
+                    </li>
+                    <li class="list-group-item">
+                        <h5>
+                            <a href="https://github.com/sethfischer/mundo-flags">mundo-flags</a>
+                                <small>Shell</small>
+                        </h5>
+                        <p><small>A collection of flags for the countries specified in ISO 3166-1.</small></p>
+                    </li>
+                    <li class="list-group-item">
+                        <h5>
+                            <a href="https://github.com/sethfischer/mundo-names">mundo-names</a>
+                                <small>Shell</small>
+                        </h5>
+                        <p><small>A project to translate the names of countries defined in ISO 3166-1.</small></p>
+                    </li>
+                    <li class="list-group-item">
+                        <h5>
+                            <a href="https://github.com/sethfischer/mundoplugs-data">mundoplugs-data</a>
+                        </h5>
+                        <p><small>The data behind mundoplugs.com.</small></p>
+                    </li>
+                    <li class="list-group-item">
+                        <h5>
+                            <a href="https://github.com/sethfischer/mundoplugs-l10n">mundoplugs-l10n</a>
+                        </h5>
+                        <p><small>Translations for mundoplugs.com, an electrical guide for travelers.</small></p>
+                    </li>
+                    <li class="list-group-item">
+                        <h5>
+                            <a href="https://github.com/sethfischer/pelican-bootstrap3">pelican-bootstrap3</a>
+                                <small>CSS</small>
+                        </h5>
+                        <p><small>Bootstrap 3 theme for Pelican</small></p>
+                    </li>
+                    <li class="list-group-item">
+                        <h5>
+                            <a href="https://github.com/sethfischer/sethfischer.github.io">sethfischer.github.io</a>
+                                <small>Makefile</small>
+                        </h5>
+                        <p><small>Personal website</small></p>
+                    </li>
+                    <li class="list-group-item">
+                        <h5>
+                            <a href="https://github.com/sethfischer/simplehar">simplehar</a>
+                                <small>JavaScript</small>
+                        </h5>
+                        <p><small>Har viewer made simple</small></p>
+                    </li>
+            </ul>
+        </div>
+            <a href="https://github.com/sethfischer">@sethfischer</a> on GitHub
+    </li>
+    </ul>
+</section>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">
+            <p>&copy; 2015 Seth Fischer              
+
+
+    <span prefix="dct: http://purl.org/dc/terms/ cc: http://creativecommons.org/ns#">Content
+licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+    </span>
+
+             </p>
+         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+    <script src="http://seth.fischer.nz/theme/js/scripts.6cd69145.min.js"></script>
+
+
+    <!-- Google Analytics Universal -->
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-59343172-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics Universal Code -->
+
+</body>
+</html>
