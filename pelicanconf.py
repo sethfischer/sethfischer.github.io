@@ -35,6 +35,7 @@ DEFAULT_PAGINATION = False
 #RELATIVE_URLS = True
 
 STATIC_PATHS = [
+    'files',
     'images',
     'extra/CNAME',
     'extra/googledce9df78937f634a.html',
