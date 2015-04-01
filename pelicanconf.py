@@ -10,6 +10,7 @@ SITEURL = ''
 
 PATH = 'content'
 
+DEFAULT_DATE_FORMAT = '%d %B %Y'
 TIMEZONE = 'Pacific/Auckland'
 
 DEFAULT_LANG = u'en'
