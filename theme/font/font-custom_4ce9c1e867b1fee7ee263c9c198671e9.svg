@@ -1,11 +1,11 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
 <!--
-2015-3-30: Created.
+2015-4-1: Created.
 -->
 <svg xmlns="http://www.w3.org/2000/svg">
 <metadata>
-Created by FontForge 20110222 at Mon Mar 30 20:56:14 2015
+Created by FontForge 20110222 at Wed Apr  1 22:05:45 2015
  By Seth Fischer,,,
 Created by Seth Fischer,,, with FontForge 2.0 (http://fontforge.sf.net)
 </metadata>
@@ -22,11 +22,14 @@ Created by Seth Fischer,,, with FontForge 2.0 (http://fontforge.sf.net)
     bbox="0 -32 475 416"
     underline-thickness="25.6"
     underline-position="-51.2"
-    unicode-range="U+0020-F10E"
+    unicode-range="U+0020-F110"
   />
     <missing-glyph />
     <glyph glyph-name="space" unicode=" " horiz-adv-x="200" 
  />
+    <glyph glyph-name="uniF110" unicode="&#xf110;" horiz-adv-x="111" 
+d="M104 104c0 4 -2 8 -5 11s-7 5 -11 5h-64c-4 0 -9 -2 -12 -5s-4 -7 -4 -11v-56c0 -4 1 -8 4 -11s8 -5 12 -5h64c4 0 8 2 11 5s5 7 5 11v56zM111 368c0 4 -1 8 -4 11s-7 5 -11 5h-80c-4 0 -9 -2 -12 -5s-4 -7 -4 -11l7 -192c0 -4 2 -8 5 -11s8 -5 12 -5h64c4 0 8 2 11 5
+s5 7 5 11z" />
     <glyph glyph-name="uniF101" unicode="&#xf101;" horiz-adv-x="352" 
 d="M204 201c1 -10 -3 -19 -13 -25s-19 -7 -28 -2c-6 3 -11 8 -13 15s-2 14 0 21s7 11 13 14s12 4 18 3s11 -4 16 -9s7 -11 7 -17zM232 206c-2 18 -13 32 -29 42s-33 10 -49 3c-10 -5 -19 -12 -25 -22s-9 -21 -9 -33c1 -15 8 -27 20 -38s26 -15 41 -14s28 7 38 20
 s15 27 13 42zM291 342c-3 4 -8 8 -14 11s-10 5 -14 6s-10 2 -18 3c-48 8 -95 7 -141 -1c-7 -1 -13 -2 -17 -3s-9 -2 -14 -5s-9 -7 -12 -11c5 -5 11 -8 19 -11s13 -5 18 -6s12 -2 22 -3c38 -5 75 -5 112 0c10 1 18 2 22 3s10 2 18 5s14 7 19 12zM306 83c-1 -4 -3 -11 -4 -19
