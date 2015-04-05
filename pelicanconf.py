@@ -69,7 +69,7 @@ PLUGINS = ['assets', 'sitemap', 'pelican_githubprojects']
 SITEMAP = {
     'format': 'xml',
     'priorities': {
-        'articles': 0.5,
+        'articles': 1,
         'indexes': 0.5,
         'pages': 0.5
     },
