@@ -97,7 +97,6 @@ ASSET_BUNDLES = (
 )
 
 THEME = os.path.join(os.environ.get('HOME'), 'projects/pelican-bootstrap3')
-CUSTOM_CSS = 'static/custom.css'
 
 CC_LICENSE_DERIVATIVES = 'Yes'
 CC_LICENSE_COMMERCIAL = 'Yes'
