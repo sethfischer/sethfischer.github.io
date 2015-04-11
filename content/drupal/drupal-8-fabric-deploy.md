@@ -171,21 +171,21 @@ example configuration file.
 
 
     :::yaml
-    % example.yml
+    # example.yml
 
-    % global configuration common to all environments
+    # global configuration common to all environments
     _global:
         repository:     ssh+git://github.com/user/repo.git
         build_dir:      /home/tmp/builds
         remote_tmp_dir: /tmp
 
-    % staging environment
+    # staging environment
     staging:
         hosts:
             - staging.example.com
         remote_tmp_dir: /tmp
 
-    % production environment
+    # production environment
     prod:
         hosts:
             - example.com
