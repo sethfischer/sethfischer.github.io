@@ -87,7 +87,7 @@ ASSET_BUNDLES = (
         'css/font-custom.css',
         'css/sidebar.css',
         'css/style.css',
-        'css/pygments/native.css',
+        'lib/pygments/native.css',
     ], {}),
     ('js_bundle', [
         'js/jquery/jquery-custom.min.js',
