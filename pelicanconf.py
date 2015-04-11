@@ -82,7 +82,18 @@ SITEMAP = {
 }
 
 ASSET_BUNDLES = (
-    ('pygments', ['css/pygments/native.css'], {}),
+    ('css_bundle', [
+        'css/bootstrap-custom.css',
+        'css/font-custom.css',
+        'css/sidebar.css',
+        'css/style.css',
+        'css/pygments/native.css',
+    ], {}),
+    ('js_bundle', [
+        'js/jquery/jquery-custom.min.js',
+        'js/bootstrap/transition.js',
+        'js/bootstrap/collapse.js',
+    ], {}),
 )
 
 THEME = os.path.join(os.environ.get('HOME'), 'projects/pelican-bootstrap3')
