@@ -27,7 +27,7 @@
             <meta property="article:author" content="Seth Fischer" />
 
 
-        <link href="http://seth.fischer.nz/theme/css/styles.2d4f129b.min.css" rel="stylesheet" />
+        <link href="http://seth.fischer.nz/theme/css/styles.f497d367.min.css" rel="stylesheet" />
 
         <link href="http://seth.fischer.nz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
               title="sethfischer ATOM Feed"/>
@@ -35,7 +35,7 @@
 </head>
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 	<div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -58,6 +58,9 @@ sethfischer            </a>
                         <li >
                             <a href="http://seth.fischer.nz/category/misc.html">Misc</a>
                         </li>
+                        <li >
+                            <a href="http://seth.fischer.nz/category/symfony.html">Symfony</a>
+                        </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="http://seth.fischer.nz/archives.html"><i class="fa fa-th-list"></i> Archives</a></li>
@@ -65,24 +68,16 @@ sethfischer            </a>
         </div>
         <!-- /.navbar-collapse -->
     </div>
-</div> <!-- /.navbar -->
+</nav> <!-- /.navbar -->
 <!-- Banner -->
 <!-- End Banner -->
 <div class="container">
     <div class="row">
-        <div class="col-sm-9">
-
-    <section id="content">
-        <article>
-            <header class="page-header">
-                <h1>
-                    <a href="http://seth.fischer.nz/drupal-8-getting-started.html"
-                       rel="bookmark"
-                       title="Permalink to Getting started with Drupal 8">
-                        Getting started with Drupal 8
-                    </a>
-                </h1>
-            </header>
+        <main id="main" class="col-sm-9" role="main">
+    <article id="content" role="article">
+        <header class="page-header">
+            <h1>Getting started with Drupal 8</h1>
+        </header>
 <footer class="post-info">
     <dl class="dl-horizontal">
         <dt>Date</dt>
@@ -108,8 +103,8 @@ sethfischer            </a>
 
 
     
-</footer><!-- /.post-info -->            <div class="entry-content">
-                <p>Now that <a href="https://www.drupal.org/drupal-8.0">Drupal 8</a> is in beta phase it is time for site developers to start
+</footer><!-- /.post-info -->        <div class="entry-content">
+            <p>Now that <a href="https://www.drupal.org/drupal-8.0">Drupal 8</a> is in beta phase it is time for site developers to start
 exploring the API. This article describes the installation and configuration of
 Drupal 8 using Git and Drush. Bear in mind that as of 2014-11-28 there were 22
 <a href="https://www.drupal.org/project/issues/search/drupal?project_issue_followers=&amp;status%5B%5D=1&amp;status%5B%5D=13&amp;status%5B%5D=8&amp;status%5B%5D=14&amp;status%5B%5D=15&amp;status%5B%5D=4&amp;priorities%5B%5D=400&amp;categories%5B%5D=1&amp;categories%5B%5D=2&amp;version%5B%5D=8.x&amp;issue_tags_op=%3D&amp;issue_tags=D8+upgrade+path">issues tagged with D8 upgrade path</a>, so it may be necessary to rebuild your
@@ -319,87 +314,94 @@ above after updating Drupal core.</p>
 <li><a href="https://www.drupal.org/node/803746">Building a Drupal site with Git</a></li>
 <li><a href="http://gitref.org/">Git Reference</a></li>
 </ul>
-            </div>
-            <!-- /.entry-content -->
-        </article>
-    </section>
-
         </div>
-        <aside class="col-sm-3" id="sidebar">
+    </article>
+        </main>
+            <aside  id="sidebar" class="col-sm-3 well well-sm" role="complementary">
 
-<section class="well well-sm">
-    <h2 class="sr-only">Miscellaneous links and navigation</h2>
-        <ul class="list-group">
-            <li class="list-group-item">
-                <span class="sidebar-heading"><i class="fa fa-code-fork fa-lg"></i> Code</span>
-                <ul class="list-group" id="social">
-                        <li class="list-group-item"><a href="https://github.com/sethfischer"><i class="fa fa-github fa-lg"></i> GitHub</a></li>
-                        <li class="list-group-item"><a href="https://bitbucket.org/sethfischer"><i class="fa fa-bitbucket fa-lg"></i> Bitbucket</a></li>
-                        <li class="list-group-item"><a href="https://drupal.org/u/sethfischer"><i class="fa fa-drupal fa-lg"></i> Drupal</a></li>
+<h2 class="sr-only">Miscellaneous links and navigation</h2>
+
+    <ul class="list-group">
+        <li class="list-group-item">
+            <span class="sidebar-heading"><i class="fa fa-code-fork fa-lg"></i> Code</span>
+            <ul class="list-group" id="social">
+                    <li class="list-group-item"><a href="https://github.com/sethfischer"><i class="fa fa-github fa-lg"></i> GitHub</a></li>
+                    <li class="list-group-item"><a href="https://bitbucket.org/sethfischer"><i class="fa fa-bitbucket fa-lg"></i> Bitbucket</a></li>
+                    <li class="list-group-item"><a href="https://drupal.org/u/sethfischer"><i class="fa fa-drupal fa-lg"></i> Drupal</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <ul class="list-group">
+        <li class="list-group-item">
+            <span class="sidebar-heading"><i class="fa fa-clock-o fa-lg"></i> Recent articles</span>
+            <nav>
+                <ul class="list-group" id="recentposts">
+                    <li class="list-group-item">
+                        <a href="http://seth.fischer.nz/symfony-2-latex-pdf-service.html">
+                            Symfony 2 PDF service using LaTeX
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="http://seth.fischer.nz/optimising-page-speed-case-study.html">
+                            Optimising page speed: A case study
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="http://seth.fischer.nz/drupal-8-fabric-deploy.html">
+                            Deploying Drupal 8 with Fabric
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="http://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merging.html">
+                            A Drupal 8 workflow using the Git subtree merge strategy
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="http://seth.fischer.nz/drupal-8-getting-started.html">
+                            Getting started with Drupal 8
+                        </a>
+                    </li>
                 </ul>
-            </li>
-        </ul>
-
-        <ul class="list-group">
-            <li class="list-group-item">
-                <span class="sidebar-heading"><i class="fa fa-clock-o fa-lg"></i> Recent articles</span>
-                <nav>
-                    <ul class="list-group" id="recentposts">
-                        <li class="list-group-item">
-                            <a href="http://seth.fischer.nz/optimising-page-speed-case-study.html">
-                                Optimising page speed: A case study
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="http://seth.fischer.nz/drupal-8-fabric-deploy.html">
-                                Deploying Drupal 8 with Fabric
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="http://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merging.html">
-                                A Drupal 8 workflow using the Git subtree merge strategy
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="http://seth.fischer.nz/drupal-8-getting-started.html">
-                                Getting started with Drupal 8
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </li>
-        </ul>
+            </nav>
+        </li>
+    </ul>
 
 
-        <ul class="list-group">
-            <li class="list-group-item">
-<a href="http://seth.fischer.nz/tags.html">                <span class="sidebar-heading"><i class="fa fa-tags fa-lg"></i> Tags</span>
-</a>                <nav>
-                    <ul class="list-group" id="tags">
-                            <li class="list-group-item tag-1">
-                                <a href="http://seth.fischer.nz/tag/drupal.html">
-                                    Drupal
-                                </a>
-                            </li>
-                            <li class="list-group-item tag-1">
-                                <a href="http://seth.fischer.nz/tag/drupal-8.html">
-                                    Drupal 8
-                                </a>
-                            </li>
-                            <li class="list-group-item tag-4">
-                                <a href="http://seth.fischer.nz/tag/python.html">
-                                    Python
-                                </a>
-                            </li>
-                            <li class="list-group-item tag-4">
-                                <a href="http://seth.fischer.nz/tag/fabric.html">
-                                    Fabric
-                                </a>
-                            </li>
-                    </ul>
-                </nav>
-            </li>
-        </ul>
+    <ul class="list-group">
+        <li class="list-group-item">
+<a href="http://seth.fischer.nz/tags.html">            <span class="sidebar-heading"><i class="fa fa-tags fa-lg"></i> Tags</span>
+</a>            <nav>
+                <ul class="list-group" id="tags">
+                        <li class="list-group-item tag-1">
+                            <a href="http://seth.fischer.nz/tag/drupal.html">
+                                Drupal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-1">
+                            <a href="http://seth.fischer.nz/tag/drupal-8.html">
+                                Drupal 8
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://seth.fischer.nz/tag/fabric.html">
+                                Fabric
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://seth.fischer.nz/tag/python.html">
+                                Python
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-4">
+                            <a href="http://seth.fischer.nz/tag/symfony-2.html">
+                                Symfony 2
+                            </a>
+                        </li>
+                </ul>
+            </nav>
+        </li>
+    </ul>
 
     <ul class="list-group">
         <li class="list-group-item">
@@ -486,10 +488,10 @@ above after updating Drupal core.</p>
                 <a href="https://github.com/sethfischer">@sethfischer</a> on GitHub
         </li>
     </ul>
-</section>        </aside>
+            </aside>
     </div>
 </div>
-<footer class="container">
+<footer class="container" role="contentinfo">
     <hr>
     <p>
         &copy; 2015 Seth Fischer            

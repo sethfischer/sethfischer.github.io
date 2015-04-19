@@ -142,21 +142,21 @@ host and edit as appropriate according to the environment.&lt;/p&gt;
 &lt;h3 id="configuration"&gt;Configuration&lt;/h3&gt;
 &lt;p&gt;Configuration is expressed via &lt;a href="http://yaml.org/"&gt;YAML&lt;/a&gt; with one file per project. Below is an
 example configuration file.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;%&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;example.yml&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# example.yml&lt;/span&gt;
 
-&lt;span class="l-Scalar-Plain"&gt;% global configuration common to all environments&lt;/span&gt;
+&lt;span class="c1"&gt;# global configuration common to all environments&lt;/span&gt;
 &lt;span class="l-Scalar-Plain"&gt;_global&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
     &lt;span class="l-Scalar-Plain"&gt;repository&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;     &lt;span class="l-Scalar-Plain"&gt;ssh+git://github.com/user/repo.git&lt;/span&gt;
     &lt;span class="l-Scalar-Plain"&gt;build_dir&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;      &lt;span class="l-Scalar-Plain"&gt;/home/tmp/builds&lt;/span&gt;
     &lt;span class="l-Scalar-Plain"&gt;remote_tmp_dir&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;/tmp&lt;/span&gt;
 
-&lt;span class="err"&gt;%&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;staging environment&lt;/span&gt;
+&lt;span class="c1"&gt;# staging environment&lt;/span&gt;
 &lt;span class="l-Scalar-Plain"&gt;staging&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
     &lt;span class="l-Scalar-Plain"&gt;hosts&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
         &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;staging.example.com&lt;/span&gt;
     &lt;span class="l-Scalar-Plain"&gt;remote_tmp_dir&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;/tmp&lt;/span&gt;
 
-&lt;span class="err"&gt;%&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;production environment&lt;/span&gt;
+&lt;span class="c1"&gt;# production environment&lt;/span&gt;
 &lt;span class="l-Scalar-Plain"&gt;prod&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
     &lt;span class="l-Scalar-Plain"&gt;hosts&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
         &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;example.com&lt;/span&gt;

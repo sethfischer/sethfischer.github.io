@@ -1,5 +1,580 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>sethfischer</title><link href="http://seth.fischer.nz/" rel="alternate"></link><link href="http://seth.fischer.nz/feeds/all.atom.xml" rel="self"></link><id>http://seth.fischer.nz/</id><updated>2015-03-27T20:47:00+13:00</updated><entry><title>Optimising page speed: A case study</title><link href="http://seth.fischer.nz/optimising-page-speed-case-study.html" rel="alternate"></link><updated>2015-03-27T20:47:00+13:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2015-03-27:optimising-page-speed-case-study.html</id><summary type="html">&lt;p&gt;As an exercise in optimising page speed the &lt;a href="http://docs.getpelican.com/"&gt;Pelican&lt;/a&gt; theme
+<feed xmlns="http://www.w3.org/2005/Atom"><title>sethfischer</title><link href="http://seth.fischer.nz/" rel="alternate"></link><link href="http://seth.fischer.nz/feeds/all.atom.xml" rel="self"></link><id>http://seth.fischer.nz/</id><updated>2015-04-19T20:11:00+12:00</updated><entry><title>Symfony 2 PDF service using LaTeX</title><link href="http://seth.fischer.nz/symfony-2-latex-pdf-service.html" rel="alternate"></link><updated>2015-04-19T20:11:00+12:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2015-04-19:symfony-2-latex-pdf-service.html</id><summary type="html">&lt;p&gt;Portable Document Format (PDF) has become a universally accepted format for
+sharing documentation. As a result, the dynamic generation of PDF documents
+is an expected feature of many web applications. After reviewing a number of
+libraries for generating PDF documents it was decided to write a service
+wrapping &lt;a href="http://www.latex-project.org/"&gt;LaTeX&lt;/a&gt;; a typesetting system with features suited to the
+production of scientific and technical documentation.&lt;/p&gt;
+&lt;p&gt;The code examples used in this article are from the certificate generation
+component of IB2020, a &lt;a href="http://symfony.com/"&gt;Symfony&lt;/a&gt; 2 web application for the management of
+welder qualifications.&lt;/p&gt;
+&lt;div class="toc"&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#pdf-generating-libraries"&gt;PDF generating libraries&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#latex"&gt;LaTeX&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#symfony-2-service"&gt;Symfony 2 service&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#configure-the-service-container"&gt;Configure the service container&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#service-object"&gt;Service object&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#twig-template"&gt;Twig template&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#utilising-the-service"&gt;Utilising the service&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#further-reading"&gt;Further reading&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;h2 id="pdf-generating-libraries"&gt;PDF generating libraries&lt;/h2&gt;
+&lt;p&gt;Before implementing the LaTeX service the following PDF generating libraries
+were considered:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://sourceforge.net/projects/tcpdf/"&gt;&lt;strong&gt;TCPDF&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;HTML layout and rendering engine written in PHP.&lt;/li&gt;
+&lt;li&gt;Coordinate-based interface. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/dompdf/dompdf"&gt;&lt;strong&gt;dompdf&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;HTML layout and rendering engine written in PHP.&lt;/li&gt;
+&lt;li&gt;Style-driven renderer.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/wkhtmltopdf/wkhtmltopdf"&gt;&lt;strong&gt;wkhtmltopdf&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Command line tools to render HTML into PDF (and various other image
+  formats) using the QT Webkit rendering engine.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/KnpLabs/KnpSnappyBundle"&gt;&lt;strong&gt;KnpLabs/KnpSnappyBundle&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Symfony 2 bundle wrapping wkhtmltopdf.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/zendframework/ZendPdf/"&gt;&lt;strong&gt;zendframework/ZendPdf&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;HTML layout and rendering engine written in PHP.&lt;/li&gt;
+&lt;li&gt;Coordinate-based interface.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="latex"&gt;LaTeX&lt;/h2&gt;
+&lt;p&gt;The LaTeX system is a markup language and high-quality typesetting system. It
+is written in the &lt;a href="http://tug.org/"&gt;TeX macro language&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;A PDF document may be generated directly from a LaTeX source document with the
+&lt;code&gt;pdflatex&lt;/code&gt; binary which is distributed as part of the Debian &lt;code&gt;texlive-full&lt;/code&gt;
+meta-package. Some LaTeX documents require multiple passes with &lt;code&gt;pdflatex&lt;/code&gt;, a
+process which is automated with the script &lt;code&gt;rubber-pipe&lt;/code&gt;. &lt;/p&gt;
+&lt;p&gt;LaTeX and &lt;code&gt;rubber-pipe&lt;/code&gt; may be installed on Debian-based distributions with the
+following commands:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; sudo apt-get install texlive-full
+&lt;span class="gp"&gt;$&lt;/span&gt; sudo apt-get install rubber
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The PDF LaTeX service is essentially a wrapper around &lt;code&gt;rubber-pipe&lt;/code&gt; which in
+turn invokes &lt;code&gt;pdflatex&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id="symfony-2-service"&gt;Symfony 2 service&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://symfony.com/doc/2.3/book/service_container.html"&gt;Services&lt;/a&gt; are re-usable, decoupled components, that may be accessed from
+any part of the application. The &lt;a href="http://symfony.com/doc/2.3/glossary.html#term-service"&gt;definition of a service&lt;/a&gt; from the Symfony
+documentation:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A service is usually used "globally", such as a database connection object or
+an object that delivers email messages. In Symfony, services are often
+configured and retrieved from the service container.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The PDF LaTeX service consists of the following three components:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The &lt;strong&gt;Symfony service container&lt;/strong&gt; configured in &lt;code&gt;services.yml&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;A &lt;strong&gt;class&lt;/strong&gt; &lt;code&gt;Pdflatex&lt;/code&gt; of which an instance will be available in the
+     service container.&lt;/li&gt;
+&lt;li&gt;A &lt;strong&gt;Twig template&lt;/strong&gt; &lt;code&gt;show.tex.twig&lt;/code&gt; used to output the LaTeX source
+     document. &lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="configure-the-service-container"&gt;Configure the service container&lt;/h3&gt;
+&lt;p&gt;The service container is configured with &lt;code&gt;services.yml&lt;/code&gt;. Two services are
+defined in the &lt;a href="http://yaml.org/"&gt;YAML&lt;/a&gt; below: 1. &lt;code&gt;electrotech.twig.ib2020_extension&lt;/code&gt;, which
+provides a Twig filer to escape LaTeX special characters; and 2.
+&lt;code&gt;electrotech.pdf.pdflatex&lt;/code&gt;, the PDF LaTeX service itself.&lt;/p&gt;
+&lt;p&gt;For convenience the &lt;code&gt;rubber-pipe&lt;/code&gt; binary is defined as a parameter.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# src/Electrotech/WeldqualBundle/Resources/config/services.yml&lt;/span&gt;
+
+&lt;span class="l-Scalar-Plain"&gt;parameters&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="l-Scalar-Plain"&gt;electrotech.twig.ib2020_extension.class&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;Electrotech\WeldqualBundle\Twig\Ib2020Extension&lt;/span&gt;
+    &lt;span class="l-Scalar-Plain"&gt;electrotech.pdf.pdflatex.rubber-pipe&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;/usr/bin/rubber-pipe&lt;/span&gt;
+
+&lt;span class="l-Scalar-Plain"&gt;services&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="l-Scalar-Plain"&gt;electrotech.twig.ib2020_extension&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+        &lt;span class="l-Scalar-Plain"&gt;class&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="err"&gt;%&lt;/span&gt;&lt;span class="l-Scalar-Plain"&gt;electrotech.twig.ib2020_extension.class%&lt;/span&gt;
+        &lt;span class="l-Scalar-Plain"&gt;arguments&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="p-Indicator"&gt;[&lt;/span&gt;&lt;span class="err"&gt;%&lt;/span&gt;&lt;span class="nv"&gt;kernel.bundles%&lt;/span&gt;&lt;span class="p-Indicator"&gt;]&lt;/span&gt;
+        &lt;span class="l-Scalar-Plain"&gt;tags&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+            &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="p-Indicator"&gt;{&lt;/span&gt; &lt;span class="nv"&gt;name&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="nv"&gt;twig.extension&lt;/span&gt; &lt;span class="p-Indicator"&gt;}&lt;/span&gt;
+
+    &lt;span class="l-Scalar-Plain"&gt;electrotech.pdf.pdflatex&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+        &lt;span class="l-Scalar-Plain"&gt;class&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;        &lt;span class="l-Scalar-Plain"&gt;Electrotech\WeldqualBundle\Pdf\Pdflatex&lt;/span&gt;
+        &lt;span class="l-Scalar-Plain"&gt;arguments&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;    &lt;span class="p-Indicator"&gt;[&lt;/span&gt;&lt;span class="err"&gt;%&lt;/span&gt;&lt;span class="nv"&gt;electrotech.pdf.pdflatex.rubber-pipe%&lt;/span&gt;&lt;span class="p-Indicator"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="service-object"&gt;Service object&lt;/h3&gt;
+&lt;p&gt;An instance of the class &lt;code&gt;Pdflatex&lt;/code&gt; provides the service. &lt;code&gt;Pdflatex&lt;/code&gt; takes a
+LaTeX source document and returns a PDF document.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class="c1"&gt;// src/Electrotech/WeldqualBundle/Pdf/Pdflatex.php&lt;/span&gt;
+
+&lt;span class="k"&gt;namespace&lt;/span&gt; &lt;span class="nx"&gt;Electrotech\WeldqualBundle\Pdf&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Pdflatex&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+
+    &lt;span class="sd"&gt;/**&lt;/span&gt;
+&lt;span class="sd"&gt;     * Full system path to rubber-pipe binary&lt;/span&gt;
+&lt;span class="sd"&gt;     * @var string&lt;/span&gt;
+&lt;span class="sd"&gt;     */&lt;/span&gt;
+    &lt;span class="k"&gt;private&lt;/span&gt; &lt;span class="nv"&gt;$binary&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="sd"&gt;/**&lt;/span&gt;
+&lt;span class="sd"&gt;     * Options for rubber-pipe&lt;/span&gt;
+&lt;span class="sd"&gt;     * @var array&lt;/span&gt;
+&lt;span class="sd"&gt;     */&lt;/span&gt;
+    &lt;span class="k"&gt;private&lt;/span&gt; &lt;span class="nv"&gt;$options&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;--pdf&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;null&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;--into&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/tmp/&amp;#39;&lt;/span&gt;
+    &lt;span class="p"&gt;);&lt;/span&gt;
+
+    &lt;span class="sd"&gt;/**&lt;/span&gt;
+&lt;span class="sd"&gt;     * Tex source document&lt;/span&gt;
+&lt;span class="sd"&gt;     * @var string&lt;/span&gt;
+&lt;span class="sd"&gt;     */&lt;/span&gt;
+    &lt;span class="k"&gt;private&lt;/span&gt; &lt;span class="nv"&gt;$texSource&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="sd"&gt;/**&lt;/span&gt;
+&lt;span class="sd"&gt;     * Generated PDF document&lt;/span&gt;
+&lt;span class="sd"&gt;     */&lt;/span&gt;
+    &lt;span class="k"&gt;private&lt;/span&gt; &lt;span class="nv"&gt;$pdf&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="sd"&gt;/**&lt;/span&gt;
+&lt;span class="sd"&gt;     * Initial working dir&lt;/span&gt;
+&lt;span class="sd"&gt;     * @var string&lt;/span&gt;
+&lt;span class="sd"&gt;     */&lt;/span&gt;
+    &lt;span class="k"&gt;private&lt;/span&gt; &lt;span class="nv"&gt;$cwd&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/tmp/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="sd"&gt;/**&lt;/span&gt;
+&lt;span class="sd"&gt;     * Environment variables&lt;/span&gt;
+&lt;span class="sd"&gt;     * @var array|null&lt;/span&gt;
+&lt;span class="sd"&gt;     */&lt;/span&gt;
+    &lt;span class="k"&gt;private&lt;/span&gt; &lt;span class="nv"&gt;$env&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;null&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="sd"&gt;/**&lt;/span&gt;
+&lt;span class="sd"&gt;     * Error output&lt;/span&gt;
+&lt;span class="sd"&gt;     * @var string&lt;/span&gt;
+&lt;span class="sd"&gt;     */&lt;/span&gt;
+    &lt;span class="k"&gt;private&lt;/span&gt; &lt;span class="nv"&gt;$stderr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;null&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="sd"&gt;/**&lt;/span&gt;
+&lt;span class="sd"&gt;     * Return value&lt;/span&gt;
+&lt;span class="sd"&gt;     * @var integer&lt;/span&gt;
+&lt;span class="sd"&gt;     */&lt;/span&gt;
+    &lt;span class="k"&gt;private&lt;/span&gt; &lt;span class="nv"&gt;$returnValue&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+
+    &lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;__construct&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$binary&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;binary&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$binary&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="sd"&gt;/**&lt;/span&gt;
+&lt;span class="sd"&gt;     * Create rubber-pipe command&lt;/span&gt;
+&lt;span class="sd"&gt;     */&lt;/span&gt;
+    &lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;getCommand&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nv"&gt;$args&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;foreach&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;options&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nv"&gt;$option&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nv"&gt;$value&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="nv"&gt;$args&lt;/span&gt; &lt;span class="o"&gt;.=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nv"&gt;$option&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$value&lt;/span&gt; &lt;span class="o"&gt;!==&lt;/span&gt; &lt;span class="k"&gt;null&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="p"&gt;{&lt;/span&gt;
+                &lt;span class="nv"&gt;$args&lt;/span&gt; &lt;span class="o"&gt;.=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nv"&gt;$value&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="p"&gt;}&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;binary&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nv"&gt;$args&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="sd"&gt;/**&lt;/span&gt;
+&lt;span class="sd"&gt;     * Execute rubber-pipe command&lt;/span&gt;
+&lt;span class="sd"&gt;     */&lt;/span&gt;
+    &lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nv"&gt;$descriptorSpec&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;pipe&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;r&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+            &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;pipe&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;w&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+            &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;pipe&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;w&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="p"&gt;);&lt;/span&gt;
+
+        &lt;span class="nv"&gt;$process&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;proc_open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;getCommand&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+            &lt;span class="nv"&gt;$descriptorSpec&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="nv"&gt;$pipes&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;cwd&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;env&lt;/span&gt;
+        &lt;span class="p"&gt;);&lt;/span&gt;
+
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;is_resource&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$process&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="nb"&gt;fwrite&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$pipes&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;getTexSource&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+            &lt;span class="nb"&gt;fclose&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$pipes&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
+
+            &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;pdf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;stream_get_contents&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$pipes&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
+            &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;stderr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;stream_get_contents&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$pipes&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
+            &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;returnValue&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;proc_close&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$process&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;returnValue&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="k"&gt;true&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="k"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="sd"&gt;/**&lt;/span&gt;
+&lt;span class="sd"&gt;     * Set path to rubber-pipe binary&lt;/span&gt;
+&lt;span class="sd"&gt;     * @param string $binary Full system path to rubber-pipe binary&lt;/span&gt;
+&lt;span class="sd"&gt;     */&lt;/span&gt;
+    &lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;setBinary&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$binary&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;binary&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$binary&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="sd"&gt;/**&lt;/span&gt;
+&lt;span class="sd"&gt;     * Get path to rubber-pipe binary&lt;/span&gt;
+&lt;span class="sd"&gt;     * @return string Full system path to rubber-pipe binary&lt;/span&gt;
+&lt;span class="sd"&gt;     */&lt;/span&gt;
+    &lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;getBinary&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;binary&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="sd"&gt;/**&lt;/span&gt;
+&lt;span class="sd"&gt;     * Set LaTeX source&lt;/span&gt;
+&lt;span class="sd"&gt;     * @param string $texSource LaTeX source document&lt;/span&gt;
+&lt;span class="sd"&gt;     */&lt;/span&gt;
+    &lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;setTexSource&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$texSource&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;texSource&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$texSource&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="sd"&gt;/**&lt;/span&gt;
+&lt;span class="sd"&gt;     * Get LaTeX source&lt;/span&gt;
+&lt;span class="sd"&gt;     * @return string LaTeX source document&lt;/span&gt;
+&lt;span class="sd"&gt;     */&lt;/span&gt;
+    &lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;getTexSource&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;texSource&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="sd"&gt;/**&lt;/span&gt;
+&lt;span class="sd"&gt;     * Get PDF file contents&lt;/span&gt;
+&lt;span class="sd"&gt;     * @return mixed Generated PDF file contents&lt;/span&gt;
+&lt;span class="sd"&gt;     */&lt;/span&gt;
+    &lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;getPdf&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;pdf&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="sd"&gt;/**&lt;/span&gt;
+&lt;span class="sd"&gt;     * Get errors&lt;/span&gt;
+&lt;span class="sd"&gt;     * @return string Error output&lt;/span&gt;
+&lt;span class="sd"&gt;     */&lt;/span&gt;
+    &lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;getStderr&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;stderr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="sd"&gt;/**&lt;/span&gt;
+&lt;span class="sd"&gt;     * Get return value&lt;/span&gt;
+&lt;span class="sd"&gt;     * @return integer Return value from rubber-pipe command&lt;/span&gt;
+&lt;span class="sd"&gt;     */&lt;/span&gt;
+    &lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;getReturnValue&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;returnValue&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="twig-template"&gt;Twig template&lt;/h3&gt;
+&lt;p&gt;A &lt;a href="http://twig.sensiolabs.org/"&gt;Twig&lt;/a&gt; template &lt;code&gt;show.tex.twig&lt;/code&gt; is used to generate the LaTeX source
+document.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;% src/Electrotech/WeldqualBundle/Resources/views/Testweld/show.tex.twig&lt;/span&gt;
+
+&lt;span class="c"&gt;% This template has been simplified for the sake of brevity.&lt;/span&gt;
+
+&lt;span class="k"&gt;\documentclass&lt;/span&gt;&lt;span class="na"&gt;[10pt,a4paper]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;article&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;array&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;calc&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;color&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;colortbl&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;graphicx&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="na"&gt;[margin=1cm]&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;geometry&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;multirow&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;tabularx&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\usepackage&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;wasysym&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="c"&gt;% width of table columns&lt;/span&gt;
+&lt;span class="k"&gt;\newlength&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\colOneWidth&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\setlength&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\colOneWidth&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;0.13&lt;span class="k"&gt;\textwidth&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\newlength&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\colThreeWidth&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\setlength&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\colThreeWidth&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;0.13&lt;span class="k"&gt;\textwidth&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\newlength&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\colFourWidth&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\setlength&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\colFourWidth&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;0.25&lt;span class="k"&gt;\textwidth&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\newlength&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\colFiveWidth&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\setlength&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\colFiveWidth&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;0.13&lt;span class="k"&gt;\textwidth&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\newlength&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\colThreeToFiveWidth&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\setlength&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\colThreeToFiveWidth&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\colThreeWidth&lt;/span&gt; + &lt;span class="k"&gt;\colFourWidth&lt;/span&gt; + &lt;span class="k"&gt;\colFiveWidth&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\newlength&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\colFourToFiveWidth&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;\setlength&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\colFourToFiveWidth&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\colFourWidth&lt;/span&gt; + &lt;span class="k"&gt;\colFiveWidth&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;
+
+
+&lt;span class="c"&gt;% colours&lt;/span&gt;
+&lt;span class="k"&gt;\definecolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;IB2020Blue&lt;span class="nb"&gt;}{&lt;/span&gt;RGB&lt;span class="nb"&gt;}{&lt;/span&gt;172,206,230&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="c"&gt;% #ACCEE6&lt;/span&gt;
+&lt;span class="k"&gt;\definecolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;invalidBg&lt;span class="nb"&gt;}{&lt;/span&gt;RGB&lt;span class="nb"&gt;}{&lt;/span&gt;242,222,222&lt;span class="nb"&gt;}&lt;/span&gt;  &lt;span class="c"&gt;% #F2DEDE&lt;/span&gt;
+&lt;span class="k"&gt;\definecolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;invalidFg&lt;span class="nb"&gt;}{&lt;/span&gt;RGB&lt;span class="nb"&gt;}{&lt;/span&gt;185,74,72&lt;span class="nb"&gt;}&lt;/span&gt;    &lt;span class="c"&gt;% #B94A48&lt;/span&gt;
+
+&lt;span class="c"&gt;% page style&lt;/span&gt;
+&lt;span class="k"&gt;\pagestyle&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;empty&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="c"&gt;% remove page numbering&lt;/span&gt;
+
+&lt;span class="c"&gt;% PDF meta data&lt;/span&gt;
+&lt;span class="k"&gt;\pdfinfo&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;
+    /Title (Welder Qualification Certificate)
+    /Creator (IB2020 &lt;span class="nb"&gt;{{&lt;/span&gt; electrotech&lt;span class="nb"&gt;_&lt;/span&gt;system&lt;span class="nb"&gt;_&lt;/span&gt;owner | e&lt;span class="nb"&gt;_&lt;/span&gt;latex &lt;span class="nb"&gt;}}&lt;/span&gt;)
+    /Producer (IB2020 &lt;span class="nb"&gt;{{&lt;/span&gt; electrotech&lt;span class="nb"&gt;_&lt;/span&gt;system&lt;span class="nb"&gt;_&lt;/span&gt;owner | e&lt;span class="nb"&gt;_&lt;/span&gt;latex &lt;span class="nb"&gt;}}&lt;/span&gt;)
+    /Author (IB2020 A Management Information System for Inspection Bodies)
+    /CreationDate (D:&lt;span class="nb"&gt;{{&lt;/span&gt; &amp;quot;now&amp;quot;|date(&amp;quot;YmdGisO&amp;quot;) | e&lt;span class="nb"&gt;_&lt;/span&gt;latex &lt;span class="nb"&gt;}}&lt;/span&gt;)
+    /ModDate (D:&lt;span class="nb"&gt;{{&lt;/span&gt; &amp;quot;now&amp;quot;|date(&amp;quot;YmdGisO&amp;quot;) | e&lt;span class="nb"&gt;_&lt;/span&gt;latex &lt;span class="nb"&gt;}}&lt;/span&gt;)
+    /Subject (Welder Qualification Certificate)
+    /Keywords (IB2020)
+&lt;span class="nb"&gt;}&lt;/span&gt;
+
+
+&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;document&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="c"&gt;% remove left indent from table&lt;/span&gt;
+&lt;span class="k"&gt;\noindent&lt;/span&gt;&lt;span class="c"&gt;%&lt;/span&gt;
+&lt;span class="k"&gt;\begin&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;tabularx&lt;span class="nb"&gt;}{&lt;/span&gt;&lt;span class="k"&gt;\textwidth&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;@&lt;span class="nb"&gt;{}&lt;/span&gt;|p&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\colOneWidth&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;|X|p&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\colThreeWidth&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;|p&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\colFourWidth&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;|p&lt;span class="nb"&gt;{&lt;/span&gt;&lt;span class="k"&gt;\colFiveWidth&lt;/span&gt;&lt;span class="nb"&gt;}&lt;/span&gt;| &lt;span class="nb"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;\hline&lt;/span&gt;
+        &lt;span class="k"&gt;\centering&lt;/span&gt; &lt;span class="k"&gt;\scriptsize&lt;/span&gt;&lt;span class="nb"&gt;{}&lt;/span&gt;Certificate Number&lt;span class="k"&gt;\newline&lt;/span&gt; &lt;span class="k"&gt;\normalsize&lt;/span&gt; &lt;span class="nb"&gt;{{&lt;/span&gt; entity.certificateNumber | e&lt;span class="nb"&gt;_&lt;/span&gt;latex &lt;span class="nb"&gt;}}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt;
+        &lt;span class="k"&gt;\multicolumn&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;3&lt;span class="nb"&gt;}{&lt;/span&gt;c|&lt;span class="nb"&gt;}{&lt;/span&gt; &lt;span class="k"&gt;\cellcolor&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;IB2020Blue&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="k"&gt;\textbf&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;Welder Qualification Certificate&lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;&amp;amp;&lt;/span&gt;
+        &lt;span class="k"&gt;\raisebox&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;-0.5&lt;span class="k"&gt;\height&lt;/span&gt;&lt;span class="nb"&gt;}{&lt;/span&gt;
+            &lt;span class="k"&gt;\includegraphics&lt;/span&gt;&lt;span class="na"&gt;[width=0.13\textwidth]&lt;/span&gt;&lt;span class="nb"&gt;{{&lt;/span&gt; &amp;#39;&lt;span class="nb"&gt;{&lt;/span&gt;&amp;#39; &lt;span class="nb"&gt;}}{{&lt;/span&gt; logoFile | e&lt;span class="nb"&gt;_&lt;/span&gt;latex &lt;span class="nb"&gt;}}{{&lt;/span&gt; &amp;#39;&lt;span class="nb"&gt;}&lt;/span&gt;&amp;#39; &lt;span class="nb"&gt;}}&lt;/span&gt;
+        &lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="k"&gt;\\&lt;/span&gt;
+    &lt;span class="k"&gt;\hline&lt;/span&gt;
+        &lt;span class="k"&gt;\multicolumn&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;5&lt;span class="nb"&gt;}{&lt;/span&gt;|c|&lt;span class="nb"&gt;}{&lt;/span&gt;
+            &lt;span class="nb"&gt;{{&lt;/span&gt; electrotech&lt;span class="nb"&gt;_&lt;/span&gt;system&lt;span class="nb"&gt;_&lt;/span&gt;owner | e&lt;span class="nb"&gt;_&lt;/span&gt;latex &lt;span class="nb"&gt;}}&lt;/span&gt;
+            &lt;span class="k"&gt;\enspace&lt;/span&gt;
+            IANZ Accredited Inspection Body No. &lt;span class="nb"&gt;{{&lt;/span&gt; electrotech&lt;span class="nb"&gt;_&lt;/span&gt;ianz&lt;span class="nb"&gt;_&lt;/span&gt;number | e&lt;span class="nb"&gt;_&lt;/span&gt;latex &lt;span class="nb"&gt;}}&lt;/span&gt;
+        &lt;span class="nb"&gt;}&lt;/span&gt; &lt;span class="k"&gt;\\&lt;/span&gt;
+    &lt;span class="k"&gt;\hline&lt;/span&gt;
+&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;tabularx&lt;span class="nb"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;document&lt;span class="nb"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;A &lt;a href="http://twig.sensiolabs.org/doc/advanced.html#filters"&gt;custom Twig filter&lt;/a&gt; &lt;code&gt;e_latex&lt;/code&gt; is used to escape LaTeX special
+characters. Custom Twig filters are created by extending &lt;code&gt;Twig_Extension&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class="c1"&gt;// src/Electrotech/WeldqualBundle/Twig/Ib2020Extension.php&lt;/span&gt;
+
+&lt;span class="k"&gt;namespace&lt;/span&gt; &lt;span class="nx"&gt;Electrotech\WeldqualBundle\Twig&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="k"&gt;use&lt;/span&gt; &lt;span class="nx"&gt;Twig_Extension&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;use&lt;/span&gt; &lt;span class="nx"&gt;Twig_Filter_Method&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;use&lt;/span&gt; &lt;span class="nx"&gt;Twig_Test_Method&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Ib2020Extension&lt;/span&gt; &lt;span class="k"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;Twig_Extension&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="c1"&gt;// Unrelated methods have been omitted from this code sample for the sake&lt;/span&gt;
+    &lt;span class="c1"&gt;// of brevity.&lt;/span&gt;
+
+    &lt;span class="k"&gt;private&lt;/span&gt; &lt;span class="nv"&gt;$kernelBundles&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;__construct&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$kernelBundles&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;kernelBundles&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$kernelBundles&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="sd"&gt;/**&lt;/span&gt;
+&lt;span class="sd"&gt;     * Returns a list of filters to add to the existing list.&lt;/span&gt;
+&lt;span class="sd"&gt;     *&lt;/span&gt;
+&lt;span class="sd"&gt;     * @return array An array of filters&lt;/span&gt;
+&lt;span class="sd"&gt;     */&lt;/span&gt;
+    &lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;getFilters&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="k"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="s1"&gt;&amp;#39;e_latex&amp;#39;&lt;/span&gt;     &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Twig_Filter_Method&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;escapeLatexFilter&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="sd"&gt;/**&lt;/span&gt;
+&lt;span class="sd"&gt;     * Escape LaTeX special characters&lt;/span&gt;
+&lt;span class="sd"&gt;     *&lt;/span&gt;
+&lt;span class="sd"&gt;     * @return string&lt;/span&gt;
+&lt;span class="sd"&gt;     */&lt;/span&gt;
+    &lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;escapeLatexFilter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$str&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;null&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nv"&gt;$search&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;\\&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;#&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;%&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;amp;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;_&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;{&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;~&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;^&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="s1"&gt;&amp;#39;&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;lt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+        &lt;span class="nv"&gt;$replace&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;\textbackslash &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;\#&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;\$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;\%&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;\&amp;amp;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;\_&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="s1"&gt;&amp;#39;\{&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;\}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;\textasciitilde &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;\textasciicircum &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="s1"&gt;&amp;#39;\textgreater&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;\textless&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;str_replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$search&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nv"&gt;$replace&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nv"&gt;$str&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="sd"&gt;/**&lt;/span&gt;
+&lt;span class="sd"&gt;     * Returns the name of the extension&lt;/span&gt;
+&lt;span class="sd"&gt;     *&lt;/span&gt;
+&lt;span class="sd"&gt;     * @return string The extension name&lt;/span&gt;
+&lt;span class="sd"&gt;     */&lt;/span&gt;
+    &lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;getName&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;electrotech_twig_ib2020_extension&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="utilising-the-service"&gt;Utilising the service&lt;/h3&gt;
+&lt;p&gt;The service is used in the controller by passing a certificate ID to the method
+&lt;code&gt;pdfAction()&lt;/code&gt;. The LaTeX source document is then generated by the method
+&lt;code&gt;latexSource()&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class="c1"&gt;// Utilising the PDF LaTeX service&lt;/span&gt;
+&lt;span class="nv"&gt;$pdflatex&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;electrotech.pdf.pdflatex&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="nv"&gt;$pdflatex&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;setTexSource&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$latexSource&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="nv"&gt;$pdf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$pdflatex&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;getPdf&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Below is an example of how this service is used in a controller.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class="c1"&gt;// src/Electrotech/WeldqualBundle/Controller/TestweldController.php&lt;/span&gt;
+
+&lt;span class="k"&gt;namespace&lt;/span&gt; &lt;span class="nx"&gt;Electrotech\WeldqualBundle\Controller&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="k"&gt;use&lt;/span&gt; &lt;span class="nx"&gt;Symfony\Component\HttpFoundation\Request&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;use&lt;/span&gt; &lt;span class="nx"&gt;Symfony\Component\HttpFoundation\Response&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;use&lt;/span&gt; &lt;span class="nx"&gt;Symfony\Component\HttpKernel\Exception\HttpException&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;use&lt;/span&gt; &lt;span class="nx"&gt;Symfony\Bundle\FrameworkBundle\Controller\Controller&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="k"&gt;use&lt;/span&gt; &lt;span class="nx"&gt;Electrotech\WeldqualBundle\Entity\Testweld&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;use&lt;/span&gt; &lt;span class="nx"&gt;Electrotech\WeldqualBundle\Entity\Testweldassessment&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;use&lt;/span&gt; &lt;span class="nx"&gt;Electrotech\WeldqualBundle\Form\TestweldType&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;use&lt;/span&gt; &lt;span class="nx"&gt;Electrotech\WeldqualBundle\Helper\QualificationRangeHelper&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+
+&lt;span class="sd"&gt;/**&lt;/span&gt;
+&lt;span class="sd"&gt; * Testweld controller&lt;/span&gt;
+&lt;span class="sd"&gt; */&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;TestweldController&lt;/span&gt; &lt;span class="k"&gt;extends&lt;/span&gt; &lt;span class="nx"&gt;Controller&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="c1"&gt;// Unrelated methods have been omitted from this code sample for the sake&lt;/span&gt;
+    &lt;span class="c1"&gt;// of brevity.&lt;/span&gt;
+
+    &lt;span class="sd"&gt;/**&lt;/span&gt;
+&lt;span class="sd"&gt;     * Creates a PDF certificate&lt;/span&gt;
+&lt;span class="sd"&gt;     */&lt;/span&gt;
+    &lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;pdfAction&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+
+        &lt;span class="nv"&gt;$latexSource&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;latexSource&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;show.tex.twig&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+        &lt;span class="nv"&gt;$pdflatex&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;electrotech.pdf.pdflatex&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="nv"&gt;$pdflatex&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;setTexSource&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$latexSource&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;latex&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
+
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nv"&gt;$pdflatex&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+        &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="k"&gt;throw&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;HttpException&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;500&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Error creating PDF: &amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nv"&gt;$pdflatex&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;getStderr&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+
+        &lt;span class="nv"&gt;$response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Response&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+        &lt;span class="nv"&gt;$response&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;setContent&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$pdflatex&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;getPdf&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+        &lt;span class="nv"&gt;$response&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;headers&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Content-Type&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;application/pdf&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="nv"&gt;$response&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;headers&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Content-Disposition&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;inline; filename=&amp;quot;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nv"&gt;$latexSource&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;filename&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;.pdf&amp;quot;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nv"&gt;$response&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="sd"&gt;/**&lt;/span&gt;
+&lt;span class="sd"&gt;     * Creates LaTeX source&lt;/span&gt;
+&lt;span class="sd"&gt;     */&lt;/span&gt;
+    &lt;span class="k"&gt;private&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;latexSource&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$template&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nv"&gt;$em&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;getDoctrine&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;getManager&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+
+        &lt;span class="nv"&gt;$entity&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$em&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;getRepository&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;ElectrotechWeldqualBundle:Testweld&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;find&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$id&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nv"&gt;$entity&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="k"&gt;throw&lt;/span&gt; &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;createNotFoundException&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Unable to find Testweld entity.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+
+        &lt;span class="nv"&gt;$em&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;getDoctrine&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;getManager&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+
+        &lt;span class="nv"&gt;$weldVariables&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$em&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;getRepository&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;ElectrotechWeldqualBundle:Weldvariables&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;fetchWeldVariables&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                &lt;span class="nv"&gt;$entity&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;getQualificationstandard&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;getEdition&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;getTechdoc&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+                &lt;span class="nv"&gt;$entity&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;getProducttype&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+                &lt;span class="nv"&gt;$entity&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;getWeldtype&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+                &lt;span class="nv"&gt;$entity&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;getWeldposition&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+                &lt;span class="nv"&gt;$entity&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;getWelddirection&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+            &lt;span class="p"&gt;);&lt;/span&gt;
+
+        &lt;span class="nv"&gt;$qualifiedRange&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;null&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$weldVariables&lt;/span&gt; &lt;span class="o"&gt;!==&lt;/span&gt; &lt;span class="k"&gt;null&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="nv"&gt;$qualifiedRange&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;QualificationRangeHelper&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                &lt;span class="nv"&gt;$entity&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;getProducttype&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+                &lt;span class="nv"&gt;$entity&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;getPipeod&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+                &lt;span class="nv"&gt;$weldVariables&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;getQualifiedweldvariablesid&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+            &lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+
+        &lt;span class="nv"&gt;$logoFile&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;kernel&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;getRootDir&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;DIRECTORY_SEPARATOR&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+            &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;container&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;getParameter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;electrotech_upload_dir&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;DIRECTORY_SEPARATOR&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+            &lt;span class="s1"&gt;&amp;#39;sysowner&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;DIRECTORY_SEPARATOR&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;logo.pdf&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+        &lt;span class="nv"&gt;$templating&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;templating&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+        &lt;span class="nv"&gt;$latexSource&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$templating&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;render&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="s1"&gt;&amp;#39;ElectrotechWeldqualBundle:Testweld:&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nv"&gt;$template&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="k"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+                &lt;span class="s1"&gt;&amp;#39;entity&amp;#39;&lt;/span&gt;         &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nv"&gt;$entity&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="s1"&gt;&amp;#39;logoFile&amp;#39;&lt;/span&gt;       &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nv"&gt;$logoFile&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="s1"&gt;&amp;#39;qualifiedRange&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nv"&gt;$qualifiedRange&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="p"&gt;);&lt;/span&gt;
+
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="k"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="s1"&gt;&amp;#39;latex&amp;#39;&lt;/span&gt;    &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nv"&gt;$latexSource&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="s1"&gt;&amp;#39;filename&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nv"&gt;$entity&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;getFilename&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id="further-reading"&gt;Further reading&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://symfony.com/doc/2.3/cookbook/controller/service.html"&gt;How to define controllers as services&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://tobi.oetiker.ch/lshort/lshort.pdf"&gt;The not so short introduction to LaTeX 2&amp;epsilon;&lt;/a&gt; by Tobias Oetiker.&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="Symfony 2"></category></entry><entry><title>Optimising page speed: A case study</title><link href="http://seth.fischer.nz/optimising-page-speed-case-study.html" rel="alternate"></link><updated>2015-03-27T20:47:00+13:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2015-03-27:optimising-page-speed-case-study.html</id><summary type="html">&lt;p&gt;As an exercise in optimising page speed the &lt;a href="http://docs.getpelican.com/"&gt;Pelican&lt;/a&gt; theme
 &lt;a href="https://github.com/DandyDev/pelican-bootstrap3"&gt;pelican-bootstrap3&lt;/a&gt; by Daan Debie was customised in order to improve page
 speed. The customisations reduced the total number of requests on the index
 page by 66% and the page size was reduced by 62%.&lt;/p&gt;
@@ -510,21 +1085,21 @@ host and edit as appropriate according to the environment.&lt;/p&gt;
 &lt;h3 id="configuration"&gt;Configuration&lt;/h3&gt;
 &lt;p&gt;Configuration is expressed via &lt;a href="http://yaml.org/"&gt;YAML&lt;/a&gt; with one file per project. Below is an
 example configuration file.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;%&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;example.yml&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# example.yml&lt;/span&gt;
 
-&lt;span class="l-Scalar-Plain"&gt;% global configuration common to all environments&lt;/span&gt;
+&lt;span class="c1"&gt;# global configuration common to all environments&lt;/span&gt;
 &lt;span class="l-Scalar-Plain"&gt;_global&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
     &lt;span class="l-Scalar-Plain"&gt;repository&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;     &lt;span class="l-Scalar-Plain"&gt;ssh+git://github.com/user/repo.git&lt;/span&gt;
     &lt;span class="l-Scalar-Plain"&gt;build_dir&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;      &lt;span class="l-Scalar-Plain"&gt;/home/tmp/builds&lt;/span&gt;
     &lt;span class="l-Scalar-Plain"&gt;remote_tmp_dir&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;/tmp&lt;/span&gt;
 
-&lt;span class="err"&gt;%&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;staging environment&lt;/span&gt;
+&lt;span class="c1"&gt;# staging environment&lt;/span&gt;
 &lt;span class="l-Scalar-Plain"&gt;staging&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
     &lt;span class="l-Scalar-Plain"&gt;hosts&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
         &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;staging.example.com&lt;/span&gt;
     &lt;span class="l-Scalar-Plain"&gt;remote_tmp_dir&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;/tmp&lt;/span&gt;
 
-&lt;span class="err"&gt;%&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;production environment&lt;/span&gt;
+&lt;span class="c1"&gt;# production environment&lt;/span&gt;
 &lt;span class="l-Scalar-Plain"&gt;prod&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
     &lt;span class="l-Scalar-Plain"&gt;hosts&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
         &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;example.com&lt;/span&gt;
