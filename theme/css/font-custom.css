@@ -51,17 +51,17 @@
   font-smoothing: antialiased;
 }
 
-.fa-bitbucket:before { content: "\f101"; }
-.fa-calendar:before { content: "\f102"; }
-.fa-clock-o:before { content: "\f103"; }
-.fa-code-fork:before { content: "\f104"; }
-.fa-drupal:before { content: "\f105"; }
-.fa-exclamation:before { content: "\f110"; }
+.fa-bitbucket:before { content: "\f100"; }
+.fa-calendar:before { content: "\f101"; }
+.fa-clock-o:before { content: "\f102"; }
+.fa-code-fork:before { content: "\f103"; }
+.fa-drupal:before { content: "\f104"; }
+.fa-exclamation:before { content: "\f105"; }
 .fa-external-link-square:before { content: "\f106"; }
-.fa-eye:before { content: "\f10d"; }
+.fa-eye:before { content: "\f107"; }
 .fa-folder-open:before { content: "\f108"; }
 .fa-github:before { content: "\f109"; }
-.fa-history:before { content: "\f10e"; }
-.fa-tags:before { content: "\f10a"; }
-.fa-th-list:before { content: "\f10b"; }
-.fa-user:before { content: "\f10c"; }
+.fa-history:before { content: "\f10a"; }
+.fa-tags:before { content: "\f10b"; }
+.fa-th-list:before { content: "\f10c"; }
+.fa-user:before { content: "\f10d"; }
