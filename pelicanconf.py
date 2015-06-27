@@ -65,7 +65,12 @@ MD_EXTENSIONS = [
 PLUGIN_PATHS = [
     os.path.join(os.environ.get('HOME'), 'projects/pelican-plugins')
 ]
-PLUGINS = ['assets', 'sitemap', 'pelican_githubprojects']
+PLUGINS = [
+    'assets',
+    'sitemap',
+    'tag_cloud',
+    'pelican_githubprojects'
+]
 
 SITEMAP = {
     'format': 'xml',
