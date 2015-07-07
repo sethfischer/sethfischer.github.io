@@ -1,5 +1,360 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>sethfischer</title><link href="http://seth.fischer.nz/" rel="alternate"></link><link href="http://seth.fischer.nz/feeds/seth-fischer.atom.xml" rel="self"></link><id>http://seth.fischer.nz/</id><updated>2015-04-19T20:11:00+12:00</updated><entry><title>Symfony 2 PDF service using LaTeX</title><link href="http://seth.fischer.nz/symfony-2-latex-pdf-service.html" rel="alternate"></link><updated>2015-04-19T20:11:00+12:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2015-04-19:symfony-2-latex-pdf-service.html</id><summary type="html">&lt;p&gt;Portable Document Format (PDF) has become a universally accepted format for
+<feed xmlns="http://www.w3.org/2005/Atom"><title>sethfischer</title><link href="http://seth.fischer.nz/" rel="alternate"></link><link href="http://seth.fischer.nz/feeds/seth-fischer.atom.xml" rel="self"></link><id>http://seth.fischer.nz/</id><updated>2015-07-07T21:19:00+12:00</updated><entry><title>An introduction to Drupal 8 development tools</title><link href="http://seth.fischer.nz/drupal-8-development-tools.html" rel="alternate"></link><updated>2015-07-07T21:19:00+12:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2015-07-07:drupal-8-development-tools.html</id><summary type="html">&lt;p&gt;The use of third party components in &lt;a href="https://www.drupal.org/drupal-8.0"&gt;Drupal&amp;nbsp;8&lt;/a&gt; has inspired two new
+tools for Drupal&amp;nbsp;8 developers: the Drupal Console and the Drupal Web
+Profiler. Based on the &lt;a href="http://symfony.com/doc/current/components/console/introduction.html"&gt;Symfony&amp;nbsp;2 Console&lt;/a&gt; component, the
+&lt;a href="http://drupalconsole.com/"&gt;Drupal Console&lt;/a&gt; is a scaffolding generator which allows developers to
+reduce development time by automating the generation of boilerplate code. The
+&lt;a href="https://www.drupal.org/project/webprofiler"&gt;Drupal Web Profiler&lt;/a&gt; is a port of the
+&lt;a href="https://github.com/symfony/WebProfilerBundle"&gt;Symfony&amp;nbsp;2 WebProfiler bundle&lt;/a&gt; as a Drupal&amp;nbsp;8 module providing a
+toolbar with convenient access to performance and profile information.&lt;/p&gt;
+&lt;div class="toc"&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#drupal-console"&gt;Drupal Console&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#commands-in-the-generate-namespace"&gt;Commands in the generate namespace&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#example-generating-a-module"&gt;Example: Generating a module&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#additional-commands"&gt;Additional commands&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#custom-commands"&gt;Custom commands&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#chain-command-execution"&gt;Chain command execution&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#web-profiler"&gt;Web Profiler&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#data-collectors"&gt;Data collectors&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#profiling-decoupled-or-headless-requests"&gt;Profiling decoupled (or headless) requests&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#web-profiler-console-commands"&gt;Web Profiler console commands&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#benchmark"&gt;benchmark&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#export"&gt;export&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#list"&gt;list&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#further-reading"&gt;Further reading&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;h2 id="drupal-console"&gt;Drupal Console&lt;/h2&gt;
+&lt;p&gt;The Drupal Console (&lt;a href="https://github.com/hechoendrupal/DrupalConsole"&gt;hechoendrupal/DrupalConsole&lt;/a&gt; on GitHub) is a
+&lt;a href="http://symfony.com/doc/current/components/console/introduction.html"&gt;Symfony&amp;nbsp;2 console application&lt;/a&gt; which provides a number of generators
+to assist developers in creating boilerplate code. In addition to increasing
+productivity Drupal Console is a valuable learning tool which allows developers
+to get up and running with best practice code by kick-starting a
+&lt;a href="https://www.drupal.org/node/2156625"&gt;PSR-4 compliant directory structure&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Commands are namespaced, the top-level namespaces currently being:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;cache&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;config&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;container&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;generate&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;migrate&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;module&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rest&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;router&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;site&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;test&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="commands-in-the-generate-namespace"&gt;Commands in the generate namespace&lt;/h3&gt;
+&lt;p&gt;Drupal Console currently has thirteen commands in the generate namespace: &lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;generate:authentication:provider&lt;/dt&gt;
+&lt;dd&gt;Generate an authentication provider.&lt;/dd&gt;
+&lt;dt&gt;generate:command&lt;/dt&gt;
+&lt;dd&gt;Generate commands for the console.&lt;/dd&gt;
+&lt;dt&gt;generate:controller&lt;/dt&gt;
+&lt;dd&gt;Generate &amp;amp; register a controller.&lt;/dd&gt;
+&lt;dt&gt;generate:entity&lt;/dt&gt;
+&lt;dd&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;generate:entity:config&lt;/strong&gt; Generate a new "EntityConfig".&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;generate:entity:content&lt;/strong&gt; Generate a new "EntityContent".&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/dd&gt;
+&lt;dt&gt;generate:form:config&lt;/dt&gt;
+&lt;dd&gt;Generate a new "ConfigFormBase".&lt;/dd&gt;
+&lt;dt&gt;generate:module&lt;/dt&gt;
+&lt;dd&gt;Generate a module.&lt;/dd&gt;
+&lt;dt&gt;generate:permissions&lt;/dt&gt;
+&lt;dd&gt;Generate module permissions.&lt;/dd&gt;
+&lt;dt&gt;generate:plugin&lt;/dt&gt;
+&lt;dd&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;generate:plugin:block&lt;/strong&gt; Generate a plugin block.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;generate:plugin:imageeffect&lt;/strong&gt; Generate image effect plugin.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;generate:plugin:rest:resource&lt;/strong&gt; Generate plugin rest resource.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;generate:plugin:rulesaction&lt;/strong&gt; Generate a plugin rule action.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/dd&gt;
+&lt;dt&gt;generate:service&lt;/dt&gt;
+&lt;dd&gt;Generate a service.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;h4 id="example-generating-a-module"&gt;Example: Generating a module&lt;/h4&gt;
+&lt;p&gt;The examples below demonstrate how a module is generated with &lt;code&gt;generate:module&lt;/code&gt;
+All other commands follow a similar pattern.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drupal generate:module
+
+&lt;span class="go"&gt; Welcome to the Drupal module generator&lt;/span&gt;
+
+&lt;span class="go"&gt;Enter the new module name: awesome&lt;/span&gt;
+&lt;span class="go"&gt;Enter the module machine name [awesome]: &lt;/span&gt;
+&lt;span class="go"&gt;Enter the module Path [/modules/custom]: &lt;/span&gt;
+&lt;span class="go"&gt;Enter module description [My Awesome Module]: &lt;/span&gt;
+&lt;span class="go"&gt;Enter package name [Other]: &lt;/span&gt;
+&lt;span class="go"&gt;Enter Drupal Core version [8.x]: &lt;/span&gt;
+&lt;span class="go"&gt;Do you want to generate a default Controller [no]? yes&lt;/span&gt;
+&lt;span class="go"&gt;Would you like to add module dependencies [yes]? no&lt;/span&gt;
+&lt;span class="go"&gt;Do you want to generate a unit test class [yes]? yes&lt;/span&gt;
+&lt;span class="go"&gt;Do you confirm generation [yes]? yes&lt;/span&gt;
+
+&lt;span class="go"&gt; Generated or updated files&lt;/span&gt;
+
+&lt;span class="go"&gt;Site path: /var/www/drupal8&lt;/span&gt;
+&lt;span class="go"&gt;1 - /modules/custom/awesome/awesome.info.yml&lt;/span&gt;
+&lt;span class="go"&gt;2 - /modules/custom/awesome/awesome.module&lt;/span&gt;
+&lt;span class="go"&gt;3 - /modules/custom/awesome/src/Controller/DefaultController.php&lt;/span&gt;
+&lt;span class="go"&gt;4 - /modules/custom/awesome/awesome.routing.yml&lt;/span&gt;
+&lt;span class="go"&gt;5 - /modules/custom/awesome/Tests/Controller/DefaultControllerTest.php&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Rather than using the default interactive prompt, options can be passed to the
+command.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drupal generate:module &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="go"&gt;--module=&amp;quot;awesome&amp;quot; \&lt;/span&gt;
+&lt;span class="go"&gt;--machine-name=&amp;quot;awesome&amp;quot; \&lt;/span&gt;
+&lt;span class="go"&gt;--module-path=&amp;quot;modules/custom&amp;quot; \&lt;/span&gt;
+&lt;span class="go"&gt;--description=&amp;quot;My Awesome Module&amp;quot; \&lt;/span&gt;
+&lt;span class="go"&gt;--core=&amp;quot;8.x&amp;quot; \&lt;/span&gt;
+&lt;span class="go"&gt;--package=&amp;quot;Other&amp;quot; \&lt;/span&gt;
+&lt;span class="go"&gt;--controller \&lt;/span&gt;
+&lt;span class="go"&gt;--dependencies&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="additional-commands"&gt;Additional commands&lt;/h3&gt;
+&lt;p&gt;In addition to commands in the generate namespace Drupal Console has many other
+commands. Run &lt;code&gt;drupal list&lt;/code&gt; to list available commands. Modules can define
+their own commands so the available commands may vary according to the modules
+installed.&lt;/p&gt;
+&lt;p&gt;Site status information may be viewed with the command &lt;code&gt;site:status&lt;/code&gt;,
+optionally passing the &lt;code&gt;--format=json&lt;/code&gt; option.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drupal site:status --format&lt;span class="o"&gt;=&lt;/span&gt;json
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Output of above command:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;quot;system&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;Drupal&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;8.0.0-dev&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;Access to update.php&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Protected&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;Configuration files&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Protected&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;Cron maintenance tasks&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Last run 44 min 45 sec ago&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;D3.js library&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Enabled&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;Database system&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;MySQL, MariaDB, Percona Server, or equivalent&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;Database system version&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;5.5.43-0+deb7u1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;Database updates&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Out of date&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;Drupal core update status&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;lt;a href=\&amp;quot;\/admin\/reports\/updates\&amp;quot;&amp;gt;Unknown release date (version 8.0.0-beta11 available)&amp;lt;\/a&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;File system&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Writable (&amp;lt;em&amp;gt;public&amp;lt;\/em&amp;gt; download method)&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;GD library&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;2.0.36&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;GD library PNG support&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;2.0.36&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;Image toolkit&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;gd&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;Module and theme update status&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;lt;a href=\&amp;quot;\/admin\/reports\/updates\&amp;quot;&amp;gt;Out of date&amp;lt;\/a&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;Node Access Permissions&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Disabled&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;PHP&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;5.4.41-0+deb7u1 (&amp;lt;a href=\&amp;quot;\/admin\/reports\/status\/php\&amp;quot;&amp;gt;more information&amp;lt;\/a&amp;gt;)&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;PHP extensions&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Enabled&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;PHP memory limit&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;-1 (Unlimited)&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;Search index progress&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;100% (0 remaining)&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;Trusted Host Settings&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Not enabled&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;Unicode library&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;PHP Mbstring Extension&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;Update notifications&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Enabled&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;Upload progress&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Not enabled&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;Web server&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;highlight.js library&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Enabled&amp;quot;&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;quot;database&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;Driver&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;mysql&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;Host&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;localhost&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;Database connection&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;drupal8&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;Port&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;Username&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;drupal8&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;Password&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;redacted&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;Connection&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;mysql\/\/drupal8:redacted@localhost\/drupal8&amp;quot;&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;quot;theme&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;theme_default&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;bartik&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;theme_admin&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;seven&amp;quot;&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;quot;directory&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;Site root directory&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;\/var\/www\/drupal8\/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;Site temporary directory&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;\/tmp&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;Default theme directory&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;\/core\/themes\/bartik&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;Admin theme directory&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;\/core\/themes\/seven&amp;quot;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="custom-commands"&gt;Custom commands&lt;/h3&gt;
+&lt;p&gt;Modules may define commands by extending
+&lt;code&gt;Symfony\Component\Console\Command\Command&lt;/code&gt;. Drupal Console can create
+scaffolding for a custom command with the command &lt;code&gt;generate:command&lt;/code&gt;.
+Refer to the &lt;a href="http://symfony.com/doc/current/components/console/introduction.html"&gt;Symfony&amp;nbsp;2 Console Component documentation&lt;/a&gt; for additional
+information. For an example implementation refer to the source code of Web
+Profiler &lt;code&gt;git clone http://git.drupal.org/project/webprofiler.git&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id="chain-command-execution"&gt;Chain command execution&lt;/h3&gt;
+&lt;p&gt;Commands may be recorded in YAML and executed with the &lt;code&gt;chain&lt;/code&gt; command:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;drupal chain --file&lt;span class="o"&gt;=&lt;/span&gt;~/d8-project-init.yml
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;In the example below a module will be created, followed by a controller for
+that module.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# d8-project-init.yml&lt;/span&gt;
+&lt;span class="l-Scalar-Plain"&gt;commands&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;command&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;generate:module&lt;/span&gt;
+      &lt;span class="l-Scalar-Plain"&gt;options&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+        &lt;span class="l-Scalar-Plain"&gt;module&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;awesome&lt;/span&gt;
+        &lt;span class="l-Scalar-Plain"&gt;machine-name&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;awesome&lt;/span&gt;
+        &lt;span class="l-Scalar-Plain"&gt;module-path&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;/modules/custom/&lt;/span&gt;
+        &lt;span class="l-Scalar-Plain"&gt;description&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;My Awesome module&lt;/span&gt;
+        &lt;span class="l-Scalar-Plain"&gt;core&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;8.x&lt;/span&gt;
+        &lt;span class="l-Scalar-Plain"&gt;package&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;Test&lt;/span&gt;
+        &lt;span class="l-Scalar-Plain"&gt;controller&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;false&lt;/span&gt;
+        &lt;span class="l-Scalar-Plain"&gt;dependencies&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+        &lt;span class="l-Scalar-Plain"&gt;test&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;false&lt;/span&gt;
+    &lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;command&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;generate:controller&lt;/span&gt;
+      &lt;span class="l-Scalar-Plain"&gt;options&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+        &lt;span class="l-Scalar-Plain"&gt;module&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;awesome&lt;/span&gt;
+        &lt;span class="l-Scalar-Plain"&gt;class-name&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;AwesomeController&lt;/span&gt;
+        &lt;span class="l-Scalar-Plain"&gt;method-name&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;index&lt;/span&gt;
+        &lt;span class="l-Scalar-Plain"&gt;route&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;/awesome/index&lt;/span&gt;
+        &lt;span class="l-Scalar-Plain"&gt;services&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;twig&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id="web-profiler"&gt;Web Profiler&lt;/h2&gt;
+&lt;p&gt;The &lt;a href="https://www.drupal.org/project/webprofiler"&gt;Drupal Web Profiler&lt;/a&gt; provides convenient access to a selection of
+performance and profile information on a per request basis.&lt;/p&gt;
+&lt;h3 id="data-collectors"&gt;Data collectors&lt;/h3&gt;
+&lt;p&gt;The Web Profiler provides a number of data collectors which include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PHP configuration&lt;/li&gt;
+&lt;li&gt;route and controller name&lt;/li&gt;
+&lt;li&gt;page load timeline and memory use&lt;/li&gt;
+&lt;li&gt;front-end statistics (timings for: DNS lookup time; TCP handshake; &lt;abbr title="Time to first byte"&gt;TTFB&lt;/abbr&gt;;
+      data download; and  DOM build)&lt;/li&gt;
+&lt;li&gt;database query time and number of queries&lt;/li&gt;
+&lt;li&gt;authentication details&lt;/li&gt;
+&lt;li&gt;number of views&lt;/li&gt;
+&lt;li&gt;number of blocks loaded and rendered&lt;/li&gt;
+&lt;li&gt;number of modules and themes available&lt;/li&gt;
+&lt;li&gt;cache statistics&lt;/li&gt;
+&lt;li&gt;asset statistics&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A summary of the data collected is displayed in the Web Profiler toolbar which
+is displayed along the lower edge of the viewport.&lt;/p&gt;
+&lt;figure&gt;
+    &lt;picture&gt;
+        &lt;source srcset="/images/drupal-8-webprofiler-toolbar-large.png"
+            media="(min-width: 950px)"/&gt;
+        &lt;img src="/images/drupal-8-webprofiler-toolbar-medium.png"
+            alt="Drupal 8 Web Profiler toolbar"/&gt;
+    &lt;/picture&gt;
+    &lt;figcaption&gt;The Drupal&amp;nbsp;8 Web Profiler toolbar.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Additional detail for each data collector may be viewed by clicking the
+relevant icon in the toolbar overlay. Below is the detailed report for the page
+load timeline.&lt;/p&gt;
+&lt;figure&gt;
+    &lt;picture&gt;
+        &lt;source srcset="/images/drupal-8-webprofiler-report-large.png"
+            media="(min-width: 950px)"/&gt;
+        &lt;source srcset="/images/drupal-8-webprofiler-report-medium.png"
+            media="(min-width: 600px)"/&gt;
+        &lt;img src="/images/drupal-8-webprofiler-report-small.png"
+            alt="Drupal 8 Web Profiler toolbar"/&gt;
+    &lt;/picture&gt;
+    &lt;figcaption&gt;Example of a Drupal&amp;nbsp;8 Web Profiler report timeline.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h3 id="profiling-decoupled-or-headless-requests"&gt;Profiling decoupled (or headless) requests&lt;/h3&gt;
+&lt;p&gt;The inclusion of a &lt;a href="https://www.drupal.org/developing/api/8/routing"&gt;HTTP routing framework&lt;/a&gt; and &lt;a href="https://www.drupal.org/documentation/modules/rest"&gt;REST API&lt;/a&gt; in
+Drupal&amp;nbsp;8 core will make make it significantly easier to develop decoupled
+applications using a client-side framework such as &lt;a href="http://emberjs.com/"&gt;ember.js&lt;/a&gt; which
+connects to a Drupal backend.&lt;/p&gt;
+&lt;p&gt;When profiling an API or headless request the Web Profiler toolbar is not
+available. However the profile data remains available for each request via a
+token and link provided in the HTTP response headers &lt;code&gt;X-Debug-Token&lt;/code&gt; and
+&lt;code&gt;X-Debug-Token-Link&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kr"&gt;HTTP&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="m"&gt;1.1&lt;/span&gt; &lt;span class="m"&gt;200&lt;/span&gt; &lt;span class="ne"&gt;OK&lt;/span&gt;
+&lt;span class="na"&gt;Date&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="l"&gt;Fri, 26 Jun 2015 23:53:36 GMT&lt;/span&gt;
+&lt;span class="na"&gt;Server&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="l"&gt;Apache/2.2.22 (Debian)&lt;/span&gt;
+&lt;span class="na"&gt;X-Generator&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="l"&gt;Drupal 8 (https://www.drupal.org)&lt;/span&gt;
+&lt;span class="err"&gt;⋮&lt;/span&gt;
+X-Debug-Token: 0ac668
+X-Debug-Token-Link: /admin/reports/profiler/view/0ac668
+⋮
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Visiting the X-Debug-Token-Link (in this case
+&lt;code&gt;/admin/reports/profiler/view/0ac668&lt;/code&gt;) will provide access to the report for
+the relevant request.&lt;/p&gt;
+&lt;h3 id="web-profiler-console-commands"&gt;Web Profiler console commands&lt;/h3&gt;
+&lt;p&gt;Web profiler provides three console commands:&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;webprofiler:benchmark&lt;/dt&gt;
+&lt;dd&gt;Benchmark a url.&lt;/dd&gt;
+&lt;dt&gt;webprofiler:export&lt;/dt&gt;
+&lt;dd&gt;Export Webprofiler profile(s) to file.&lt;/dd&gt;
+&lt;dt&gt;webprofiler:list&lt;/dt&gt;
+&lt;dd&gt;List Webprofiler profiles.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;h4 id="benchmark"&gt;benchmark&lt;/h4&gt;
+&lt;p&gt;Benchmark a URL.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drupal webprofiler:benchmark http://drupal8/
+&lt;span class="go"&gt; 105/105 [============================] 100% Done.                   &lt;/span&gt;
+&lt;span class="go"&gt;date: &amp;#39;Sun, 06/28/2015 - 21:00:43&amp;#39;&lt;/span&gt;
+&lt;span class="go"&gt;git_commit: &amp;quot;e39a32842072bfbaa2b15c5284625ff63ebc4a08\n&amp;quot;&lt;/span&gt;
+&lt;span class="go"&gt;number_of_runs: 100&lt;/span&gt;
+&lt;span class="go"&gt;url: &amp;#39;http://drupal8/&amp;#39;&lt;/span&gt;
+&lt;span class="go"&gt;results:&lt;/span&gt;
+&lt;span class="go"&gt;    average: { time: &amp;#39;340 ms&amp;#39;, memory: &amp;#39;38.8 MB&amp;#39; }&lt;/span&gt;
+&lt;span class="go"&gt;    median: { time: &amp;#39;336 ms&amp;#39;, memory: &amp;#39;38.8 MB&amp;#39; }&lt;/span&gt;
+&lt;span class="go"&gt;    95_percentile: { time: &amp;#39;326 ms&amp;#39;, memory: &amp;#39;38.8 MB&amp;#39; }&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4 id="export"&gt;export&lt;/h4&gt;
+&lt;p&gt;Export profile data to a file for later analysis.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drupal webprofiler:export --directory&lt;span class="o"&gt;=&lt;/span&gt;/tmp/
+&lt;span class="go"&gt; 266/266 [============================] 100% Done.                &lt;/span&gt;
+&lt;span class="go"&gt;Exported 264 profiles&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4 id="list"&gt;list&lt;/h4&gt;
+&lt;p&gt;List and filter profiles.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drupal webprofiler:list --url&lt;span class="o"&gt;=&lt;/span&gt;http://drupal8/ --method&lt;span class="o"&gt;=&lt;/span&gt;GET --limit&lt;span class="o"&gt;=&lt;/span&gt;5
+&lt;span class="go"&gt;+--------+-----------+--------+-----------------+----------------------------+&lt;/span&gt;
+&lt;span class="go"&gt;| Token  | IP        | Method | URL             | Time                       |&lt;/span&gt;
+&lt;span class="go"&gt;+--------+-----------+--------+-----------------+----------------------------+&lt;/span&gt;
+&lt;span class="go"&gt;| 6f6333 | 127.0.0.1 | GET    | http://drupal8/ | Sun, 06/28/2015 - 20:57:01 |&lt;/span&gt;
+&lt;span class="go"&gt;| 429e2e | 127.0.0.1 | GET    | http://drupal8/ | Sun, 06/28/2015 - 20:57:00 |&lt;/span&gt;
+&lt;span class="go"&gt;| dc1461 | 127.0.0.1 | GET    | http://drupal8/ | Sun, 06/28/2015 - 20:57:00 |&lt;/span&gt;
+&lt;span class="go"&gt;| d00a91 | 127.0.0.1 | GET    | http://drupal8/ | Sun, 06/28/2015 - 20:56:59 |&lt;/span&gt;
+&lt;span class="go"&gt;| ef359a | 127.0.0.1 | GET    | http://drupal8/ | Sun, 06/28/2015 - 20:56:59 |&lt;/span&gt;
+&lt;span class="go"&gt;+--------+-----------+--------+-----------------+----------------------------+&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id="further-reading"&gt;Further reading&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.gitbook.com/book/hechoendrupal/drupal-console/details"&gt;The Drupal Console book&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://symfony.com/doc/current/cookbook/profiler/data_collector.html"&gt;How to create a custom data collector&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://drupalize.me/blog/201401/introduction-restful-web-services-drupal-8"&gt;An introduction to RESTful web services in Drupal&amp;nbsp;8&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://pantheon.io/blog/headless-websites-whats-big-deal"&gt;Headless websites: What's the big deal?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="Drupal 8"></category><category term="Drupal"></category></entry><entry><title>Symfony 2 PDF service using LaTeX</title><link href="http://seth.fischer.nz/symfony-2-latex-pdf-service.html" rel="alternate"></link><updated>2015-04-19T20:11:00+12:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2015-04-19:symfony-2-latex-pdf-service.html</id><summary type="html">&lt;p&gt;Portable Document Format (PDF) has become a universally accepted format for
 sharing documentation. As a result, the dynamic generation of PDF documents
 is an expected feature of many web applications. After reviewing a number of
 libraries for generating PDF documents it was decided to write a service
