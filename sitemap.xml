@@ -4,140 +4,140 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>http://seth.fischer.nz/</loc>
-<lastmod>2015-07-07T21:22:05-00:00</lastmod>
+<loc>/</loc>
+<lastmod>2015-07-27T17:26:02-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://seth.fischer.nz/archives.html</loc>
-<lastmod>2015-07-07T21:22:05-00:00</lastmod>
+<loc>/archives.html</loc>
+<lastmod>2015-07-27T17:26:02-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://seth.fischer.nz/tags.html</loc>
-<lastmod>2015-07-07T21:22:05-00:00</lastmod>
+<loc>/tags.html</loc>
+<lastmod>2015-07-27T17:26:02-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://seth.fischer.nz/categories.html</loc>
-<lastmod>2015-07-07T21:22:05-00:00</lastmod>
+<loc>/categories.html</loc>
+<lastmod>2015-07-27T17:26:02-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://seth.fischer.nz/pages/about.html</loc>
-<lastmod>2015-07-07T21:22:05-00:00</lastmod>
+<loc>/pages/about.html</loc>
+<lastmod>2015-07-27T17:26:02-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://seth.fischer.nz/drupal-8-development-tools.html</loc>
+<loc>/drupal-8-development-tools.html</loc>
 <lastmod>2015-07-07T21:19:00+12:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>http://seth.fischer.nz/symfony-2-latex-pdf-service.html</loc>
+<loc>/symfony-2-latex-pdf-service.html</loc>
 <lastmod>2015-04-19T20:11:00+12:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>http://seth.fischer.nz/optimising-page-speed-case-study.html</loc>
+<loc>/optimising-page-speed-case-study.html</loc>
 <lastmod>2015-03-27T20:47:00+13:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>http://seth.fischer.nz/drupal-8-fabric-deploy.html</loc>
+<loc>/drupal-8-fabric-deploy.html</loc>
 <lastmod>2015-02-06T09:38:00+13:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>http://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merging.html</loc>
+<loc>/drupal-8-workflow-using-git-subtree-merging.html</loc>
 <lastmod>2015-01-23T19:20:00+13:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>http://seth.fischer.nz/drupal-8-getting-started.html</loc>
+<loc>/drupal-8-getting-started.html</loc>
 <lastmod>2014-11-29T20:33:00+13:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>http://seth.fischer.nz/category/drupal.html</loc>
+<loc>/category/drupal.html</loc>
 <lastmod>2015-07-07T21:19:00+11:39</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://seth.fischer.nz/category/misc.html</loc>
+<loc>/category/misc.html</loc>
 <lastmod>2015-03-27T20:47:00+11:39</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://seth.fischer.nz/category/symfony.html</loc>
+<loc>/category/symfony.html</loc>
 <lastmod>2015-04-19T20:11:00+11:39</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://seth.fischer.nz/tag/drupal.html</loc>
+<loc>/tag/drupal.html</loc>
 <lastmod>2015-07-07T21:19:00+11:39</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://seth.fischer.nz/tag/python.html</loc>
+<loc>/tag/python.html</loc>
 <lastmod>2015-02-06T09:38:00+11:39</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://seth.fischer.nz/tag/symfony-2.html</loc>
+<loc>/tag/symfony-2.html</loc>
 <lastmod>2015-04-19T20:11:00+11:39</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://seth.fischer.nz/tag/drupal-8.html</loc>
+<loc>/tag/drupal-8.html</loc>
 <lastmod>2015-07-07T21:19:00+11:39</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://seth.fischer.nz/tag/fabric.html</loc>
+<loc>/tag/fabric.html</loc>
 <lastmod>2015-02-06T09:38:00+11:39</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://seth.fischer.nz/author/seth-fischer.html</loc>
+<loc>/author/seth-fischer.html</loc>
 <lastmod>2015-07-07T21:19:00+11:39</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
