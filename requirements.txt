@@ -9,7 +9,7 @@ distribute==0.7.3
 docutils==0.12
 feedgenerator==1.7
 ghp-import==0.4.1
-pelican==3.6.0
+pelican==3.6.3
 pelican-githubprojects==0.1.1
 python-dateutil==2.4.2
 pytz==2015.4
