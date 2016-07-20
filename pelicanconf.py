@@ -63,7 +63,7 @@ MD_EXTENSIONS = [
 ]
 
 PLUGIN_PATHS = [
-    os.path.join(os.environ.get('HOME'), 'projects/pelican-plugins')
+    os.path.join(os.environ.get('HOME'), 'src/pelican-plugins')
 ]
 PLUGINS = [
     'assets',
@@ -101,7 +101,7 @@ ASSET_BUNDLES = (
     ], {}),
 )
 
-THEME = os.path.join(os.environ.get('HOME'), 'projects/pelican-bootstrap3')
+THEME = os.path.join(os.environ.get('HOME'), 'src/pelican-bootstrap3')
 
 CC_LICENSE_DERIVATIVES = 'Yes'
 CC_LICENSE_COMMERCIAL = 'Yes'
