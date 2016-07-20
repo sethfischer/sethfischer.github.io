@@ -1,7 +1,7 @@
 Title: About
 
 
-I may be contacted via [GitHub][1], [Bitbucket][2], [GitLab][3] or
+I may be contacted via [GitHub][1], [Bitbucket][2], [gitlab.com][3] or
 [drupal.org][4].
 
 
