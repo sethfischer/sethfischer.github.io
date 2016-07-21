@@ -15,6 +15,11 @@ Summary: Now that Drupal 8 is in beta phase it is a great time for site
     introduction to installing and configuring Drupal 8 using Git and Drush.
 
 
+Consider using a Composer based workflow with the
+[Composer template for Drupal projects][0].
+{: class="alert alert-danger" role="alert" }
+
+
 Now that [Drupal 8][1] is in beta phase it is time for site developers to start
 exploring the API. This article describes the installation and configuration of
 Drupal 8 using Git and Drush. Bear in mind that as of 2014-11-28 there were 22
@@ -233,6 +238,7 @@ above after updating Drupal core.
 *[LAMP]: Linux, Apache, MySQL, PHP
 *[LNMP]: Linux, nginx, MySQL, PHP
 
+[0]: https://github.com/drupal-composer/drupal-project
 [1]: https://www.drupal.org/drupal-8.0
 [2]: https://www.drupal.org/project/issues/search/drupal?project_issue_followers=&status%5B%5D=1&status%5B%5D=13&status%5B%5D=8&status%5B%5D=14&status%5B%5D=15&status%5B%5D=4&priorities%5B%5D=400&categories%5B%5D=1&categories%5B%5D=2&version%5B%5D=8.x&issue_tags_op=%3D&issue_tags=D8+upgrade+path
 [3]: https://wiki.debian.org/LaMp "Setting up a LAMP stack on Debian"
