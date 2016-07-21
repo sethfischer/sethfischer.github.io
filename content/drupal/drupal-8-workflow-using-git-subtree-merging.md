@@ -17,6 +17,12 @@ Summary: Often there are components of a Drupal website that should not be
     merged with git read-tree.
 
 
+Due to the non-linear development of Drupal&nbsp;8 the subtree merge strategy
+described in this article is not viable. Consider using the
+[Composer template for Drupal projects][0].
+{: class="alert alert-danger" role="alert" }
+
+
 Often there are components of a Drupal website that should not be located in
 the document root such as configuration files, deployment scripts, and
 functional tests. By utilising Git subtrees, a Drupal installation root (or web
@@ -255,6 +261,7 @@ Remember to rebuild the cache after each merge:
   * [How to use the subtree merge strategy][4]
   * [Deploying Drupal 8 with Fabric][5]
 
+[0]: https://github.com/drupal-composer/drupal-project
 [1]: https://wiki.debian.org/Permissions#Access_Control_Lists_in_Linux
 [2]: http://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging
 [3]: http://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging
