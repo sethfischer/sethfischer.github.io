@@ -140,7 +140,7 @@ site with the next core update.</p>
 <li>using composer, <a href="https://github.com/drush-ops/drush#installupdate---composer" title="How to install Drush 7.x (dev)">install Drush 7.x (dev)</a></li>
 </ul>
 <h2 id="clone-drupal-8">Clone Drupal 8</h2>
-<div class="highlight"><pre><span class="gp">$</span> git clone -b 8.0.x --single-branch http://git.drupal.org/project/drupal.git
+<div class="highlight"><pre><span></span><span class="gp">$</span> git clone -b 8.0.x --single-branch http://git.drupal.org/project/drupal.git
 <span class="gp">$</span> git remote rename origin upstream
 <span class="gp">$</span> git remote add origin <span class="o">[</span>url<span class="o">]</span>
 <span class="gp">$</span> git checkout -b master
@@ -149,7 +149,7 @@ site with the next core update.</p>
 
 
 <h2 id="create-the-files-directory-and-set-permissions">Create the files directory and set permissions</h2>
-<div class="highlight"><pre><span class="gp">$</span> mkdir sites/default/files
+<div class="highlight"><pre><span></span><span class="gp">$</span> mkdir sites/default/files
 </pre></div>
 
 
@@ -159,7 +159,7 @@ writeable both by the web server and command line user. An alternative to
 <p>Those familiar with the Symfony 2 documentation will recognise the following
 shell commands which have been adapted from the
 <a href="http://Symfony.com/doc/2.3/book/installation.html#configuration-and-set-up">Installing and Configuring Symfony</a> chapter of the The Symfony Book.</p>
-<div class="highlight"><pre><span class="gp">$</span> <span class="nv">HTTPDUSER</span><span class="o">=</span><span class="sb">`</span>ps aux <span class="p">|</span> grep -E <span class="s1">&#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&#39;</span> <span class="p">|</span> grep -v root <span class="p">|</span> head -1 <span class="p">|</span> cut -d<span class="se">\ </span> -f1<span class="sb">`</span>
+<div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nv">HTTPDUSER</span><span class="o">=</span><span class="sb">`</span>ps aux <span class="p">|</span> grep -E <span class="s1">&#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&#39;</span> <span class="p">|</span> grep -v root <span class="p">|</span> head -1 <span class="p">|</span> cut -d<span class="se">\ </span> -f1<span class="sb">`</span>
 <span class="gp">$</span> sudo setfacl -R -m u:<span class="s2">&quot;</span><span class="nv">$HTTPDUSER</span><span class="s2">&quot;</span>:rwX -m u:<span class="sb">`</span>whoami<span class="sb">`</span>:rwX sites/default/files
 <span class="gp">$</span> sudo setfacl -dR -m u:<span class="s2">&quot;</span><span class="nv">$HTTPDUSER</span><span class="s2">&quot;</span>:rwX -m u:<span class="sb">`</span>whoami<span class="sb">`</span>:rwX sites/default/files
 </pre></div>
@@ -167,7 +167,7 @@ shell commands which have been adapted from the
 
 <p><code>HTTPDUSER</code> is usually <code>www-data</code> on Debian-based distributions.</p>
 <p>Before setting the access control only the drush user will have <code>rw</code> permissions:</p>
-<div class="highlight"><pre><span class="gp">$</span> getfacl sites/default/files
+<div class="highlight"><pre><span></span><span class="gp">$</span> getfacl sites/default/files
 <span class="gp">#</span> file: cache
 <span class="gp">#</span> owner: drushuser
 <span class="gp">#</span> group: drushuser
@@ -179,7 +179,7 @@ shell commands which have been adapted from the
 
 <p>After setting the access control both the web server user and drush user will
 have <code>rw</code> permissions:</p>
-<div class="highlight"><pre><span class="gp">$</span> getfacl sites/default/files
+<div class="highlight"><pre><span></span><span class="gp">$</span> getfacl sites/default/files
 <span class="gp">#</span> file: cache
 <span class="gp">#</span> owner: drushuser
 <span class="gp">#</span> group: drushuser
@@ -199,7 +199,7 @@ have <code>rw</code> permissions:</p>
 
 
 <h2 id="create-database">Create database</h2>
-<div class="highlight"><pre><span class="gp">$</span> mysql -uroot -p
+<div class="highlight"><pre><span></span><span class="gp">$</span> mysql -uroot -p
 <span class="go">mysql&gt; CREATE DATABASE db;</span>
 <span class="go">mysql&gt; CREATE USER &#39;dbuser&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;password&#39;;</span>
 <span class="go">mysql&gt; GRANT ALL PRIVILEGES ON db.* TO &#39;dbuser&#39;@&#39;localhost&#39;;</span>
@@ -209,7 +209,7 @@ have <code>rw</code> permissions:</p>
 
 
 <h2 id="site-installation">Site installation</h2>
-<div class="highlight"><pre><span class="gp">$</span> drush site-install standard --db-url<span class="o">=</span>mysql://dbuser:password@localhost/db --site-name<span class="o">=</span>drupal8
+<div class="highlight"><pre><span></span><span class="gp">$</span> drush site-install standard --db-url<span class="o">=</span>mysql://dbuser:password@localhost/db --site-name<span class="o">=</span>drupal8
 <span class="gp">$</span> drush upwd admin --password<span class="o">=</span>password
 </pre></div>
 
@@ -217,13 +217,13 @@ have <code>rw</code> permissions:</p>
 <p>Drupal 8 beta is now configured and you may login with the username "admin" and
 password "password".</p>
 <h2 id="configure-a-drush-alias">Configure a Drush alias</h2>
-<div class="highlight"><pre><span class="gp">$</span> cp ~/.composer/vendor/drush/drush/examples/example.aliases.drushrc.php ~/.drush/aliases.drushrc.php
+<div class="highlight"><pre><span></span><span class="gp">$</span> cp ~/.composer/vendor/drush/drush/examples/example.aliases.drushrc.php ~/.drush/aliases.drushrc.php
 <span class="gp">$</span> drush site-alias @self --full --with-optional &gt;&gt; ~/.drush/aliases.drushrc.php
 </pre></div>
 
 
 <p>Edit <code>~/.drush/aliases.drushrc.php</code> and enter your site's URI.</p>
-<div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * Drupal 8 beta</span>
 <span class="sd"> */</span>
@@ -241,13 +241,13 @@ password "password".</p>
 
 
 <p>Check that your system meets the minimum core requirements:</p>
-<div class="highlight"><pre><span class="gp">$</span> drush @drupal8 core-requirements
+<div class="highlight"><pre><span></span><span class="gp">$</span> drush @drupal8 core-requirements
 </pre></div>
 
 
 <p>Check the status of the site installation by running <code>drush @drupal8 status</code>.
 The output will be similar to the following:</p>
-<div class="highlight"><pre><span class="gp">$</span> drush @drupal8 status
+<div class="highlight"><pre><span></span><span class="gp">$</span> drush @drupal8 status
 <span class="go"> Drupal version         :  8.0.0-dev</span>
 <span class="go"> Site URI               :  http://drupal8</span>
 <span class="go"> Database driver        :  mysql</span>
@@ -284,13 +284,13 @@ The output will be similar to the following:</p>
 <h2 id="install-contrib-modules">Install contrib modules</h2>
 <p>Two useful modules for developers are <a href="https://www.drupal.org/project/devel">devel</a> and <a href="https://www.drupal.org/project/examples">examples</a>.</p>
 <h3 id="devel">Devel</h3>
-<div class="highlight"><pre><span class="gp">$</span> drush @drupal8 pm-download devel
+<div class="highlight"><pre><span></span><span class="gp">$</span> drush @drupal8 pm-download devel
 <span class="gp">$</span> drush @drupal8 pm-enable devel
 </pre></div>
 
 
 <h3 id="examples">Examples</h3>
-<div class="highlight"><pre><span class="gp">$</span> drush @drupal8 pm-download examples
+<div class="highlight"><pre><span></span><span class="gp">$</span> drush @drupal8 pm-download examples
 <span class="gp">$</span> drush @drupal8 pm-enable examples
 </pre></div>
 
@@ -300,14 +300,14 @@ required) before enabling it.</p>
 <h2 id="regularly-update-drupal-core">Regularly update Drupal core</h2>
 <p>As Drupal 8 pushes on through beta releases you should regularly merge in the
 latest code:</p>
-<div class="highlight"><pre><span class="gp">(master)$</span> git checkout master
+<div class="highlight"><pre><span></span><span class="gp">(master)$</span> git checkout master
 <span class="gp">(master)$</span> git fetch upstream
 <span class="gp">(master)$</span> git merge upstream/8.0.x
 </pre></div>
 
 
 <p>Remember to rebuild the site after each merge:</p>
-<div class="highlight"><pre><span class="gp">$</span> drush cache-rebuild
+<div class="highlight"><pre><span></span><span class="gp">$</span> drush cache-rebuild
 </pre></div>
 
 
@@ -380,13 +380,18 @@ above after updating Drupal core.</p>
 </a>            <nav>
                 <ul class="list-group" id="tags">
                         <li class="list-group-item tag-1">
+                            <a href="http://seth.fischer.nz/tag/drupal.html">
+                                Drupal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-1">
                             <a href="http://seth.fischer.nz/tag/drupal-8.html">
                                 Drupal 8
                             </a>
                         </li>
-                        <li class="list-group-item tag-1">
-                            <a href="http://seth.fischer.nz/tag/drupal.html">
-                                Drupal
+                        <li class="list-group-item tag-4">
+                            <a href="http://seth.fischer.nz/tag/python.html">
+                                Python
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
@@ -397,11 +402,6 @@ above after updating Drupal core.</p>
                         <li class="list-group-item tag-4">
                             <a href="http://seth.fischer.nz/tag/fabric.html">
                                 Fabric
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://seth.fischer.nz/tag/python.html">
-                                Python
                             </a>
                         </li>
                 </ul>
@@ -490,10 +490,18 @@ above after updating Drupal core.</p>
                         <small>Customised Bootstrap 3 theme for http://seth.fischer.nz/.</small>
                     </dd>
                     <dt>
-                        <a href="https://github.com/sethfischer/phpstorm-ide-config">phpstorm-ide-config</a>
+                        <a href="https://github.com/sethfischer/puppet-dovecot">puppet-dovecot</a>
+                            <small>HTML</small>
                     </dt>
                     <dd>
-                        <small>PhpStorm code style configuration</small>
+                        <small>Puppet Dovecot Module for Dovecot 2+</small>
+                    </dd>
+                    <dt>
+                        <a href="https://github.com/sethfischer/riversbk">riversbk</a>
+                            <small>Python</small>
+                    </dt>
+                    <dd>
+                        <small>Wrapper scripts for rsnapshot</small>
                     </dd>
                     <dt>
                         <a href="https://github.com/sethfischer/sethfischer.github.io">sethfischer.github.io</a>

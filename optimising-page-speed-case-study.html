@@ -207,7 +207,7 @@ unused components from the build <code>bootstrap.min.css</code> was reduced from
 <a href="https://github.com/gruntjs/grunt-contrib-compass">grunt-contrib-compass</a> by Sindre Sorhus.</p>
 <p>Below is the <code>Gruntfile.js</code> for this theme which includes both a
 <code>grunt-webfont</code> task and a <code>grunt-contrib-compass</code> task.</p>
-<div class="highlight"><pre><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
     <span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
 
     <span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
@@ -269,7 +269,7 @@ process with <a href="https://github.com/kura/pelican-githubprojects">pelican-gi
 <p>By excluding the modules ajax, deprecated, offset, and effects, <code>jquery.min.js</code>
 was reduced from 84.2&nbsp;kB to 65.7&nbsp;kB.</p>
 <p>Below is the Grunt command used to build <code>jquery-custom.min.js</code>.</p>
-<div class="highlight"><pre><span class="go">jquery((2.1.3))$ grunt custom:-ajax,-deprecated,-offset,-effects</span>
+<div class="highlight"><pre><span></span><span class="go">jquery((2.1.3))$ grunt custom:-ajax,-deprecated,-offset,-effects</span>
 </pre></div>
 
 
@@ -284,7 +284,7 @@ was reduced from 84.2&nbsp;kB to 65.7&nbsp;kB.</p>
 <a href="https://github.com/getpelican/pelican-plugins">Pelican assets plug-in</a>.</p>
 <p>Five CSS files were merged into a single file and compressed with the
 <a href="http://yui.github.io/yuicompressor/">YUI Compressor</a>.</p>
-<div class="highlight"><pre><span class="cp">{%</span> <span class="k">assets</span> <span class="nv">filters</span><span class="o">=</span><span class="s2">&quot;yui_css&quot;</span><span class="o">,</span> <span class="nv">output</span><span class="o">=</span><span class="s2">&quot;css/styles.%(version)s.min.css&quot;</span><span class="o">,</span> <span class="s2">&quot;css/bootstrap-custom.css&quot;</span><span class="o">,</span> <span class="s2">&quot;css/font-custom.css&quot;</span><span class="o">,</span> <span class="s2">&quot;css/github-repos.css&quot;</span><span class="o">,</span> <span class="s2">&quot;css/style.css&quot;</span><span class="o">,</span> <span class="s2">&quot;pygments&quot;</span> <span class="cp">%}</span><span class="x"></span>
+<div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">assets</span> <span class="nv">filters</span><span class="o">=</span><span class="s2">&quot;yui_css&quot;</span><span class="o">,</span> <span class="nv">output</span><span class="o">=</span><span class="s2">&quot;css/styles.%(version)s.min.css&quot;</span><span class="o">,</span> <span class="s2">&quot;css/bootstrap-custom.css&quot;</span><span class="o">,</span> <span class="s2">&quot;css/font-custom.css&quot;</span><span class="o">,</span> <span class="s2">&quot;css/github-repos.css&quot;</span><span class="o">,</span> <span class="s2">&quot;css/style.css&quot;</span><span class="o">,</span> <span class="s2">&quot;pygments&quot;</span> <span class="cp">%}</span><span class="x"></span>
 <span class="x">    &lt;link href=&quot;</span><span class="cp">{{</span> <span class="nv">SITEURL</span> <span class="cp">}}</span><span class="x">/</span><span class="cp">{{</span> <span class="nv">ASSET_URL</span> <span class="cp">}}</span><span class="x">&quot; rel=&quot;stylesheet&quot; /&gt;</span>
 <span class="cp">{%</span> <span class="k">endassets</span> <span class="cp">%}</span><span class="x"></span>
 </pre></div>
@@ -292,7 +292,7 @@ was reduced from 84.2&nbsp;kB to 65.7&nbsp;kB.</p>
 
 <p>Three JavaScript files were merged and compressed, again with the YUI
 Compressor.</p>
-<div class="highlight"><pre><span class="cp">{%</span> <span class="k">assets</span> <span class="nv">filters</span><span class="o">=</span><span class="s2">&quot;yui_js&quot;</span><span class="o">,</span> <span class="nv">output</span><span class="o">=</span><span class="s2">&quot;js/scripts.%(version)s.min.js&quot;</span><span class="o">,</span> <span class="s2">&quot;js/jquery/jquery-custom.min.js&quot;</span><span class="o">,</span> <span class="s2">&quot;js/bootstrap/transition.js&quot;</span><span class="o">,</span> <span class="s2">&quot;js/bootstrap/collapse.js&quot;</span> <span class="cp">%}</span><span class="x"></span>
+<div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">assets</span> <span class="nv">filters</span><span class="o">=</span><span class="s2">&quot;yui_js&quot;</span><span class="o">,</span> <span class="nv">output</span><span class="o">=</span><span class="s2">&quot;js/scripts.%(version)s.min.js&quot;</span><span class="o">,</span> <span class="s2">&quot;js/jquery/jquery-custom.min.js&quot;</span><span class="o">,</span> <span class="s2">&quot;js/bootstrap/transition.js&quot;</span><span class="o">,</span> <span class="s2">&quot;js/bootstrap/collapse.js&quot;</span> <span class="cp">%}</span><span class="x"></span>
 <span class="x">    &lt;script src=&quot;</span><span class="cp">{{</span> <span class="nv">SITEURL</span> <span class="cp">}}</span><span class="x">/</span><span class="cp">{{</span> <span class="nv">ASSET_URL</span> <span class="cp">}}</span><span class="x">&quot;&gt;&lt;/script&gt;</span>
 <span class="cp">{%</span> <span class="k">endassets</span> <span class="cp">%}</span><span class="x"></span>
 </pre></div>
@@ -529,13 +529,18 @@ following dependencies:</p>
 </a>            <nav>
                 <ul class="list-group" id="tags">
                         <li class="list-group-item tag-1">
+                            <a href="http://seth.fischer.nz/tag/drupal.html">
+                                Drupal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-1">
                             <a href="http://seth.fischer.nz/tag/drupal-8.html">
                                 Drupal 8
                             </a>
                         </li>
-                        <li class="list-group-item tag-1">
-                            <a href="http://seth.fischer.nz/tag/drupal.html">
-                                Drupal
+                        <li class="list-group-item tag-4">
+                            <a href="http://seth.fischer.nz/tag/python.html">
+                                Python
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
@@ -546,11 +551,6 @@ following dependencies:</p>
                         <li class="list-group-item tag-4">
                             <a href="http://seth.fischer.nz/tag/fabric.html">
                                 Fabric
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://seth.fischer.nz/tag/python.html">
-                                Python
                             </a>
                         </li>
                 </ul>
@@ -639,10 +639,18 @@ following dependencies:</p>
                         <small>Customised Bootstrap 3 theme for http://seth.fischer.nz/.</small>
                     </dd>
                     <dt>
-                        <a href="https://github.com/sethfischer/phpstorm-ide-config">phpstorm-ide-config</a>
+                        <a href="https://github.com/sethfischer/puppet-dovecot">puppet-dovecot</a>
+                            <small>HTML</small>
                     </dt>
                     <dd>
-                        <small>PhpStorm code style configuration</small>
+                        <small>Puppet Dovecot Module for Dovecot 2+</small>
+                    </dd>
+                    <dt>
+                        <a href="https://github.com/sethfischer/riversbk">riversbk</a>
+                            <small>Python</small>
+                    </dt>
+                    <dd>
+                        <small>Wrapper scripts for rsnapshot</small>
                     </dd>
                     <dt>
                         <a href="https://github.com/sethfischer/sethfischer.github.io">sethfischer.github.io</a>

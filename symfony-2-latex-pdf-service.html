@@ -176,7 +176,7 @@ meta-package. Some LaTeX documents require multiple passes with <code>pdflatex</
 process which is automated with the script <code>rubber-pipe</code>. </p>
 <p>LaTeX and <code>rubber-pipe</code> may be installed on Debian-based distributions with the
 following commands:</p>
-<div class="highlight"><pre><span class="gp">$</span> sudo apt-get install texlive-full
+<div class="highlight"><pre><span></span><span class="gp">$</span> sudo apt-get install texlive-full
 <span class="gp">$</span> sudo apt-get install rubber
 </pre></div>
 
@@ -206,29 +206,29 @@ defined in the <a href="http://yaml.org/">YAML</a> below: 1. <code>electrotech.t
 provides a Twig filer to escape LaTeX special characters; and 2.
 <code>electrotech.pdf.pdflatex</code>, the PDF LaTeX service itself.</p>
 <p>For convenience the <code>rubber-pipe</code> binary is defined as a parameter.</p>
-<div class="highlight"><pre><span class="c1"># src/Electrotech/WeldqualBundle/Resources/config/services.yml</span>
+<div class="highlight"><pre><span></span><span class="c1"># src/Electrotech/WeldqualBundle/Resources/config/services.yml</span>
 
-<span class="l-Scalar-Plain">parameters</span><span class="p-Indicator">:</span>
-    <span class="l-Scalar-Plain">electrotech.twig.ib2020_extension.class</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Electrotech\WeldqualBundle\Twig\Ib2020Extension</span>
-    <span class="l-Scalar-Plain">electrotech.pdf.pdflatex.rubber-pipe</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/usr/bin/rubber-pipe</span>
+<span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">electrotech.twig.ib2020_extension.class</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Electrotech\WeldqualBundle\Twig\Ib2020Extension</span>
+    <span class="l l-Scalar l-Scalar-Plain">electrotech.pdf.pdflatex.rubber-pipe</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/usr/bin/rubber-pipe</span>
 
-<span class="l-Scalar-Plain">services</span><span class="p-Indicator">:</span>
-    <span class="l-Scalar-Plain">electrotech.twig.ib2020_extension</span><span class="p-Indicator">:</span>
-        <span class="l-Scalar-Plain">class</span><span class="p-Indicator">:</span> <span class="err">%</span><span class="l-Scalar-Plain">electrotech.twig.ib2020_extension.class%</span>
-        <span class="l-Scalar-Plain">arguments</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="err">%</span><span class="nv">kernel.bundles%</span><span class="p-Indicator">]</span>
-        <span class="l-Scalar-Plain">tags</span><span class="p-Indicator">:</span>
-            <span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">name</span><span class="p-Indicator">:</span> <span class="nv">twig.extension</span> <span class="p-Indicator">}</span>
+<span class="l l-Scalar l-Scalar-Plain">services</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">electrotech.twig.ib2020_extension</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">class</span><span class="p p-Indicator">:</span> <span class="err">%</span><span class="l l-Scalar l-Scalar-Plain">electrotech.twig.ib2020_extension.class%</span>
+        <span class="l l-Scalar l-Scalar-Plain">arguments</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="err">%</span><span class="nv">kernel.bundles%</span><span class="p p-Indicator">]</span>
+        <span class="l l-Scalar l-Scalar-Plain">tags</span><span class="p p-Indicator">:</span>
+            <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span> <span class="nv">name</span><span class="p p-Indicator">:</span> <span class="nv">twig.extension</span> <span class="p p-Indicator">}</span>
 
-    <span class="l-Scalar-Plain">electrotech.pdf.pdflatex</span><span class="p-Indicator">:</span>
-        <span class="l-Scalar-Plain">class</span><span class="p-Indicator">:</span>        <span class="l-Scalar-Plain">Electrotech\WeldqualBundle\Pdf\Pdflatex</span>
-        <span class="l-Scalar-Plain">arguments</span><span class="p-Indicator">:</span>    <span class="p-Indicator">[</span><span class="err">%</span><span class="nv">electrotech.pdf.pdflatex.rubber-pipe%</span><span class="p-Indicator">]</span>
+    <span class="l l-Scalar l-Scalar-Plain">electrotech.pdf.pdflatex</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">class</span><span class="p p-Indicator">:</span>        <span class="l l-Scalar l-Scalar-Plain">Electrotech\WeldqualBundle\Pdf\Pdflatex</span>
+        <span class="l l-Scalar l-Scalar-Plain">arguments</span><span class="p p-Indicator">:</span>    <span class="p p-Indicator">[</span><span class="err">%</span><span class="nv">electrotech.pdf.pdflatex.rubber-pipe%</span><span class="p p-Indicator">]</span>
 </pre></div>
 
 
 <h3 id="service-object">Service object</h3>
 <p>An instance of the class <code>Pdflatex</code> provides the service. <code>Pdflatex</code> takes a
 LaTeX source document and returns a PDF document.</p>
-<div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 <span class="c1">// src/Electrotech/WeldqualBundle/Pdf/Pdflatex.php</span>
 
 <span class="k">namespace</span> <span class="nx">Electrotech\WeldqualBundle\Pdf</span><span class="p">;</span>
@@ -414,7 +414,7 @@ LaTeX source document and returns a PDF document.</p>
 <h3 id="twig-template">Twig template</h3>
 <p>A <a href="http://twig.sensiolabs.org/">Twig</a> template <code>show.tex.twig</code> is used to generate the LaTeX source
 document.</p>
-<div class="highlight"><pre><span class="c">% src/Electrotech/WeldqualBundle/Resources/views/Testweld/show.tex.twig</span>
+<div class="highlight"><pre><span></span><span class="c">% src/Electrotech/WeldqualBundle/Resources/views/Testweld/show.tex.twig</span>
 
 <span class="c">% This template has been simplified for the sake of brevity.</span>
 
@@ -492,7 +492,7 @@ document.</p>
 
 <p>A <a href="http://twig.sensiolabs.org/doc/advanced.html#filters">custom Twig filter</a> <code>e_latex</code> is used to escape LaTeX special
 characters. Custom Twig filters are created by extending <code>Twig_Extension</code>.</p>
-<div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 <span class="c1">// src/Electrotech/WeldqualBundle/Twig/Ib2020Extension.php</span>
 
 <span class="k">namespace</span> <span class="nx">Electrotech\WeldqualBundle\Twig</span><span class="p">;</span>
@@ -560,7 +560,7 @@ characters. Custom Twig filters are created by extending <code>Twig_Extension</c
 <p>The service is used in the controller by passing a certificate ID to the method
 <code>pdfAction()</code>. The LaTeX source document is then generated by the method
 <code>latexSource()</code>.</p>
-<div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 <span class="c1">// Utilising the PDF LaTeX service</span>
 <span class="nv">$pdflatex</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;electrotech.pdf.pdflatex&#39;</span><span class="p">);</span>
 <span class="nv">$pdflatex</span><span class="o">-&gt;</span><span class="na">setTexSource</span><span class="p">(</span><span class="nv">$latexSource</span><span class="p">);</span>
@@ -569,7 +569,7 @@ characters. Custom Twig filters are created by extending <code>Twig_Extension</c
 
 
 <p>Below is an example of how this service is used in a controller.</p>
-<div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 <span class="c1">// src/Electrotech/WeldqualBundle/Controller/TestweldController.php</span>
 
 <span class="k">namespace</span> <span class="nx">Electrotech\WeldqualBundle\Controller</span><span class="p">;</span>
@@ -742,13 +742,18 @@ characters. Custom Twig filters are created by extending <code>Twig_Extension</c
 </a>            <nav>
                 <ul class="list-group" id="tags">
                         <li class="list-group-item tag-1">
+                            <a href="http://seth.fischer.nz/tag/drupal.html">
+                                Drupal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-1">
                             <a href="http://seth.fischer.nz/tag/drupal-8.html">
                                 Drupal 8
                             </a>
                         </li>
-                        <li class="list-group-item tag-1">
-                            <a href="http://seth.fischer.nz/tag/drupal.html">
-                                Drupal
+                        <li class="list-group-item tag-4">
+                            <a href="http://seth.fischer.nz/tag/python.html">
+                                Python
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
@@ -759,11 +764,6 @@ characters. Custom Twig filters are created by extending <code>Twig_Extension</c
                         <li class="list-group-item tag-4">
                             <a href="http://seth.fischer.nz/tag/fabric.html">
                                 Fabric
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://seth.fischer.nz/tag/python.html">
-                                Python
                             </a>
                         </li>
                 </ul>
@@ -852,10 +852,18 @@ characters. Custom Twig filters are created by extending <code>Twig_Extension</c
                         <small>Customised Bootstrap 3 theme for http://seth.fischer.nz/.</small>
                     </dd>
                     <dt>
-                        <a href="https://github.com/sethfischer/phpstorm-ide-config">phpstorm-ide-config</a>
+                        <a href="https://github.com/sethfischer/puppet-dovecot">puppet-dovecot</a>
+                            <small>HTML</small>
                     </dt>
                     <dd>
-                        <small>PhpStorm code style configuration</small>
+                        <small>Puppet Dovecot Module for Dovecot 2+</small>
+                    </dd>
+                    <dt>
+                        <a href="https://github.com/sethfischer/riversbk">riversbk</a>
+                            <small>Python</small>
+                    </dt>
+                    <dd>
+                        <small>Wrapper scripts for rsnapshot</small>
                     </dd>
                     <dt>
                         <a href="https://github.com/sethfischer/sethfischer.github.io">sethfischer.github.io</a>

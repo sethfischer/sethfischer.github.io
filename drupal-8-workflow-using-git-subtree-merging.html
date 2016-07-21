@@ -108,7 +108,10 @@ sethfischer            </a>
 
     
 </footer><!-- /.post-info -->        <div class="entry-content">
-            <p>Often there are components of a Drupal website that should not be located in
+            <p class="alert alert-danger" role="alert">Due to the non-linear development of Drupal&nbsp;8 the subtree merge strategy
+described in this article is not viable. Consider using the
+<a href="https://github.com/drupal-composer/drupal-project">Composer template for Drupal projects</a>.</p>
+<p>Often there are components of a Drupal website that should not be located in
 the document root such as configuration files, deployment scripts, and
 functional tests. By utilising Git subtrees, a Drupal installation root (or web
 server document root) may be below the root of the main repository, and
@@ -134,8 +137,8 @@ upstream changes to Drupal core may be conveniently merged with
 <h2 id="initialise-git-repository">Initialise Git repository</h2>
 <p>Initialise Git repository and add your <code>.gitignore</code>, <code>README</code>, and <code>LICENSE</code>
 files.</p>
-<div class="highlight"><pre><span class="gp">$</span> mkdir myproject
-<span class="gp">$</span> <span class="nb">cd </span>myproject
+<div class="highlight"><pre><span></span><span class="gp">$</span> mkdir myproject
+<span class="gp">$</span> <span class="nb">cd</span> myproject
 <span class="gp">$</span> git init
 <span class="go">Initialized empty Git repository in /var/www/myproject/.git/</span>
 <span class="gp">$</span> vi README.md
@@ -151,14 +154,14 @@ files.</p>
 <p>Add the drupal.org git repository as a remote with the name <code>upstream</code>. To
 improve efficiency specify that only the <code>8.0.x</code> branch is to be tracked with
 the <code>-t</code> option.</p>
-<div class="highlight"><pre><span class="gp">$</span> git remote add -t 8.0.x upstream http://git.drupal.org/project/drupal.git
+<div class="highlight"><pre><span></span><span class="gp">$</span> git remote add -t 8.0.x upstream http://git.drupal.org/project/drupal.git
 <span class="gp">$</span> git fetch upstream
 </pre></div>
 
 
 <h2 id="checkout-a-local-copy-of-the-upstream-branch">Checkout a local copy of the upstream branch</h2>
 <p>Checkout a local copy of the <code>upstream/8.0.x</code> branch.</p>
-<div class="highlight"><pre><span class="gp">$</span> git checkout -b upstream upstream/8.0.x
+<div class="highlight"><pre><span></span><span class="gp">$</span> git checkout -b upstream upstream/8.0.x
 <span class="go">Branch upstream set up to track remote branch 8.0.x from upstream by rebasing.</span>
 <span class="go">Switched to a new branch &#39;upstream&#39;</span>
 </pre></div>
@@ -168,17 +171,17 @@ the <code>-t</code> option.</p>
 <p>The <code>upstream/8.0.x</code> branch is pulled in as a subdirectory of the master
 branch using the <code>git read-tree</code> command. The name of the subdirectory is
 specified with the <code>--prefix</code> option; in this case <code>drupal/</code>.</p>
-<div class="highlight"><pre><span class="gp">$</span> git checkout master
+<div class="highlight"><pre><span></span><span class="gp">$</span> git checkout master
 <span class="gp">$</span> git merge -s ours --no-commit upstream/8.0.x
 <span class="go">Automatic merge went well; stopped before committing as requested</span>
-<span class="gp">$</span> git <span class="nb">read</span>-tree --prefix<span class="o">=</span>drupal/ -u upstream/8.0.x
+<span class="gp">$</span> git read-tree --prefix<span class="o">=</span>drupal/ -u upstream/8.0.x
 <span class="gp">$</span> git commit
 <span class="go">[master bd410e7] Merge remote-tracking branch &#39;upstream/8.0.x&#39;</span>
 </pre></div>
 
 
 <p>The upstream branch will now be a subdirectory of the master branch.</p>
-<div class="highlight"><pre><span class="gp">$</span> tree -L 2
+<div class="highlight"><pre><span></span><span class="gp">$</span> tree -L 2
 <span class="go">.</span>
 <span class="go">|-- drupal</span>
 <span class="go">|   |-- composer.json</span>
@@ -201,9 +204,9 @@ specified with the <code>--prefix</code> option; in this case <code>drupal/</cod
 <h2 id="create-a-gitingore-for-drupal-core">Create a .gitingore for Drupal core</h2>
 <p>Drupal core has an example .gitignore file which provides an excellent starting
 point and is sufficient for most projects.</p>
-<div class="highlight"><pre><span class="nv">$ </span>cp drupal/example.gitignore drupal/.gitignore
-<span class="nv">$ </span>git add drupal/.gitignore
-<span class="nv">$ </span>git commit -m <span class="s2">&quot;Add .gitignore for Drupal core&quot;</span>
+<div class="highlight"><pre><span></span>$ cp drupal/example.gitignore drupal/.gitignore
+$ git add drupal/.gitignore
+$ git commit -m <span class="s2">&quot;Add .gitignore for Drupal core&quot;</span>
 </pre></div>
 
 
@@ -213,7 +216,7 @@ directories may be commited to the repository without exposing them to the web
 server.</p>
 <p>In this example — when configuring the web server — the document root will be
 set to <code>/var/www/myproject/drupal</code>.</p>
-<div class="highlight"><pre><span class="gp">$</span> mkdir -p config/active config/staging config/deploy
+<div class="highlight"><pre><span></span><span class="gp">$</span> mkdir -p config/active config/staging config/deploy
 <span class="gp">$</span> tree -L 2
 <span class="go">.</span>
 <span class="go">|-- config</span>
@@ -240,14 +243,14 @@ set to <code>/var/www/myproject/drupal</code>.</p>
 
 <h2 id="create-the-files-directory-and-set-permissions">Create the files directory and set permissions</h2>
 <p>The Drupal <code>files</code> directory must be manually created.</p>
-<div class="highlight"><pre><span class="gp">$</span> mkdir drupal/sites/default/files
+<div class="highlight"><pre><span></span><span class="gp">$</span> mkdir drupal/sites/default/files
 </pre></div>
 
 
 <p>To work efficiently with drush the files in <code>sites/default/files</code> should be
 writeable both by the web server and command-line user. An alternative to
 <code>chmod -R 777 sites/default/files</code> is to use <a href="https://wiki.debian.org/Permissions#Access_Control_Lists_in_Linux">Access Control Lists</a>.</p>
-<div class="highlight"><pre><span class="gp">$</span> <span class="nv">HTTPDUSER</span><span class="o">=</span><span class="sb">`</span>ps aux <span class="p">|</span> grep -E <span class="s1">&#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&#39;</span> <span class="p">|</span> <span class="se">\</span>
+<div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nv">HTTPDUSER</span><span class="o">=</span><span class="sb">`</span>ps aux <span class="p">|</span> grep -E <span class="s1">&#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&#39;</span> <span class="p">|</span> <span class="se">\</span>
 <span class="go">grep -v root | head -1 | cut -d\  -f1`</span>
 <span class="gp">$</span> sudo setfacl -R -m u:<span class="s2">&quot;</span><span class="nv">$HTTPDUSER</span><span class="s2">&quot;</span>:rwX -m u:<span class="sb">`</span>whoami<span class="sb">`</span>:rwX drupal/sites/default/files
 <span class="gp">$</span> sudo setfacl -dR -m u:<span class="s2">&quot;</span><span class="nv">$HTTPDUSER</span><span class="s2">&quot;</span>:rwX -m u:<span class="sb">`</span>whoami<span class="sb">`</span>:rwX drupal/sites/default/files
@@ -258,7 +261,7 @@ writeable both by the web server and command-line user. An alternative to
 <p>It may be convenient to add similar ACL permissions to the <code>config/active</code>,
 <code>config/staging</code>, and <code>config/deploy</code> directories.</p>
 <h2 id="create-database">Create database</h2>
-<div class="highlight"><pre><span class="gp">$</span> mysql -uroot -p
+<div class="highlight"><pre><span></span><span class="gp">$</span> mysql -uroot -p
 <span class="go">mysql&gt; CREATE DATABASE db;</span>
 <span class="go">mysql&gt; CREATE USER &#39;dbuser&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;password&#39;;</span>
 <span class="go">mysql&gt; GRANT ALL PRIVILEGES ON db.* TO &#39;dbuser&#39;@&#39;localhost&#39;;</span>
@@ -270,7 +273,7 @@ writeable both by the web server and command-line user. An alternative to
 <h2 id="site-installation">Site installation</h2>
 <p>Install the site with the standard install profile and change the admin
 password.</p>
-<div class="highlight"><pre><span class="gp">$</span> <span class="nb">cd </span>drupal
+<div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> drupal
 <span class="gp">$</span> drush site-install standard --db-url<span class="o">=</span>mysql://dbuser:password@localhost/db <span class="se">\</span>
 <span class="go">--site-name=drupal8</span>
 <span class="gp">$</span> drush upwd admin --password<span class="o">=</span>password
@@ -280,7 +283,7 @@ password.</p>
 <h2 id="drupal-configuration-directories">Drupal configuration directories</h2>
 <p>Edit <code>sites/default/settings.php</code> and update the location of the configuration
 directories.</p>
-<div class="highlight"><pre><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="c1">// Default config directories provided by the installer.</span>
 <span class="nv">$config_directories</span><span class="p">[</span><span class="s1">&#39;active&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;../config/active&#39;</span><span class="p">;</span>
@@ -294,7 +297,7 @@ directories.</p>
 <h2 id="export-configuration">Export configuration</h2>
 <p>Export the configuration from the database into the <code>deploy</code> configuration 
 directory.</p>
-<div class="highlight"><pre><span class="gp">$</span> <span class="nb">cd </span>drupal/
+<div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> drupal/
 <span class="gp">$</span> drush config-export deploy
 <span class="go">Configuration successfully exported to ../config/deploy.             [success]</span>
 </pre></div>
@@ -306,14 +309,14 @@ command <code>drush config-import deploy</code>.</p>
 <h2 id="update-drupal-core">Update Drupal core</h2>
 <p>To merge upstream change to Drupal core the <a href="http://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging">Git subtree merge strategy</a> is
 used.</p>
-<div class="highlight"><pre><span class="gp">$</span> git pull -s subtree upstream 8.0.x
+<div class="highlight"><pre><span></span><span class="gp">$</span> git pull -s subtree upstream 8.0.x
 </pre></div>
 
 
 <p>The above command will merge the history of <code>upstream</code> with the main
 repository. If it is not preferable to merge histories the <code>--squash</code> and
 <code>--no-commit</code> options can be used along with the <code>-s subtree</code> strategy option:</p>
-<div class="highlight"><pre><span class="gp">$</span> git checkout master
+<div class="highlight"><pre><span></span><span class="gp">$</span> git checkout master
 <span class="gp">$</span> git merge --squash -s subtree --no-commit upstream
 <span class="go">Squash commit -- not updating HEAD</span>
 <span class="go">Automatic merge went well; stopped before committing as requested</span>
@@ -321,7 +324,7 @@ repository. If it is not preferable to merge histories the <code>--squash</code>
 
 
 <p>Remember to rebuild the cache after each merge:</p>
-<div class="highlight"><pre><span class="gp">$</span> drush cache-rebuild
+<div class="highlight"><pre><span></span><span class="gp">$</span> drush cache-rebuild
 </pre></div>
 
 
@@ -392,13 +395,18 @@ repository. If it is not preferable to merge histories the <code>--squash</code>
 </a>            <nav>
                 <ul class="list-group" id="tags">
                         <li class="list-group-item tag-1">
+                            <a href="http://seth.fischer.nz/tag/drupal.html">
+                                Drupal
+                            </a>
+                        </li>
+                        <li class="list-group-item tag-1">
                             <a href="http://seth.fischer.nz/tag/drupal-8.html">
                                 Drupal 8
                             </a>
                         </li>
-                        <li class="list-group-item tag-1">
-                            <a href="http://seth.fischer.nz/tag/drupal.html">
-                                Drupal
+                        <li class="list-group-item tag-4">
+                            <a href="http://seth.fischer.nz/tag/python.html">
+                                Python
                             </a>
                         </li>
                         <li class="list-group-item tag-4">
@@ -409,11 +417,6 @@ repository. If it is not preferable to merge histories the <code>--squash</code>
                         <li class="list-group-item tag-4">
                             <a href="http://seth.fischer.nz/tag/fabric.html">
                                 Fabric
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://seth.fischer.nz/tag/python.html">
-                                Python
                             </a>
                         </li>
                 </ul>
@@ -502,10 +505,18 @@ repository. If it is not preferable to merge histories the <code>--squash</code>
                         <small>Customised Bootstrap 3 theme for http://seth.fischer.nz/.</small>
                     </dd>
                     <dt>
-                        <a href="https://github.com/sethfischer/phpstorm-ide-config">phpstorm-ide-config</a>
+                        <a href="https://github.com/sethfischer/puppet-dovecot">puppet-dovecot</a>
+                            <small>HTML</small>
                     </dt>
                     <dd>
-                        <small>PhpStorm code style configuration</small>
+                        <small>Puppet Dovecot Module for Dovecot 2+</small>
+                    </dd>
+                    <dt>
+                        <a href="https://github.com/sethfischer/riversbk">riversbk</a>
+                            <small>Python</small>
+                    </dt>
+                    <dd>
+                        <small>Wrapper scripts for rsnapshot</small>
                     </dd>
                     <dt>
                         <a href="https://github.com/sethfischer/sethfischer.github.io">sethfischer.github.io</a>
