@@ -1,5 +1,5 @@
 Jinja2==2.9.5
-Markdown==2.6.6
+Markdown==2.6.8
 MarkupSafe==0.23
 Pygments==2.2.0
 Unidecode==0.04.20
