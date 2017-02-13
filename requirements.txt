@@ -13,6 +13,6 @@ pelican-githubprojects==0.1.1
 python-dateutil==2.6.0
 pytz==2016.10
 six==1.10.0
-webassets==0.11.1
+webassets==0.12.1
 wsgiref==0.1.2
 yuicompressor==2.4.8
