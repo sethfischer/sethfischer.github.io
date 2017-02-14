@@ -56,11 +56,14 @@ EXTRA_PATH_METADATA = {
 
 READERS = {"html": None}
 
-MD_EXTENSIONS = [
-    'toc',
-    'codehilite(css_class=highlight)',
-    'extra',
-]
+MARKDOWN = {
+    'extension_configs': {
+        'markdown.extensions.codehilite': {'css_class': 'highlight'},
+        'markdown.extensions.extra': {},
+        'markdown.extensions.toc': {},
+    },
+    'output_format': 'html5',
+}
 
 PLUGIN_PATHS = [
     os.path.join(os.environ.get('HOME'), 'src/pelican-plugins')
