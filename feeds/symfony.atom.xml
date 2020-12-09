@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>sethfischer</title><link href="http://seth.fischer.nz/" rel="alternate"></link><link href="http://seth.fischer.nz/feeds/symfony.atom.xml" rel="self"></link><id>http://seth.fischer.nz/</id><updated>2015-04-19T20:11:00+12:00</updated><entry><title>Symfony 2 PDF service using LaTeX</title><link href="http://seth.fischer.nz/symfony-2-latex-pdf-service.html" rel="alternate"></link><published>2015-04-19T20:11:00+12:00</published><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2015-04-19:symfony-2-latex-pdf-service.html</id><summary type="html">&lt;p&gt;Portable Document Format (PDF) has become a universally accepted format for
+<feed xmlns="http://www.w3.org/2005/Atom"><title>sethfischer - Symfony</title><link href="http://seth.fischer.nz/" rel="alternate"></link><link href="http://seth.fischer.nz/feeds/symfony.atom.xml" rel="self"></link><id>http://seth.fischer.nz/</id><updated>2015-04-19T20:11:00+12:00</updated><entry><title>Symfony 2 PDF service using LaTeX</title><link href="http://seth.fischer.nz/symfony-2-latex-pdf-service.html" rel="alternate"></link><published>2015-04-19T20:11:00+12:00</published><updated>2015-04-19T20:11:00+12:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2015-04-19:/symfony-2-latex-pdf-service.html</id><summary type="html">&lt;p&gt;Portable Document Format (PDF) has become a universally accepted
+format for sharing documentation making the dynamic generation of PDF
+documents an expected feature of many web applications. After reviewing a
+number of libraries for generating PDF documents it was decided to write a
+service wrapping LaTeX; a typesetting system with features suited to the
+production of scientific and technical documentation.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Portable Document Format (PDF) has become a universally accepted format for
 sharing documentation. As a result, the dynamic generation of PDF documents
 is an expected feature of many web applications. After reviewing a number of
 libraries for generating PDF documents it was decided to write a service
@@ -70,9 +75,9 @@ meta-package. Some LaTeX documents require multiple passes with &lt;code&gt;pdfl
 process which is automated with the script &lt;code&gt;rubber-pipe&lt;/code&gt;. &lt;/p&gt;
 &lt;p&gt;LaTeX and &lt;code&gt;rubber-pipe&lt;/code&gt; may be installed on Debian-based distributions with the
 following commands:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; sudo apt-get install texlive-full
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gp"&gt;$&lt;/span&gt; sudo apt-get install texlive-full
 &lt;span class="gp"&gt;$&lt;/span&gt; sudo apt-get install rubber
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;The PDF LaTeX service is essentially a wrapper around &lt;code&gt;rubber-pipe&lt;/code&gt; which in
@@ -100,29 +105,29 @@ defined in the &lt;a href="http://yaml.org/"&gt;YAML&lt;/a&gt; below: 1. &lt;cod
 provides a Twig filer to escape LaTeX special characters; and 2.
 &lt;code&gt;electrotech.pdf.pdflatex&lt;/code&gt;, the PDF LaTeX service itself.&lt;/p&gt;
 &lt;p&gt;For convenience the &lt;code&gt;rubber-pipe&lt;/code&gt; binary is defined as a parameter.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# src/Electrotech/WeldqualBundle/Resources/config/services.yml&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# src/Electrotech/WeldqualBundle/Resources/config/services.yml&lt;/span&gt;
 
-&lt;span class="l l-Scalar l-Scalar-Plain"&gt;parameters&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
-    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;electrotech.twig.ib2020_extension.class&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;Electrotech\WeldqualBundle\Twig\Ib2020Extension&lt;/span&gt;
-    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;electrotech.pdf.pdflatex.rubber-pipe&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;/usr/bin/rubber-pipe&lt;/span&gt;
+&lt;span class="nt"&gt;parameters&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="nt"&gt;electrotech.twig.ib2020_extension.class&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;Electrotech\WeldqualBundle\Twig\Ib2020Extension&lt;/span&gt;
+    &lt;span class="nt"&gt;electrotech.pdf.pdflatex.rubber-pipe&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;/usr/bin/rubber-pipe&lt;/span&gt;
 
-&lt;span class="l l-Scalar l-Scalar-Plain"&gt;services&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
-    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;electrotech.twig.ib2020_extension&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
-        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;class&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="err"&gt;%&lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;electrotech.twig.ib2020_extension.class%&lt;/span&gt;
-        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;arguments&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="p p-Indicator"&gt;[&lt;/span&gt;&lt;span class="err"&gt;%&lt;/span&gt;&lt;span class="nv"&gt;kernel.bundles%&lt;/span&gt;&lt;span class="p p-Indicator"&gt;]&lt;/span&gt;
-        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;tags&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
-            &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="p p-Indicator"&gt;{&lt;/span&gt; &lt;span class="nv"&gt;name&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="nv"&gt;twig.extension&lt;/span&gt; &lt;span class="p p-Indicator"&gt;}&lt;/span&gt;
+&lt;span class="nt"&gt;services&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="nt"&gt;electrotech.twig.ib2020_extension&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="nt"&gt;class&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;%&lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;electrotech.twig.ib2020_extension.class%&lt;/span&gt;
+        &lt;span class="nt"&gt;arguments&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p p-Indicator"&gt;[&lt;/span&gt;&lt;span class="err"&gt;%&lt;/span&gt;&lt;span class="nv"&gt;kernel.bundles%&lt;/span&gt;&lt;span class="p p-Indicator"&gt;]&lt;/span&gt;
+        &lt;span class="nt"&gt;tags&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="p p-Indicator"&gt;{&lt;/span&gt;&lt;span class="nt"&gt; name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nv"&gt;twig.extension&lt;/span&gt; &lt;span class="p p-Indicator"&gt;}&lt;/span&gt;
 
-    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;electrotech.pdf.pdflatex&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
-        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;class&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;Electrotech\WeldqualBundle\Pdf\Pdflatex&lt;/span&gt;
-        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;arguments&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;    &lt;span class="p p-Indicator"&gt;[&lt;/span&gt;&lt;span class="err"&gt;%&lt;/span&gt;&lt;span class="nv"&gt;electrotech.pdf.pdflatex.rubber-pipe%&lt;/span&gt;&lt;span class="p p-Indicator"&gt;]&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+    &lt;span class="nt"&gt;electrotech.pdf.pdflatex&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="nt"&gt;class&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;Electrotech\WeldqualBundle\Pdf\Pdflatex&lt;/span&gt;
+        &lt;span class="nt"&gt;arguments&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="p p-Indicator"&gt;[&lt;/span&gt;&lt;span class="err"&gt;%&lt;/span&gt;&lt;span class="nv"&gt;electrotech.pdf.pdflatex.rubber-pipe%&lt;/span&gt;&lt;span class="p p-Indicator"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3 id="service-object"&gt;Service object&lt;/h3&gt;
 &lt;p&gt;An instance of the class &lt;code&gt;Pdflatex&lt;/code&gt; provides the service. &lt;code&gt;Pdflatex&lt;/code&gt; takes a
 LaTeX source document and returns a PDF document.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
 &lt;span class="c1"&gt;// src/Electrotech/WeldqualBundle/Pdf/Pdflatex.php&lt;/span&gt;
 
 &lt;span class="k"&gt;namespace&lt;/span&gt; &lt;span class="nx"&gt;Electrotech\WeldqualBundle\Pdf&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -181,7 +186,7 @@ LaTeX source document and returns a PDF document.&lt;/p&gt;
     &lt;span class="k"&gt;private&lt;/span&gt; &lt;span class="nv"&gt;$returnValue&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
 
-    &lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;__construct&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$binary&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="fm"&gt;__construct&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$binary&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;binary&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$binary&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
@@ -302,13 +307,13 @@ LaTeX source document and returns a PDF document.&lt;/p&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 
 &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3 id="twig-template"&gt;Twig template&lt;/h3&gt;
 &lt;p&gt;A &lt;a href="http://twig.sensiolabs.org/"&gt;Twig&lt;/a&gt; template &lt;code&gt;show.tex.twig&lt;/code&gt; is used to generate the LaTeX source
 document.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;% src/Electrotech/WeldqualBundle/Resources/views/Testweld/show.tex.twig&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;% src/Electrotech/WeldqualBundle/Resources/views/Testweld/show.tex.twig&lt;/span&gt;
 
 &lt;span class="c"&gt;% This template has been simplified for the sake of brevity.&lt;/span&gt;
 
@@ -381,12 +386,12 @@ document.&lt;/p&gt;
 &lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;tabularx&lt;span class="nb"&gt;}&lt;/span&gt;
 
 &lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;document&lt;span class="nb"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;A &lt;a href="http://twig.sensiolabs.org/doc/advanced.html#filters"&gt;custom Twig filter&lt;/a&gt; &lt;code&gt;e_latex&lt;/code&gt; is used to escape LaTeX special
 characters. Custom Twig filters are created by extending &lt;code&gt;Twig_Extension&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
 &lt;span class="c1"&gt;// src/Electrotech/WeldqualBundle/Twig/Ib2020Extension.php&lt;/span&gt;
 
 &lt;span class="k"&gt;namespace&lt;/span&gt; &lt;span class="nx"&gt;Electrotech\WeldqualBundle\Twig&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -402,7 +407,7 @@ characters. Custom Twig filters are created by extending &lt;code&gt;Twig_Extens
 
     &lt;span class="k"&gt;private&lt;/span&gt; &lt;span class="nv"&gt;$kernelBundles&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-    &lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;__construct&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$kernelBundles&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;public&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="fm"&gt;__construct&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$kernelBundles&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;kernelBundles&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$kernelBundles&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
@@ -447,23 +452,23 @@ characters. Custom Twig filters are created by extending &lt;code&gt;Twig_Extens
     &lt;span class="p"&gt;}&lt;/span&gt;
 
 &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3 id="utilising-the-service"&gt;Utilising the service&lt;/h3&gt;
 &lt;p&gt;The service is used in the controller by passing a certificate ID to the method
 &lt;code&gt;pdfAction()&lt;/code&gt;. The LaTeX source document is then generated by the method
 &lt;code&gt;latexSource()&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
 &lt;span class="c1"&gt;// Utilising the PDF LaTeX service&lt;/span&gt;
 &lt;span class="nv"&gt;$pdflatex&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;electrotech.pdf.pdflatex&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="nv"&gt;$pdflatex&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;setTexSource&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$latexSource&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="nv"&gt;$pdf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$pdflatex&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;getPdf&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Below is an example of how this service is used in a controller.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
 &lt;span class="c1"&gt;// src/Electrotech/WeldqualBundle/Controller/TestweldController.php&lt;/span&gt;
 
 &lt;span class="k"&gt;namespace&lt;/span&gt; &lt;span class="nx"&gt;Electrotech\WeldqualBundle\Controller&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -567,11 +572,11 @@ characters. Custom Twig filters are created by extending &lt;code&gt;Twig_Extens
         &lt;span class="p"&gt;);&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2 id="further-reading"&gt;Further reading&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="http://symfony.com/doc/2.3/cookbook/controller/service.html"&gt;How to define controllers as services&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://tobi.oetiker.ch/lshort/lshort.pdf"&gt;The not so short introduction to LaTeX 2&amp;epsilon;&lt;/a&gt; by Tobias Oetiker.&lt;/li&gt;
-&lt;/ul&gt;</summary><category term="Symfony 2"></category></entry></feed>
+&lt;/ul&gt;</content><category term="Symfony"></category><category term="Symfony 2"></category></entry></feed>

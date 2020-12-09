@@ -1,111 +1,44 @@
 <!DOCTYPE html>
-<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<html lang="en">
 <head>
-    <title>Symfony 2 PDF service using LaTeX - sethfischer</title>
-    <!-- Using the latest rendering mode for IE -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-
-<link rel="canonical" href="http://seth.fischer.nz/symfony-2-latex-pdf-service.html">
-
-        <meta name="author" content="Seth Fischer" />
-        <meta name="keywords" content="Symfony 2" />
-        <meta name="description" content="Portable Document Format (PDF) has become a universally accepted format for sharing documentation making the dynamic generation of PDF documents an expected feature of many web applications. After reviewing a number of libraries for generating PDF documents it was decided to write a service wrapping LaTeX; a typesetting system with features suited to the production of scientific and technical documentation." />
-
-        <meta property="og:site_name" content="sethfischer" />
-        <meta property="og:type" content="article"/>
-        <meta property="og:title" content="Symfony 2 PDF service using LaTeX"/>
-        <meta property="og:url" content="http://seth.fischer.nz/symfony-2-latex-pdf-service.html"/>
-        <meta property="og:description" content="Portable Document Format (PDF) has become a universally accepted format for sharing documentation making the dynamic generation of PDF documents an expected feature of many web applications. After reviewing a number of libraries for generating PDF documents it was decided to write a service wrapping LaTeX; a typesetting system with features suited to the production of scientific and technical documentation."/>
-        <meta property="article:published_time" content="2015-04-19" />
-            <meta property="article:section" content="Symfony" />
-            <meta property="article:tag" content="Symfony 2" />
-            <meta property="article:author" content="Seth Fischer" />
-
-
-        <link href="http://seth.fischer.nz/theme/css/styles.7ebb2c04.min.css" rel="stylesheet" />
-
-        <link href="http://seth.fischer.nz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
-              title="sethfischer ATOM Feed"/>
-
-
-
-        <link href="http://seth.fischer.nz/feeds/symfony.atom.xml" type="application/atom+xml" rel="alternate"
-              title="sethfischer Symfony ATOM Feed"/>
-
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>Symfony 2 PDF service using LaTeX</title>
+        <link rel="stylesheet" href="http://seth.fischer.nz/theme/css/main.css" />
+        <link href="http://seth.fischer.nz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="sethfischer Atom Feed" />
+        <meta name="description" content="Portable Document Format (PDF) has become a universally accepted format for sharing documentation making the dynamic generation of PDF documents..." />
 </head>
-<body>
 
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-	<div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="http://seth.fischer.nz/" class="navbar-brand">
-sethfischer            </a>
-        </div>
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav">
-                         <li><a href="http://seth.fischer.nz/pages/about.html">
-                             About
-                          </a></li>
-                        <li >
-                            <a href="http://seth.fischer.nz/category/drupal.html">Drupal</a>
-                        </li>
-                        <li >
-                            <a href="http://seth.fischer.nz/category/misc.html">Misc</a>
-                        </li>
-                        <li class="active">
-                            <a href="http://seth.fischer.nz/category/symfony.html">Symfony</a>
-                        </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="http://seth.fischer.nz/archives.html"><i class="fa fa-th-list"></i> Archives</a></li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-</nav> <!-- /.navbar -->
-<!-- Banner -->
-<!-- End Banner -->
-<div class="container">
-    <div class="row">
-        <main id="main" class="col-sm-9" role="main">
-    <article id="content" role="article">
-        <header class="page-header">
-            <h1>Symfony 2 PDF service using LaTeX</h1>
-        </header>
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://seth.fischer.nz/">sethfischer</a></h1>
+                <nav><ul>
+                    <li><a href="http://seth.fischer.nz/pages/about.html">About</a></li>
+                    <li><a href="http://seth.fischer.nz/category/drupal.html">Drupal</a></li>
+                    <li><a href="http://seth.fischer.nz/category/misc.html">Misc</a></li>
+                    <li class="active"><a href="http://seth.fischer.nz/category/symfony.html">Symfony</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="http://seth.fischer.nz/symfony-2-latex-pdf-service.html" rel="bookmark"
+           title="Permalink to Symfony 2 PDF service using LaTeX">Symfony 2 PDF service using LaTeX</a></h1>
+    </header>
+
+    <div class="entry-content">
 <footer class="post-info">
-    <dl class="dl-horizontal">
-        <dt>Date</dt>
-        <dd>
-            <time datetime="2015-04-19T20:11:00+12:00">19 April 2015</time>
-        </dd>
-            <dt>Tags</dt>
-            <dd>
-                <a href="http://seth.fischer.nz/tag/symfony-2.html">Symfony 2</a>
-            </dd>
-            <dt>On GitHub</dt>
-            <dd>
-                <div class="btn-group btn-group-xs" role="group" aria-label="...">
-                    <a class="btn btn-default btn-sm" href="https://github.com/sethfischer/sethfischer.github.io/commits/source/content/symfony/symfony-2-latex-pdf-service.md" role="button"><i class="fa fa-history"></i> History</a>
-                    <a class="btn btn-default btn-sm" href="https://github.com/sethfischer/sethfischer.github.io" role="button"><i class="fa fa-eye"></i> Watch</a>
-                    <a class="btn btn-default btn-sm" href="https://github.com/sethfischer/sethfischer.github.io/issues/new?title=symfony/symfony-2-latex-pdf-service.md" role="button"><i class="fa fa-exclamation"></i> New issue</a>
-                </div>
-            </dd>
-    </dl>
+        <abbr class="published" title="2015-04-19T20:11:00+12:00">
+                Published: 19 April 2015
+        </abbr>
 
-
-    
-</footer><!-- /.post-info -->        <div class="entry-content">
-            <p>Portable Document Format (PDF) has become a universally accepted format for
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://seth.fischer.nz/author/seth-fischer.html">Seth Fischer</a>
+        </address>
+<p>In <a href="http://seth.fischer.nz/category/symfony.html">Symfony</a>.</p>
+<p>tags: <a href="http://seth.fischer.nz/tag/symfony-2.html">Symfony 2</a> </p>
+</footer><!-- /.post-info -->      <p>Portable Document Format (PDF) has become a universally accepted format for
 sharing documentation. As a result, the dynamic generation of PDF documents
 is an expected feature of many web applications. After reviewing a number of
 libraries for generating PDF documents it was decided to write a service
@@ -176,9 +109,9 @@ meta-package. Some LaTeX documents require multiple passes with <code>pdflatex</
 process which is automated with the script <code>rubber-pipe</code>. </p>
 <p>LaTeX and <code>rubber-pipe</code> may be installed on Debian-based distributions with the
 following commands:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> sudo apt-get install texlive-full
+<div class="highlight"><pre><span></span><code><span class="gp">$</span> sudo apt-get install texlive-full
 <span class="gp">$</span> sudo apt-get install rubber
-</pre></div>
+</code></pre></div>
 
 
 <p>The PDF LaTeX service is essentially a wrapper around <code>rubber-pipe</code> which in
@@ -206,29 +139,29 @@ defined in the <a href="http://yaml.org/">YAML</a> below: 1. <code>electrotech.t
 provides a Twig filer to escape LaTeX special characters; and 2.
 <code>electrotech.pdf.pdflatex</code>, the PDF LaTeX service itself.</p>
 <p>For convenience the <code>rubber-pipe</code> binary is defined as a parameter.</p>
-<div class="highlight"><pre><span></span><span class="c1"># src/Electrotech/WeldqualBundle/Resources/config/services.yml</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># src/Electrotech/WeldqualBundle/Resources/config/services.yml</span>
 
-<span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">electrotech.twig.ib2020_extension.class</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Electrotech\WeldqualBundle\Twig\Ib2020Extension</span>
-    <span class="l l-Scalar l-Scalar-Plain">electrotech.pdf.pdflatex.rubber-pipe</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/usr/bin/rubber-pipe</span>
+<span class="nt">parameters</span><span class="p">:</span>
+    <span class="nt">electrotech.twig.ib2020_extension.class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Electrotech\WeldqualBundle\Twig\Ib2020Extension</span>
+    <span class="nt">electrotech.pdf.pdflatex.rubber-pipe</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/usr/bin/rubber-pipe</span>
 
-<span class="l l-Scalar l-Scalar-Plain">services</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">electrotech.twig.ib2020_extension</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">class</span><span class="p p-Indicator">:</span> <span class="err">%</span><span class="l l-Scalar l-Scalar-Plain">electrotech.twig.ib2020_extension.class%</span>
-        <span class="l l-Scalar l-Scalar-Plain">arguments</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="err">%</span><span class="nv">kernel.bundles%</span><span class="p p-Indicator">]</span>
-        <span class="l l-Scalar l-Scalar-Plain">tags</span><span class="p p-Indicator">:</span>
-            <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span> <span class="nv">name</span><span class="p p-Indicator">:</span> <span class="nv">twig.extension</span> <span class="p p-Indicator">}</span>
+<span class="nt">services</span><span class="p">:</span>
+    <span class="nt">electrotech.twig.ib2020_extension</span><span class="p">:</span>
+        <span class="nt">class</span><span class="p">:</span> <span class="err">%</span><span class="l l-Scalar l-Scalar-Plain">electrotech.twig.ib2020_extension.class%</span>
+        <span class="nt">arguments</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="err">%</span><span class="nv">kernel.bundles%</span><span class="p p-Indicator">]</span>
+        <span class="nt">tags</span><span class="p">:</span>
+            <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> name</span><span class="p">:</span> <span class="nv">twig.extension</span> <span class="p p-Indicator">}</span>
 
-    <span class="l l-Scalar l-Scalar-Plain">electrotech.pdf.pdflatex</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">class</span><span class="p p-Indicator">:</span>        <span class="l l-Scalar l-Scalar-Plain">Electrotech\WeldqualBundle\Pdf\Pdflatex</span>
-        <span class="l l-Scalar l-Scalar-Plain">arguments</span><span class="p p-Indicator">:</span>    <span class="p p-Indicator">[</span><span class="err">%</span><span class="nv">electrotech.pdf.pdflatex.rubber-pipe%</span><span class="p p-Indicator">]</span>
-</pre></div>
+    <span class="nt">electrotech.pdf.pdflatex</span><span class="p">:</span>
+        <span class="nt">class</span><span class="p">:</span>        <span class="l l-Scalar l-Scalar-Plain">Electrotech\WeldqualBundle\Pdf\Pdflatex</span>
+        <span class="nt">arguments</span><span class="p">:</span>    <span class="p p-Indicator">[</span><span class="err">%</span><span class="nv">electrotech.pdf.pdflatex.rubber-pipe%</span><span class="p p-Indicator">]</span>
+</code></pre></div>
 
 
 <h3 id="service-object">Service object</h3>
 <p>An instance of the class <code>Pdflatex</code> provides the service. <code>Pdflatex</code> takes a
 LaTeX source document and returns a PDF document.</p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="c1">// src/Electrotech/WeldqualBundle/Pdf/Pdflatex.php</span>
 
 <span class="k">namespace</span> <span class="nx">Electrotech\WeldqualBundle\Pdf</span><span class="p">;</span>
@@ -287,7 +220,7 @@ LaTeX source document and returns a PDF document.</p>
     <span class="k">private</span> <span class="nv">$returnValue</span><span class="p">;</span>
 
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$binary</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$binary</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">binary</span> <span class="o">=</span> <span class="nv">$binary</span><span class="p">;</span>
     <span class="p">}</span>
@@ -408,13 +341,13 @@ LaTeX source document and returns a PDF document.</p>
     <span class="p">}</span>
 
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="twig-template">Twig template</h3>
 <p>A <a href="http://twig.sensiolabs.org/">Twig</a> template <code>show.tex.twig</code> is used to generate the LaTeX source
 document.</p>
-<div class="highlight"><pre><span></span><span class="c">% src/Electrotech/WeldqualBundle/Resources/views/Testweld/show.tex.twig</span>
+<div class="highlight"><pre><span></span><code><span class="c">% src/Electrotech/WeldqualBundle/Resources/views/Testweld/show.tex.twig</span>
 
 <span class="c">% This template has been simplified for the sake of brevity.</span>
 
@@ -487,12 +420,12 @@ document.</p>
 <span class="k">\end</span><span class="nb">{</span>tabularx<span class="nb">}</span>
 
 <span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>A <a href="http://twig.sensiolabs.org/doc/advanced.html#filters">custom Twig filter</a> <code>e_latex</code> is used to escape LaTeX special
 characters. Custom Twig filters are created by extending <code>Twig_Extension</code>.</p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="c1">// src/Electrotech/WeldqualBundle/Twig/Ib2020Extension.php</span>
 
 <span class="k">namespace</span> <span class="nx">Electrotech\WeldqualBundle\Twig</span><span class="p">;</span>
@@ -508,7 +441,7 @@ characters. Custom Twig filters are created by extending <code>Twig_Extension</c
 
     <span class="k">private</span> <span class="nv">$kernelBundles</span><span class="p">;</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">(</span><span class="nv">$kernelBundles</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$kernelBundles</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">kernelBundles</span> <span class="o">=</span> <span class="nv">$kernelBundles</span><span class="p">;</span>
     <span class="p">}</span>
@@ -553,23 +486,23 @@ characters. Custom Twig filters are created by extending <code>Twig_Extension</c
     <span class="p">}</span>
 
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="utilising-the-service">Utilising the service</h3>
 <p>The service is used in the controller by passing a certificate ID to the method
 <code>pdfAction()</code>. The LaTeX source document is then generated by the method
 <code>latexSource()</code>.</p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="c1">// Utilising the PDF LaTeX service</span>
 <span class="nv">$pdflatex</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;electrotech.pdf.pdflatex&#39;</span><span class="p">);</span>
 <span class="nv">$pdflatex</span><span class="o">-&gt;</span><span class="na">setTexSource</span><span class="p">(</span><span class="nv">$latexSource</span><span class="p">);</span>
 <span class="nv">$pdf</span> <span class="o">=</span> <span class="nv">$pdflatex</span><span class="o">-&gt;</span><span class="na">getPdf</span><span class="p">()</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Below is an example of how this service is used in a controller.</p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="c1">// src/Electrotech/WeldqualBundle/Controller/TestweldController.php</span>
 
 <span class="k">namespace</span> <span class="nx">Electrotech\WeldqualBundle\Controller</span><span class="p">;</span>
@@ -673,7 +606,7 @@ characters. Custom Twig filters are created by extending <code>Twig_Extension</c
         <span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
 
 
 <h2 id="further-reading">Further reading</h2>
@@ -681,232 +614,28 @@ characters. Custom Twig filters are created by extending <code>Twig_Extension</c
 <li><a href="http://symfony.com/doc/2.3/cookbook/controller/service.html">How to define controllers as services</a>.</li>
 <li><a href="https://tobi.oetiker.ch/lshort/lshort.pdf">The not so short introduction to LaTeX 2&epsilon;</a> by Tobias Oetiker.</li>
 </ul>
-        </div>
-    </article>
-        </main>
-            <aside  id="sidebar" class="col-sm-3" role="complementary">
-                <div class="well well-sm">
+    </div><!-- /.entry-content -->
 
-<h2 class="sr-only">Miscellaneous links and navigation</h2>
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="http://seth.fischer.nz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-    <ul class="list-group">
-        <li class="list-group-item">
-            <span class="sidebar-heading"><i class="fa fa-code-fork fa-lg"></i> Code</span>
-            <ul class="list-group" id="social">
-                    <li class="list-group-item"><a href="https://github.com/sethfischer"><i class="fa fa-github fa-lg"></i> GitHub</a></li>
-                    <li class="list-group-item"><a href="https://bitbucket.org/sethfischer"><i class="fa fa-bitbucket fa-lg"></i> Bitbucket</a></li>
-                    <li class="list-group-item"><a href="https://drupal.org/u/sethfischer"><i class="fa fa-drupal fa-lg"></i> Drupal</a></li>
-            </ul>
-        </li>
-    </ul>
+                            <li><a href="https://github.com/sethfischer">GitHub</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
 
-    <ul class="list-group">
-        <li class="list-group-item">
-            <span class="sidebar-heading"><i class="fa fa-clock-o fa-lg"></i> Recent articles</span>
-            <nav>
-                <ul class="list-group" id="recentposts">
-                    <li class="list-group-item">
-                        <a href="http://seth.fischer.nz/drupal-8-development-tools.html">
-                            An introduction to Drupal 8 development tools
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://seth.fischer.nz/symfony-2-latex-pdf-service.html">
-                            Symfony 2 PDF service using LaTeX
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://seth.fischer.nz/optimising-page-speed-case-study.html">
-                            Optimising page speed: A case study
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://seth.fischer.nz/drupal-8-fabric-deploy.html">
-                            Deploying Drupal 8 with Fabric
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merging.html">
-                            A Drupal 8 workflow using the Git subtree merge strategy
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </li>
-    </ul>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
 
-
-    <ul class="list-group">
-        <li class="list-group-item">
-<a href="http://seth.fischer.nz/tags.html">            <span class="sidebar-heading"><i class="fa fa-tags fa-lg"></i> Tags</span>
-</a>            <nav>
-                <ul class="list-group" id="tags">
-                        <li class="list-group-item tag-1">
-                            <a href="http://seth.fischer.nz/tag/drupal.html">
-                                Drupal
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-1">
-                            <a href="http://seth.fischer.nz/tag/drupal-8.html">
-                                Drupal 8
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://seth.fischer.nz/tag/symfony-2.html">
-                                Symfony 2
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://seth.fischer.nz/tag/python.html">
-                                Python
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://seth.fischer.nz/tag/fabric.html">
-                                Fabric
-                            </a>
-                        </li>
-                </ul>
-            </nav>
-        </li>
-    </ul>
-
-    <ul class="list-group">
-        <li class="list-group-item">
-            <span class="sidebar-heading"><i class="fa fa-github fa-lg"></i> GitHub repositories</span>
-
-            <dl id="github-repos">
-                    <dt>
-                        <a href="https://github.com/sethfischer/DrupalConsole">DrupalConsole</a>
-                            <small>PHP</small>
-                    </dt>
-                    <dd>
-                        <small>Drupal Console</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/dotfiles">dotfiles</a>
-                            <small>Shell</small>
-                    </dt>
-                    <dd>
-                        <small>Seth Fischer's dot files.</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/fabric-deploy">fabric-deploy</a>
-                            <small>Python</small>
-                    </dt>
-                    <dd>
-                        <small>Fabric deploy scripts.</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/latex-intro-slides">latex-intro-slides</a>
-                            <small>TeX</small>
-                    </dt>
-                    <dd>
-                        <small>A presentation introducing LaTeX and a selection of command-line tools for producing PDF documents.</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/libsass-python">libsass-python</a>
-                            <small>Python</small>
-                    </dt>
-                    <dd>
-                        <small>A straightforward binding of libsass for Python.  Compile Sass/SCSS in Python with no Ruby stack at all!</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/mundo-flags">mundo-flags</a>
-                            <small>Shell</small>
-                    </dt>
-                    <dd>
-                        <small>A collection of flags for the countries specified in ISO 3166-1.</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/mundo-names">mundo-names</a>
-                            <small>Shell</small>
-                    </dt>
-                    <dd>
-                        <small>Translations of country names defined in ISO 3166-1.</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/mundoplugs-data">mundoplugs-data</a>
-                    </dt>
-                    <dd>
-                        <small>Data for mundoplugs.com, an electrical guide for travelers.</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/mundoplugs-l10n">mundoplugs-l10n</a>
-                    </dt>
-                    <dd>
-                        <small>Translations for mundoplugs.com, an electrical guide for travelers.</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/pelican">pelican</a>
-                            <small>HTML</small>
-                    </dt>
-                    <dd>
-                        <small>Static site generator that supports Markdown and reST syntax. Powered by Python.</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/pelican-bootstrap3">pelican-bootstrap3</a>
-                            <small>CSS</small>
-                    </dt>
-                    <dd>
-                        <small>Customised Bootstrap 3 theme for http://seth.fischer.nz/.</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/puppet-dovecot">puppet-dovecot</a>
-                            <small>HTML</small>
-                    </dt>
-                    <dd>
-                        <small>Puppet Dovecot Module for Dovecot 2+</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/riversbk">riversbk</a>
-                            <small>Python</small>
-                    </dt>
-                    <dd>
-                        <small>Wrapper scripts for rsnapshot</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/sethfischer.github.io">sethfischer.github.io</a>
-                            <small>Python</small>
-                    </dt>
-                    <dd>
-                        <small>Seth Fischer's personal website.</small>
-                    </dd>
-            </dl>
-
-                <a href="https://github.com/sethfischer">@sethfischer</a> on GitHub
-        </li>
-    </ul>
-                </div>
-            </aside>
-    </div>
-</div>
-<footer class="container" role="contentinfo">
-    <hr>
-    <p>
-        &copy; 2015 Seth Fischer            
-
-
-    <span prefix="dct: http://purl.org/dc/terms/ cc: http://creativecommons.org/ns#">Content
-licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
-    </span>
-
-    </p>
-</footer>
-    <script src="http://seth.fischer.nz/theme/js/scripts.6cd69145.min.js"></script>
-
-
-    <!-- Google Analytics Universal -->
-    <script type="text/javascript">
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-59343172-1', 'auto');
-        ga('send', 'pageview');
-    </script>
-    <!-- End Google Analytics Universal Code -->
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
 
 </body>
 </html>

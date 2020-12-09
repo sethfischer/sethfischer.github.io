@@ -1,295 +1,632 @@
 <!DOCTYPE html>
-<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<html lang="en">
 <head>
-    <title>Symfony 2 (tag) - sethfischer</title>
-    <!-- Using the latest rendering mode for IE -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-
-
-    <meta name="author" content="Seth Fischer" />
-    <meta name="keywords" content="Symfony 2" />
-
-    <!-- Open Graph tags -->
-        <meta property="og:site_name" content="sethfischer" />
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content="sethfischer"/>
-        <meta property="og:url" content="http://seth.fischer.nz"/>
-        <meta property="og:description" content="sethfischer"/>
-
-
-        <link href="http://seth.fischer.nz/theme/css/styles.7ebb2c04.min.css" rel="stylesheet" />
-
-        <link href="http://seth.fischer.nz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
-              title="sethfischer ATOM Feed"/>
-
-
-
-
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>sethfischer - Symfony 2</title>
+        <link rel="stylesheet" href="http://seth.fischer.nz/theme/css/main.css" />
+        <link href="http://seth.fischer.nz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="sethfischer Atom Feed" />
 </head>
-<body>
 
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-	<div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="http://seth.fischer.nz/" class="navbar-brand">
-sethfischer            </a>
-        </div>
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav">
-                         <li><a href="http://seth.fischer.nz/pages/about.html">
-                             About
-                          </a></li>
-                        <li >
-                            <a href="http://seth.fischer.nz/category/drupal.html">Drupal</a>
-                        </li>
-                        <li >
-                            <a href="http://seth.fischer.nz/category/misc.html">Misc</a>
-                        </li>
-                        <li >
-                            <a href="http://seth.fischer.nz/category/symfony.html">Symfony</a>
-                        </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="http://seth.fischer.nz/archives.html"><i class="fa fa-th-list"></i> Archives</a></li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-</nav> <!-- /.navbar -->
-<!-- Banner -->
-<!-- End Banner -->
-<div class="container">
-    <div class="row">
-        <main id="main" class="col-sm-9" role="main">
-            <article>
-                <h2><a href="http://seth.fischer.nz/symfony-2-latex-pdf-service.html">Symfony 2 PDF service using LaTeX</a></h2>
-                <div class="summary"><p>Portable Document Format (PDF) has become a universally accepted
-format for sharing documentation making the dynamic generation of PDF
-documents an expected feature of many web applications. After reviewing a
-number of libraries for generating PDF documents it was decided to write a
-service wrapping LaTeX; a typesetting system with features suited to the
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://seth.fischer.nz/">sethfischer</a></h1>
+                <nav><ul>
+                    <li><a href="http://seth.fischer.nz/pages/about.html">About</a></li>
+                    <li><a href="http://seth.fischer.nz/category/drupal.html">Drupal</a></li>
+                    <li><a href="http://seth.fischer.nz/category/misc.html">Misc</a></li>
+                    <li><a href="http://seth.fischer.nz/category/symfony.html">Symfony</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="http://seth.fischer.nz/symfony-2-latex-pdf-service.html">Symfony 2 PDF service using LaTeX</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2015-04-19T20:11:00+12:00">
+                Published: 19 April 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://seth.fischer.nz/author/seth-fischer.html">Seth Fischer</a>
+        </address>
+<p>In <a href="http://seth.fischer.nz/category/symfony.html">Symfony</a>.</p>
+<p>tags: <a href="http://seth.fischer.nz/tag/symfony-2.html">Symfony 2</a> </p>
+</footer><!-- /.post-info --><p>Portable Document Format (PDF) has become a universally accepted format for
+sharing documentation. As a result, the dynamic generation of PDF documents
+is an expected feature of many web applications. After reviewing a number of
+libraries for generating PDF documents it was decided to write a service
+wrapping <a href="http://www.latex-project.org/">LaTeX</a>; a typesetting system with features suited to the
 production of scientific and technical documentation.</p>
-                    <a class="btn btn-default btn-xs" href="http://seth.fischer.nz/symfony-2-latex-pdf-service.html">
-                        Read more<span class="sr-only"> about Symfony 2 PDF service using LaTeX</span>
-                    </a>
-                </div>
-            </article>
-            <hr/>
-
-        </main>
-            <aside  id="sidebar" class="col-sm-3" role="complementary">
-                <div class="well well-sm">
-
-<h2 class="sr-only">Miscellaneous links and navigation</h2>
-
-    <ul class="list-group">
-        <li class="list-group-item">
-            <span class="sidebar-heading"><i class="fa fa-code-fork fa-lg"></i> Code</span>
-            <ul class="list-group" id="social">
-                    <li class="list-group-item"><a href="https://github.com/sethfischer"><i class="fa fa-github fa-lg"></i> GitHub</a></li>
-                    <li class="list-group-item"><a href="https://bitbucket.org/sethfischer"><i class="fa fa-bitbucket fa-lg"></i> Bitbucket</a></li>
-                    <li class="list-group-item"><a href="https://drupal.org/u/sethfischer"><i class="fa fa-drupal fa-lg"></i> Drupal</a></li>
-            </ul>
-        </li>
-    </ul>
-
-    <ul class="list-group">
-        <li class="list-group-item">
-            <span class="sidebar-heading"><i class="fa fa-clock-o fa-lg"></i> Recent articles</span>
-            <nav>
-                <ul class="list-group" id="recentposts">
-                    <li class="list-group-item">
-                        <a href="http://seth.fischer.nz/symfony-2-latex-pdf-service.html">
-                            Symfony 2 PDF service using LaTeX
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </li>
-    </ul>
-
-
-    <ul class="list-group">
-        <li class="list-group-item">
-<a href="http://seth.fischer.nz/tags.html">            <span class="sidebar-heading"><i class="fa fa-tags fa-lg"></i> Tags</span>
-</a>            <nav>
-                <ul class="list-group" id="tags">
-                        <li class="list-group-item tag-1">
-                            <a href="http://seth.fischer.nz/tag/drupal.html">
-                                Drupal
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-1">
-                            <a href="http://seth.fischer.nz/tag/drupal-8.html">
-                                Drupal 8
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://seth.fischer.nz/tag/symfony-2.html">
-                                Symfony 2
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://seth.fischer.nz/tag/python.html">
-                                Python
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://seth.fischer.nz/tag/fabric.html">
-                                Fabric
-                            </a>
-                        </li>
-                </ul>
-            </nav>
-        </li>
-    </ul>
-
-    <ul class="list-group">
-        <li class="list-group-item">
-            <span class="sidebar-heading"><i class="fa fa-github fa-lg"></i> GitHub repositories</span>
-
-            <dl id="github-repos">
-                    <dt>
-                        <a href="https://github.com/sethfischer/DrupalConsole">DrupalConsole</a>
-                            <small>PHP</small>
-                    </dt>
-                    <dd>
-                        <small>Drupal Console</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/dotfiles">dotfiles</a>
-                            <small>Shell</small>
-                    </dt>
-                    <dd>
-                        <small>Seth Fischer's dot files.</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/fabric-deploy">fabric-deploy</a>
-                            <small>Python</small>
-                    </dt>
-                    <dd>
-                        <small>Fabric deploy scripts.</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/latex-intro-slides">latex-intro-slides</a>
-                            <small>TeX</small>
-                    </dt>
-                    <dd>
-                        <small>A presentation introducing LaTeX and a selection of command-line tools for producing PDF documents.</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/libsass-python">libsass-python</a>
-                            <small>Python</small>
-                    </dt>
-                    <dd>
-                        <small>A straightforward binding of libsass for Python.  Compile Sass/SCSS in Python with no Ruby stack at all!</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/mundo-flags">mundo-flags</a>
-                            <small>Shell</small>
-                    </dt>
-                    <dd>
-                        <small>A collection of flags for the countries specified in ISO 3166-1.</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/mundo-names">mundo-names</a>
-                            <small>Shell</small>
-                    </dt>
-                    <dd>
-                        <small>Translations of country names defined in ISO 3166-1.</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/mundoplugs-data">mundoplugs-data</a>
-                    </dt>
-                    <dd>
-                        <small>Data for mundoplugs.com, an electrical guide for travelers.</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/mundoplugs-l10n">mundoplugs-l10n</a>
-                    </dt>
-                    <dd>
-                        <small>Translations for mundoplugs.com, an electrical guide for travelers.</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/pelican">pelican</a>
-                            <small>HTML</small>
-                    </dt>
-                    <dd>
-                        <small>Static site generator that supports Markdown and reST syntax. Powered by Python.</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/pelican-bootstrap3">pelican-bootstrap3</a>
-                            <small>CSS</small>
-                    </dt>
-                    <dd>
-                        <small>Customised Bootstrap 3 theme for http://seth.fischer.nz/.</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/puppet-dovecot">puppet-dovecot</a>
-                            <small>HTML</small>
-                    </dt>
-                    <dd>
-                        <small>Puppet Dovecot Module for Dovecot 2+</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/riversbk">riversbk</a>
-                            <small>Python</small>
-                    </dt>
-                    <dd>
-                        <small>Wrapper scripts for rsnapshot</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/sethfischer.github.io">sethfischer.github.io</a>
-                            <small>Python</small>
-                    </dt>
-                    <dd>
-                        <small>Seth Fischer's personal website.</small>
-                    </dd>
-            </dl>
-
-                <a href="https://github.com/sethfischer">@sethfischer</a> on GitHub
-        </li>
-    </ul>
-                </div>
-            </aside>
-    </div>
+<p>The code examples used in this article are from the certificate generation
+component of IB2020, a <a href="http://symfony.com/">Symfony</a> 2 web application for the management of
+welder qualifications.</p>
+<div class="toc">
+<ul>
+<li><a href="#pdf-generating-libraries">PDF generating libraries</a></li>
+<li><a href="#latex">LaTeX</a></li>
+<li><a href="#symfony-2-service">Symfony 2 service</a><ul>
+<li><a href="#configure-the-service-container">Configure the service container</a></li>
+<li><a href="#service-object">Service object</a></li>
+<li><a href="#twig-template">Twig template</a></li>
+<li><a href="#utilising-the-service">Utilising the service</a></li>
+</ul>
+</li>
+<li><a href="#further-reading">Further reading</a></li>
+</ul>
 </div>
-<footer class="container" role="contentinfo">
-    <hr>
-    <p>
-        &copy; 2015 Seth Fischer            
+<h2 id="pdf-generating-libraries">PDF generating libraries</h2>
+<p>Before implementing the LaTeX service the following PDF generating libraries
+were considered:</p>
+<ol>
+<li>
+<p><a href="http://sourceforge.net/projects/tcpdf/"><strong>TCPDF</strong></a></p>
+<ul>
+<li>HTML layout and rendering engine written in PHP.</li>
+<li>Coordinate-based interface. </li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/dompdf/dompdf"><strong>dompdf</strong></a></p>
+<ul>
+<li>HTML layout and rendering engine written in PHP.</li>
+<li>Style-driven renderer.</li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/wkhtmltopdf/wkhtmltopdf"><strong>wkhtmltopdf</strong></a></p>
+<ul>
+<li>Command line tools to render HTML into PDF (and various other image
+  formats) using the QT Webkit rendering engine.</li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/KnpLabs/KnpSnappyBundle"><strong>KnpLabs/KnpSnappyBundle</strong></a></p>
+<ul>
+<li>Symfony 2 bundle wrapping wkhtmltopdf.</li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/zendframework/ZendPdf/"><strong>zendframework/ZendPdf</strong></a></p>
+<ul>
+<li>HTML layout and rendering engine written in PHP.</li>
+<li>Coordinate-based interface.</li>
+</ul>
+</li>
+</ol>
+<h2 id="latex">LaTeX</h2>
+<p>The LaTeX system is a markup language and high-quality typesetting system. It
+is written in the <a href="http://tug.org/">TeX macro language</a>.</p>
+<p>A PDF document may be generated directly from a LaTeX source document with the
+<code>pdflatex</code> binary which is distributed as part of the Debian <code>texlive-full</code>
+meta-package. Some LaTeX documents require multiple passes with <code>pdflatex</code>, a
+process which is automated with the script <code>rubber-pipe</code>. </p>
+<p>LaTeX and <code>rubber-pipe</code> may be installed on Debian-based distributions with the
+following commands:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$</span> sudo apt-get install texlive-full
+<span class="gp">$</span> sudo apt-get install rubber
+</code></pre></div>
 
 
-    <span prefix="dct: http://purl.org/dc/terms/ cc: http://creativecommons.org/ns#">Content
-licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
-    </span>
+<p>The PDF LaTeX service is essentially a wrapper around <code>rubber-pipe</code> which in
+turn invokes <code>pdflatex</code>.</p>
+<h2 id="symfony-2-service">Symfony 2 service</h2>
+<p><a href="http://symfony.com/doc/2.3/book/service_container.html">Services</a> are re-usable, decoupled components, that may be accessed from
+any part of the application. The <a href="http://symfony.com/doc/2.3/glossary.html#term-service">definition of a service</a> from the Symfony
+documentation:</p>
+<blockquote>
+<p>A service is usually used "globally", such as a database connection object or
+an object that delivers email messages. In Symfony, services are often
+configured and retrieved from the service container.</p>
+</blockquote>
+<p>The PDF LaTeX service consists of the following three components:</p>
+<ol>
+<li>The <strong>Symfony service container</strong> configured in <code>services.yml</code>.</li>
+<li>A <strong>class</strong> <code>Pdflatex</code> of which an instance will be available in the
+     service container.</li>
+<li>A <strong>Twig template</strong> <code>show.tex.twig</code> used to output the LaTeX source
+     document. </li>
+</ol>
+<h3 id="configure-the-service-container">Configure the service container</h3>
+<p>The service container is configured with <code>services.yml</code>. Two services are
+defined in the <a href="http://yaml.org/">YAML</a> below: 1. <code>electrotech.twig.ib2020_extension</code>, which
+provides a Twig filer to escape LaTeX special characters; and 2.
+<code>electrotech.pdf.pdflatex</code>, the PDF LaTeX service itself.</p>
+<p>For convenience the <code>rubber-pipe</code> binary is defined as a parameter.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># src/Electrotech/WeldqualBundle/Resources/config/services.yml</span>
 
-    </p>
-</footer>
-    <script src="http://seth.fischer.nz/theme/js/scripts.6cd69145.min.js"></script>
+<span class="nt">parameters</span><span class="p">:</span>
+    <span class="nt">electrotech.twig.ib2020_extension.class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Electrotech\WeldqualBundle\Twig\Ib2020Extension</span>
+    <span class="nt">electrotech.pdf.pdflatex.rubber-pipe</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/usr/bin/rubber-pipe</span>
+
+<span class="nt">services</span><span class="p">:</span>
+    <span class="nt">electrotech.twig.ib2020_extension</span><span class="p">:</span>
+        <span class="nt">class</span><span class="p">:</span> <span class="err">%</span><span class="l l-Scalar l-Scalar-Plain">electrotech.twig.ib2020_extension.class%</span>
+        <span class="nt">arguments</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="err">%</span><span class="nv">kernel.bundles%</span><span class="p p-Indicator">]</span>
+        <span class="nt">tags</span><span class="p">:</span>
+            <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> name</span><span class="p">:</span> <span class="nv">twig.extension</span> <span class="p p-Indicator">}</span>
+
+    <span class="nt">electrotech.pdf.pdflatex</span><span class="p">:</span>
+        <span class="nt">class</span><span class="p">:</span>        <span class="l l-Scalar l-Scalar-Plain">Electrotech\WeldqualBundle\Pdf\Pdflatex</span>
+        <span class="nt">arguments</span><span class="p">:</span>    <span class="p p-Indicator">[</span><span class="err">%</span><span class="nv">electrotech.pdf.pdflatex.rubber-pipe%</span><span class="p p-Indicator">]</span>
+</code></pre></div>
 
 
-    <!-- Google Analytics Universal -->
-    <script type="text/javascript">
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+<h3 id="service-object">Service object</h3>
+<p>An instance of the class <code>Pdflatex</code> provides the service. <code>Pdflatex</code> takes a
+LaTeX source document and returns a PDF document.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// src/Electrotech/WeldqualBundle/Pdf/Pdflatex.php</span>
 
-        ga('create', 'UA-59343172-1', 'auto');
-        ga('send', 'pageview');
-    </script>
-    <!-- End Google Analytics Universal Code -->
+<span class="k">namespace</span> <span class="nx">Electrotech\WeldqualBundle\Pdf</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Pdflatex</span>
+<span class="p">{</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Full system path to rubber-pipe binary</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$binary</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Options for rubber-pipe</span>
+<span class="sd">     * @var array</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$options</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;--pdf&#39;</span> <span class="o">=&gt;</span> <span class="k">null</span><span class="p">,</span>
+        <span class="s1">&#39;--into&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/tmp/&#39;</span>
+    <span class="p">);</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Tex source document</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$texSource</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Generated PDF document</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$pdf</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Initial working dir</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$cwd</span> <span class="o">=</span> <span class="s1">&#39;/tmp/&#39;</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Environment variables</span>
+<span class="sd">     * @var array|null</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$env</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Error output</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$stderr</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Return value</span>
+<span class="sd">     * @var integer</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$returnValue</span><span class="p">;</span>
+
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$binary</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">binary</span> <span class="o">=</span> <span class="nv">$binary</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Create rubber-pipe command</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getCommand</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$args</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">options</span> <span class="k">as</span> <span class="nv">$option</span> <span class="o">=&gt;</span> <span class="nv">$value</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="nv">$args</span> <span class="o">.=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="nv">$option</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$value</span> <span class="o">!==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="nv">$args</span> <span class="o">.=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="nv">$value</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">binary</span><span class="o">.</span><span class="nv">$args</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Execute rubber-pipe command</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">execute</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$descriptorSpec</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+            <span class="mi">0</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;pipe&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">),</span>
+            <span class="mi">1</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;pipe&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">),</span>
+            <span class="mi">2</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;pipe&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">),</span>
+        <span class="p">);</span>
+
+        <span class="nv">$process</span> <span class="o">=</span> <span class="nb">proc_open</span><span class="p">(</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getCommand</span><span class="p">(),</span>
+            <span class="nv">$descriptorSpec</span><span class="p">,</span>
+            <span class="nv">$pipes</span><span class="p">,</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">cwd</span><span class="p">,</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">env</span>
+        <span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nb">is_resource</span><span class="p">(</span><span class="nv">$process</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nb">fwrite</span><span class="p">(</span><span class="nv">$pipes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getTexSource</span><span class="p">());</span>
+            <span class="nb">fclose</span><span class="p">(</span><span class="nv">$pipes</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">pdf</span> <span class="o">=</span> <span class="nb">stream_get_contents</span><span class="p">(</span><span class="nv">$pipes</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">stderr</span> <span class="o">=</span> <span class="nb">stream_get_contents</span><span class="p">(</span><span class="nv">$pipes</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">returnValue</span> <span class="o">=</span> <span class="nb">proc_close</span><span class="p">(</span><span class="nv">$process</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">returnValue</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Set path to rubber-pipe binary</span>
+<span class="sd">     * @param string $binary Full system path to rubber-pipe binary</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setBinary</span><span class="p">(</span><span class="nv">$binary</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">binary</span> <span class="o">=</span> <span class="nv">$binary</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Get path to rubber-pipe binary</span>
+<span class="sd">     * @return string Full system path to rubber-pipe binary</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getBinary</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">binary</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Set LaTeX source</span>
+<span class="sd">     * @param string $texSource LaTeX source document</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setTexSource</span><span class="p">(</span><span class="nv">$texSource</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">texSource</span> <span class="o">=</span> <span class="nv">$texSource</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Get LaTeX source</span>
+<span class="sd">     * @return string LaTeX source document</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getTexSource</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">texSource</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Get PDF file contents</span>
+<span class="sd">     * @return mixed Generated PDF file contents</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getPdf</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">pdf</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Get errors</span>
+<span class="sd">     * @return string Error output</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getStderr</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">stderr</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Get return value</span>
+<span class="sd">     * @return integer Return value from rubber-pipe command</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getReturnValue</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">returnValue</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div>
+
+
+<h3 id="twig-template">Twig template</h3>
+<p>A <a href="http://twig.sensiolabs.org/">Twig</a> template <code>show.tex.twig</code> is used to generate the LaTeX source
+document.</p>
+<div class="highlight"><pre><span></span><code><span class="c">% src/Electrotech/WeldqualBundle/Resources/views/Testweld/show.tex.twig</span>
+
+<span class="c">% This template has been simplified for the sake of brevity.</span>
+
+<span class="k">\documentclass</span><span class="na">[10pt,a4paper]</span><span class="nb">{</span>article<span class="nb">}</span>
+
+<span class="k">\usepackage</span><span class="nb">{</span>array<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>calc<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>color<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>colortbl<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>graphicx<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="na">[margin=1cm]</span><span class="nb">{</span>geometry<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>multirow<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>tabularx<span class="nb">}</span>
+<span class="k">\usepackage</span><span class="nb">{</span>wasysym<span class="nb">}</span>
+
+<span class="c">% width of table columns</span>
+<span class="k">\newlength</span><span class="nb">{</span><span class="k">\colOneWidth</span><span class="nb">}</span>
+<span class="k">\setlength</span><span class="nb">{</span><span class="k">\colOneWidth</span><span class="nb">}{</span>0.13<span class="k">\textwidth</span><span class="nb">}</span>
+<span class="k">\newlength</span><span class="nb">{</span><span class="k">\colThreeWidth</span><span class="nb">}</span>
+<span class="k">\setlength</span><span class="nb">{</span><span class="k">\colThreeWidth</span><span class="nb">}{</span>0.13<span class="k">\textwidth</span><span class="nb">}</span>
+<span class="k">\newlength</span><span class="nb">{</span><span class="k">\colFourWidth</span><span class="nb">}</span>
+<span class="k">\setlength</span><span class="nb">{</span><span class="k">\colFourWidth</span><span class="nb">}{</span>0.25<span class="k">\textwidth</span><span class="nb">}</span>
+<span class="k">\newlength</span><span class="nb">{</span><span class="k">\colFiveWidth</span><span class="nb">}</span>
+<span class="k">\setlength</span><span class="nb">{</span><span class="k">\colFiveWidth</span><span class="nb">}{</span>0.13<span class="k">\textwidth</span><span class="nb">}</span>
+<span class="k">\newlength</span><span class="nb">{</span><span class="k">\colThreeToFiveWidth</span><span class="nb">}</span>
+<span class="k">\setlength</span><span class="nb">{</span><span class="k">\colThreeToFiveWidth</span><span class="nb">}{</span><span class="k">\colThreeWidth</span> + <span class="k">\colFourWidth</span> + <span class="k">\colFiveWidth</span><span class="nb">}</span>
+<span class="k">\newlength</span><span class="nb">{</span><span class="k">\colFourToFiveWidth</span><span class="nb">}</span>
+<span class="k">\setlength</span><span class="nb">{</span><span class="k">\colFourToFiveWidth</span><span class="nb">}{</span><span class="k">\colFourWidth</span> + <span class="k">\colFiveWidth</span><span class="nb">}</span>
+
+
+<span class="c">% colours</span>
+<span class="k">\definecolor</span><span class="nb">{</span>IB2020Blue<span class="nb">}{</span>RGB<span class="nb">}{</span>172,206,230<span class="nb">}</span> <span class="c">% #ACCEE6</span>
+<span class="k">\definecolor</span><span class="nb">{</span>invalidBg<span class="nb">}{</span>RGB<span class="nb">}{</span>242,222,222<span class="nb">}</span>  <span class="c">% #F2DEDE</span>
+<span class="k">\definecolor</span><span class="nb">{</span>invalidFg<span class="nb">}{</span>RGB<span class="nb">}{</span>185,74,72<span class="nb">}</span>    <span class="c">% #B94A48</span>
+
+<span class="c">% page style</span>
+<span class="k">\pagestyle</span><span class="nb">{</span>empty<span class="nb">}</span> <span class="c">% remove page numbering</span>
+
+<span class="c">% PDF meta data</span>
+<span class="k">\pdfinfo</span><span class="nb">{</span>
+    /Title (Welder Qualification Certificate)
+    /Creator (IB2020 <span class="nb">{{</span> electrotech<span class="nb">_</span>system<span class="nb">_</span>owner | e<span class="nb">_</span>latex <span class="nb">}}</span>)
+    /Producer (IB2020 <span class="nb">{{</span> electrotech<span class="nb">_</span>system<span class="nb">_</span>owner | e<span class="nb">_</span>latex <span class="nb">}}</span>)
+    /Author (IB2020 A Management Information System for Inspection Bodies)
+    /CreationDate (D:<span class="nb">{{</span> &quot;now&quot;|date(&quot;YmdGisO&quot;) | e<span class="nb">_</span>latex <span class="nb">}}</span>)
+    /ModDate (D:<span class="nb">{{</span> &quot;now&quot;|date(&quot;YmdGisO&quot;) | e<span class="nb">_</span>latex <span class="nb">}}</span>)
+    /Subject (Welder Qualification Certificate)
+    /Keywords (IB2020)
+<span class="nb">}</span>
+
+
+<span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+
+<span class="c">% remove left indent from table</span>
+<span class="k">\noindent</span><span class="c">%</span>
+<span class="k">\begin</span><span class="nb">{</span>tabularx<span class="nb">}{</span><span class="k">\textwidth</span><span class="nb">}{</span>@<span class="nb">{}</span>|p<span class="nb">{</span><span class="k">\colOneWidth</span><span class="nb">}</span>|X|p<span class="nb">{</span><span class="k">\colThreeWidth</span><span class="nb">}</span>|p<span class="nb">{</span><span class="k">\colFourWidth</span><span class="nb">}</span>|p<span class="nb">{</span><span class="k">\colFiveWidth</span><span class="nb">}</span>| <span class="nb">}</span>
+    <span class="k">\hline</span>
+        <span class="k">\centering</span> <span class="k">\scriptsize</span><span class="nb">{}</span>Certificate Number<span class="k">\newline</span> <span class="k">\normalsize</span> <span class="nb">{{</span> entity.certificateNumber | e<span class="nb">_</span>latex <span class="nb">}}</span> <span class="nb">&amp;</span>
+        <span class="k">\multicolumn</span><span class="nb">{</span>3<span class="nb">}{</span>c|<span class="nb">}{</span> <span class="k">\cellcolor</span><span class="nb">{</span>IB2020Blue<span class="nb">}</span> <span class="k">\textbf</span><span class="nb">{</span>Welder Qualification Certificate<span class="nb">}</span> <span class="nb">}</span> <span class="nb">&amp;</span>
+        <span class="k">\raisebox</span><span class="nb">{</span>-0.5<span class="k">\height</span><span class="nb">}{</span>
+            <span class="k">\includegraphics</span><span class="na">[width=0.13\textwidth]</span><span class="nb">{{</span> &#39;<span class="nb">{</span>&#39; <span class="nb">}}{{</span> logoFile | e<span class="nb">_</span>latex <span class="nb">}}{{</span> &#39;<span class="nb">}</span>&#39; <span class="nb">}}</span>
+        <span class="nb">}</span> <span class="k">\\</span>
+    <span class="k">\hline</span>
+        <span class="k">\multicolumn</span><span class="nb">{</span>5<span class="nb">}{</span>|c|<span class="nb">}{</span>
+            <span class="nb">{{</span> electrotech<span class="nb">_</span>system<span class="nb">_</span>owner | e<span class="nb">_</span>latex <span class="nb">}}</span>
+            <span class="k">\enspace</span>
+            IANZ Accredited Inspection Body No. <span class="nb">{{</span> electrotech<span class="nb">_</span>ianz<span class="nb">_</span>number | e<span class="nb">_</span>latex <span class="nb">}}</span>
+        <span class="nb">}</span> <span class="k">\\</span>
+    <span class="k">\hline</span>
+<span class="k">\end</span><span class="nb">{</span>tabularx<span class="nb">}</span>
+
+<span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</code></pre></div>
+
+
+<p>A <a href="http://twig.sensiolabs.org/doc/advanced.html#filters">custom Twig filter</a> <code>e_latex</code> is used to escape LaTeX special
+characters. Custom Twig filters are created by extending <code>Twig_Extension</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// src/Electrotech/WeldqualBundle/Twig/Ib2020Extension.php</span>
+
+<span class="k">namespace</span> <span class="nx">Electrotech\WeldqualBundle\Twig</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Twig_Extension</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Twig_Filter_Method</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Twig_Test_Method</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Ib2020Extension</span> <span class="k">extends</span> <span class="nx">Twig_Extension</span>
+<span class="p">{</span>
+    <span class="c1">// Unrelated methods have been omitted from this code sample for the sake</span>
+    <span class="c1">// of brevity.</span>
+
+    <span class="k">private</span> <span class="nv">$kernelBundles</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$kernelBundles</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">kernelBundles</span> <span class="o">=</span> <span class="nv">$kernelBundles</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Returns a list of filters to add to the existing list.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return array An array of filters</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getFilters</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;e_latex&#39;</span>     <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">Twig_Filter_Method</span><span class="p">(</span><span class="nv">$this</span><span class="p">,</span> <span class="s1">&#39;escapeLatexFilter&#39;</span><span class="p">),</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Escape LaTeX special characters</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return string</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">escapeLatexFilter</span><span class="p">(</span><span class="nv">$str</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$search</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;\\&#39;</span><span class="p">,</span> <span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="s1">&#39;$&#39;</span><span class="p">,</span> <span class="s1">&#39;%&#39;</span><span class="p">,</span> <span class="s1">&#39;&amp;&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;{&#39;</span><span class="p">,</span> <span class="s1">&#39;}&#39;</span><span class="p">,</span> <span class="s1">&#39;~&#39;</span><span class="p">,</span> <span class="s1">&#39;^&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;&#39;</span><span class="p">);</span>
+
+        <span class="nv">$replace</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;\textbackslash &#39;</span><span class="p">,</span> <span class="s1">&#39;\#&#39;</span><span class="p">,</span> <span class="s1">&#39;\$&#39;</span><span class="p">,</span> <span class="s1">&#39;\%&#39;</span><span class="p">,</span> <span class="s1">&#39;\&amp;&#39;</span><span class="p">,</span> <span class="s1">&#39;\_&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;\{&#39;</span><span class="p">,</span> <span class="s1">&#39;\}&#39;</span><span class="p">,</span> <span class="s1">&#39;\textasciitilde &#39;</span><span class="p">,</span> <span class="s1">&#39;\textasciicircum &#39;</span><span class="p">,</span>
+            <span class="s1">&#39;\textgreater&#39;</span><span class="p">,</span> <span class="s1">&#39;\textless&#39;</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nb">str_replace</span><span class="p">(</span><span class="nv">$search</span> <span class="p">,</span><span class="nv">$replace</span> <span class="p">,</span><span class="nv">$str</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Returns the name of the extension</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return string The extension name</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s1">&#39;electrotech_twig_ib2020_extension&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div>
+
+
+<h3 id="utilising-the-service">Utilising the service</h3>
+<p>The service is used in the controller by passing a certificate ID to the method
+<code>pdfAction()</code>. The LaTeX source document is then generated by the method
+<code>latexSource()</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Utilising the PDF LaTeX service</span>
+<span class="nv">$pdflatex</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;electrotech.pdf.pdflatex&#39;</span><span class="p">);</span>
+<span class="nv">$pdflatex</span><span class="o">-&gt;</span><span class="na">setTexSource</span><span class="p">(</span><span class="nv">$latexSource</span><span class="p">);</span>
+<span class="nv">$pdf</span> <span class="o">=</span> <span class="nv">$pdflatex</span><span class="o">-&gt;</span><span class="na">getPdf</span><span class="p">()</span>
+</code></pre></div>
+
+
+<p>Below is an example of how this service is used in a controller.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// src/Electrotech/WeldqualBundle/Controller/TestweldController.php</span>
+
+<span class="k">namespace</span> <span class="nx">Electrotech\WeldqualBundle\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\Request</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\Response</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Component\HttpKernel\Exception\HttpException</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Controller\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Electrotech\WeldqualBundle\Entity\Testweld</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Electrotech\WeldqualBundle\Entity\Testweldassessment</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Electrotech\WeldqualBundle\Form\TestweldType</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Electrotech\WeldqualBundle\Helper\QualificationRangeHelper</span><span class="p">;</span>
+
+
+<span class="sd">/**</span>
+<span class="sd"> * Testweld controller</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">TestweldController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="c1">// Unrelated methods have been omitted from this code sample for the sake</span>
+    <span class="c1">// of brevity.</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Creates a PDF certificate</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">pdfAction</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span>
+    <span class="p">{</span>
+
+        <span class="nv">$latexSource</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">latexSource</span><span class="p">(</span><span class="nv">$id</span><span class="p">,</span> <span class="s1">&#39;show.tex.twig&#39;</span><span class="p">);</span>
+
+        <span class="nv">$pdflatex</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;electrotech.pdf.pdflatex&#39;</span><span class="p">);</span>
+        <span class="nv">$pdflatex</span><span class="o">-&gt;</span><span class="na">setTexSource</span><span class="p">(</span><span class="nv">$latexSource</span><span class="p">[</span><span class="s1">&#39;latex&#39;</span><span class="p">]);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$pdflatex</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">())</span>
+        <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">HttpException</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="s1">&#39;Error creating PDF: &#39;</span><span class="o">.</span><span class="nv">$pdflatex</span><span class="o">-&gt;</span><span class="na">getStderr</span><span class="p">());</span>
+        <span class="p">}</span>
+
+        <span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">();</span>
+        <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setContent</span><span class="p">(</span><span class="nv">$pdflatex</span><span class="o">-&gt;</span><span class="na">getPdf</span><span class="p">());</span>
+        <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">headers</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">,</span> <span class="s1">&#39;application/pdf&#39;</span><span class="p">);</span>
+        <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">headers</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;Content-Disposition&#39;</span><span class="p">,</span> <span class="s1">&#39;inline; filename=&quot;&#39;</span><span class="o">.</span><span class="nv">$latexSource</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">]</span><span class="o">.</span><span class="s1">&#39;.pdf&quot;&#39;</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Creates LaTeX source</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">latexSource</span><span class="p">(</span><span class="nv">$id</span><span class="p">,</span> <span class="nv">$template</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+        <span class="nv">$entity</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;ElectrotechWeldqualBundle:Testweld&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$entity</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createNotFoundException</span><span class="p">(</span><span class="s1">&#39;Unable to find Testweld entity.&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nv">$em</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDoctrine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getManager</span><span class="p">();</span>
+
+        <span class="nv">$weldVariables</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;ElectrotechWeldqualBundle:Weldvariables&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">fetchWeldVariables</span><span class="p">(</span>
+                <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getQualificationstandard</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getEdition</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">getTechdoc</span><span class="p">(),</span>
+                <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getProducttype</span><span class="p">(),</span>
+                <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getWeldtype</span><span class="p">(),</span>
+                <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getWeldposition</span><span class="p">(),</span>
+                <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getWelddirection</span><span class="p">()</span>
+            <span class="p">);</span>
+
+        <span class="nv">$qualifiedRange</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$weldVariables</span> <span class="o">!==</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="nv">$qualifiedRange</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">QualificationRangeHelper</span><span class="p">(</span>
+                <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getProducttype</span><span class="p">(),</span>
+                <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getPipeod</span><span class="p">(),</span>
+                <span class="nv">$weldVariables</span><span class="o">-&gt;</span><span class="na">getQualifiedweldvariablesid</span><span class="p">()</span>
+            <span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nv">$logoFile</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;kernel&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getRootDir</span><span class="p">()</span><span class="o">.</span><span class="nx">DIRECTORY_SEPARATOR</span><span class="o">.</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">container</span><span class="o">-&gt;</span><span class="na">getParameter</span><span class="p">(</span><span class="s1">&#39;electrotech_upload_dir&#39;</span><span class="p">)</span><span class="o">.</span><span class="nx">DIRECTORY_SEPARATOR</span><span class="o">.</span>
+            <span class="s1">&#39;sysowner&#39;</span><span class="o">.</span><span class="nx">DIRECTORY_SEPARATOR</span><span class="o">.</span><span class="s1">&#39;logo.pdf&#39;</span><span class="p">;</span>
+
+        <span class="nv">$templating</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;templating&#39;</span><span class="p">);</span>
+
+        <span class="nv">$latexSource</span> <span class="o">=</span> <span class="nv">$templating</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span>
+            <span class="s1">&#39;ElectrotechWeldqualBundle:Testweld:&#39;</span><span class="o">.</span><span class="nv">$template</span><span class="p">,</span>
+            <span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;entity&#39;</span>         <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="p">,</span>
+                <span class="s1">&#39;logoFile&#39;</span>       <span class="o">=&gt;</span> <span class="nv">$logoFile</span><span class="p">,</span>
+                <span class="s1">&#39;qualifiedRange&#39;</span> <span class="o">=&gt;</span> <span class="nv">$qualifiedRange</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">);</span>
+
+        <span class="k">return</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">&#39;latex&#39;</span>    <span class="o">=&gt;</span> <span class="nv">$latexSource</span><span class="p">,</span>
+            <span class="s1">&#39;filename&#39;</span> <span class="o">=&gt;</span> <span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">getFilename</span><span class="p">()</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<h2 id="further-reading">Further reading</h2>
+<ul>
+<li><a href="http://symfony.com/doc/2.3/cookbook/controller/service.html">How to define controllers as services</a>.</li>
+<li><a href="https://tobi.oetiker.ch/lshort/lshort.pdf">The not so short introduction to LaTeX 2&epsilon;</a> by Tobias Oetiker.</li>
+</ul>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="http://seth.fischer.nz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="https://github.com/sethfischer">GitHub</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
 
 </body>
 </html>

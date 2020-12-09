@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>sethfischer</title><link href="http://seth.fischer.nz/" rel="alternate"></link><link href="http://seth.fischer.nz/feeds/misc.atom.xml" rel="self"></link><id>http://seth.fischer.nz/</id><updated>2015-03-27T20:47:00+13:00</updated><entry><title>Optimising page speed: A case study</title><link href="http://seth.fischer.nz/optimising-page-speed-case-study.html" rel="alternate"></link><published>2015-03-27T20:47:00+13:00</published><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2015-03-27:optimising-page-speed-case-study.html</id><summary type="html">&lt;p&gt;As an exercise in optimising page speed the &lt;a href="http://docs.getpelican.com/"&gt;Pelican&lt;/a&gt; theme
+<feed xmlns="http://www.w3.org/2005/Atom"><title>sethfischer - Misc</title><link href="http://seth.fischer.nz/" rel="alternate"></link><link href="http://seth.fischer.nz/feeds/misc.atom.xml" rel="self"></link><id>http://seth.fischer.nz/</id><updated>2015-03-27T20:47:00+13:00</updated><entry><title>Optimising page speed: A case study</title><link href="http://seth.fischer.nz/optimising-page-speed-case-study.html" rel="alternate"></link><published>2015-03-27T20:47:00+13:00</published><updated>2015-03-27T20:47:00+13:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2015-03-27:/optimising-page-speed-case-study.html</id><summary type="html">&lt;p&gt;As an exercise in optimising page speed the Pelican theme
+pelican-bootstrap3 by Daan Debie was customised according to the specific
+requirements of seth.fischer.nz. The customisations reduced the total
+number of requests on the index page by 66% and the page size was reduced
+by 62%.&lt;/p&gt;</summary><content type="html">&lt;p&gt;As an exercise in optimising page speed the &lt;a href="http://docs.getpelican.com/"&gt;Pelican&lt;/a&gt; theme
 &lt;a href="https://github.com/DandyDev/pelican-bootstrap3"&gt;pelican-bootstrap3&lt;/a&gt; by Daan Debie was customised in order to improve page
 speed. The customisations reduced the total number of requests on the index
 page by 66% and the page size was reduced by 62%.&lt;/p&gt;
@@ -107,7 +111,7 @@ unused components from the build &lt;code&gt;bootstrap.min.css&lt;/code&gt; was 
 &lt;a href="https://github.com/gruntjs/grunt-contrib-compass"&gt;grunt-contrib-compass&lt;/a&gt; by Sindre Sorhus.&lt;/p&gt;
 &lt;p&gt;Below is the &lt;code&gt;Gruntfile.js&lt;/code&gt; for this theme which includes both a
 &lt;code&gt;grunt-webfont&lt;/code&gt; task and a &lt;code&gt;grunt-contrib-compass&lt;/code&gt; task.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nx"&gt;module&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;exports&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;grunt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nx"&gt;module&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;exports&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;grunt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="s2"&gt;&amp;quot;use strict&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
     &lt;span class="nx"&gt;grunt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;initConfig&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;
@@ -143,7 +147,7 @@ unused components from the build &lt;code&gt;bootstrap.min.css&lt;/code&gt; was 
 
     &lt;span class="nx"&gt;grunt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;registerTask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;default&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;compass&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;webfont&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
 &lt;span class="p"&gt;};&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3 id="reduce-ajax-requests"&gt;Reduce AJAX requests&lt;/h3&gt;
@@ -169,8 +173,8 @@ process with &lt;a href="https://github.com/kura/pelican-githubprojects"&gt;peli
 &lt;p&gt;By excluding the modules ajax, deprecated, offset, and effects, &lt;code&gt;jquery.min.js&lt;/code&gt;
 was reduced from 84.2&amp;nbsp;kB to 65.7&amp;nbsp;kB.&lt;/p&gt;
 &lt;p&gt;Below is the Grunt command used to build &lt;code&gt;jquery-custom.min.js&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="go"&gt;jquery((2.1.3))$ grunt custom:-ajax,-deprecated,-offset,-effects&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="go"&gt;jquery((2.1.3))$ grunt custom:-ajax,-deprecated,-offset,-effects&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3 id="merge-and-minify-assets"&gt;Merge and minify assets&lt;/h3&gt;
@@ -184,18 +188,18 @@ was reduced from 84.2&amp;nbsp;kB to 65.7&amp;nbsp;kB.&lt;/p&gt;
 &lt;a href="https://github.com/getpelican/pelican-plugins"&gt;Pelican assets plug-in&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Five CSS files were merged into a single file and compressed with the
 &lt;a href="http://yui.github.io/yuicompressor/"&gt;YUI Compressor&lt;/a&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;assets&lt;/span&gt; &lt;span class="nv"&gt;filters&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;yui_css&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;output&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;css/styles.%(version)s.min.css&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;css/bootstrap-custom.css&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;css/font-custom.css&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;css/github-repos.css&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;css/style.css&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;pygments&amp;quot;&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;assets&lt;/span&gt; &lt;span class="nv"&gt;filters&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;yui_css&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;output&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;css/styles.%(version)s.min.css&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;css/bootstrap-custom.css&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;css/font-custom.css&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;css/github-repos.css&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;css/style.css&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;pygments&amp;quot;&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
 &lt;span class="x"&gt;    &amp;lt;link href=&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;SITEURL&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="x"&gt;/&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;ASSET_URL&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="x"&gt;&amp;quot; rel=&amp;quot;stylesheet&amp;quot; /&amp;gt;&lt;/span&gt;
 &lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endassets&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Three JavaScript files were merged and compressed, again with the YUI
 Compressor.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;assets&lt;/span&gt; &lt;span class="nv"&gt;filters&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;yui_js&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;output&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;js/scripts.%(version)s.min.js&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;js/jquery/jquery-custom.min.js&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;js/bootstrap/transition.js&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;js/bootstrap/collapse.js&amp;quot;&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;assets&lt;/span&gt; &lt;span class="nv"&gt;filters&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;yui_js&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;output&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;js/scripts.%(version)s.min.js&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;js/jquery/jquery-custom.min.js&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;js/bootstrap/transition.js&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;js/bootstrap/collapse.js&amp;quot;&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
 &lt;span class="x"&gt;    &amp;lt;script src=&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;SITEURL&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="x"&gt;/&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;ASSET_URL&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="x"&gt;&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
 &lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endassets&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;While the homepage of this site did not include images, page size can often be
@@ -367,4 +371,4 @@ following dependencies:&lt;/p&gt;
 &lt;li&gt;&lt;a href="https://developer.yahoo.com/performance/rules.html"&gt;Best Practices for Speeding Up Your Web Site&lt;/a&gt; Yahoo! Developer Network&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://pages.github.com/"&gt;GitHub Pages&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://tools.pingdom.com/fpt/"&gt;Pingdom tools website speed test&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</summary></entry></feed>
+&lt;/ul&gt;</content><category term="Misc"></category></entry></feed>

@@ -1,115 +1,48 @@
 <!DOCTYPE html>
-<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<html lang="en">
 <head>
-    <title>Getting started with Drupal 8 - sethfischer</title>
-    <!-- Using the latest rendering mode for IE -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-
-<link rel="canonical" href="http://seth.fischer.nz/drupal-8-getting-started.html">
-
-        <meta name="author" content="Seth Fischer" />
-        <meta name="keywords" content="Drupal 8,Drupal" />
-        <meta name="description" content="Now that Drupal 8 is in beta phase it is a great time for site developers to start exploring the API. This article serves as an introduction to installing and configuring Drupal 8 using Git and Drush." />
-
-        <meta property="og:site_name" content="sethfischer" />
-        <meta property="og:type" content="article"/>
-        <meta property="og:title" content="Getting started with Drupal 8"/>
-        <meta property="og:url" content="http://seth.fischer.nz/drupal-8-getting-started.html"/>
-        <meta property="og:description" content="Now that Drupal 8 is in beta phase it is a great time for site developers to start exploring the API. This article serves as an introduction to installing and configuring Drupal 8 using Git and Drush."/>
-        <meta property="article:published_time" content="2014-11-28" />
-            <meta property="article:section" content="Drupal" />
-            <meta property="article:tag" content="Drupal 8" />
-            <meta property="article:tag" content="Drupal" />
-            <meta property="article:author" content="Seth Fischer" />
-
-
-        <link href="http://seth.fischer.nz/theme/css/styles.7ebb2c04.min.css" rel="stylesheet" />
-
-        <link href="http://seth.fischer.nz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
-              title="sethfischer ATOM Feed"/>
-
-
-
-        <link href="http://seth.fischer.nz/feeds/drupal.atom.xml" type="application/atom+xml" rel="alternate"
-              title="sethfischer Drupal ATOM Feed"/>
-
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>Getting started with Drupal 8</title>
+        <link rel="stylesheet" href="http://seth.fischer.nz/theme/css/main.css" />
+        <link href="http://seth.fischer.nz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="sethfischer Atom Feed" />
+        <meta name="description" content="Now that Drupal 8 is in beta phase it is a great time for site developers to start exploring the API. This article serves as an introduction to..." />
 </head>
-<body>
 
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-	<div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="http://seth.fischer.nz/" class="navbar-brand">
-sethfischer            </a>
-        </div>
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav">
-                         <li><a href="http://seth.fischer.nz/pages/about.html">
-                             About
-                          </a></li>
-                        <li class="active">
-                            <a href="http://seth.fischer.nz/category/drupal.html">Drupal</a>
-                        </li>
-                        <li >
-                            <a href="http://seth.fischer.nz/category/misc.html">Misc</a>
-                        </li>
-                        <li >
-                            <a href="http://seth.fischer.nz/category/symfony.html">Symfony</a>
-                        </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="http://seth.fischer.nz/archives.html"><i class="fa fa-th-list"></i> Archives</a></li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-</nav> <!-- /.navbar -->
-<!-- Banner -->
-<!-- End Banner -->
-<div class="container">
-    <div class="row">
-        <main id="main" class="col-sm-9" role="main">
-    <article id="content" role="article">
-        <header class="page-header">
-            <h1>Getting started with Drupal 8</h1>
-        </header>
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://seth.fischer.nz/">sethfischer</a></h1>
+                <nav><ul>
+                    <li><a href="http://seth.fischer.nz/pages/about.html">About</a></li>
+                    <li class="active"><a href="http://seth.fischer.nz/category/drupal.html">Drupal</a></li>
+                    <li><a href="http://seth.fischer.nz/category/misc.html">Misc</a></li>
+                    <li><a href="http://seth.fischer.nz/category/symfony.html">Symfony</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="http://seth.fischer.nz/drupal-8-getting-started.html" rel="bookmark"
+           title="Permalink to Getting started with Drupal 8">Getting started with Drupal 8</a></h1>
+    </header>
+
+    <div class="entry-content">
 <footer class="post-info">
-    <dl class="dl-horizontal">
-        <dt>Date</dt>
-        <dd>
-            <time datetime="2014-11-28T22:22:00+13:00">28 November 2014</time>
-                <small>(Modified <time datetime="2014-11-29T20:33:00+13:00">29 November 2014</time>)</small>
-        </dd>
-            <dt>Tags</dt>
-            <dd>
-                <a href="http://seth.fischer.nz/tag/drupal-8.html">Drupal 8</a>
-                    /
-                <a href="http://seth.fischer.nz/tag/drupal.html">Drupal</a>
-            </dd>
-            <dt>On GitHub</dt>
-            <dd>
-                <div class="btn-group btn-group-xs" role="group" aria-label="...">
-                    <a class="btn btn-default btn-sm" href="https://github.com/sethfischer/sethfischer.github.io/commits/source/content/drupal/drupal-8-getting-started.md" role="button"><i class="fa fa-history"></i> History</a>
-                    <a class="btn btn-default btn-sm" href="https://github.com/sethfischer/sethfischer.github.io" role="button"><i class="fa fa-eye"></i> Watch</a>
-                    <a class="btn btn-default btn-sm" href="https://github.com/sethfischer/sethfischer.github.io/issues/new?title=drupal/drupal-8-getting-started.md" role="button"><i class="fa fa-exclamation"></i> New issue</a>
-                </div>
-            </dd>
-    </dl>
+        <abbr class="published" title="2014-11-28T22:22:00+13:00">
+                Published: 28 November 2014
+        </abbr>
+		<br />
+        <abbr class="modified" title="2014-11-29T20:33:00+13:00">
+                Updated: 29 November 2014
+        </abbr>
 
-
-    
-</footer><!-- /.post-info -->        <div class="entry-content">
-            <p class="alert alert-danger" role="alert">Consider using a Composer based workflow with the
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://seth.fischer.nz/author/seth-fischer.html">Seth Fischer</a>
+        </address>
+<p>In <a href="http://seth.fischer.nz/category/drupal.html">Drupal</a>.</p>
+<p>tags: <a href="http://seth.fischer.nz/tag/drupal-8.html">Drupal 8</a> <a href="http://seth.fischer.nz/tag/drupal.html">Drupal</a> </p>
+</footer><!-- /.post-info -->      <p class="alert alert-danger" role="alert">Consider using a Composer based workflow with the
 <a href="https://github.com/drupal-composer/drupal-project">Composer template for Drupal projects</a>.</p>
 <p>Now that <a href="https://www.drupal.org/drupal-8.0">Drupal 8</a> is in beta phase it is time for site developers to start
 exploring the API. This article describes the installation and configuration of
@@ -142,17 +75,17 @@ site with the next core update.</p>
 <li>using composer, <a href="https://github.com/drush-ops/drush#installupdate---composer" title="How to install Drush 7.x (dev)">install Drush 7.x (dev)</a></li>
 </ul>
 <h2 id="clone-drupal-8">Clone Drupal 8</h2>
-<div class="highlight"><pre><span></span><span class="gp">$</span> git clone -b 8.0.x --single-branch http://git.drupal.org/project/drupal.git
+<div class="highlight"><pre><span></span><code><span class="gp">$</span> git clone -b <span class="m">8</span>.0.x --single-branch http://git.drupal.org/project/drupal.git
 <span class="gp">$</span> git remote rename origin upstream
 <span class="gp">$</span> git remote add origin <span class="o">[</span>url<span class="o">]</span>
 <span class="gp">$</span> git checkout -b master
 <span class="gp">$</span> cp example.gitignore .gitignore
-</pre></div>
+</code></pre></div>
 
 
 <h2 id="create-the-files-directory-and-set-permissions">Create the files directory and set permissions</h2>
-<div class="highlight"><pre><span></span><span class="gp">$</span> mkdir sites/default/files
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="gp">$</span> mkdir sites/default/files
+</code></pre></div>
 
 
 <p>To work efficiently with drush the files in <code>sites/default/files</code> should be
@@ -161,27 +94,27 @@ writeable both by the web server and command line user. An alternative to
 <p>Those familiar with the Symfony 2 documentation will recognise the following
 shell commands which have been adapted from the
 <a href="http://Symfony.com/doc/2.3/book/installation.html#configuration-and-set-up">Installing and Configuring Symfony</a> chapter of the The Symfony Book.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nv">HTTPDUSER</span><span class="o">=</span><span class="sb">`</span>ps aux <span class="p">|</span> grep -E <span class="s1">&#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&#39;</span> <span class="p">|</span> grep -v root <span class="p">|</span> head -1 <span class="p">|</span> cut -d<span class="se">\ </span> -f1<span class="sb">`</span>
+<div class="highlight"><pre><span></span><code><span class="gp">$</span> <span class="nv">HTTPDUSER</span><span class="o">=</span><span class="sb">`</span>ps aux <span class="p">|</span> grep -E <span class="s1">&#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&#39;</span> <span class="p">|</span> grep -v root <span class="p">|</span> head -1 <span class="p">|</span> cut -d<span class="se">\ </span> -f1<span class="sb">`</span>
 <span class="gp">$</span> sudo setfacl -R -m u:<span class="s2">&quot;</span><span class="nv">$HTTPDUSER</span><span class="s2">&quot;</span>:rwX -m u:<span class="sb">`</span>whoami<span class="sb">`</span>:rwX sites/default/files
 <span class="gp">$</span> sudo setfacl -dR -m u:<span class="s2">&quot;</span><span class="nv">$HTTPDUSER</span><span class="s2">&quot;</span>:rwX -m u:<span class="sb">`</span>whoami<span class="sb">`</span>:rwX sites/default/files
-</pre></div>
+</code></pre></div>
 
 
 <p><code>HTTPDUSER</code> is usually <code>www-data</code> on Debian-based distributions.</p>
 <p>Before setting the access control only the drush user will have <code>rw</code> permissions:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> getfacl sites/default/files
+<div class="highlight"><pre><span></span><code><span class="gp">$</span> getfacl sites/default/files
 <span class="gp">#</span> file: cache
 <span class="gp">#</span> owner: drushuser
 <span class="gp">#</span> group: drushuser
 <span class="go">user::rwx</span>
 <span class="go">group::rwx</span>
 <span class="go">other::rwx</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>After setting the access control both the web server user and drush user will
 have <code>rw</code> permissions:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> getfacl sites/default/files
+<div class="highlight"><pre><span></span><code><span class="gp">$</span> getfacl sites/default/files
 <span class="gp">#</span> file: cache
 <span class="gp">#</span> owner: drushuser
 <span class="gp">#</span> group: drushuser
@@ -197,35 +130,35 @@ have <code>rw</code> permissions:</p>
 <span class="go">default:group::rwx</span>
 <span class="go">default:mask::rwx</span>
 <span class="go">default:other::rwx</span>
-</pre></div>
+</code></pre></div>
 
 
 <h2 id="create-database">Create database</h2>
-<div class="highlight"><pre><span></span><span class="gp">$</span> mysql -uroot -p
+<div class="highlight"><pre><span></span><code><span class="gp">$</span> mysql -uroot -p
 <span class="go">mysql&gt; CREATE DATABASE db;</span>
 <span class="go">mysql&gt; CREATE USER &#39;dbuser&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;password&#39;;</span>
 <span class="go">mysql&gt; GRANT ALL PRIVILEGES ON db.* TO &#39;dbuser&#39;@&#39;localhost&#39;;</span>
 <span class="go">mysql&gt; FLUSH PRIVILEGES;</span>
 <span class="go">mysql&gt; \q</span>
-</pre></div>
+</code></pre></div>
 
 
 <h2 id="site-installation">Site installation</h2>
-<div class="highlight"><pre><span></span><span class="gp">$</span> drush site-install standard --db-url<span class="o">=</span>mysql://dbuser:password@localhost/db --site-name<span class="o">=</span>drupal8
+<div class="highlight"><pre><span></span><code><span class="gp">$</span> drush site-install standard --db-url<span class="o">=</span>mysql://dbuser:password@localhost/db --site-name<span class="o">=</span>drupal8
 <span class="gp">$</span> drush upwd admin --password<span class="o">=</span>password
-</pre></div>
+</code></pre></div>
 
 
 <p>Drupal 8 beta is now configured and you may login with the username "admin" and
 password "password".</p>
 <h2 id="configure-a-drush-alias">Configure a Drush alias</h2>
-<div class="highlight"><pre><span></span><span class="gp">$</span> cp ~/.composer/vendor/drush/drush/examples/example.aliases.drushrc.php ~/.drush/aliases.drushrc.php
+<div class="highlight"><pre><span></span><code><span class="gp">$</span> cp ~/.composer/vendor/drush/drush/examples/example.aliases.drushrc.php ~/.drush/aliases.drushrc.php
 <span class="gp">$</span> drush site-alias @self --full --with-optional &gt;&gt; ~/.drush/aliases.drushrc.php
-</pre></div>
+</code></pre></div>
 
 
 <p>Edit <code>~/.drush/aliases.drushrc.php</code> and enter your site's URI.</p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="sd">/**</span>
 <span class="sd"> * Drupal 8 beta</span>
 <span class="sd"> */</span>
@@ -239,17 +172,17 @@ password "password".</p>
     <span class="s1">&#39;%site&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;sites/default/&#39;</span><span class="p">,</span>
   <span class="p">),</span>
 <span class="p">);</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Check that your system meets the minimum core requirements:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> drush @drupal8 core-requirements
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="gp">$</span> drush @drupal8 core-requirements
+</code></pre></div>
 
 
 <p>Check the status of the site installation by running <code>drush @drupal8 status</code>.
 The output will be similar to the following:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> drush @drupal8 status
+<div class="highlight"><pre><span></span><code><span class="gp">$</span> drush @drupal8 status
 <span class="go"> Drupal version         :  8.0.0-dev</span>
 <span class="go"> Site URI               :  http://drupal8</span>
 <span class="go"> Database driver        :  mysql</span>
@@ -280,21 +213,21 @@ The output will be similar to the following:</p>
 <span class="go"> Staging config path    :  sites/default/files/config_jP-uX_4rcMWllW18FM124krsM</span>
 <span class="go">                           An44d1rdD2t5zXZLAaQcrXQjUATnoTTQ5gtw-iH5fqcmlTFCQ/st</span>
 <span class="go">                           aging</span>
-</pre></div>
+</code></pre></div>
 
 
 <h2 id="install-contrib-modules">Install contrib modules</h2>
 <p>Two useful modules for developers are <a href="https://www.drupal.org/project/devel">devel</a> and <a href="https://www.drupal.org/project/examples">examples</a>.</p>
 <h3 id="devel">Devel</h3>
-<div class="highlight"><pre><span></span><span class="gp">$</span> drush @drupal8 pm-download devel
+<div class="highlight"><pre><span></span><code><span class="gp">$</span> drush @drupal8 pm-download devel
 <span class="gp">$</span> drush @drupal8 pm-enable devel
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="examples">Examples</h3>
-<div class="highlight"><pre><span></span><span class="gp">$</span> drush @drupal8 pm-download examples
+<div class="highlight"><pre><span></span><code><span class="gp">$</span> drush @drupal8 pm-download examples
 <span class="gp">$</span> drush @drupal8 pm-enable examples
-</pre></div>
+</code></pre></div>
 
 
 <p>The single command <code>drush @drupal8 pm-enable module</code> will download module (if
@@ -302,15 +235,15 @@ required) before enabling it.</p>
 <h2 id="regularly-update-drupal-core">Regularly update Drupal core</h2>
 <p>As Drupal 8 pushes on through beta releases you should regularly merge in the
 latest code:</p>
-<div class="highlight"><pre><span></span><span class="gp">(master)$</span> git checkout master
-<span class="gp">(master)$</span> git fetch upstream
-<span class="gp">(master)$</span> git merge upstream/8.0.x
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="gp gp-VirtualEnv">(master)</span><span class="gp">$</span> git checkout master
+<span class="gp gp-VirtualEnv">(master)</span><span class="gp">$</span> git fetch upstream
+<span class="gp gp-VirtualEnv">(master)</span><span class="gp">$</span> git merge upstream/8.0.x
+</code></pre></div>
 
 
 <p>Remember to rebuild the site after each merge:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> drush cache-rebuild
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="gp">$</span> drush cache-rebuild
+</code></pre></div>
 
 
 <p>Before all issues tagged with "D8 upgrade path" have been closed you may find
@@ -321,232 +254,28 @@ above after updating Drupal core.</p>
 <li><a href="https://www.drupal.org/node/803746">Building a Drupal site with Git</a></li>
 <li><a href="http://gitref.org/">Git Reference</a></li>
 </ul>
-        </div>
-    </article>
-        </main>
-            <aside  id="sidebar" class="col-sm-3" role="complementary">
-                <div class="well well-sm">
+    </div><!-- /.entry-content -->
 
-<h2 class="sr-only">Miscellaneous links and navigation</h2>
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="http://seth.fischer.nz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-    <ul class="list-group">
-        <li class="list-group-item">
-            <span class="sidebar-heading"><i class="fa fa-code-fork fa-lg"></i> Code</span>
-            <ul class="list-group" id="social">
-                    <li class="list-group-item"><a href="https://github.com/sethfischer"><i class="fa fa-github fa-lg"></i> GitHub</a></li>
-                    <li class="list-group-item"><a href="https://bitbucket.org/sethfischer"><i class="fa fa-bitbucket fa-lg"></i> Bitbucket</a></li>
-                    <li class="list-group-item"><a href="https://drupal.org/u/sethfischer"><i class="fa fa-drupal fa-lg"></i> Drupal</a></li>
-            </ul>
-        </li>
-    </ul>
+                            <li><a href="https://github.com/sethfischer">GitHub</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
 
-    <ul class="list-group">
-        <li class="list-group-item">
-            <span class="sidebar-heading"><i class="fa fa-clock-o fa-lg"></i> Recent articles</span>
-            <nav>
-                <ul class="list-group" id="recentposts">
-                    <li class="list-group-item">
-                        <a href="http://seth.fischer.nz/drupal-8-development-tools.html">
-                            An introduction to Drupal 8 development tools
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://seth.fischer.nz/symfony-2-latex-pdf-service.html">
-                            Symfony 2 PDF service using LaTeX
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://seth.fischer.nz/optimising-page-speed-case-study.html">
-                            Optimising page speed: A case study
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://seth.fischer.nz/drupal-8-fabric-deploy.html">
-                            Deploying Drupal 8 with Fabric
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="http://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merging.html">
-                            A Drupal 8 workflow using the Git subtree merge strategy
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </li>
-    </ul>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
 
-
-    <ul class="list-group">
-        <li class="list-group-item">
-<a href="http://seth.fischer.nz/tags.html">            <span class="sidebar-heading"><i class="fa fa-tags fa-lg"></i> Tags</span>
-</a>            <nav>
-                <ul class="list-group" id="tags">
-                        <li class="list-group-item tag-1">
-                            <a href="http://seth.fischer.nz/tag/drupal.html">
-                                Drupal
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-1">
-                            <a href="http://seth.fischer.nz/tag/drupal-8.html">
-                                Drupal 8
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://seth.fischer.nz/tag/symfony-2.html">
-                                Symfony 2
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://seth.fischer.nz/tag/python.html">
-                                Python
-                            </a>
-                        </li>
-                        <li class="list-group-item tag-4">
-                            <a href="http://seth.fischer.nz/tag/fabric.html">
-                                Fabric
-                            </a>
-                        </li>
-                </ul>
-            </nav>
-        </li>
-    </ul>
-
-    <ul class="list-group">
-        <li class="list-group-item">
-            <span class="sidebar-heading"><i class="fa fa-github fa-lg"></i> GitHub repositories</span>
-
-            <dl id="github-repos">
-                    <dt>
-                        <a href="https://github.com/sethfischer/DrupalConsole">DrupalConsole</a>
-                            <small>PHP</small>
-                    </dt>
-                    <dd>
-                        <small>Drupal Console</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/dotfiles">dotfiles</a>
-                            <small>Shell</small>
-                    </dt>
-                    <dd>
-                        <small>Seth Fischer's dot files.</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/fabric-deploy">fabric-deploy</a>
-                            <small>Python</small>
-                    </dt>
-                    <dd>
-                        <small>Fabric deploy scripts.</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/latex-intro-slides">latex-intro-slides</a>
-                            <small>TeX</small>
-                    </dt>
-                    <dd>
-                        <small>A presentation introducing LaTeX and a selection of command-line tools for producing PDF documents.</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/libsass-python">libsass-python</a>
-                            <small>Python</small>
-                    </dt>
-                    <dd>
-                        <small>A straightforward binding of libsass for Python.  Compile Sass/SCSS in Python with no Ruby stack at all!</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/mundo-flags">mundo-flags</a>
-                            <small>Shell</small>
-                    </dt>
-                    <dd>
-                        <small>A collection of flags for the countries specified in ISO 3166-1.</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/mundo-names">mundo-names</a>
-                            <small>Shell</small>
-                    </dt>
-                    <dd>
-                        <small>Translations of country names defined in ISO 3166-1.</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/mundoplugs-data">mundoplugs-data</a>
-                    </dt>
-                    <dd>
-                        <small>Data for mundoplugs.com, an electrical guide for travelers.</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/mundoplugs-l10n">mundoplugs-l10n</a>
-                    </dt>
-                    <dd>
-                        <small>Translations for mundoplugs.com, an electrical guide for travelers.</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/pelican">pelican</a>
-                            <small>HTML</small>
-                    </dt>
-                    <dd>
-                        <small>Static site generator that supports Markdown and reST syntax. Powered by Python.</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/pelican-bootstrap3">pelican-bootstrap3</a>
-                            <small>CSS</small>
-                    </dt>
-                    <dd>
-                        <small>Customised Bootstrap 3 theme for http://seth.fischer.nz/.</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/puppet-dovecot">puppet-dovecot</a>
-                            <small>HTML</small>
-                    </dt>
-                    <dd>
-                        <small>Puppet Dovecot Module for Dovecot 2+</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/riversbk">riversbk</a>
-                            <small>Python</small>
-                    </dt>
-                    <dd>
-                        <small>Wrapper scripts for rsnapshot</small>
-                    </dd>
-                    <dt>
-                        <a href="https://github.com/sethfischer/sethfischer.github.io">sethfischer.github.io</a>
-                            <small>Python</small>
-                    </dt>
-                    <dd>
-                        <small>Seth Fischer's personal website.</small>
-                    </dd>
-            </dl>
-
-                <a href="https://github.com/sethfischer">@sethfischer</a> on GitHub
-        </li>
-    </ul>
-                </div>
-            </aside>
-    </div>
-</div>
-<footer class="container" role="contentinfo">
-    <hr>
-    <p>
-        &copy; 2015 Seth Fischer            
-
-
-    <span prefix="dct: http://purl.org/dc/terms/ cc: http://creativecommons.org/ns#">Content
-licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
-    </span>
-
-    </p>
-</footer>
-    <script src="http://seth.fischer.nz/theme/js/scripts.6cd69145.min.js"></script>
-
-
-    <!-- Google Analytics Universal -->
-    <script type="text/javascript">
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-59343172-1', 'auto');
-        ga('send', 'pageview');
-    </script>
-    <!-- End Google Analytics Universal Code -->
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
 
 </body>
 </html>
