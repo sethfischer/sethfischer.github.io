@@ -1,11 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
-from __future__ import unicode_literals
-import os
 
-
-AUTHOR = u'Seth Fischer'
-SITENAME = u'sethfischer'
+AUTHOR = 'Seth Fischer'
+SITENAME = 'sethfischer'
 SITEURL = ''
 
 PATH = 'content'
@@ -13,7 +10,7 @@ PATH = 'content'
 DEFAULT_DATE_FORMAT = '%d %B %Y'
 TIMEZONE = 'Pacific/Auckland'
 
-DEFAULT_LANG = u'en'
+DEFAULT_LANG = 'en'
 
 TAGS_URL = 'tags.html'
 CATEGORIES_URL = 'categories.html'
@@ -22,6 +19,8 @@ CATEGORIES_URL = 'categories.html'
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
+AUTHOR_FEED_ATOM = None
+AUTHOR_FEED_RSS = None
 
 # Blogroll
 LINKS = None
@@ -29,8 +28,6 @@ LINKS = None
 # Social widget
 SOCIAL = (
     ('GitHub', 'https://github.com/sethfischer'),
-    ('Bitbucket', 'https://bitbucket.org/sethfischer'),
-    ('Drupal', 'https://drupal.org/u/sethfischer'),
 )
 
 DEFAULT_PAGINATION = False
@@ -64,56 +61,3 @@ MARKDOWN = {
     },
     'output_format': 'html5',
 }
-
-PLUGIN_PATHS = [
-    os.path.join(os.environ.get('HOME'), 'src/pelican-plugins')
-]
-PLUGINS = [
-    'assets',
-    'sitemap',
-    'tag_cloud',
-    'pelican_githubprojects'
-]
-
-SITEMAP = {
-    'format': 'xml',
-    'priorities': {
-        'articles': 1,
-        'indexes': 0.5,
-        'pages': 0.5
-    },
-    'changefreqs': {
-        'articles': 'monthly',
-        'indexes': 'daily',
-        'pages': 'monthly'
-    }
-}
-
-ASSET_BUNDLES = (
-    ('css_bundle', [
-        'css/bootstrap-custom.css',
-        'css/font-custom.css',
-        'css/sidebar.css',
-        'css/style.css',
-        'lib/pygments/native.css',
-    ], {}),
-    ('js_bundle', [
-        'js/jquery/jquery-custom.min.js',
-        'js/bootstrap/transition.js',
-        'js/bootstrap/collapse.js',
-    ], {}),
-)
-
-THEME = os.path.join(os.environ.get('HOME'), 'src/pelican-bootstrap3')
-
-CC_LICENSE_DERIVATIVES = 'Yes'
-CC_LICENSE_COMMERCIAL = 'Yes'
-CC_ATTR_MARKUP = False
-
-SHOW_DATE_MODIFIED = True
-DISPLAY_TAGS_ON_SIDEBAR = True
-DISPLAY_RECENT_POSTS_ON_SIDEBAR = True
-GITHUB_USER = 'sethfischer'
-GITHUB_SHOW_USER_LINK = True
-GITHUB_REPO_URL = 'https://github.com/sethfischer/sethfischer.github.io'
-

@@ -328,7 +328,7 @@ following dependencies:
 
 [1]: http://docs.getpelican.com/
 [2]: https://github.com/DandyDev/pelican-bootstrap3
-[3]: |filename|/files/seth.fischer.nz_2015-03-15_1905.har
+[3]: |static|/files/seth.fischer.nz_2015-03-15_1905.har
 [4]: https://github.com/FortAwesome/Font-Awesome
 [5]: http://fontcustom.com/
 [6]: https://github.com/encharm/Font-Awesome-SVG-PNG
@@ -345,7 +345,7 @@ following dependencies:
 [17]: https://github.com/getpelican/pelican-plugins
 [18]: http://yui.github.io/yuicompressor/
 [19]: http://pmt.sourceforge.net/pngcrush/
-[20]: |filename|/files/seth.fischer.nz_2015-03-16_2149.har
+[20]: |static|/files/seth.fischer.nz_2015-03-16_2149.har
 [21]: https://pages.github.com/
 [22]: https://w3c.github.io/web-performance/specs/HAR/Overview.html
 [23]: http://webassets.readthedocs.org/en/latest/expiring.html
