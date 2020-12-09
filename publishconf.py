@@ -6,20 +6,21 @@
 
 import os
 import sys
+
 sys.path.append(os.curdir)
 from pelicanconf import *
 
-SITEURL = 'http://seth.fischer.nz'
+SITEURL = "http://seth.fischer.nz"
 RELATIVE_URLS = False
 
-FEED_ALL_ATOM = 'feeds/all.atom.xml'
-CATEGORY_FEED_ATOM = 'feeds/{slug}.atom.xml'
+FEED_ALL_ATOM = "feeds/all.atom.xml"
+CATEGORY_FEED_ATOM = "feeds/{slug}.atom.xml"
 
 DELETE_OUTPUT_DIRECTORY = True
 
 # Following items are often useful when publishing
 
-#DISQUS_SITENAME = ""
+# DISQUS_SITENAME = ""
 
-GOOGLE_ANALYTICS_UNIVERSAL = 'UA-59343172-1'
-GOOGLE_ANALYTICS_UNIVERSAL_PROPERTY = 'auto'
+GOOGLE_ANALYTICS_UNIVERSAL = "UA-59343172-1"
+GOOGLE_ANALYTICS_UNIVERSAL_PROPERTY = "auto"
