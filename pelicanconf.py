@@ -6,6 +6,8 @@ SITENAME = "sethfischer"
 SITEURL = ""
 
 PATH = "content"
+PAGE_SAVE_AS = "{slug}.html"
+PAGE_URL = "{slug}.html"
 
 DEFAULT_DATE_FORMAT = "%d %B %Y"
 TIMEZONE = "Pacific/Auckland"
