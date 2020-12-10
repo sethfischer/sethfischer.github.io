@@ -24,8 +24,7 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-# Blogroll
-LINKS = None
+LINKS = (("Nissan Leaf OBD-II manual", "https://leaf-obd.readthedocs.io/"),)
 
 # Social widget
 SOCIAL = (("GitHub", "https://github.com/sethfischer"),)
