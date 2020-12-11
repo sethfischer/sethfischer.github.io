@@ -27,7 +27,10 @@ AUTHOR_FEED_RSS = None
 LINKS = (("Nissan Leaf OBD-II manual", "https://leaf-obd.readthedocs.io/"),)
 
 # Social widget
-SOCIAL = (("GitHub", "https://github.com/sethfischer"),)
+SOCIAL = (
+    ("GitHub", "https://github.com/sethfischer"),
+    ("Code snippets", "https://gist.github.com/sethfischer"),
+)
 
 DEFAULT_PAGINATION = False
 
