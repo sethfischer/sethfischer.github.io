@@ -25,6 +25,7 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 LINKS = (("Nissan Leaf OBD-II manual", "https://leaf-obd.readthedocs.io/"),)
+LINKS_WIDGET_NAME = "Project sites"
 
 # Social widget
 SOCIAL = (
