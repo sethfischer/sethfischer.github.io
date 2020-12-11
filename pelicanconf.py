@@ -31,6 +31,7 @@ SOCIAL = (
     ("GitHub", "https://github.com/sethfischer"),
     ("Code snippets", "https://gist.github.com/sethfischer"),
 )
+SOCIAL_WIDGET_NAME = "Code"
 
 DEFAULT_PAGINATION = False
 
