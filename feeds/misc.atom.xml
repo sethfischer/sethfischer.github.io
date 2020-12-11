@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>sethfischer - Misc</title><link href="http://seth.fischer.nz/" rel="alternate"></link><link href="http://seth.fischer.nz/feeds/misc.atom.xml" rel="self"></link><id>http://seth.fischer.nz/</id><updated>2015-03-27T20:47:00+13:00</updated><entry><title>Optimising page speed: A case study</title><link href="http://seth.fischer.nz/optimising-page-speed-case-study.html" rel="alternate"></link><published>2015-03-27T20:47:00+13:00</published><updated>2015-03-27T20:47:00+13:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2015-03-27:/optimising-page-speed-case-study.html</id><summary type="html">&lt;p&gt;As an exercise in optimising page speed the Pelican theme
+<feed xmlns="http://www.w3.org/2005/Atom"><title>sethfischer - Misc</title><link href="https://seth.fischer.nz/" rel="alternate"></link><link href="https://seth.fischer.nz/feeds/misc.atom.xml" rel="self"></link><id>https://seth.fischer.nz/</id><updated>2015-03-27T20:47:00+13:00</updated><entry><title>Optimising page speed: A case study</title><link href="https://seth.fischer.nz/optimising-page-speed-case-study.html" rel="alternate"></link><published>2015-03-27T20:47:00+13:00</published><updated>2015-03-27T20:47:00+13:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2015-03-27:/optimising-page-speed-case-study.html</id><summary type="html">&lt;p&gt;As an exercise in optimising page speed the Pelican theme
 pelican-bootstrap3 by Daan Debie was customised according to the specific
 requirements of seth.fischer.nz. The customisations reduced the total
 number of requests on the index page by 66% and the page size was reduced
@@ -74,7 +74,7 @@ requests and had a total page size of 182.9&amp;nbsp;kB.&lt;/p&gt;
     &lt;figcaption&gt;Pingdom speed test summary pre-optimisation.&lt;/figcaption&gt;
 &lt;/figure&gt;
 
-&lt;p&gt;Full details are available in the &lt;a href="http://seth.fischer.nz/files/seth.fischer.nz_2015-03-15_1905.har"&gt;pre-optimisation HAR file&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Full details are available in the &lt;a href="https://seth.fischer.nz/files/seth.fischer.nz_2015-03-15_1905.har"&gt;pre-optimisation HAR file&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id="optimisations"&gt;Optimisations&lt;/h2&gt;
 &lt;p&gt;Six main  optimisations were made as detailed below. Unless stated the file
 sizes specified are for minified but uncompressed versions of the file.&lt;/p&gt;
@@ -292,7 +292,7 @@ original size.&lt;/p&gt;
     &lt;figcaption&gt;Pingdom speed test summary post-optimisation.&lt;/figcaption&gt;
 &lt;/figure&gt;
 
-&lt;p&gt;Full details are available in the &lt;a href="http://seth.fischer.nz/files/seth.fischer.nz_2015-03-16_2149.har"&gt;post-optimisation HAR file&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Full details are available in the &lt;a href="https://seth.fischer.nz/files/seth.fischer.nz_2015-03-16_2149.har"&gt;post-optimisation HAR file&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id="hosting-environment"&gt;Hosting environment&lt;/h2&gt;
 &lt;p&gt;This site is currently hosted by &lt;a href="https://pages.github.com/"&gt;GitHub Pages&lt;/a&gt;. Besides free-of-charge
 managed hosting, GitHub Pages also offers all the advantages of their global
