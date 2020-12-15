@@ -2,11 +2,31 @@
 About
 =====
 
-I may be contacted via `GitHub`_, `Bitbucket`_, `gitlab.com`_ or `drupal.org`_.
+My public repositories are on `GitHub`_.
+
+I also have accounts on `Bitbucket`_ and `gitlab.com`_ for private projects.
 
 
-Projects
---------
+Private projects
+----------------
+
+
+reptiles.org.nz
+~~~~~~~~~~~~~~~
+
+Website for The New Zealand Herpetological Society.
+
+:Date:
+    2016-09/2019-03
+:Language:
+    PHP
+:Framework:
+    Drupal 8
+:Source code:
+    \https://gitlab.com/sethfischer/reptiles.org.nz (private)
+:Status:
+    Handed over 2019-03.
+
 
 mundoplugs.com
 ~~~~~~~~~~~~~~
@@ -14,36 +34,53 @@ mundoplugs.com
 Flask application which presents data from the mundoplugs.com Mains Electricity
 Database.
 
+:Date:
+    2013-09/2017-02
 :Language:
     Python
 :Framework:
-    `Flask`_
+    Flask
 :Source code:
-    https://bitbucket.org/sethfischer/mundoplugs.com (private)
+    \https://gitlab.com/sethfischer/mundoplugs.com (private)
 :Demonstration:
-    http://mundoplugs.com
+    \http://mundoplugs.com
 
 
 IB2020
 ~~~~~~
 
-Management information system for inspection bodies. The initial focus of the
-system is on generating `AS 2980`_ welder qualification certificates.
+Management information system for inspection bodies with a focus on generating
+AS 2980 welder qualification certificates.
 
+:Date:
+    2013-02/2014-08
 :Language:
     PHP
 :Framework:
-    `Symfony 2`_
+    Symfony 2
 :Source code:
-    https://bitbucket.org/sethfischer/ib2020 (private)
-:Demonstration:
-    Available on request.
+    \https://gitlab.com/sethfischer/ib2020 (private)
+:Status:
+    Handed over 2014-08.
+
+
+infotag-browser
+~~~~~~~~~~~~~~~
+
+Android application for rendering geographically-aware electronic tour guides.
+
+:Date:
+    2012-10/2012-07
+:Language:
+    Java
+:Framework:
+    Android
+:Source code:
+    \https://gitlab.com/sethfischer/infotag-browser (private)
+:Status:
+    Obsolete.
 
 
 .. _`GitHub`: https://github.com/sethfischer
 .. _`Bitbucket`: https://bitbucket.org/sethfischer
-.. _`gitlab.com`: https://gitlab.com/u/sethfischer
-.. _`drupal.org`: https://www.drupal.org/u/sethfischer
-.. _`Flask`: http://flask.pocoo.org/
-.. _`AS 2980`: http://shop.standards.co.nz/catalog/2980%3A2007%28AS%7CNZS%29/view
-.. _`Symfony 2`: https://symfony.com/
+.. _`gitlab.com`: https://gitlab.com/sethfischer
