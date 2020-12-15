@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <meta name="generator" content="Pelican" />
-        <title>sethfischer - Symfony</title>
+        <title>sethfischer - LaTeX</title>
         <link rel="stylesheet" href="https://seth.fischer.nz/theme/css/main.css" />
         <link href="https://seth.fischer.nz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="sethfischer Atom Feed" />
 </head>
@@ -13,9 +13,8 @@
                 <h1><a href="https://seth.fischer.nz/">sethfischer</a></h1>
                 <nav><ul>
                     <li><a href="https://seth.fischer.nz/about.html">About</a></li>
-                    <li><a href="https://seth.fischer.nz/category/drupal.html">Drupal</a></li>
-                    <li><a href="https://seth.fischer.nz/category/misc.html">Misc</a></li>
-                    <li class="active"><a href="https://seth.fischer.nz/category/symfony.html">Symfony</a></li>
+                    <li><a href="https://seth.fischer.nz/category/devops.html">DevOps</a></li>
+                    <li><a href="https://seth.fischer.nz/category/web-development.html">Web development</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
@@ -30,110 +29,109 @@
         <address class="vcard author">
                 By                         <a class="url fn" href="https://seth.fischer.nz/author/seth-fischer.html">Seth Fischer</a>
         </address>
-<p>In <a href="https://seth.fischer.nz/category/symfony.html">Symfony</a>.</p>
-<p>tags: <a href="https://seth.fischer.nz/tag/symfony-2.html">Symfony 2</a> </p>
-</footer><!-- /.post-info --><p>Portable Document Format (PDF) has become a universally accepted format for
-sharing documentation. As a result, the dynamic generation of PDF documents
-is an expected feature of many web applications. After reviewing a number of
+<p>In <a href="https://seth.fischer.nz/category/web-development.html">Web development</a>.</p>
+<p>tags: <a href="https://seth.fischer.nz/tag/symfony-2.html">Symfony 2</a> <a href="https://seth.fischer.nz/tag/latex.html">LaTeX</a> </p>
+</footer><!-- /.post-info --><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This article is obsolete. Symfony&nbsp;2 reached end-of-life in November 2018.</p>
+</div>
+<p>Portable Document Format (PDF) has become a universally accepted format for
+sharing documentation. As a result, the dynamic generation of PDF documents is
+an expected feature of many web applications. After reviewing a number of
 libraries for generating PDF documents it was decided to write a service
-wrapping <a href="http://www.latex-project.org/">LaTeX</a>; a typesetting system with features suited to the
-production of scientific and technical documentation.</p>
+wrapping <a class="reference external" href="http://www.latex-project.org/">LaTeX</a>; a typesetting system with features suited to the production
+of scientific and technical documentation.</p>
 <p>The code examples used in this article are from the certificate generation
-component of IB2020, a <a href="http://symfony.com/">Symfony</a> 2 web application for the management of
+component of IB2020, a <a class="reference external" href="http://symfony.com/">Symfony</a> 2 web application for the management of
 welder qualifications.</p>
-<div class="toc">
-<ul>
-<li><a href="#pdf-generating-libraries">PDF generating libraries</a></li>
-<li><a href="#latex">LaTeX</a></li>
-<li><a href="#symfony-2-service">Symfony 2 service</a><ul>
-<li><a href="#configure-the-service-container">Configure the service container</a></li>
-<li><a href="#service-object">Service object</a></li>
-<li><a href="#twig-template">Twig template</a></li>
-<li><a href="#utilising-the-service">Utilising the service</a></li>
+<div class="contents topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#pdf-generating-libraries" id="id2">PDF generating libraries</a></li>
+<li><a class="reference internal" href="#latex" id="id3">LaTeX</a></li>
+<li><a class="reference internal" href="#symfony-2-service" id="id4">Symfony 2 service</a><ul>
+<li><a class="reference internal" href="#configure-the-service-container" id="id5">Configure the service container</a></li>
+<li><a class="reference internal" href="#service-object" id="id6">Service object</a></li>
+<li><a class="reference internal" href="#twig-template" id="id7">Twig template</a></li>
+<li><a class="reference internal" href="#utilising-the-service" id="id8">Utilising the service</a></li>
 </ul>
 </li>
-<li><a href="#further-reading">Further reading</a></li>
+<li><a class="reference internal" href="#further-reading" id="id9">Further reading</a></li>
 </ul>
 </div>
-<h2 id="pdf-generating-libraries">PDF generating libraries</h2>
+<div class="section" id="pdf-generating-libraries">
+<h2><a class="toc-backref" href="#id2">PDF generating libraries</a></h2>
 <p>Before implementing the LaTeX service the following PDF generating libraries
 were considered:</p>
-<ol>
-<li>
-<p><a href="http://sourceforge.net/projects/tcpdf/"><strong>TCPDF</strong></a></p>
-<ul>
+<ol class="arabic simple">
+<li><a class="reference external" href="http://sourceforge.net/projects/tcpdf/">TCPDF</a><ul>
 <li>HTML layout and rendering engine written in PHP.</li>
-<li>Coordinate-based interface. </li>
+<li>Coordinate-based interface.</li>
 </ul>
 </li>
-<li>
-<p><a href="https://github.com/dompdf/dompdf"><strong>dompdf</strong></a></p>
-<ul>
+<li><a class="reference external" href="https://github.com/dompdf/dompdf">dompdf</a><ul>
 <li>HTML layout and rendering engine written in PHP.</li>
 <li>Style-driven renderer.</li>
 </ul>
 </li>
-<li>
-<p><a href="https://github.com/wkhtmltopdf/wkhtmltopdf"><strong>wkhtmltopdf</strong></a></p>
-<ul>
+<li><a class="reference external" href="https://github.com/wkhtmltopdf/wkhtmltopdf">wkhtmltopdf</a><ul>
 <li>Command line tools to render HTML into PDF (and various other image
-  formats) using the QT Webkit rendering engine.</li>
+formats) using the QT Webkit rendering engine.</li>
 </ul>
 </li>
-<li>
-<p><a href="https://github.com/KnpLabs/KnpSnappyBundle"><strong>KnpLabs/KnpSnappyBundle</strong></a></p>
-<ul>
-<li>Symfony 2 bundle wrapping wkhtmltopdf.</li>
+<li><a class="reference external" href="https://github.com/KnpLabs/KnpSnappyBundle">KnpLabs/KnpSnappyBundle</a><ul>
+<li>Symfony&nbsp;2 bundle wrapping wkhtmltopdf.</li>
 </ul>
 </li>
-<li>
-<p><a href="https://github.com/zendframework/ZendPdf/"><strong>zendframework/ZendPdf</strong></a></p>
-<ul>
+<li><a class="reference external" href="https://github.com/zendframework/ZendPdf/">zendframework/ZendPdf</a><ul>
 <li>HTML layout and rendering engine written in PHP.</li>
 <li>Coordinate-based interface.</li>
 </ul>
 </li>
 </ol>
-<h2 id="latex">LaTeX</h2>
+</div>
+<div class="section" id="latex">
+<h2><a class="toc-backref" href="#id3">LaTeX</a></h2>
 <p>The LaTeX system is a markup language and high-quality typesetting system. It
-is written in the <a href="http://tug.org/">TeX macro language</a>.</p>
+is written in the <a class="reference external" href="http://tug.org/">TeX macro language</a>.</p>
 <p>A PDF document may be generated directly from a LaTeX source document with the
-<code>pdflatex</code> binary which is distributed as part of the Debian <code>texlive-full</code>
-meta-package. Some LaTeX documents require multiple passes with <code>pdflatex</code>, a
-process which is automated with the script <code>rubber-pipe</code>. </p>
-<p>LaTeX and <code>rubber-pipe</code> may be installed on Debian-based distributions with the
-following commands:</p>
-<div class="highlight"><pre><span></span><code><span class="gp">$</span> sudo apt-get install texlive-full
+<tt class="docutils literal">pdflatex</tt> binary which is distributed as part of the Debian <tt class="docutils literal"><span class="pre">texlive-full</span></tt>
+meta-package. Some LaTeX documents require multiple passes with <tt class="docutils literal">pdflatex</tt>, a
+process which is automated with the script <tt class="docutils literal"><span class="pre">rubber-pipe</span></tt>.</p>
+<p>LaTeX and <tt class="docutils literal"><span class="pre">rubber-pipe</span></tt> may be installed on Debian-based distributions with
+the following commands:</p>
+<div class="highlight"><pre><span></span><span class="gp">$</span> sudo apt-get install texlive-full
 <span class="gp">$</span> sudo apt-get install rubber
-</code></pre></div>
-
-
-<p>The PDF LaTeX service is essentially a wrapper around <code>rubber-pipe</code> which in
-turn invokes <code>pdflatex</code>.</p>
-<h2 id="symfony-2-service">Symfony 2 service</h2>
-<p><a href="http://symfony.com/doc/2.3/book/service_container.html">Services</a> are re-usable, decoupled components, that may be accessed from
-any part of the application. The <a href="http://symfony.com/doc/2.3/glossary.html#term-service">definition of a service</a> from the Symfony
+</pre></div>
+<p>The PDF LaTeX service is essentially a wrapper around <tt class="docutils literal"><span class="pre">rubber-pipe</span></tt> which in
+turn invokes <tt class="docutils literal">pdflatex</tt>.</p>
+</div>
+<div class="section" id="symfony-2-service">
+<h2><a class="toc-backref" href="#id4">Symfony 2 service</a></h2>
+<p><a class="reference external" href="http://symfony.com/doc/2.3/book/service_container.html">Services</a> are re-usable, decoupled components, that may be accessed from any
+part of the application. The <a class="reference external" href="http://symfony.com/doc/2.3/glossary.html#term-service">definition of a service</a> from the Symfony
 documentation:</p>
 <blockquote>
-<p>A service is usually used "globally", such as a database connection object or
-an object that delivers email messages. In Symfony, services are often
-configured and retrieved from the service container.</p>
-</blockquote>
+A service is usually used “globally”, such as a database connection
+object or an object that delivers email messages. In Symfony,
+services are often configured and retrieved from the service
+container.</blockquote>
 <p>The PDF LaTeX service consists of the following three components:</p>
-<ol>
-<li>The <strong>Symfony service container</strong> configured in <code>services.yml</code>.</li>
-<li>A <strong>class</strong> <code>Pdflatex</code> of which an instance will be available in the
-     service container.</li>
-<li>A <strong>Twig template</strong> <code>show.tex.twig</code> used to output the LaTeX source
-     document. </li>
+<ol class="arabic simple">
+<li>The <strong>Symfony service container</strong> configured in <tt class="docutils literal">services.yml</tt>.</li>
+<li>A <strong>class</strong> <tt class="docutils literal">Pdflatex</tt> of which an instance will be available in the
+service container.</li>
+<li>A <strong>Twig template</strong> <tt class="docutils literal">show.tex.twig</tt> used to output the LaTeX source
+document.</li>
 </ol>
-<h3 id="configure-the-service-container">Configure the service container</h3>
-<p>The service container is configured with <code>services.yml</code>. Two services are
-defined in the <a href="http://yaml.org/">YAML</a> below: 1. <code>electrotech.twig.ib2020_extension</code>, which
-provides a Twig filer to escape LaTeX special characters; and 2.
-<code>electrotech.pdf.pdflatex</code>, the PDF LaTeX service itself.</p>
-<p>For convenience the <code>rubber-pipe</code> binary is defined as a parameter.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># src/Electrotech/WeldqualBundle/Resources/config/services.yml</span>
+<div class="section" id="configure-the-service-container">
+<h3><a class="toc-backref" href="#id5">Configure the service container</a></h3>
+<p>The service container is configured with <tt class="docutils literal">services.yml</tt>. Two services are
+defined in the <a class="reference external" href="http://yaml.org/">YAML</a> below: 1. <tt class="docutils literal">electrotech.twig.ib2020_extension</tt>, which
+provides a Twig filer to escape LaTeX special characters; and
+2. <tt class="docutils literal">electrotech.pdf.pdflatex</tt>, the PDF LaTeX service itself.</p>
+<p>For convenience the <tt class="docutils literal"><span class="pre">rubber-pipe</span></tt> binary is defined as a parameter.</p>
+<div class="highlight"><pre><span></span><span class="c1"># src/Electrotech/WeldqualBundle/Resources/config/services.yml</span>
 
 <span class="nt">parameters</span><span class="p">:</span>
     <span class="nt">electrotech.twig.ib2020_extension.class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Electrotech\WeldqualBundle\Twig\Ib2020Extension</span>
@@ -149,13 +147,13 @@ provides a Twig filer to escape LaTeX special characters; and 2.
     <span class="nt">electrotech.pdf.pdflatex</span><span class="p">:</span>
         <span class="nt">class</span><span class="p">:</span>        <span class="l l-Scalar l-Scalar-Plain">Electrotech\WeldqualBundle\Pdf\Pdflatex</span>
         <span class="nt">arguments</span><span class="p">:</span>    <span class="p p-Indicator">[</span><span class="err">%</span><span class="nv">electrotech.pdf.pdflatex.rubber-pipe%</span><span class="p p-Indicator">]</span>
-</code></pre></div>
-
-
-<h3 id="service-object">Service object</h3>
-<p>An instance of the class <code>Pdflatex</code> provides the service. <code>Pdflatex</code> takes a
-LaTeX source document and returns a PDF document.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+</pre></div>
+</div>
+<div class="section" id="service-object">
+<h3><a class="toc-backref" href="#id6">Service object</a></h3>
+<p>An instance of the class <tt class="docutils literal">Pdflatex</tt> provides the service. <tt class="docutils literal">Pdflatex</tt> takes
+a LaTeX source document and returns a PDF document.</p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 <span class="c1">// src/Electrotech/WeldqualBundle/Pdf/Pdflatex.php</span>
 
 <span class="k">namespace</span> <span class="nx">Electrotech\WeldqualBundle\Pdf</span><span class="p">;</span>
@@ -335,13 +333,13 @@ LaTeX source document and returns a PDF document.</p>
     <span class="p">}</span>
 
 <span class="p">}</span>
-</code></pre></div>
-
-
-<h3 id="twig-template">Twig template</h3>
-<p>A <a href="http://twig.sensiolabs.org/">Twig</a> template <code>show.tex.twig</code> is used to generate the LaTeX source
+</pre></div>
+</div>
+<div class="section" id="twig-template">
+<h3><a class="toc-backref" href="#id7">Twig template</a></h3>
+<p>A <a class="reference external" href="http://twig.sensiolabs.org/">Twig</a> template <tt class="docutils literal">show.tex.twig</tt> is used to generate the LaTeX source
 document.</p>
-<div class="highlight"><pre><span></span><code><span class="c">% src/Electrotech/WeldqualBundle/Resources/views/Testweld/show.tex.twig</span>
+<div class="highlight"><pre><span></span><span class="c">% src/Electrotech/WeldqualBundle/Resources/views/Testweld/show.tex.twig</span>
 
 <span class="c">% This template has been simplified for the sake of brevity.</span>
 
@@ -414,12 +412,10 @@ document.</p>
 <span class="k">\end</span><span class="nb">{</span>tabularx<span class="nb">}</span>
 
 <span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
-</code></pre></div>
-
-
-<p>A <a href="http://twig.sensiolabs.org/doc/advanced.html#filters">custom Twig filter</a> <code>e_latex</code> is used to escape LaTeX special
-characters. Custom Twig filters are created by extending <code>Twig_Extension</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+</pre></div>
+<p>A <a class="reference external" href="http://twig.sensiolabs.org/doc/advanced.html#filters">custom Twig filter</a> <tt class="docutils literal">e_latex</tt> is used to escape LaTeX special characters.
+Custom Twig filters are created by extending <tt class="docutils literal">Twig_Extension</tt>.</p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 <span class="c1">// src/Electrotech/WeldqualBundle/Twig/Ib2020Extension.php</span>
 
 <span class="k">namespace</span> <span class="nx">Electrotech\WeldqualBundle\Twig</span><span class="p">;</span>
@@ -480,23 +476,23 @@ characters. Custom Twig filters are created by extending <code>Twig_Extension</c
     <span class="p">}</span>
 
 <span class="p">}</span>
-</code></pre></div>
-
-
-<h3 id="utilising-the-service">Utilising the service</h3>
+</pre></div>
+</div>
+<div class="section" id="utilising-the-service">
+<h3><a class="toc-backref" href="#id8">Utilising the service</a></h3>
 <p>The service is used in the controller by passing a certificate ID to the method
-<code>pdfAction()</code>. The LaTeX source document is then generated by the method
-<code>latexSource()</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<tt class="docutils literal">pdfAction()</tt>. The LaTeX source document is then generated by the method
+<tt class="docutils literal">latexSource()</tt>.</p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
 <span class="c1">// Utilising the PDF LaTeX service</span>
 <span class="nv">$pdflatex</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;electrotech.pdf.pdflatex&#39;</span><span class="p">);</span>
 <span class="nv">$pdflatex</span><span class="o">-&gt;</span><span class="na">setTexSource</span><span class="p">(</span><span class="nv">$latexSource</span><span class="p">);</span>
 <span class="nv">$pdf</span> <span class="o">=</span> <span class="nv">$pdflatex</span><span class="o">-&gt;</span><span class="na">getPdf</span><span class="p">()</span>
-</code></pre></div>
-
-
+</pre></div>
 <p>Below is an example of how this service is used in a controller.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
 <span class="c1">// src/Electrotech/WeldqualBundle/Controller/TestweldController.php</span>
 
 <span class="k">namespace</span> <span class="nx">Electrotech\WeldqualBundle\Controller</span><span class="p">;</span>
@@ -600,24 +596,27 @@ characters. Custom Twig filters are created by extending <code>Twig_Extension</c
         <span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
-
-
-<h2 id="further-reading">Further reading</h2>
-<ul>
-<li><a href="http://symfony.com/doc/2.3/cookbook/controller/service.html">How to define controllers as services</a>.</li>
-<li><a href="https://tobi.oetiker.ch/lshort/lshort.pdf">The not so short introduction to LaTeX 2&epsilon;</a> by Tobias Oetiker.</li>
-</ul>                </article>
+</pre></div>
+</div>
+</div>
+<div class="section" id="further-reading">
+<h2><a class="toc-backref" href="#id9">Further reading</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://symfony.com/doc/2.3/cookbook/controller/service.html">How to define controllers as services</a>.</li>
+<li><a class="reference external" href="https://tobi.oetiker.ch/lshort/lshort.pdf">The not so short introduction to LaTeX 2ε</a> by Tobias Oetiker.</li>
+</ul>
+</div>
+                </article>
             </aside><!-- /#featured -->
         <section id="extras" class="body">
                 <div class="blogroll">
-                        <h2>links</h2>
+                        <h2>Project sites</h2>
                         <ul>
                             <li><a href="https://leaf-obd.readthedocs.io/">Nissan Leaf OBD-II manual</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
-                        <h2>social</h2>
+                        <h2>Code</h2>
                         <ul>
                             <li><a href="https://seth.fischer.nz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
