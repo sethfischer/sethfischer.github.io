@@ -3,10 +3,10 @@ Symfony 2 PDF service using LaTeX
 =================================
 
 :authors: Seth Fischer
-:category: Symfony
+:category: Web development
 :date: 2015-04-19 20:11
 :slug: symfony-2-latex-pdf-service
-:tags: Symfony 2
+:tags: Symfony 2, LaTeX
 :software: Symfony: 2.3.18
 :software: LaTeX: pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian)
 :software: PHP: 5.4.36-0+deb7u3

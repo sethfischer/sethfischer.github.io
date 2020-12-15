@@ -3,7 +3,7 @@ An introduction to Drupal 8 development tools
 =============================================
 
 :authors: Seth Fischer
-:category: Drupal
+:category: Web development
 :date: 2015-07-07 21:19
 :slug: drupal-8-development-tools
 :tags: Drupal 8, Drupal

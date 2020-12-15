@@ -3,7 +3,7 @@ Getting started with Drupal 8
 =============================
 
 :authors: Seth Fischer
-:category: Drupal
+:category: Web development
 :date: 2014-11-28 22:22
 :slug: drupal-8-getting-started
 :software: Composer: 1.0-dev

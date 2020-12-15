@@ -3,10 +3,10 @@ A Drupal 8 workflow using the Git subtree merge strategy
 ========================================================
 
 :authors: Seth Fischer
-:category: Drupal
+:category: Web development
 :date: 2015-01-23 19:20
 :slug: drupal-8-workflow-using-git-subtree-merging
-:tags: Drupal 8, Drupal
+:tags: Drupal 8, Drupal, Git
 :software: Composer: 1.0-dev
 :software: Drupal: 8.0.0-beta4
 :software: Drush: 7.0-dev
@@ -299,4 +299,4 @@ Further reading
 .. _`Git subtree merge strategy`: http://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging
 .. _`Git Tools - Subtree Merging`: http://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging
 .. _`How to use the subtree merge strategy`: https://www.kernel.org/pub/software/scm/git/docs/howto/using-merge-subtree.html
-.. _`Deploying Drupal 8 with Fabric`: |filename|drupal-8-fabric-deploy.rst
+.. _`Deploying Drupal 8 with Fabric`: |filename|/devops/drupal-8-fabric-deploy.rst
