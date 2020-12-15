@@ -1,45 +1,54 @@
-Title: Getting started with Drupal 8
-Date: 2014-11-28 22:22
-Modified: 2014-11-29 20:33
-Category: Drupal
-Tags: Drupal 8, Drupal
-Slug: drupal-8-getting-started
-Authors: Seth Fischer
-Software: Composer: 1.0-dev
-Software: Drupal: 8.0.0-beta3
-Software: Drush: 7.0-dev
-Software: Git: 1.7.10.4
-Software: PHP: 5.4.35-0+deb7u2
-Summary: Now that Drupal 8 is in beta phase it is a great time for site
+=============================
+Getting started with Drupal 8
+=============================
+
+:authors: Seth Fischer
+:category: Drupal
+:date: 2014-11-28 22:22
+:slug: drupal-8-getting-started
+:software: Composer: 1.0-dev
+:software: Drupal: 8.0.0-beta3
+:software: Drush: 7.0-dev
+:software: Git: 1.7.10.4
+:software: PHP: 5.4.35-0+deb7u2
+:tags: Drupal 8, Drupal
+:summary: Now that Drupal 8 is in beta phase it is a great time for site
     developers to start exploring the API. This article serves as an
     introduction to installing and configuring Drupal 8 using Git and Drush.
 
 
-Consider using a Composer based workflow with the
-[Composer template for Drupal projects][0].
-{: class="alert alert-danger" role="alert" }
+.. warning::
+
+    This article is obsolete. It was published in November 2014, 12 months
+    before Drupal 8 was released.
 
 
-Now that [Drupal 8][1] is in beta phase it is time for site developers to start
+Now that `Drupal 8`_ is in beta phase it is time for site developers to start
 exploring the API. This article describes the installation and configuration of
-Drupal 8 using Git and Drush. Bear in mind that as of 2014-11-28 there were 22
-[issues tagged with D8 upgrade path][2], so it may be necessary to rebuild your
+Drupal 8 using Git and Drush. Bear in mind that as of 2014-11-28 there were 22
+`issues tagged with D8 upgrade path`_, so it may be necessary to rebuild your
 site with the next core update.
 
 
-[TOC]
+.. contents::
+    :depth: 2
 
 
-## Before starting
+Before starting
+---------------
 
-  * set-up a [LAMP][3] or LNMP stack conforming with the
-    [Drupal 8 system requirements][4]
-  * [install git][5]
-  * [install Composer][6]
-  * using composer, [install Drush 7.x (dev)][7]
+*   set-up a :abbr:`LAMP (Linux, Apache, MySQL, PHP)` or
+    :abbr:`LNMP (Linux, nginx, MySQL, PHP)` stack conforming with the
+    `Drupal 8 system requirements`_
+*   `install git`_
+*   `install Composer`_
+*   using composer, `install Drush 7.x (dev)`_
 
 
-## Clone Drupal 8
+Clone Drupal 8
+--------------
+
+.. code-block:: console
 
     :::console
     $ git clone -b 8.0.x --single-branch http://git.drupal.org/project/drupal.git
@@ -49,29 +58,34 @@ site with the next core update.
     $ cp example.gitignore .gitignore
 
 
-## Create the files directory and set permissions
+Create the files directory and set permissions
+----------------------------------------------
 
-    :::console
+.. code-block:: console
+
     $ mkdir sites/default/files
 
-To work efficiently with drush the files in `sites/default/files` should be
+To work efficiently with drush the files in ``sites/default/files`` should be
 writeable both by the web server and command line user. An alternative to
-`chmod -R 777 sites/default/files` is to use [Access Control Lists][8].
+``chmod -R 777 sites/default/files`` is to use `Access Control Lists`_.
 
-Those familiar with the Symfony 2 documentation will recognise the following
+Those familiar with the Symfony 2 documentation will recognise the following
 shell commands which have been adapted from the
-[Installing and Configuring Symfony][9] chapter of the The Symfony Book.
+`Installing and Configuring Symfony`_ chapter of the The Symfony Book.
 
-    :::console
+.. code-block:: console
+
     $ HTTPDUSER=`ps aux | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1`
     $ sudo setfacl -R -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX sites/default/files
     $ sudo setfacl -dR -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX sites/default/files
 
-`HTTPDUSER` is usually `www-data` on Debian-based distributions.
+``HTTPDUSER`` is usually ``www-data`` on Debian-based distributions.
 
-Before setting the access control only the drush user will have `rw` permissions:
+Before setting the access control only the drush user will have ``rw``
+permissions:
 
-    :::console
+.. code-block:: console
+
     $ getfacl sites/default/files
     # file: cache
     # owner: drushuser
@@ -81,9 +95,10 @@ Before setting the access control only the drush user will have `rw` permissions
     other::rwx
 
 After setting the access control both the web server user and drush user will
-have `rw` permissions:
+have ``rw`` permissions:
 
-    :::console
+.. code-block:: console
+
     $ getfacl sites/default/files
     # file: cache
     # owner: drushuser
@@ -102,9 +117,11 @@ have `rw` permissions:
     default:other::rwx
 
 
-## Create database
+Create database
+---------------
 
-    :::console
+.. code-block:: console
+
     $ mysql -uroot -p
     mysql> CREATE DATABASE db;
     mysql> CREATE USER 'dbuser'@'localhost' IDENTIFIED BY 'password';
@@ -113,25 +130,30 @@ have `rw` permissions:
     mysql> \q
 
 
-## Site installation
+Site installation
+-----------------
 
-    :::console
+.. code-block:: console
+
     $ drush site-install standard --db-url=mysql://dbuser:password@localhost/db --site-name=drupal8
     $ drush upwd admin --password=password
 
-Drupal 8 beta is now configured and you may login with the username "admin" and
-password "password".
+Drupal 8 beta is now configured and you may login with the username “admin” and
+password “password”.
 
 
-## Configure a Drush alias
+Configure a Drush alias
+-----------------------
 
-    :::console
+.. code-block:: console
+
     $ cp ~/.composer/vendor/drush/drush/examples/example.aliases.drushrc.php ~/.drush/aliases.drushrc.php
     $ drush site-alias @self --full --with-optional >> ~/.drush/aliases.drushrc.php
 
-Edit `~/.drush/aliases.drushrc.php` and enter your site's URI.
+Edit ``~/.drush/aliases.drushrc.php`` and enter your site’s URI.
 
-    :::php
+.. code-block:: php
+
     <?php
     /**
      * Drupal 8 beta
@@ -140,7 +162,7 @@ Edit `~/.drush/aliases.drushrc.php` and enter your site's URI.
       'root' => '/var/www/drupal8',
       'uri' => 'http://drupal8',
       '#name' => 'drupal8',
-      'path-aliases' => 
+      'path-aliases' =>
       array (
         '%drush' => '/home/seth/.composer/vendor/drush/drush',
         '%site' => 'sites/default/',
@@ -149,13 +171,15 @@ Edit `~/.drush/aliases.drushrc.php` and enter your site's URI.
 
 Check that your system meets the minimum core requirements:
 
-    :::console
+.. code-block:: console
+
     $ drush @drupal8 core-requirements
 
-Check the status of the site installation by running `drush @drupal8 status`.
+Check the status of the site installation by running ``drush @drupal8 status``.
 The output will be similar to the following:
 
-    :::console
+.. code-block:: console
+
     $ drush @drupal8 status
      Drupal version         :  8.0.0-dev
      Site URI               :  http://drupal8
@@ -189,68 +213,73 @@ The output will be similar to the following:
                                aging
 
 
-## Install contrib modules
+Install contrib modules
+-----------------------
 
-Two useful modules for developers are [devel][10] and [examples][11].
+Two useful modules for developers are `devel`_ and `examples`_.
 
-### Devel
 
-    :::console
+Devel
+~~~~~
+
+.. code-block:: console
+
     $ drush @drupal8 pm-download devel
     $ drush @drupal8 pm-enable devel
 
-### Examples
 
-    :::console
+Examples
+~~~~~~~~
+
+.. code-block:: console
+
     $ drush @drupal8 pm-download examples
     $ drush @drupal8 pm-enable examples
 
-The single command `drush @drupal8 pm-enable module` will download module (if
-required) before enabling it.
+The single command ``drush @drupal8 pm-enable module`` will download module
+(if required) before enabling it.
 
 
-## Regularly update Drupal core
+Regularly update Drupal core
+----------------------------
 
-As Drupal 8 pushes on through beta releases you should regularly merge in the
+As Drupal 8 pushes on through beta releases you should regularly merge in the
 latest code:
 
-    :::console
+.. code-block:: console
+
     (master)$ git checkout master
     (master)$ git fetch upstream
     (master)$ git merge upstream/8.0.x
 
 Remember to rebuild the site after each merge:
 
-    :::console
+.. code-block:: console
+
     $ drush cache-rebuild
 
-Before all issues tagged with "D8 upgrade path" have been closed you may find
+Before all issues tagged with “D8 upgrade path” have been closed you may find
 that you are required to repeat the site installation commands as described
 above after updating Drupal core.
 
 
-## Further reading
+Further reading
+---------------
 
-  * [Building a Drupal site with Git][12]
-  * [Git Reference][13]
-
-
-*[LAMP]: Linux, Apache, MySQL, PHP
-*[LNMP]: Linux, nginx, MySQL, PHP
-
-[0]: https://github.com/drupal-composer/drupal-project
-[1]: https://www.drupal.org/drupal-8.0
-[2]: https://www.drupal.org/project/issues/search/drupal?project_issue_followers=&status%5B%5D=1&status%5B%5D=13&status%5B%5D=8&status%5B%5D=14&status%5B%5D=15&status%5B%5D=4&priorities%5B%5D=400&categories%5B%5D=1&categories%5B%5D=2&version%5B%5D=8.x&issue_tags_op=%3D&issue_tags=D8+upgrade+path
-[3]: https://wiki.debian.org/LaMp "Setting up a LAMP stack on Debian"
-[4]: https://api.drupal.org/api/drupal/core!INSTALL.txt/8 "Drupal 8 INSTALL.txt"
-[5]: http://git-scm.com/book/en/v2/Getting-Started-Installing-Git "Installing Git"
-[6]: https://getcomposer.org/doc/00-intro.md#installation-nix "Install Composer on Unix type systems"
-[7]: https://github.com/drush-ops/drush#installupdate---composer "How to install Drush 7.x (dev)"
-[8]: https://wiki.debian.org/Permissions#Access_Control_Lists_in_Linux "Access Control Lists in Linux"
-[9]: http://Symfony.com/doc/2.3/book/installation.html#configuration-and-set-up
-[10]: https://www.drupal.org/project/devel
-[11]: https://www.drupal.org/project/examples
-[12]: https://www.drupal.org/node/803746
-[13]: http://gitref.org/
+*   `Building a Drupal site with Git`_
+*   `Git Reference`_
 
 
+.. _`Composer template for Drupal projects`: https://github.com/drupal-composer/drupal-project
+.. _`Drupal 8`: https://www.drupal.org/drupal-8.0
+.. _`issues tagged with D8 upgrade path`: https://www.drupal.org/project/issues/search/drupal?project_issue_followers=&status%5B%5D=1&status%5B%5D=13&status%5B%5D=8&status%5B%5D=14&status%5B%5D=15&status%5B%5D=4&priorities%5B%5D=400&categories%5B%5D=1&categories%5B%5D=2&version%5B%5D=8.x&issue_tags_op=%3D&issue_tags=D8+upgrade+path
+.. _`Drupal 8 system requirements`: https://api.drupal.org/api/drupal/core!INSTALL.txt/8
+.. _`install git`: http://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+.. _`install Composer`: https://getcomposer.org/doc/00-intro.md#installation-nix
+.. _`install Drush 7.x (dev)`: https://github.com/drush-ops/drush#installupdate---composer
+.. _`Access Control Lists`: https://wiki.debian.org/Permissions#Access_Control_Lists_in_Linux
+.. _`Installing and Configuring Symfony`: http://Symfony.com/doc/2.3/book/installation.html#configuration-and-set-up
+.. _`devel`: https://www.drupal.org/project/devel
+.. _`examples`: https://www.drupal.org/project/examples
+.. _`Building a Drupal site with Git`: https://www.drupal.org/node/803746
+.. _`Git Reference`: http://gitref.org/
