@@ -5,37 +5,12 @@ AUTHOR = "Seth Fischer"
 SITENAME = "sethfischer"
 SITEURL = ""
 
-PATH = "content"
-PAGE_SAVE_AS = "{slug}.html"
+
+# Basic settings
+
 PAGE_URL = "{slug}.html"
-
-DEFAULT_DATE_FORMAT = "%d %B %Y"
-TIMEZONE = "Pacific/Auckland"
-
-DEFAULT_LANG = "en"
-
-TAGS_URL = "tags.html"
-CATEGORIES_URL = "categories.html"
-
-# Feed generation is usually not desired when developing
-FEED_ALL_ATOM = None
-CATEGORY_FEED_ATOM = None
-TRANSLATION_FEED_ATOM = None
-AUTHOR_FEED_ATOM = None
-AUTHOR_FEED_RSS = None
-
-LINKS = (("Nissan Leaf OBD-II manual", "https://leaf-obd.readthedocs.io/"),)
-LINKS_WIDGET_NAME = "Project sites"
-
-# Social widget
-SOCIAL = (("GitHub", "https://github.com/sethfischer"),)
-SOCIAL_WIDGET_NAME = "Code"
-
-DEFAULT_PAGINATION = False
-
-# Uncomment following line if you want document-relative URLs when developing
-# RELATIVE_URLS = True
-
+PATH = "content"
+READERS = {"html": None}
 STATIC_PATHS = [
     "files",
     "images",
@@ -45,6 +20,22 @@ STATIC_PATHS = [
     "extra/robots.txt",
 ]
 
+
+# URL settings
+
+PAGE_SAVE_AS = "{slug}.html"
+# Uncomment following line if you want document-relative URLs when developing
+# RELATIVE_URLS = True
+
+
+# Time and date
+
+DEFAULT_DATE_FORMAT = "%d %B %Y"
+TIMEZONE = "Pacific/Auckland"
+
+
+# Metadata
+
 EXTRA_PATH_METADATA = {
     "extra/CNAME": {"path": "CNAME"},
     "extra/googledce9df78937f634a.html": {"path": "googledce9df78937f634a.html"},
@@ -52,13 +43,29 @@ EXTRA_PATH_METADATA = {
     "extra/robots.txt": {"path": "robots.txt"},
 }
 
-READERS = {"html": None}
 
-MARKDOWN = {
-    "extension_configs": {
-        "markdown.extensions.codehilite": {"css_class": "highlight"},
-        "markdown.extensions.extra": {},
-        "markdown.extensions.toc": {},
-    },
-    "output_format": "html5",
-}
+# Feed settings
+
+AUTHOR_FEED_ATOM = None
+AUTHOR_FEED_RSS = None
+CATEGORY_FEED_ATOM = None
+FEED_ALL_ATOM = None
+
+
+# Pagination
+
+DEFAULT_PAGINATION = False
+
+
+# Translations
+
+DEFAULT_LANG = "en"
+TRANSLATION_FEED_ATOM = None
+
+
+# Theme
+
+LINKS = (("Nissan Leaf OBD-II manual", "https://leaf-obd.readthedocs.io/"),)
+LINKS_WIDGET_NAME = "Project sites"
+SOCIAL = (("GitHub", "https://github.com/sethfischer"),)
+SOCIAL_WIDGET_NAME = "Code"
