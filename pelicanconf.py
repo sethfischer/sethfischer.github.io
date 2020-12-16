@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 
+from datetime import datetime
+
+
 AUTHOR = "Seth Fischer"
 SITENAME = "sethfischer"
 SITEURL = ""
@@ -65,7 +68,27 @@ TRANSLATION_FEED_ATOM = None
 
 # Theme
 
-LINKS = (("Nissan Leaf OBD-II manual", "https://leaf-obd.readthedocs.io/"),)
+LINKS = (("Leaf OBD-II manual", "https://leaf-obd.readthedocs.io/"),)
 LINKS_WIDGET_NAME = "Project sites"
-SOCIAL = (("GitHub", "https://github.com/sethfischer"),)
+MENUITEMS = (
+    ("Archives", "/archives"),
+    ("Categories", "/categories"),
+    ("Tags", "/tags"),
+    ("GitHub", "https://github.com/sethfischer"),
+)
+SOCIAL = (
+    ("github", "https://github.com/sethfischer"),
+    ("gitlab", "https://gitlab.com/sethfischer"),
+)
 SOCIAL_WIDGET_NAME = "Code"
+
+
+# Theme Flex
+# https://github.com/alexandrevicenzi/Flex
+
+THEME = "Flex"
+
+COPYRIGHT_NAME = AUTHOR
+COPYRIGHT_YEAR = datetime.now().year
+MAIN_MENU = True
+SITELOGO = "images/terminal.svg"

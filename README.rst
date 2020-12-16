@@ -11,6 +11,7 @@ Built with `Pelican`_.
     . .venv/bin/activate
     pip install -U pip
     pip install -r requirements.txt
+    pelican-themes -i ~/path/to/alexandrevicenzi/Flex
     make devserver
 
 
