@@ -1,286 +1,157 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <meta name="generator" content="Pelican" />
-        <title>sethfischer - Git</title>
-        <link rel="stylesheet" href="https://seth.fischer.nz/theme/css/main.css" />
-        <link href="https://seth.fischer.nz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="sethfischer Atom Feed" />
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://seth.fischer.nz/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://seth.fischer.nz/theme/pygments/github.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://seth.fischer.nz/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://seth.fischer.nz/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://seth.fischer.nz/theme/font-awesome/css/solid.css">
+
+
+    <link href="https://seth.fischer.nz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="sethfischer Atom">
+
+
+
+
+
+    <meta name="author" content="Seth Fischer" />
+    <meta name="description" content="" />
+<meta property="og:site_name" content="sethfischer"/>
+<meta property="og:type" content="blog"/>
+<meta property="og:title" content="sethfischer"/>
+<meta property="og:description" content=""/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://seth.fischer.nz"/>
+<meta property="og:image" content="images/terminal.svg">
+
+  <title>sethfischer &ndash; Tag Git</title>
+
 </head>
+<body class="light-theme">
+  <aside>
+    <div>
+      <a href="https://seth.fischer.nz">
+        <img src="images/terminal.svg" alt="" title="">
+      </a>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="https://seth.fischer.nz/">sethfischer</a></h1>
-                <nav><ul>
-                    <li><a href="https://seth.fischer.nz/about.html">About</a></li>
-                    <li><a href="https://seth.fischer.nz/category/devops.html">DevOps</a></li>
-                    <li><a href="https://seth.fischer.nz/category/web-development.html">Web development</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
+      <h1>
+        <a href="https://seth.fischer.nz"></a>
+      </h1>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="https://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merging.html">A Drupal 8 workflow using the Git subtree merge strategy</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2015-01-23T19:20:00+13:00">
-                Published: 23 January 2015
-        </abbr>
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="https://seth.fischer.nz/author/seth-fischer.html">Seth Fischer</a>
-        </address>
-<p>In <a href="https://seth.fischer.nz/category/web-development.html">Web development</a>.</p>
-<p>tags: <a href="https://seth.fischer.nz/tag/drupal-8.html">Drupal 8</a> <a href="https://seth.fischer.nz/tag/drupal.html">Drupal</a> <a href="https://seth.fischer.nz/tag/git.html">Git</a> </p>
-</footer><!-- /.post-info --><div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This article is obsolete. It was published in January 2015, eleven months
-before Drupal&nbsp;8 was released.</p>
-</div>
-<p>Often there are components of a Drupal website that should not be located in
-the document root such as configuration files, deployment scripts, and
-functional tests. By utilising Git subtrees, a Drupal installation root (or web
-server document root) may be below the root of the main repository, and
-upstream changes to Drupal core may be conveniently merged with
-<tt class="docutils literal">git <span class="pre">read-tree</span></tt>.</p>
-<div class="contents topic" id="contents">
-<p class="topic-title">Contents</p>
-<ul class="simple">
-<li><a class="reference internal" href="#initialise-git-repository" id="id1">Initialise Git repository</a></li>
-<li><a class="reference internal" href="#add-upstream-remote" id="id2">Add upstream remote</a></li>
-<li><a class="reference internal" href="#checkout-a-local-copy-of-the-upstream-branch" id="id3">Checkout a local copy of the upstream branch</a></li>
-<li><a class="reference internal" href="#pull-upstream-into-a-subdirectory-in-the-master-branch" id="id4">Pull upstream into a subdirectory in the master branch</a></li>
-<li><a class="reference internal" href="#create-a-gitingore-for-drupal-core" id="id5">Create a .gitingore for Drupal core</a></li>
-<li><a class="reference internal" href="#create-directories-above-the-document-root" id="id6">Create directories above the document root</a></li>
-<li><a class="reference internal" href="#create-the-files-directory-and-set-permissions" id="id7">Create the files directory and set permissions</a></li>
-<li><a class="reference internal" href="#create-database" id="id8">Create database</a></li>
-<li><a class="reference internal" href="#site-installation" id="id9">Site installation</a></li>
-<li><a class="reference internal" href="#drupal-configuration-directories" id="id10">Drupal configuration directories</a></li>
-<li><a class="reference internal" href="#export-configuration" id="id11">Export configuration</a></li>
-<li><a class="reference internal" href="#update-drupal-core" id="id12">Update Drupal core</a></li>
-<li><a class="reference internal" href="#further-reading" id="id13">Further reading</a></li>
-</ul>
-</div>
-<div class="section" id="initialise-git-repository">
-<h2><a class="toc-backref" href="#id1">Initialise Git repository</a></h2>
-<p>Initialise Git repository and add your <tt class="docutils literal">.gitignore</tt>, <tt class="docutils literal">README</tt>, and
-<tt class="docutils literal">LICENSE</tt> files.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> mkdir myproject
-<span class="gp">$</span> <span class="nb">cd</span> myproject
-<span class="gp">$</span> git init
-<span class="go">Initialized empty Git repository in /var/www/myproject/.git/</span>
-<span class="gp">$</span> vi README.md
-<span class="gp">$</span> git add README.md
-<span class="gp">$</span> git commit -m <span class="s2">&quot;Add README.md&quot;</span>
-<span class="go">[master (root-commit) 3a30763] Add README.txt</span>
-<span class="go"> 1 file changed, 1 insertion(+)</span>
-<span class="go"> create mode 100644 README.txt</span>
-</pre></div>
-</div>
-<div class="section" id="add-upstream-remote">
-<h2><a class="toc-backref" href="#id2">Add upstream remote</a></h2>
-<p>Add the drupal.org git repository as a remote with the name <tt class="docutils literal">upstream</tt>. To
-improve efficiency specify that only the <tt class="docutils literal">8.0.x</tt> branch is to be tracked with
-the <tt class="docutils literal"><span class="pre">-t</span></tt> option.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> git remote add -t <span class="m">8</span>.0.x upstream http://git.drupal.org/project/drupal.git
-<span class="gp">$</span> git fetch upstream
-</pre></div>
-</div>
-<div class="section" id="checkout-a-local-copy-of-the-upstream-branch">
-<h2><a class="toc-backref" href="#id3">Checkout a local copy of the upstream branch</a></h2>
-<p>Checkout a local copy of the <tt class="docutils literal">upstream/8.0.x</tt> branch.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> git checkout -b upstream upstream/8.0.x
-<span class="go">Branch upstream set up to track remote branch 8.0.x from upstream by rebasing.</span>
-<span class="go">Switched to a new branch &#39;upstream&#39;</span>
-</pre></div>
-</div>
-<div class="section" id="pull-upstream-into-a-subdirectory-in-the-master-branch">
-<h2><a class="toc-backref" href="#id4">Pull upstream into a subdirectory in the master branch</a></h2>
-<p>The <tt class="docutils literal">upstream/8.0.x</tt> branch is pulled in as a subdirectory of the master
-branch using the <tt class="docutils literal">git <span class="pre">read-tree</span></tt> command. The name of the subdirectory is
-specified with the <tt class="docutils literal"><span class="pre">--prefix</span></tt> option; in this case <tt class="docutils literal">drupal/</tt>.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> git checkout master
-<span class="gp">$</span> git merge -s ours --no-commit upstream/8.0.x
-<span class="go">Automatic merge went well; stopped before committing as requested</span>
-<span class="gp">$</span> git read-tree --prefix<span class="o">=</span>drupal/ -u upstream/8.0.x
-<span class="gp">$</span> git commit
-<span class="go">[master bd410e7] Merge remote-tracking branch &#39;upstream/8.0.x&#39;</span>
-</pre></div>
-<p>The upstream branch will now be a subdirectory of the master branch.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> tree -L <span class="m">2</span>
-<span class="go">.</span>
-<span class="go">|-- drupal</span>
-<span class="go">|   |-- composer.json</span>
-<span class="go">|   |-- core</span>
-<span class="go">|   |-- example.gitignore</span>
-<span class="go">|   |-- index.php</span>
-<span class="go">|   |-- modules</span>
-<span class="go">|   |-- profiles</span>
-<span class="go">|   |-- README.txt</span>
-<span class="go">|   |-- robots.txt</span>
-<span class="go">|   |-- sites</span>
-<span class="go">|   |-- themes</span>
-<span class="go">|   ``-- web.config</span>
-<span class="go">``-- README.md</span>
 
-<span class="go">6 directories, 7 files</span>
-</pre></div>
-</div>
-<div class="section" id="create-a-gitingore-for-drupal-core">
-<h2><a class="toc-backref" href="#id5">Create a .gitingore for Drupal core</a></h2>
-<p>Drupal core has an example <tt class="docutils literal">.gitignore</tt> file which provides an excellent
-starting point and is sufficient for most projects.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> cp drupal/example.gitignore drupal/.gitignore
-<span class="gp">$</span> git add drupal/.gitignore
-<span class="gp">$</span> git commit -m <span class="s2">&quot;Add .gitignore for Drupal core&quot;</span>
-</pre></div>
-</div>
-<div class="section" id="create-directories-above-the-document-root">
-<h2><a class="toc-backref" href="#id6">Create directories above the document root</a></h2>
-<p>As the document root is now below the repository root, files and directories
-may be committed to the repository without exposing them to the web server.</p>
-<p>In this example -- when configuring the web server -- the document root will be
-set to <tt class="docutils literal">/var/www/myproject/drupal</tt>.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> mkdir -p config/active config/staging config/deploy
-<span class="gp">$</span> tree -L <span class="m">2</span>
-<span class="go">.</span>
-<span class="go">|-- config</span>
-<span class="go">|   |-- active</span>
-<span class="go">|   |-- deploy</span>
-<span class="go">|   ``-- staging</span>
-<span class="go">|-- drupal</span>
-<span class="go">|   |-- composer.json</span>
-<span class="go">|   |-- core</span>
-<span class="go">|   |-- example.gitignore</span>
-<span class="go">|   |-- index.php</span>
-<span class="go">|   |-- modules</span>
-<span class="go">|   |-- profiles</span>
-<span class="go">|   |-- README.txt</span>
-<span class="go">|   |-- robots.txt</span>
-<span class="go">|   |-- sites</span>
-<span class="go">|   |-- themes</span>
-<span class="go">|   ``-- web.config</span>
-<span class="go">``-- README.md</span>
+      <nav>
+        <ul class="list">
 
-<span class="go">9 directories, 7 files</span>
-</pre></div>
-</div>
-<div class="section" id="create-the-files-directory-and-set-permissions">
-<h2><a class="toc-backref" href="#id7">Create the files directory and set permissions</a></h2>
-<p>The Drupal <tt class="docutils literal">files</tt> directory must be manually created.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> mkdir drupal/sites/default/files
-</pre></div>
-<p>To work efficiently with drush the files in <tt class="docutils literal">sites/default/files</tt> should be
-writeable both by the web server and command-line user. An alternative to
-<tt class="docutils literal">chmod <span class="pre">-R</span> 777 sites/default/files</tt> is to use <a class="reference external" href="https://wiki.debian.org/Permissions#Access_Control_Lists_in_Linux">Access Control Lists</a>.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nv">HTTPDUSER</span><span class="o">=</span><span class="sb">``</span>ps aux <span class="p">|</span> grep -E <span class="s1">&#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&#39;</span> <span class="p">|</span> <span class="se">\</span>
-grep -v root <span class="p">|</span> head -1 <span class="p">|</span> cut -d<span class="se">\ </span> -f1<span class="sb">``</span>
-<span class="gp">$</span> sudo setfacl -R -m u:<span class="s2">&quot;</span><span class="nv">$HTTPDUSER</span><span class="s2">&quot;</span>:rwX -m u:<span class="sb">`</span>whoami<span class="sb">`</span>:rwX drupal/sites/default/files
-<span class="gp">$</span> sudo setfacl -dR -m u:<span class="s2">&quot;</span><span class="nv">$HTTPDUSER</span><span class="s2">&quot;</span>:rwX -m u:<span class="sb">`</span>whoami<span class="sb">`</span>:rwX drupal/sites/default/files
-</pre></div>
-<p><tt class="docutils literal">HTTPDUSER</tt> is usually <tt class="docutils literal"><span class="pre">www-data</span></tt> on Debian-based distributions.</p>
-<p>It may be convenient to add similar ACL permissions to the <tt class="docutils literal">config/active</tt>,
-<tt class="docutils literal">config/staging</tt>, and <tt class="docutils literal">config/deploy</tt> directories.</p>
-</div>
-<div class="section" id="create-database">
-<h2><a class="toc-backref" href="#id8">Create database</a></h2>
-<div class="highlight"><pre><span></span><span class="gp">$</span> mysql -uroot -p
-<span class="go">mysql&gt; CREATE DATABASE db;</span>
-<span class="go">mysql&gt; CREATE USER &#39;dbuser&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;password&#39;;</span>
-<span class="go">mysql&gt; GRANT ALL PRIVILEGES ON db.* TO &#39;dbuser&#39;@&#39;localhost&#39;;</span>
-<span class="go">mysql&gt; FLUSH PRIVILEGES;</span>
-<span class="go">mysql&gt; \q</span>
-</pre></div>
-</div>
-<div class="section" id="site-installation">
-<h2><a class="toc-backref" href="#id9">Site installation</a></h2>
-<p>Install the site with the standard install profile and change the admin
-password.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> drupal
-<span class="gp">$</span> drush site-install standard --db-url<span class="o">=</span>mysql://dbuser:password@localhost/db <span class="se">\</span>
---site-name<span class="o">=</span>drupal8
-<span class="gp">$</span> drush upwd admin --password<span class="o">=</span>password
-</pre></div>
-</div>
-<div class="section" id="drupal-configuration-directories">
-<h2><a class="toc-backref" href="#id10">Drupal configuration directories</a></h2>
-<p>Edit <tt class="docutils literal">sites/default/settings.php</tt> and update the location of the
-configuration directories.</p>
-<div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
-<span class="c1">// Default config directories provided by the installer.</span>
-<span class="nv">$config_directories</span><span class="p">[</span><span class="s1">&#39;active&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;../config/active&#39;</span><span class="p">;</span>
-<span class="nv">$config_directories</span><span class="p">[</span><span class="s1">&#39;staging&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;../config/staging&#39;</span><span class="p">;</span>
+              <li>
+                <a target="_self"
+                   href="https://seth.fischer.nz/projects.html#projects">
+                  Projects
+                </a>
+              </li>
 
-<span class="c1">// Config directory used for deployments.</span>
-<span class="nv">$config_directories</span><span class="p">[</span><span class="s1">&#39;deploy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;../config/deploy&#39;</span><span class="p">;</span>
-</pre></div>
-</div>
-<div class="section" id="export-configuration">
-<h2><a class="toc-backref" href="#id11">Export configuration</a></h2>
-<p>Export the configuration from the database into the <tt class="docutils literal">deploy</tt> configuration
-directory.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> drupal/
-<span class="gp">$</span> drush config-export deploy
-<span class="go">Configuration successfully exported to ../config/deploy.             [success]</span>
-</pre></div>
-<p>Once exported, this configuration may be committed to the Git repository. As
-part of the deployment process the configuration may be imported with the
-command <tt class="docutils literal">drush <span class="pre">config-import</span> deploy</tt>.</p>
-</div>
-<div class="section" id="update-drupal-core">
-<h2><a class="toc-backref" href="#id12">Update Drupal core</a></h2>
-<p>To merge upstream change to Drupal core the <a class="reference external" href="http://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging">Git subtree merge strategy</a> is
-used.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> git pull -s subtree upstream <span class="m">8</span>.0.x
-</pre></div>
-<p>The above command will merge the history of <tt class="docutils literal">upstream</tt> with the main
-repository. If it is not preferable to merge histories the <tt class="docutils literal"><span class="pre">--squash</span></tt> and
-<tt class="docutils literal"><span class="pre">--no-commit</span></tt> options can be used along with the <tt class="docutils literal"><span class="pre">-s</span> subtree</tt> strategy
-option:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> git checkout master
-<span class="gp">$</span> git merge --squash -s subtree --no-commit upstream
-<span class="go">Squash commit -- not updating HEAD</span>
-<span class="go">Automatic merge went well; stopped before committing as requested</span>
-</pre></div>
-<p>Remember to rebuild the cache after each merge:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> drush cache-rebuild
-</pre></div>
-</div>
-<div class="section" id="further-reading">
-<h2><a class="toc-backref" href="#id13">Further reading</a></h2>
-<ul class="simple">
-<li><a class="reference external" href="http://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging">Git Tools - Subtree Merging</a></li>
-<li><a class="reference external" href="https://www.kernel.org/pub/software/scm/git/docs/howto/using-merge-subtree.html">How to use the subtree merge strategy</a></li>
-<li><a class="reference external" href="https://seth.fischer.nz/drupal-8-fabric-deploy.html">Deploying Drupal&nbsp;8 with Fabric</a></li>
-</ul>
-</div>
-                </article>
-            </aside><!-- /#featured -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>Project sites</h2>
-                        <ul>
-                            <li><a href="https://leaf-obd.readthedocs.io/">Nissan Leaf OBD-II manual</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>Code</h2>
-                        <ul>
-                            <li><a href="https://seth.fischer.nz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+            <li>
+              <a target="_self" href="https://leaf-obd.readthedocs.io/" >Leaf OBD-II manual</a>
+            </li>
+        </ul>
+      </nav>
 
-                            <li><a href="https://github.com/sethfischer">GitHub</a></li>
-                            <li><a href="https://gist.github.com/sethfischer">Code snippets</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/sethfischer" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-gitlab" href="https://gitlab.com/sethfischer" target="_blank">
+              <i class="fab fa-gitlab"></i>
+            </a>
+          </li>
+      </ul>
+    </div>
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
-                </address><!-- /#about -->
+  </aside>
+  <main>
 
-                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
+    <nav>
+      <a href="https://seth.fischer.nz">Home</a>
+
+      <a href="/archives">Archives</a>
+      <a href="/categories">Categories</a>
+      <a href="/tags">Tags</a>
+      <a href="https://github.com/sethfischer">GitHub</a>
+
+      <a href="https://seth.fischer.nz/feeds/all.atom.xml">Atom</a>
+
+    </nav>
+
+
+
+<article>
+  <header>
+    <h2><a href="https://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merging.html#drupal-8-workflow-using-git-subtree-merging">A Drupal 8 workflow using the Git subtree merge strategy</a></h2>
+    <p>
+      Posted on 23 January 2015 in <a href="https://seth.fischer.nz/category/web-development.html">Web development</a>
+
+          &#8226; Tagged with
+              <a href="https://seth.fischer.nz/tag/drupal-8.html">Drupal 8</a>,              <a href="https://seth.fischer.nz/tag/drupal.html">Drupal</a>,              <a href="https://seth.fischer.nz/tag/git.html">Git</a>
+    </p>
+  </header>
+  <div>
+      <p class="first last">Often there are components of a Drupal website that should not be
+located in the document root such as configuration files. It is convenient
+to keep these files in version control but outside of the Drupal root. By
+utilising Git subtrees, a Drupal installation root may be below the root of
+the main repository, and upstream changes to Drupal core conveniently
+merged with git read-tree.</p>
+
+        <br>
+        <a class="btn"
+           href="https://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merging.html#drupal-8-workflow-using-git-subtree-merging">
+          Continue reading
+        </a>
+  </div>
+</article>
+
+
+
+
+    <footer>
+<p>&copy; 2020 Seth Fischer</p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " sethfischer ",
+  "url" : "https://seth.fischer.nz",
+  "image": "images/terminal.svg",
+  "description": ""
+}
+</script>
+
 
 </body>
 </html>

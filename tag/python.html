@@ -1,555 +1,155 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <meta name="generator" content="Pelican" />
-        <title>sethfischer - Python</title>
-        <link rel="stylesheet" href="https://seth.fischer.nz/theme/css/main.css" />
-        <link href="https://seth.fischer.nz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="sethfischer Atom Feed" />
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://seth.fischer.nz/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://seth.fischer.nz/theme/pygments/github.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://seth.fischer.nz/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://seth.fischer.nz/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://seth.fischer.nz/theme/font-awesome/css/solid.css">
+
+
+    <link href="https://seth.fischer.nz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="sethfischer Atom">
+
+
+
+
+
+    <meta name="author" content="Seth Fischer" />
+    <meta name="description" content="" />
+<meta property="og:site_name" content="sethfischer"/>
+<meta property="og:type" content="blog"/>
+<meta property="og:title" content="sethfischer"/>
+<meta property="og:description" content=""/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://seth.fischer.nz"/>
+<meta property="og:image" content="images/terminal.svg">
+
+  <title>sethfischer &ndash; Tag Python</title>
+
 </head>
+<body class="light-theme">
+  <aside>
+    <div>
+      <a href="https://seth.fischer.nz">
+        <img src="images/terminal.svg" alt="" title="">
+      </a>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="https://seth.fischer.nz/">sethfischer</a></h1>
-                <nav><ul>
-                    <li><a href="https://seth.fischer.nz/about.html">About</a></li>
-                    <li><a href="https://seth.fischer.nz/category/devops.html">DevOps</a></li>
-                    <li><a href="https://seth.fischer.nz/category/web-development.html">Web development</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="https://seth.fischer.nz/drupal-8-fabric-deploy.html">Deploying Drupal 8 with Fabric</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2015-02-06T09:38:00+13:00">
-                Published: 06 February 2015
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="https://seth.fischer.nz/author/seth-fischer.html">Seth Fischer</a>
-        </address>
-<p>In <a href="https://seth.fischer.nz/category/devops.html">DevOps</a>.</p>
-<p>tags: <a href="https://seth.fischer.nz/tag/drupal-8.html">Drupal 8</a> <a href="https://seth.fischer.nz/tag/drupal.html">Drupal</a> <a href="https://seth.fischer.nz/tag/fabric.html">Fabric</a> <a href="https://seth.fischer.nz/tag/python.html">Python</a> </p>
-</footer><!-- /.post-info --><div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This article is obsolete. It was published in February 2015, nine months
-before Drupal&nbsp;8 was released.</p>
-</div>
-<p>An automated build and deployment process saves time and, more importantly,
-provides a safeguard against failed deployments. <a class="reference external" href="http://www.fabfile.org/">Fabric</a> is a tool that can
-be used to automate application deployment and related tasks. This article
-describes using Fabric to deploy a Drupal&nbsp;8 site.</p>
-<p>Visit <a class="reference external" href="https://github.com/sethfischer/fabric-deploy">github.com/sethfischer/fabric-deploy</a> for the most recent version of
-the fabfile which is an adaptation of <a class="reference external" href="https://github.com/halcyonCorsair/fabric-deploy">fabric-deploy by halcyonCorsair</a> -- a
-fabfile for the deployment of Drupal&nbsp;7 sites.</p>
-<div class="contents topic" id="contents">
-<p class="topic-title">Contents</p>
-<ul class="simple">
-<li><a class="reference internal" href="#drupal-project-structure" id="id1">Drupal project structure</a><ul>
-<li><a class="reference internal" href="#synchronise-site-uuid-across-instances" id="id2">Synchronise site UUID across instances</a></li>
-<li><a class="reference internal" href="#exclude-files-from-release-tarball" id="id3">Exclude files from release tarball</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#target-host-configuration" id="id4">Target host configuration</a><ul>
-<li><a class="reference internal" href="#user-account" id="id5">User account</a></li>
-<li><a class="reference internal" href="#directory-structure" id="id6">Directory structure</a></li>
-<li><a class="reference internal" href="#dependencies" id="id7">Dependencies</a></li>
-<li><a class="reference internal" href="#manual-configuration" id="id8">Manual configuration</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#fabfile" id="id9">Fabfile</a><ul>
-<li><a class="reference internal" href="#configuration" id="id10">Configuration</a></li>
-<li><a class="reference internal" href="#available-commands" id="id11">Available commands</a></li>
-<li><a class="reference internal" href="#usage" id="id12">Usage</a></li>
-<li><a class="reference internal" href="#source-code" id="id13">Source code</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#further-reading" id="id14">Further reading</a></li>
-</ul>
-</div>
-<div class="section" id="drupal-project-structure">
-<h2><a class="toc-backref" href="#id1">Drupal project structure</a></h2>
-<p>The fabfile is designed to deploy a site having a project structure as
-described in <a class="reference external" href="https://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merging.html">A Drupal&nbsp;8 workflow using the Git subtree merge strategy</a>, but
-may be easily adapted to accommodate another project structure.</p>
-<div class="section" id="synchronise-site-uuid-across-instances">
-<h3><a class="toc-backref" href="#id2">Synchronise site UUID across instances</a></h3>
-<p>So that configuration can be shared between instances of the site (development,
-staging, production) they must share a common
-<abbr title="Universally unique identifier">UUID</abbr>.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> drush cget system.site
-<span class="go">uuid: cdd9a662-e53d-0944-be57-8765c04d38f1</span>
-<span class="go">name: example.com</span>
-<span class="go">mail: admin@example.com</span>
-<span class="go">slogan: &#39;&#39;</span>
-<span class="go">page:</span>
-<span class="go">  403: &#39;&#39;</span>
-<span class="go">  404: &#39;&#39;</span>
-<span class="go">  front: node</span>
-<span class="go">admin_compact_mode: false</span>
-<span class="go">weight_select_max: 100</span>
-<span class="go">langcode: en</span>
-</pre></div>
-<p>The site UUID may be edited with the command <tt class="docutils literal">drush cedit system.site</tt>. For
-a robust approach to synchronising UUIDs across instances of a site see
-<a class="reference external" href="http://dcycleproject.org/blog/68/approach-code-driven-development-drupal-8">An approach to code-driven development in Drupal 8</a> by <a class="reference external" href="https://github.com/alberto56/">Albert Albala</a>.</p>
-</div>
-<div class="section" id="exclude-files-from-release-tarball">
-<h3><a class="toc-backref" href="#id3">Exclude files from release tarball</a></h3>
-<p>As an enhancement files can be excluded from the release tarball by including
-a <tt class="docutils literal">.gitattributes</tt> file in the root of the repository and specifying the
-<a class="reference external" href="http://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes#Exporting-Your-Repository">export-ignore attribute</a> for files that should not be included in the
-release. Use this
-<a class="reference external" href="https://gist.github.com/sethfischer/bdda9753837ab1da680a">.gitattributes export-ignore template for Druapl&nbsp;8 projects</a>.</p>
-</div>
-</div>
-<div class="section" id="target-host-configuration">
-<h2><a class="toc-backref" href="#id4">Target host configuration</a></h2>
-<div class="section" id="user-account">
-<h3><a class="toc-backref" href="#id5">User account</a></h3>
-<p>The user who executes the deployment must have ssh access to the target host
-and permissions to execute commands as both the <tt class="docutils literal">root</tt> and web server user --
-usually <tt class="docutils literal"><span class="pre">www-data</span></tt> on Debian–based systems.</p>
-</div>
-<div class="section" id="directory-structure">
-<h3><a class="toc-backref" href="#id6">Directory structure</a></h3>
-<p>Variable data such as the Drupal <tt class="docutils literal">files/</tt> directory, <tt class="docutils literal">settings.php</tt>,
-and <tt class="docutils literal">services.yml</tt> is located in <tt class="docutils literal">/var/lib/www/example.com/</tt>.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> tree -AF /var/lib/www/example.com/
-<span class="go">/var/lib/www/example.com/</span>
-<span class="go">├── files/</span>
-<span class="go">├── services.yml</span>
-<span class="go">└── settings.php</span>
-</pre></div>
-<p>The Drupal site code base is installed in <tt class="docutils literal">/var/www/</tt> with symlinks to the
-variable data being created during deployment.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> tree -AFL <span class="m">4</span> /var/www/example.com/
-<span class="go">/var/www/example.com/</span>
-<span class="go">├── current -&gt; /var/www/example.com/releases/tag_x/</span>
-<span class="go">└── releases/</span>
-<span class="go">    └── tag_x/</span>
-<span class="go">        ├── config/</span>
-<span class="go">        │   ├── active/</span>
-<span class="go">        │   ├── deploy/</span>
-<span class="go">        │   └── staging/</span>
-<span class="go">        ├── drupal/</span>
-<span class="go">        │   ├── composer.json</span>
-<span class="go">        │   ├── core/</span>
-<span class="go">        │   ├── example.gitignore</span>
-<span class="go">        │   ├── index.php</span>
-<span class="go">        │   ├── modules/</span>
-<span class="go">        │   ├── profiles/</span>
-<span class="go">        │   ├── README.txt</span>
-<span class="go">        │   ├── robots.txt</span>
-<span class="go">        │   ├── sites/</span>
-<span class="go">        │   ├── themes/</span>
-<span class="go">        │   └── web.config</span>
-<span class="go">        └── README.md</span>
-
-<span class="gp">$</span> tree -AFL /var/www/example.com/releases/tag_x/drupal/sites/default/
-<span class="go">/var/www/example.com/releases/tag_x/drupal/sites/default/</span>
-<span class="go">├── files -&gt; /var/lib/www/uat.reptiles.veri.co.nz/files/</span>
-<span class="go">├── services.yml -&gt; /var/lib/www/uat.reptiles.veri.co.nz/services.yml</span>
-<span class="go">└── settings.php -&gt; /var/lib/www/uat.reptiles.veri.co.nz/settings.php</span>
-</pre></div>
-</div>
-<div class="section" id="dependencies">
-<h3><a class="toc-backref" href="#id7">Dependencies</a></h3>
-<p>The following tools must be installed on the target host:</p>
-<ul class="simple">
-<li><a class="reference external" href="https://wiki.debian.org/SSH">OpenSSH server</a></li>
-<li><a class="reference external" href="http://docs.drush.org/en/master/install/#composer-one-drush-for-all-projects">Drush</a></li>
-</ul>
-</div>
-<div class="section" id="manual-configuration">
-<h3><a class="toc-backref" href="#id8">Manual configuration</a></h3>
-<p>The database, <tt class="docutils literal">settings.php</tt> and <tt class="docutils literal">services.yml</tt> must be manually created on
-the target host before the first deployment.</p>
-<p>Create the database and database user:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> ssh host
-<span class="gp">$</span> mysql -uroot -p
-<span class="go">mysql&gt; CREATE DATABASE db;</span>
-<span class="go">mysql&gt; CREATE USER &#39;dbuser&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;password&#39;;</span>
-<span class="go">mysql&gt; GRANT ALL PRIVILEGES ON db.* TO &#39;dbuser&#39;@&#39;localhost&#39;;</span>
-<span class="go">mysql&gt; FLUSH PRIVILEGES;</span>
-<span class="go">mysql&gt; \q</span>
-</pre></div>
-<p>Copy <tt class="docutils literal">sites/default/settings.php</tt> and <tt class="docutils literal">sites/default/services.yml</tt> to the
-target host and edit as appropriate according to the environment.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> scp settings.php host:/var/lib/www/example.com/settings.php
-<span class="gp">$</span> scp services.yml host:/var/lib/www/example.com/services.yml
-</pre></div>
-</div>
-</div>
-<div class="section" id="fabfile">
-<h2><a class="toc-backref" href="#id9">Fabfile</a></h2>
-<p>Source code is hosted at <a class="reference external" href="https://github.com/sethfischer/fabric-deploy">github.com/sethfischer/fabric-deploy</a>.</p>
-<div class="section" id="configuration">
-<h3><a class="toc-backref" href="#id10">Configuration</a></h3>
-<p>Configuration is expressed via <a class="reference external" href="http://yaml.org/">YAML</a> with one file per project. Below is an
-example configuration file.</p>
-<div class="highlight"><pre><span></span><span class="c1"># example.yml</span>
-
-<span class="c1"># global configuration common to all environments</span>
-<span class="nt">_global</span><span class="p">:</span>
-    <span class="nt">repository</span><span class="p">:</span>     <span class="l l-Scalar l-Scalar-Plain">ssh+git://github.com/user/repo.git</span>
-    <span class="nt">build_dir</span><span class="p">:</span>      <span class="l l-Scalar l-Scalar-Plain">/home/tmp/builds</span>
-    <span class="nt">remote_tmp_dir</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/tmp</span>
-
-<span class="c1"># staging environment</span>
-<span class="nt">staging</span><span class="p">:</span>
-    <span class="nt">hosts</span><span class="p">:</span>
-        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">staging.example.com</span>
-    <span class="nt">remote_tmp_dir</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/tmp</span>
-
-<span class="c1"># production environment</span>
-<span class="nt">prod</span><span class="p">:</span>
-    <span class="nt">hosts</span><span class="p">:</span>
-        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">example.com</span>
-</pre></div>
-</div>
-<div class="section" id="available-commands">
-<h3><a class="toc-backref" href="#id11">Available commands</a></h3>
-<p><tt class="docutils literal">fab <span class="pre">-f</span> drupal8 <span class="pre">-l</span></tt> will list the available commands with a short
-description:</p>
-<dl class="docutils">
-<dt>deploy</dt>
-<dd>Deploy release</dd>
-<dt>init_deploy</dt>
-<dd>Deploy initial release</dd>
-<dt>init_host</dt>
-<dd>Initialise directory structure on target host</dd>
-<dt>site</dt>
-<dd>Load configuration from YAML file</dd>
-</dl>
-</div>
-<div class="section" id="usage">
-<h3><a class="toc-backref" href="#id12">Usage</a></h3>
-<p>Initialise directory structure on the <tt class="docutils literal">uat</tt> host of <tt class="docutils literal">example.com</tt>:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> fab -f drupal8 site:example.com,uat init_host
-</pre></div>
-<p>Deploy <tt class="docutils literal">tag_x</tt> for <tt class="docutils literal">example.com</tt> to <tt class="docutils literal">uat</tt>:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> fab -f drupal8 site:example.com,uat deploy:tag_x
-</pre></div>
-</div>
-<div class="section" id="source-code">
-<h3><a class="toc-backref" href="#id13">Source code</a></h3>
-<p>For the latest code <tt class="docutils literal">git clone <span class="pre">https://github.com/sethfischer/fabric-deploy</span></tt>
-or <a class="reference external" href="https://github.com/sethfischer/fabric-deploy/fork">create a fork</a>.</p>
-<pre class="code python literal-block">
-<span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="sd">&quot;&quot;&quot;Fabric deploy for Drupal 8&quot;&quot;&quot;</span>
-
-<span class="kn">import</span> <span class="nn">os</span>
-
-<span class="kn">from</span> <span class="nn">fabric.api</span> <span class="kn">import</span> <span class="n">env</span><span class="p">,</span> <span class="n">lcd</span><span class="p">,</span> <span class="n">local</span><span class="p">,</span> <span class="n">put</span><span class="p">,</span> <span class="n">run</span><span class="p">,</span> <span class="n">runs_once</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="n">sudo</span><span class="p">,</span> <span class="n">task</span>
-<span class="kn">from</span> <span class="nn">fabric.colors</span> <span class="kn">import</span> <span class="n">red</span>
-<span class="kn">from</span> <span class="nn">fabric.utils</span> <span class="kn">import</span> <span class="n">abort</span><span class="p">,</span> <span class="n">warn</span>
-<span class="kn">import</span> <span class="nn">yaml</span>
+      <h1>
+        <a href="https://seth.fischer.nz"></a>
+      </h1>
 
 
-<span class="nd">&#64;task</span>
-<span class="nd">&#64;runs_once</span>
-<span class="k">def</span> <span class="nf">site</span><span class="p">(</span><span class="n">site_name</span><span class="p">,</span> <span class="n">tier</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Load configuration from YAML file
-    :param site_name: Site name
-    :type site_name: str
-    :param tier: Staging tier
-    :type tier: str
-    &quot;&quot;&quot;</span>
-    <span class="n">env</span><span class="o">.</span><span class="n">site_name</span> <span class="o">=</span> <span class="n">site_name</span>
-    <span class="n">env</span><span class="o">.</span><span class="n">tier</span> <span class="o">=</span> <span class="n">tier</span>
 
-    <span class="n">site_config_filename</span> <span class="o">=</span> <span class="s2">&quot;config/</span><span class="si">{site_name}</span><span class="s2">.yml&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">env</span><span class="p">)</span>
-
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">site_config_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">site_config_filename</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
-        <span class="n">abort</span><span class="p">(</span>
-            <span class="s2">&quot;Unable to read </span><span class="si">{site_config_filename}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="n">site_config_filename</span><span class="o">=</span><span class="n">site_config_filename</span>
-            <span class="p">)</span>
-        <span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">site_config_data</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">site_config_file</span><span class="p">)</span>
-        <span class="n">site_config_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-        <span class="n">global_config_data</span> <span class="o">=</span> <span class="n">site_config_data</span><span class="p">[</span><span class="s2">&quot;_global&quot;</span><span class="p">]</span>
-        <span class="n">env</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">global_config_data</span><span class="p">)</span>
-
-        <span class="n">tier_config_data</span> <span class="o">=</span> <span class="n">site_config_data</span><span class="p">[</span><span class="n">tier</span><span class="p">]</span>
-        <span class="n">env</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">tier_config_data</span><span class="p">)</span>
-
-        <span class="n">env</span><span class="o">.</span><span class="n">site_build_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">build_dir</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">site_name</span><span class="p">)</span>
-        <span class="n">env</span><span class="o">.</span><span class="n">site_repo_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">site_build_dir</span><span class="p">,</span> <span class="s2">&quot;repo&quot;</span><span class="p">)</span>
-        <span class="n">env</span><span class="o">.</span><span class="n">tar_basename</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{site_name}</span><span class="s2">.tar&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">env</span><span class="p">)</span>
-        <span class="n">env</span><span class="o">.</span><span class="n">tar_gz_basename</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{tar_basename}</span><span class="s2">.gz&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">env</span><span class="p">)</span>
-        <span class="n">env</span><span class="o">.</span><span class="n">tar_pathname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">site_build_dir</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">tar_basename</span><span class="p">)</span>
-        <span class="n">env</span><span class="o">.</span><span class="n">tar_gz_pathname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">site_build_dir</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">tar_gz_basename</span><span class="p">)</span>
+      <nav>
+        <ul class="list">
 
 
-<span class="nd">&#64;task</span>
-<span class="k">def</span> <span class="nf">init_host</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Initialise directory structure on target host&quot;&quot;&quot;</span>
-    <span class="n">project_dir</span> <span class="o">=</span> <span class="s2">&quot;/var/www/</span><span class="si">{host}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">env</span><span class="p">)</span>
-    <span class="n">release_dir</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{project_dir}</span><span class="s2">/releases&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">project_dir</span><span class="o">=</span><span class="n">project_dir</span><span class="p">)</span>
-    <span class="n">data_dir</span> <span class="o">=</span> <span class="s2">&quot;/var/lib/www/</span><span class="si">{host}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">env</span><span class="p">)</span>
+              <li>
+                <a target="_self"
+                   href="https://seth.fischer.nz/projects.html#projects">
+                  Projects
+                </a>
+              </li>
 
-    <span class="n">sudo</span><span class="p">(</span><span class="s2">&quot;mkdir -p </span><span class="si">{release_dir}</span><span class="s2">/&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">release_dir</span><span class="o">=</span><span class="n">release_dir</span><span class="p">))</span>
-    <span class="n">sudo</span><span class="p">(</span><span class="s2">&quot;chown -R www-data:www-data </span><span class="si">{project_dir}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">project_dir</span><span class="o">=</span><span class="n">project_dir</span><span class="p">))</span>
+            <li>
+              <a target="_self" href="https://leaf-obd.readthedocs.io/" >Leaf OBD-II manual</a>
+            </li>
+        </ul>
+      </nav>
 
-    <span class="n">sudo</span><span class="p">(</span><span class="s2">&quot;mkdir -p </span><span class="si">{data_dir}</span><span class="s2">/files&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data_dir</span><span class="o">=</span><span class="n">data_dir</span><span class="p">))</span>
-    <span class="n">sudo</span><span class="p">(</span><span class="s2">&quot;chown -R www-data:www-data </span><span class="si">{data_dir}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data_dir</span><span class="o">=</span><span class="n">data_dir</span><span class="p">))</span>
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/sethfischer" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-gitlab" href="https://gitlab.com/sethfischer" target="_blank">
+              <i class="fab fa-gitlab"></i>
+            </a>
+          </li>
+      </ul>
+    </div>
 
-    <span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Database must be manually created.&quot;</span><span class="p">)</span>
-    <span class="n">warn</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{data_dir}</span><span class="s2">/settings.php must be manually created.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data_dir</span><span class="o">=</span><span class="n">data_dir</span><span class="p">))</span>
-    <span class="n">warn</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{data_dir}</span><span class="s2">/services.yml must be manually created.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data_dir</span><span class="o">=</span><span class="n">data_dir</span><span class="p">))</span>
+  </aside>
+  <main>
 
+    <nav>
+      <a href="https://seth.fischer.nz">Home</a>
 
-<span class="nd">&#64;task</span>
-<span class="k">def</span> <span class="nf">init_deploy</span><span class="p">(</span><span class="n">tag</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Deploy initial release
-    :param tag: Git tags from which to build release
-    :type tag: str
-    &quot;&quot;&quot;</span>
-    <span class="n">build_exists</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
-    <span class="n">build</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
-    <span class="n">upload</span><span class="p">()</span>
-    <span class="n">extract</span><span class="p">()</span>
-    <span class="n">symlink_settings</span><span class="p">()</span>
-    <span class="n">symlink_release</span><span class="p">()</span>
-    <span class="n">run_drush</span><span class="p">(</span><span class="s2">&quot;state-set system.maintenance 1&quot;</span><span class="p">)</span>
-    <span class="n">run_drush</span><span class="p">(</span><span class="s2">&quot;config-import deploy&quot;</span><span class="p">)</span>
-    <span class="n">run_drush</span><span class="p">(</span><span class="s2">&quot;updatedb&quot;</span><span class="p">)</span>
-    <span class="n">run_drush</span><span class="p">(</span><span class="s2">&quot;cache-rebuild&quot;</span><span class="p">)</span>
-    <span class="n">run_drush</span><span class="p">(</span><span class="s2">&quot;state-set system.maintenance 0&quot;</span><span class="p">)</span>
+      <a href="/archives">Archives</a>
+      <a href="/categories">Categories</a>
+      <a href="/tags">Tags</a>
+      <a href="https://github.com/sethfischer">GitHub</a>
 
+      <a href="https://seth.fischer.nz/feeds/all.atom.xml">Atom</a>
 
-<span class="nd">&#64;task</span>
-<span class="k">def</span> <span class="nf">deploy</span><span class="p">(</span><span class="n">tag</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Deploy release
-    :param tag: Git tags from which to build release
-    :type tag: str
-    &quot;&quot;&quot;</span>
-    <span class="n">build_exists</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
-    <span class="n">build</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
-    <span class="n">upload</span><span class="p">()</span>
-    <span class="n">extract</span><span class="p">()</span>
-    <span class="n">run_drush</span><span class="p">(</span><span class="s2">&quot;state-set system.maintenance 1&quot;</span><span class="p">)</span>
-    <span class="n">symlink_settings</span><span class="p">()</span>
-    <span class="n">symlink_release</span><span class="p">()</span>
-    <span class="n">run_drush</span><span class="p">(</span><span class="s2">&quot;config-import deploy&quot;</span><span class="p">)</span>
-    <span class="n">run_drush</span><span class="p">(</span><span class="s2">&quot;updatedb&quot;</span><span class="p">)</span>
-    <span class="n">run_drush</span><span class="p">(</span><span class="s2">&quot;cache-rebuild&quot;</span><span class="p">)</span>
-    <span class="n">run_drush</span><span class="p">(</span><span class="s2">&quot;state-set system.maintenance 0&quot;</span><span class="p">)</span>
+    </nav>
 
 
-<span class="k">def</span> <span class="nf">make_dirs</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Create directories recursively
-    :param directory: Directory to be created
-    :type directory: str
-    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+
+<article>
+  <header>
+    <h2><a href="https://seth.fischer.nz/drupal-8-fabric-deploy.html#drupal-8-fabric-deploy">Deploying Drupal 8 with Fabric</a></h2>
+    <p>
+      Posted on 06 February 2015 in <a href="https://seth.fischer.nz/category/devops.html">DevOps</a>
+
+          &#8226; Tagged with
+              <a href="https://seth.fischer.nz/tag/drupal-8.html">Drupal 8</a>,              <a href="https://seth.fischer.nz/tag/drupal.html">Drupal</a>,              <a href="https://seth.fischer.nz/tag/fabric.html">Fabric</a>,              <a href="https://seth.fischer.nz/tag/python.html">Python</a>
+    </p>
+  </header>
+  <div>
+      <p class="first last">An automated build and deployment process saves time and, more
+importantly, provides a safeguard against failed deployments. Fabric is a
+tool that can be used to automate application deployment and related tasks.
+This article describes using Fabric to deploy a Drupal 8 site.</p>
+
+        <br>
+        <a class="btn"
+           href="https://seth.fischer.nz/drupal-8-fabric-deploy.html#drupal-8-fabric-deploy">
+          Continue reading
+        </a>
+  </div>
+</article>
 
 
-<span class="k">def</span> <span class="nf">build_exists</span><span class="p">(</span><span class="n">tag</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Test if release has previously been deployed
-    :param tag: Git tags from which to build release
-    :type tag: str
-    &quot;&quot;&quot;</span>
-    <span class="n">project_dir</span> <span class="o">=</span> <span class="s2">&quot;/var/www/</span><span class="si">{host}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">env</span><span class="p">)</span>
-    <span class="n">release_dir</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{project_dir}</span><span class="s2">/releases&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">project_dir</span><span class="o">=</span><span class="n">project_dir</span><span class="p">)</span>
-
-    <span class="k">with</span> <span class="n">settings</span><span class="p">(</span><span class="n">warn_only</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">run</span><span class="p">(</span>
-            <span class="s2">&quot;! test -d </span><span class="si">{release_dir}</span><span class="s2">/</span><span class="si">{tag}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">release_dir</span><span class="o">=</span><span class="n">release_dir</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="n">tag</span><span class="p">)</span>
-        <span class="p">)</span>
-        <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">failed</span><span class="p">:</span>
-            <span class="n">abort</span><span class="p">(</span><span class="n">red</span><span class="p">(</span><span class="s2">&quot;Release has previously been deployed.&quot;</span><span class="p">))</span>
 
 
-<span class="nd">&#64;runs_once</span>
-<span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="n">tag</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Build release tarball
-    :param tag: Git tags from which to build release
-    :type tag: str
-    &quot;&quot;&quot;</span>
-    <span class="n">env</span><span class="o">.</span><span class="n">release_tag</span> <span class="o">=</span> <span class="n">tag</span>
-
-    <span class="n">make_dirs</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">site_repo_dir</span><span class="p">)</span>
-
-    <span class="k">with</span> <span class="n">lcd</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">site_repo_dir</span><span class="p">):</span>
-        <span class="k">with</span> <span class="n">settings</span><span class="p">(</span><span class="n">warn_only</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-            <span class="n">inside_work_tree</span> <span class="o">=</span> <span class="n">local</span><span class="p">(</span><span class="s2">&quot;git rev-parse --is-inside-work-tree&quot;</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">inside_work_tree</span><span class="o">.</span><span class="n">failed</span><span class="p">:</span>
-            <span class="n">local</span><span class="p">(</span><span class="s2">&quot;git clone </span><span class="si">{repository}</span><span class="s2"> .&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">env</span><span class="p">))</span>
-
-        <span class="k">if</span> <span class="n">local</span><span class="p">(</span><span class="s2">&quot;git pull&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">succeeded</span><span class="p">:</span>
-            <span class="n">local</span><span class="p">(</span>
-                <span class="p">(</span>
-                    <span class="s2">&quot;git archive &quot;</span>
-                    <span class="s2">&quot;--format=tar &quot;</span>
-                    <span class="s2">&quot;--output=</span><span class="si">{tar_pathname}</span><span class="s2"> &quot;</span>
-                    <span class="s2">&quot;--prefix=</span><span class="si">{release_tag}</span><span class="s2">/ &quot;</span>
-                    <span class="s2">&quot;</span><span class="si">{release_tag}</span><span class="s2">&quot;</span>
-                <span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">env</span><span class="p">)</span>
-            <span class="p">)</span>
-            <span class="n">local</span><span class="p">(</span><span class="s2">&quot;gzip --force -9 </span><span class="si">{tar_pathname}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">env</span><span class="p">))</span>
+    <footer>
+<p>&copy; 2020 Seth Fischer</p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p>    </footer>
+  </main>
 
 
-<span class="k">def</span> <span class="nf">upload</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Copy tarball to target host&quot;&quot;&quot;</span>
-    <span class="n">put</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">tar_gz_pathname</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">remote_tmp_dir</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">extract</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Extract tarball into release directory&quot;&quot;&quot;</span>
-    <span class="n">project_dir</span> <span class="o">=</span> <span class="s2">&quot;/var/www/</span><span class="si">{host}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">env</span><span class="p">)</span>
-    <span class="n">release_dir</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{project_dir}</span><span class="s2">/releases&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">project_dir</span><span class="o">=</span><span class="n">project_dir</span><span class="p">)</span>
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " sethfischer ",
+  "url" : "https://seth.fischer.nz",
+  "image": "images/terminal.svg",
+  "description": ""
+}
+</script>
 
-    <span class="k">with</span> <span class="n">settings</span><span class="p">(</span><span class="n">sudo_user</span><span class="o">=</span><span class="s2">&quot;www-data&quot;</span><span class="p">):</span>
-        <span class="n">tar_cmd</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="s2">&quot;tar &quot;</span>
-            <span class="s2">&quot;--gzip &quot;</span>
-            <span class="s2">&quot;--extract &quot;</span>
-            <span class="s2">&quot;--verbose &quot;</span>
-            <span class="s2">&quot;--file </span><span class="si">{remote_tmp_dir}</span><span class="s2">/</span><span class="si">{tar_gz_basename}</span><span class="s2"> &quot;</span>
-            <span class="s2">&quot;--directory </span><span class="si">{release_dir}</span><span class="s2">/&quot;</span>
-        <span class="p">)</span>
-        <span class="n">sudo</span><span class="p">(</span>
-            <span class="n">tar_cmd</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="n">remote_tmp_dir</span><span class="o">=</span><span class="n">env</span><span class="o">.</span><span class="n">remote_tmp_dir</span><span class="p">,</span>
-                <span class="n">tar_gz_basename</span><span class="o">=</span><span class="n">env</span><span class="o">.</span><span class="n">tar_gz_basename</span><span class="p">,</span>
-                <span class="n">release_dir</span><span class="o">=</span><span class="n">release_dir</span><span class="p">,</span>
-            <span class="p">)</span>
-        <span class="p">)</span>
-
-    <span class="n">run</span><span class="p">(</span><span class="s2">&quot;rm </span><span class="si">{remote_tmp_dir}</span><span class="s2">/</span><span class="si">{tar_gz_basename}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">env</span><span class="p">))</span>
-
-
-<span class="k">def</span> <span class="nf">symlink_settings</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Symlink configuration files and variable data&quot;&quot;&quot;</span>
-    <span class="n">project_dir</span> <span class="o">=</span> <span class="s2">&quot;/var/www/</span><span class="si">{host}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">env</span><span class="p">)</span>
-    <span class="n">release_dir</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{project_dir}</span><span class="s2">/releases&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">project_dir</span><span class="o">=</span><span class="n">project_dir</span><span class="p">)</span>
-    <span class="n">sites_default</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{release_dir}</span><span class="s2">/</span><span class="si">{release_tag}</span><span class="s2">/drupal/sites/default&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-        <span class="n">release_dir</span><span class="o">=</span><span class="n">release_dir</span><span class="p">,</span> <span class="n">release_tag</span><span class="o">=</span><span class="n">env</span><span class="o">.</span><span class="n">release_tag</span>
-    <span class="p">)</span>
-    <span class="n">data_dir</span> <span class="o">=</span> <span class="s2">&quot;/var/lib/www/</span><span class="si">{host}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">env</span><span class="p">)</span>
-
-    <span class="k">with</span> <span class="n">settings</span><span class="p">(</span><span class="n">sudo_user</span><span class="o">=</span><span class="s2">&quot;www-data&quot;</span><span class="p">):</span>
-        <span class="n">files_target</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{data_dir}</span><span class="s2">/files&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data_dir</span><span class="o">=</span><span class="n">data_dir</span><span class="p">)</span>
-        <span class="n">files_dir</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{sites_default}</span><span class="s2">/files&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sites_default</span><span class="o">=</span><span class="n">sites_default</span><span class="p">)</span>
-
-        <span class="n">sudo</span><span class="p">(</span>
-            <span class="s2">&quot;ln -nfs </span><span class="si">{files_target}</span><span class="s2"> </span><span class="si">{files_dir}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="n">files_target</span><span class="o">=</span><span class="n">files_target</span><span class="p">,</span> <span class="n">files_dir</span><span class="o">=</span><span class="n">files_dir</span>
-            <span class="p">)</span>
-        <span class="p">)</span>
-
-        <span class="n">settings_target</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{data_dir}</span><span class="s2">/settings.php&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data_dir</span><span class="o">=</span><span class="n">data_dir</span><span class="p">)</span>
-        <span class="n">settings_file</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{sites_default}</span><span class="s2">/settings.php&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-            <span class="n">sites_default</span><span class="o">=</span><span class="n">sites_default</span>
-        <span class="p">)</span>
-
-        <span class="n">sudo</span><span class="p">(</span>
-            <span class="s2">&quot;ln -nfs </span><span class="si">{settings_target}</span><span class="s2"> </span><span class="si">{settings_file}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="n">settings_target</span><span class="o">=</span><span class="n">settings_target</span><span class="p">,</span> <span class="n">settings_file</span><span class="o">=</span><span class="n">settings_file</span>
-            <span class="p">)</span>
-        <span class="p">)</span>
-
-        <span class="n">services_target</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{data_dir}</span><span class="s2">/services.yml&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data_dir</span><span class="o">=</span><span class="n">data_dir</span><span class="p">)</span>
-        <span class="n">services_file</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{sites_default}</span><span class="s2">/services.yml&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-            <span class="n">sites_default</span><span class="o">=</span><span class="n">sites_default</span>
-        <span class="p">)</span>
-
-        <span class="n">sudo</span><span class="p">(</span>
-            <span class="s2">&quot;ln -nfs </span><span class="si">{services_target}</span><span class="s2"> </span><span class="si">{services_file}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="n">services_target</span><span class="o">=</span><span class="n">services_target</span><span class="p">,</span> <span class="n">services_file</span><span class="o">=</span><span class="n">services_file</span>
-            <span class="p">)</span>
-        <span class="p">)</span>
-
-    <span class="n">sudo</span><span class="p">(</span>
-        <span class="s2">&quot;chown www-data:www-data </span><span class="si">{settings_target}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-            <span class="n">settings_target</span><span class="o">=</span><span class="n">settings_target</span>
-        <span class="p">)</span>
-    <span class="p">)</span>
-    <span class="n">sudo</span><span class="p">(</span><span class="s2">&quot;chmod 0400 </span><span class="si">{settings_target}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">settings_target</span><span class="o">=</span><span class="n">settings_target</span><span class="p">))</span>
-
-    <span class="n">sudo</span><span class="p">(</span>
-        <span class="s2">&quot;chown www-data:www-data </span><span class="si">{services_target}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-            <span class="n">services_target</span><span class="o">=</span><span class="n">services_target</span>
-        <span class="p">)</span>
-    <span class="p">)</span>
-    <span class="n">sudo</span><span class="p">(</span><span class="s2">&quot;chmod 0400 </span><span class="si">{services_target}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">services_target</span><span class="o">=</span><span class="n">services_target</span><span class="p">))</span>
-
-
-<span class="k">def</span> <span class="nf">symlink_release</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Symlink release&quot;&quot;&quot;</span>
-    <span class="n">release_dir</span> <span class="o">=</span> <span class="s2">&quot;/var/www/</span><span class="si">{host}</span><span class="s2">/releases/</span><span class="si">{release_tag}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">env</span><span class="p">)</span>
-    <span class="n">current</span> <span class="o">=</span> <span class="s2">&quot;/var/www/</span><span class="si">{host}</span><span class="s2">/current&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">env</span><span class="p">)</span>
-    <span class="k">with</span> <span class="n">settings</span><span class="p">(</span><span class="n">sudo_user</span><span class="o">=</span><span class="s2">&quot;www-data&quot;</span><span class="p">):</span>
-        <span class="n">sudo</span><span class="p">(</span>
-            <span class="s2">&quot;ln -nfs </span><span class="si">{release_dir}</span><span class="s2"> </span><span class="si">{current}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="n">release_dir</span><span class="o">=</span><span class="n">release_dir</span><span class="p">,</span> <span class="n">current</span><span class="o">=</span><span class="n">current</span>
-            <span class="p">)</span>
-        <span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">run_drush</span><span class="p">(</span><span class="n">command</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Run a Drush command
-    :param command: Drush command to run
-    :type command: str
-    &quot;&quot;&quot;</span>
-    <span class="k">with</span> <span class="n">settings</span><span class="p">(</span><span class="n">sudo_user</span><span class="o">=</span><span class="s2">&quot;www-data&quot;</span><span class="p">):</span>
-        <span class="n">sudo</span><span class="p">(</span>
-            <span class="s2">&quot;drush -u 1 -y -r </span><span class="si">{drupal_root}</span><span class="s2"> </span><span class="si">{command}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="n">drupal_root</span><span class="o">=</span><span class="s2">&quot;/var/www/</span><span class="si">{host}</span><span class="s2">/current/drupal&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">env</span><span class="p">),</span>
-                <span class="n">command</span><span class="o">=</span><span class="n">command</span><span class="p">,</span>
-            <span class="p">)</span>
-        <span class="p">)</span>
-</pre>
-</div>
-</div>
-<div class="section" id="further-reading">
-<h2><a class="toc-backref" href="#id14">Further reading</a></h2>
-<ul class="simple">
-<li><a class="reference external" href="http://www.drushcommands.com/drush-7x/">Drush 7.x commands</a></li>
-<li><a class="reference external" href="http://docs.fabfile.org/en/1.10/">Fabric’s documentation</a></li>
-<li><a class="reference external" href="https://www.drupal.org/node/1613424">Drupal core issue: Allow a site to be installed from existing
-configuration</a></li>
-<li><a class="reference external" href="https://www.drupal.org/documentation/administer/config">Managing configuration in Drupal 8</a></li>
-</ul>
-</div>
-                </article>
-            </aside><!-- /#featured -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>Project sites</h2>
-                        <ul>
-                            <li><a href="https://leaf-obd.readthedocs.io/">Nissan Leaf OBD-II manual</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>Code</h2>
-                        <ul>
-                            <li><a href="https://seth.fischer.nz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
-
-                            <li><a href="https://github.com/sethfischer">GitHub</a></li>
-                            <li><a href="https://gist.github.com/sethfischer">Code snippets</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
-
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
 
 </body>
 </html>

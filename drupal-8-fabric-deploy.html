@@ -1,43 +1,129 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <meta name="generator" content="Pelican" />
-        <title>Deploying Drupal 8 with Fabric</title>
-        <link rel="stylesheet" href="https://seth.fischer.nz/theme/css/main.css" />
-        <link href="https://seth.fischer.nz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="sethfischer Atom Feed" />
-        <meta name="description" content="An automated build and deployment process saves time and, more importantly, provides a safeguard against failed deployments. Fabric is a tool that..." />
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://seth.fischer.nz/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://seth.fischer.nz/theme/pygments/github.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://seth.fischer.nz/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://seth.fischer.nz/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://seth.fischer.nz/theme/font-awesome/css/solid.css">
+
+
+    <link href="https://seth.fischer.nz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="sethfischer Atom">
+
+
+
+
+
+<meta name="author" content="Seth Fischer" />
+<meta name="description" content="An automated build and deployment process saves time and, more importantly, provides a safeguard against failed deployments. Fabric is a tool that can be used to automate application deployment and related tasks. This article describes using Fabric to deploy a Drupal 8 site." />
+<meta name="keywords" content="Drupal 8, Drupal, Fabric, Python">
+
+
+<meta property="og:site_name" content="sethfischer"/>
+<meta property="og:title" content="Deploying Drupal 8 with Fabric"/>
+<meta property="og:description" content="An automated build and deployment process saves time and, more importantly, provides a safeguard against failed deployments. Fabric is a tool that can be used to automate application deployment and related tasks. This article describes using Fabric to deploy a Drupal 8 site."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://seth.fischer.nz/drupal-8-fabric-deploy.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2015-02-06 09:38:00+13:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://seth.fischer.nz/author/seth-fischer.html">
+<meta property="article:section" content="DevOps"/>
+<meta property="article:tag" content="Drupal 8"/>
+<meta property="article:tag" content="Drupal"/>
+<meta property="article:tag" content="Fabric"/>
+<meta property="article:tag" content="Python"/>
+<meta property="og:image" content="images/terminal.svg">
+
+  <title>sethfischer &ndash; Deploying Drupal 8 with Fabric</title>
+
 </head>
+<body class="light-theme">
+  <aside>
+    <div>
+      <a href="https://seth.fischer.nz">
+        <img src="images/terminal.svg" alt="" title="">
+      </a>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="https://seth.fischer.nz/">sethfischer</a></h1>
-                <nav><ul>
-                    <li><a href="https://seth.fischer.nz/about.html">About</a></li>
-                    <li class="active"><a href="https://seth.fischer.nz/category/devops.html">DevOps</a></li>
-                    <li><a href="https://seth.fischer.nz/category/web-development.html">Web development</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
-<section id="content" class="body">
-  <article>
-    <header>
-      <h1 class="entry-title">
-        <a href="https://seth.fischer.nz/drupal-8-fabric-deploy.html" rel="bookmark"
-           title="Permalink to Deploying Drupal 8 with Fabric">Deploying Drupal 8 with Fabric</a></h1>
-    </header>
+      <h1>
+        <a href="https://seth.fischer.nz"></a>
+      </h1>
 
-    <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2015-02-06T09:38:00+13:00">
-                Published: 06 February 2015
-        </abbr>
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="https://seth.fischer.nz/author/seth-fischer.html">Seth Fischer</a>
-        </address>
-<p>In <a href="https://seth.fischer.nz/category/devops.html">DevOps</a>.</p>
-<p>tags: <a href="https://seth.fischer.nz/tag/drupal-8.html">Drupal 8</a> <a href="https://seth.fischer.nz/tag/drupal.html">Drupal</a> <a href="https://seth.fischer.nz/tag/fabric.html">Fabric</a> <a href="https://seth.fischer.nz/tag/python.html">Python</a> </p>
-</footer><!-- /.post-info -->      <div class="admonition warning">
+
+      <nav>
+        <ul class="list">
+
+
+              <li>
+                <a target="_self"
+                   href="https://seth.fischer.nz/projects.html#projects">
+                  Projects
+                </a>
+              </li>
+
+            <li>
+              <a target="_self" href="https://leaf-obd.readthedocs.io/" >Leaf OBD-II manual</a>
+            </li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/sethfischer" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-gitlab" href="https://gitlab.com/sethfischer" target="_blank">
+              <i class="fab fa-gitlab"></i>
+            </a>
+          </li>
+      </ul>
+    </div>
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://seth.fischer.nz">Home</a>
+
+      <a href="/archives">Archives</a>
+      <a href="/categories">Categories</a>
+      <a href="/tags">Tags</a>
+      <a href="https://github.com/sethfischer">GitHub</a>
+
+      <a href="https://seth.fischer.nz/feeds/all.atom.xml">Atom</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="drupal-8-fabric-deploy">Deploying Drupal 8 with Fabric</h1>
+    <p>
+      Posted on 06 February 2015 in <a href="https://seth.fischer.nz/category/devops.html">DevOps</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">This article is obsolete. It was published in February 2015, nine months
 before Drupal&nbsp;8 was released.</p>
@@ -530,35 +616,43 @@ configuration</a></li>
 </ul>
 </div>
 
-    </div><!-- /.entry-content -->
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://seth.fischer.nz/tag/drupal-8.html">Drupal 8</a>
+      <a href="https://seth.fischer.nz/tag/drupal.html">Drupal</a>
+      <a href="https://seth.fischer.nz/tag/fabric.html">Fabric</a>
+      <a href="https://seth.fischer.nz/tag/python.html">Python</a>
+    </p>
+  </div>
 
-  </article>
-</section>
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>Project sites</h2>
-                        <ul>
-                            <li><a href="https://leaf-obd.readthedocs.io/">Nissan Leaf OBD-II manual</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>Code</h2>
-                        <ul>
-                            <li><a href="https://seth.fischer.nz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-                            <li><a href="https://github.com/sethfischer">GitHub</a></li>
-                            <li><a href="https://gist.github.com/sethfischer">Code snippets</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
-                </address><!-- /#about -->
 
-                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
+
+</article>
+
+    <footer>
+<p>&copy; 2020 Seth Fischer</p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " sethfischer ",
+  "url" : "https://seth.fischer.nz",
+  "image": "images/terminal.svg",
+  "description": ""
+}
+</script>
+
 
 </body>
 </html>

@@ -1,494 +1,231 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
-        <meta name="generator" content="Pelican" />
-        <title>sethfischer - Drupal 8</title>
-        <link rel="stylesheet" href="https://seth.fischer.nz/theme/css/main.css" />
-        <link href="https://seth.fischer.nz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="sethfischer Atom Feed" />
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://seth.fischer.nz/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://seth.fischer.nz/theme/pygments/github.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://seth.fischer.nz/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://seth.fischer.nz/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://seth.fischer.nz/theme/font-awesome/css/solid.css">
+
+
+    <link href="https://seth.fischer.nz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="sethfischer Atom">
+
+
+
+
+
+    <meta name="author" content="Seth Fischer" />
+    <meta name="description" content="" />
+<meta property="og:site_name" content="sethfischer"/>
+<meta property="og:type" content="blog"/>
+<meta property="og:title" content="sethfischer"/>
+<meta property="og:description" content=""/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://seth.fischer.nz"/>
+<meta property="og:image" content="images/terminal.svg">
+
+  <title>sethfischer &ndash; Tag Drupal 8</title>
+
 </head>
+<body class="light-theme">
+  <aside>
+    <div>
+      <a href="https://seth.fischer.nz">
+        <img src="images/terminal.svg" alt="" title="">
+      </a>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="https://seth.fischer.nz/">sethfischer</a></h1>
-                <nav><ul>
-                    <li><a href="https://seth.fischer.nz/about.html">About</a></li>
-                    <li><a href="https://seth.fischer.nz/category/devops.html">DevOps</a></li>
-                    <li><a href="https://seth.fischer.nz/category/web-development.html">Web development</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
+      <h1>
+        <a href="https://seth.fischer.nz"></a>
+      </h1>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="https://seth.fischer.nz/drupal-8-development-tools.html">An introduction to Drupal 8 development tools</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2015-07-07T21:19:00+12:00">
-                Published: 07 July 2015
-        </abbr>
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="https://seth.fischer.nz/author/seth-fischer.html">Seth Fischer</a>
-        </address>
-<p>In <a href="https://seth.fischer.nz/category/web-development.html">Web development</a>.</p>
-<p>tags: <a href="https://seth.fischer.nz/tag/drupal-8.html">Drupal 8</a> <a href="https://seth.fischer.nz/tag/drupal.html">Drupal</a> </p>
-</footer><!-- /.post-info --><div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This article is obsolete. It was published in July 2015, four months before
-Drupal&nbsp;8 was released.</p>
-</div>
-<p>The use of third party components in <a class="reference external" href="https://www.drupal.org/drupal-8.0">Drupal&nbsp;8</a> has inspired two new tools for
-Drupal&nbsp;8 developers: the Drupal Console and the Drupal Web Profiler. Based on
-the <a class="reference external" href="http://symfony.com/doc/current/components/console/introduction.html">Symfony&nbsp;2 Console</a> component, the <a class="reference external" href="http://drupalconsole.com/">Drupal Console</a> is a scaffolding
-generator which allows developers to reduce development time by automating the
-generation of boilerplate code. The <a class="reference external" href="https://www.drupal.org/project/webprofiler">Drupal Web Profiler</a> is a port of the
-<a class="reference external" href="https://github.com/symfony/WebProfilerBundle">Symfony 2 WebProfiler bundle</a> as a Drupal&nbsp;8 module providing a toolbar with
-convenient access to performance and profile information.</p>
-<div class="contents topic" id="contents">
-<p class="topic-title">Contents</p>
-<ul class="simple">
-<li><a class="reference internal" href="#drupal-console" id="id3">Drupal Console</a><ul>
-<li><a class="reference internal" href="#commands-in-the-generate-namespace" id="id4">Commands in the generate namespace</a></li>
-<li><a class="reference internal" href="#additional-commands" id="id5">Additional commands</a></li>
-<li><a class="reference internal" href="#custom-commands" id="id6">Custom commands</a></li>
-<li><a class="reference internal" href="#chain-command-execution" id="id7">Chain command execution</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#web-profiler" id="id8">Web Profiler</a><ul>
-<li><a class="reference internal" href="#data-collectors" id="id9">Data collectors</a></li>
-<li><a class="reference internal" href="#profiling-decoupled-or-headless-requests" id="id10">Profiling decoupled (or headless) requests</a></li>
-<li><a class="reference internal" href="#web-profiler-console-commands" id="id11">Web Profiler console commands</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#further-reading" id="id12">Further reading</a></li>
-</ul>
-</div>
-<div class="section" id="drupal-console">
-<h2><a class="toc-backref" href="#id3">Drupal Console</a></h2>
-<p>The Drupal Console (<a class="reference external" href="https://github.com/hechoendrupal/DrupalConsole">hechoendrupal/DrupalConsole</a> on GitHub) is a
-<a class="reference external" href="http://symfony.com/doc/current/components/console/introduction.html">Symfony 2 console application</a> which provides a number of generators to
-assist developers in creating boilerplate code. In addition to increasing
-productivity Drupal Console is a valuable learning tool which allows developers
-to get up and running with best practice code by kick-starting a
-<a class="reference external" href="https://www.drupal.org/node/2156625">PSR-4 compliant directory structure</a>.</p>
-<p>Commands are namespaced, the top-level namespaces currently being:</p>
-<ul class="simple">
-<li><tt class="docutils literal">cache</tt></li>
-<li><tt class="docutils literal">config</tt></li>
-<li><tt class="docutils literal">container</tt></li>
-<li><tt class="docutils literal">generate</tt></li>
-<li><tt class="docutils literal">migrate</tt></li>
-<li><tt class="docutils literal">module</tt></li>
-<li><tt class="docutils literal">rest</tt></li>
-<li><tt class="docutils literal">router</tt></li>
-<li><tt class="docutils literal">site</tt></li>
-<li><tt class="docutils literal">test</tt></li>
-</ul>
-<div class="section" id="commands-in-the-generate-namespace">
-<h3><a class="toc-backref" href="#id4">Commands in the generate namespace</a></h3>
-<p>Drupal Console currently has thirteen commands in the generate namespace:</p>
-<dl class="docutils">
-<dt>generate:authentication:provider</dt>
-<dd>Generate an authentication provider.</dd>
-<dt>generate:command</dt>
-<dd>Generate commands for the console.</dd>
-<dt>generate:controller</dt>
-<dd>Generate &amp; register a controller.</dd>
-<dt>generate:entity</dt>
-<dd><ul class="first last simple">
-<li><strong>generate:entity:config</strong> Generate a new “EntityConfig”.</li>
-<li><strong>generate:entity:content</strong> Generate a new “EntityContent”.</li>
-</ul>
-</dd>
-<dt>generate:form:config</dt>
-<dd>Generate a new “ConfigFormBase”.</dd>
-<dt>generate:module</dt>
-<dd>Generate a module.</dd>
-<dt>generate:permissions</dt>
-<dd>Generate module permissions.</dd>
-<dt>generate:plugin</dt>
-<dd><ul class="first last simple">
-<li><strong>generate:plugin:block</strong> Generate a plugin block.</li>
-<li><strong>generate:plugin:imageeffect</strong> Generate image effect plugin.</li>
-<li><strong>generate:plugin:rest:resource</strong> Generate plugin rest resource.</li>
-<li><strong>generate:plugin:rulesaction</strong> Generate a plugin rule action.</li>
-</ul>
-</dd>
-<dt>generate:service</dt>
-<dd>Generate a service.</dd>
-</dl>
-<p class="rubric">Example: Generating a module</p>
-<p>The examples below demonstrate how a module is generated with
-<tt class="docutils literal">generate:module</tt> All other commands follow a similar pattern.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> drupal generate:module
 
-<span class="go"> Welcome to the Drupal module generator</span>
+      <nav>
+        <ul class="list">
 
-<span class="go">Enter the new module name: awesome</span>
-<span class="go">Enter the module machine name [awesome]:</span>
-<span class="go">Enter the module Path [/modules/custom]:</span>
-<span class="go">Enter module description [My Awesome Module]:</span>
-<span class="go">Enter package name [Other]:</span>
-<span class="go">Enter Drupal Core version [8.x]:</span>
-<span class="go">Do you want to generate a default Controller [no]? yes</span>
-<span class="go">Would you like to add module dependencies [yes]? no</span>
-<span class="go">Do you want to generate a unit test class [yes]? yes</span>
-<span class="go">Do you confirm generation [yes]? yes</span>
 
-<span class="go"> Generated or updated files</span>
+              <li>
+                <a target="_self"
+                   href="https://seth.fischer.nz/projects.html#projects">
+                  Projects
+                </a>
+              </li>
 
-<span class="go">Site path: /var/www/drupal8</span>
-<span class="go">1 - /modules/custom/awesome/awesome.info.yml</span>
-<span class="go">2 - /modules/custom/awesome/awesome.module</span>
-<span class="go">3 - /modules/custom/awesome/src/Controller/DefaultController.php</span>
-<span class="go">4 - /modules/custom/awesome/awesome.routing.yml</span>
-<span class="go">5 - /modules/custom/awesome/Tests/Controller/DefaultControllerTest.php</span>
-</pre></div>
-<p>Rather than using the default interactive prompt, options can be passed
-to the command.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> drupal generate:module <span class="se">\</span>
---module<span class="o">=</span><span class="s2">&quot;awesome&quot;</span> <span class="se">\</span>
---machine-name<span class="o">=</span><span class="s2">&quot;awesome&quot;</span> <span class="se">\</span>
---module-path<span class="o">=</span><span class="s2">&quot;modules/custom&quot;</span> <span class="se">\</span>
---description<span class="o">=</span><span class="s2">&quot;My Awesome Module&quot;</span> <span class="se">\</span>
---core<span class="o">=</span><span class="s2">&quot;8.x&quot;</span> <span class="se">\</span>
---package<span class="o">=</span><span class="s2">&quot;Other&quot;</span> <span class="se">\</span>
---controller <span class="se">\</span>
---dependencies
-</pre></div>
-</div>
-<div class="section" id="additional-commands">
-<h3><a class="toc-backref" href="#id5">Additional commands</a></h3>
-<p>In addition to commands in the generate namespace Drupal Console has many other
-commands. Run <tt class="docutils literal">drupal list</tt> to list available commands. Modules can define
-their own commands so the available commands may vary according to the modules
-installed.</p>
-<p>Site status information may be viewed with the command <tt class="docutils literal">site:status</tt>,
-optionally passing the <tt class="docutils literal"><span class="pre">--format=json</span></tt> option.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> drupal site:status --format<span class="o">=</span>json
-</pre></div>
-<p>Output of above command:</p>
-<div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;system&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;Drupal&quot;</span><span class="p">:</span> <span class="s2">&quot;8.0.0-dev&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Access to update.php&quot;</span><span class="p">:</span> <span class="s2">&quot;Protected&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Configuration files&quot;</span><span class="p">:</span> <span class="s2">&quot;Protected&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Cron maintenance tasks&quot;</span><span class="p">:</span> <span class="s2">&quot;Last run 44 min 45 sec ago&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;D3.js library&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Database system&quot;</span><span class="p">:</span> <span class="s2">&quot;MySQL, MariaDB, Percona Server, or equivalent&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Database system version&quot;</span><span class="p">:</span> <span class="s2">&quot;5.5.43-0+deb7u1&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Database updates&quot;</span><span class="p">:</span> <span class="s2">&quot;Out of date&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Drupal core update status&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;a href=\&quot;\/admin\/reports\/updates\&quot;&gt;Unknown release date (version 8.0.0-beta11 available)&lt;\/a&gt;&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;File system&quot;</span><span class="p">:</span> <span class="s2">&quot;Writable (&lt;em&gt;public&lt;\/em&gt; download method)&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;GD library&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0.36&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;GD library PNG support&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0.36&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Image toolkit&quot;</span><span class="p">:</span> <span class="s2">&quot;gd&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Module and theme update status&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;a href=\&quot;\/admin\/reports\/updates\&quot;&gt;Out of date&lt;\/a&gt;&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Node Access Permissions&quot;</span><span class="p">:</span> <span class="s2">&quot;Disabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;PHP&quot;</span><span class="p">:</span> <span class="s2">&quot;5.4.41-0+deb7u1 (&lt;a href=\&quot;\/admin\/reports\/status\/php\&quot;&gt;more information&lt;\/a&gt;)&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;PHP extensions&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;PHP memory limit&quot;</span><span class="p">:</span> <span class="s2">&quot;-1 (Unlimited)&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Search index progress&quot;</span><span class="p">:</span> <span class="s2">&quot;100% (0 remaining)&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Trusted Host Settings&quot;</span><span class="p">:</span> <span class="s2">&quot;Not enabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Unicode library&quot;</span><span class="p">:</span> <span class="s2">&quot;PHP Mbstring Extension&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Update notifications&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Upload progress&quot;</span><span class="p">:</span> <span class="s2">&quot;Not enabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Web server&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="nt">&quot;highlight.js library&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;database&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;Driver&quot;</span><span class="p">:</span> <span class="s2">&quot;mysql&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Host&quot;</span><span class="p">:</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Database connection&quot;</span><span class="p">:</span> <span class="s2">&quot;drupal8&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Port&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Username&quot;</span><span class="p">:</span> <span class="s2">&quot;drupal8&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Password&quot;</span><span class="p">:</span> <span class="s2">&quot;redacted&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Connection&quot;</span><span class="p">:</span> <span class="s2">&quot;mysql\/\/drupal8:redacted@localhost\/drupal8&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;theme&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;theme_default&quot;</span><span class="p">:</span> <span class="s2">&quot;bartik&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;theme_admin&quot;</span><span class="p">:</span> <span class="s2">&quot;seven&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;directory&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;Site root directory&quot;</span><span class="p">:</span> <span class="s2">&quot;\/var\/www\/drupal8\/&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Site temporary directory&quot;</span><span class="p">:</span> <span class="s2">&quot;\/tmp&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Default theme directory&quot;</span><span class="p">:</span> <span class="s2">&quot;\/core\/themes\/bartik&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Admin theme directory&quot;</span><span class="p">:</span> <span class="s2">&quot;\/core\/themes\/seven&quot;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<div class="section" id="custom-commands">
-<h3><a class="toc-backref" href="#id6">Custom commands</a></h3>
-<p>Modules may define commands by extending
-<tt class="docutils literal">Symfony\Component\Console\Command\Command</tt>. Drupal Console can create
-scaffolding for a custom command with the command <tt class="docutils literal">generate:command</tt>. Refer
-to the <a class="reference external" href="http://symfony.com/doc/current/components/console/introduction.html">Symfony&nbsp;2 Console Component documentation</a> for additional information.
-For an example implementation refer to the source code of Web Profiler
-<tt class="docutils literal">git clone <span class="pre">http://git.drupal.org/project/webprofiler.git</span></tt>.</p>
-</div>
-<div class="section" id="chain-command-execution">
-<h3><a class="toc-backref" href="#id7">Chain command execution</a></h3>
-<p>Commands may be recorded in YAML and executed with the <tt class="docutils literal">chain</tt> command:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> drupal chain --file<span class="o">=</span>~/d8-project-init.yml
-</pre></div>
-<p>In the example below a module will be created, followed by a controller
-for that module.</p>
-<div class="highlight"><pre><span></span><span class="c1"># d8-project-init.yml</span>
-<span class="nt">commands</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="nt">command</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">generate:module</span>
-      <span class="nt">options</span><span class="p">:</span>
-        <span class="nt">module</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">awesome</span>
-        <span class="nt">machine-name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">awesome</span>
-        <span class="nt">module-path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/modules/custom/</span>
-        <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">My Awesome module</span>
-        <span class="nt">core</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8.x</span>
-        <span class="nt">package</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Test</span>
-        <span class="nt">controller</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-        <span class="nt">dependencies</span><span class="p">:</span>
-        <span class="nt">test</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="p p-Indicator">-</span> <span class="nt">command</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">generate:controller</span>
-      <span class="nt">options</span><span class="p">:</span>
-        <span class="nt">module</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">awesome</span>
-        <span class="nt">class-name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AwesomeController</span>
-        <span class="nt">method-name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">index</span>
-        <span class="nt">route</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/awesome/index</span>
-        <span class="nt">services</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">twig</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="web-profiler">
-<h2><a class="toc-backref" href="#id8">Web Profiler</a></h2>
-<p>The <a class="reference external" href="https://www.drupal.org/project/webprofiler">Drupal Web Profiler</a> provides convenient access to a selection of
-performance and profile information on a per request basis.</p>
-<div class="section" id="data-collectors">
-<h3><a class="toc-backref" href="#id9">Data collectors</a></h3>
-<p>The Web Profiler provides a number of data collectors which include:</p>
-<ul class="simple">
-<li>PHP configuration</li>
-<li>route and controller name</li>
-<li>page load timeline and memory use</li>
-<li>front-end statistics (timings for: DNS lookup time; TCP handshake;
-<abbr title="Time to first byte">TTFB</abbr>; data download; and DOM build)</li>
-<li>database query time and number of queries</li>
-<li>authentication details</li>
-<li>number of views</li>
-<li>number of blocks loaded and rendered</li>
-<li>number of modules and themes available</li>
-<li>cache statistics</li>
-<li>asset statistics</li>
-</ul>
-<p>A summary of the data collected is displayed in the Web Profiler toolbar
-which is displayed along the lower edge of the viewport.</p>
-<figure>
-    <picture>
-        <source srcset="/images/drupal-8-webprofiler-toolbar-large.png"
-            media="(min-width: 950px)"/>
-        <img src="/images/drupal-8-webprofiler-toolbar-medium.png"
-            alt="Drupal 8 Web Profiler toolbar"/>
-    </picture>
-    <figcaption>The Drupal 8 Web Profiler toolbar.</figcaption>
-</figure><p>Additional detail for each data collector may be viewed by clicking the
-relevant icon in the toolbar overlay. Below is the detailed report for the page
-load timeline.</p>
-<figure>
-    <picture>
-        <source srcset="/images/drupal-8-webprofiler-report-large.png"
-            media="(min-width: 950px)"/>
-        <source srcset="/images/drupal-8-webprofiler-report-medium.png"
-            media="(min-width: 600px)"/>
-        <img src="/images/drupal-8-webprofiler-report-small.png"
-            alt="Drupal 8 Web Profiler toolbar"/>
-    </picture>
-    <figcaption>Example of a Drupal 8 Web Profiler report timeline.</figcaption>
-</figure></div>
-<div class="section" id="profiling-decoupled-or-headless-requests">
-<h3><a class="toc-backref" href="#id10">Profiling decoupled (or headless) requests</a></h3>
-<p>The inclusion of a <a class="reference external" href="https://www.drupal.org/developing/api/8/routing">HTTP routing framework</a> and <a class="reference external" href="https://www.drupal.org/documentation/modules/rest">REST API</a> in Drupal&nbsp;8 core
-will make it significantly easier to develop decoupled applications using a
-client-side framework such as <a class="reference external" href="http://emberjs.com/">ember.js</a> which connects to a Drupal backend.</p>
-<p>When profiling an API or headless request the Web Profiler toolbar is not
-available. However the profile data remains available for each request via a
-token and link provided in the HTTP response headers <tt class="docutils literal"><span class="pre">X-Debug-Token</span></tt> and
-<tt class="docutils literal"><span class="pre">X-Debug-Token-Link</span></tt>.</p>
-<div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-<span class="na">Date</span><span class="o">:</span> <span class="l">Fri, 26 Jun 2015 23:53:36 GMT</span>
-<span class="na">Server</span><span class="o">:</span> <span class="l">Apache/2.2.22 (Debian)</span>
-<span class="na">X-Generator</span><span class="o">:</span> <span class="l">Drupal 8 (https://www.drupal.org)</span>
-<span class="err">⋮</span>
-X-Debug-Token: 0ac668
-X-Debug-Token-Link: /admin/reports/profiler/view/0ac668
-⋮
-</pre></div>
-<p>Visiting the X-Debug-Token-Link (in this case
-<tt class="docutils literal">/admin/reports/profiler/view/0ac668</tt>) will provide access to the report for
-he relevant request.</p>
-</div>
-<div class="section" id="web-profiler-console-commands">
-<h3><a class="toc-backref" href="#id11">Web Profiler console commands</a></h3>
-<p>Web profiler provides three console commands:</p>
-<dl class="docutils">
-<dt>webprofiler:benchmark</dt>
-<dd>Benchmark a url.</dd>
-<dt>webprofiler:export</dt>
-<dd>Export Webprofiler profiles to file.</dd>
-<dt>webprofiler:list</dt>
-<dd>List Webprofiler profiles.</dd>
-</dl>
-<p class="rubric">benchmark</p>
-<p>Benchmark a URL.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> drupal webprofiler:benchmark http://drupal8/
-<span class="go"> 105/105 [============================] 100% Done.</span>
-<span class="go">date: &#39;Sun, 06/28/2015 - 21:00:43&#39;</span>
-<span class="go">git_commit: &quot;e39a32842072bfbaa2b15c5284625ff63ebc4a08\n&quot;</span>
-<span class="go">number_of_runs: 100</span>
-<span class="go">url: &#39;http://drupal8/&#39;</span>
-<span class="go">results:</span>
-<span class="go">    average: { time: &#39;340 ms&#39;, memory: &#39;38.8 MB&#39; }</span>
-<span class="go">    median: { time: &#39;336 ms&#39;, memory: &#39;38.8 MB&#39; }</span>
-<span class="go">    95_percentile: { time: &#39;326 ms&#39;, memory: &#39;38.8 MB&#39; }</span>
-</pre></div>
-<p class="rubric">export</p>
-<p>Export profile data to a file for later analysis.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> drupal webprofiler:export --directory<span class="o">=</span>/tmp/
-<span class="go"> 266/266 [============================] 100% Done.</span>
-<span class="go">Exported 264 profiles</span>
-</pre></div>
-<p class="rubric">list</p>
-<p>List and filter profiles.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> drupal webprofiler:list --url<span class="o">=</span>http://drupal8/ --method<span class="o">=</span>GET --limit<span class="o">=</span><span class="m">5</span>
-<span class="go">+--------+-----------+--------+-----------------+----------------------------+</span>
-<span class="go">| Token  | IP        | Method | URL             | Time                       |</span>
-<span class="go">+--------+-----------+--------+-----------------+----------------------------+</span>
-<span class="go">| 6f6333 | 127.0.0.1 | GET    | http://drupal8/ | Sun, 06/28/2015 - 20:57:01 |</span>
-<span class="go">| 429e2e | 127.0.0.1 | GET    | http://drupal8/ | Sun, 06/28/2015 - 20:57:00 |</span>
-<span class="go">| dc1461 | 127.0.0.1 | GET    | http://drupal8/ | Sun, 06/28/2015 - 20:57:00 |</span>
-<span class="go">| d00a91 | 127.0.0.1 | GET    | http://drupal8/ | Sun, 06/28/2015 - 20:56:59 |</span>
-<span class="go">| ef359a | 127.0.0.1 | GET    | http://drupal8/ | Sun, 06/28/2015 - 20:56:59 |</span>
-<span class="go">+--------+-----------+--------+-----------------+----------------------------+</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="further-reading">
-<h2><a class="toc-backref" href="#id12">Further reading</a></h2>
-<ul class="simple">
-<li><a class="reference external" href="https://www.gitbook.com/book/hechoendrupal/drupal-console/details">The Drupal Console book</a></li>
-<li><a class="reference external" href="http://symfony.com/doc/current/cookbook/profiler/data_collector.html">How to create a custom data collector</a></li>
-<li><a class="reference external" href="https://drupalize.me/blog/201401/introduction-restful-web-services-drupal-8">An introduction to RESTful web services in Drupal 8</a></li>
-<li><a class="reference external" href="https://pantheon.io/blog/headless-websites-whats-big-deal">Headless websites: What’s the big deal?</a></li>
-</ul>
-</div>
-                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+            <li>
+              <a target="_self" href="https://leaf-obd.readthedocs.io/" >Leaf OBD-II manual</a>
+            </li>
+        </ul>
+      </nav>
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://seth.fischer.nz/drupal-8-fabric-deploy.html" rel="bookmark"
-                           title="Permalink to Deploying Drupal 8 with Fabric">Deploying Drupal 8 with Fabric</a></h1>
-                </header>
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/sethfischer" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-gitlab" href="https://gitlab.com/sethfischer" target="_blank">
+              <i class="fab fa-gitlab"></i>
+            </a>
+          </li>
+      </ul>
+    </div>
 
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2015-02-06T09:38:00+13:00">
-                Published: 06 February 2015
-        </abbr>
+  </aside>
+  <main>
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="https://seth.fischer.nz/author/seth-fischer.html">Seth Fischer</a>
-        </address>
-<p>In <a href="https://seth.fischer.nz/category/devops.html">DevOps</a>.</p>
-<p>tags: <a href="https://seth.fischer.nz/tag/drupal-8.html">Drupal 8</a> <a href="https://seth.fischer.nz/tag/drupal.html">Drupal</a> <a href="https://seth.fischer.nz/tag/fabric.html">Fabric</a> <a href="https://seth.fischer.nz/tag/python.html">Python</a> </p>
-</footer><!-- /.post-info -->                <p class="first last">An automated build and deployment process saves time and, more
+    <nav>
+      <a href="https://seth.fischer.nz">Home</a>
+
+      <a href="/archives">Archives</a>
+      <a href="/categories">Categories</a>
+      <a href="/tags">Tags</a>
+      <a href="https://github.com/sethfischer">GitHub</a>
+
+      <a href="https://seth.fischer.nz/feeds/all.atom.xml">Atom</a>
+
+    </nav>
+
+
+
+<article>
+  <header>
+    <h2><a href="https://seth.fischer.nz/drupal-8-development-tools.html#drupal-8-development-tools">An introduction to Drupal 8 development tools</a></h2>
+    <p>
+      Posted on 07 July 2015 in <a href="https://seth.fischer.nz/category/web-development.html">Web development</a>
+
+          &#8226; Tagged with
+              <a href="https://seth.fischer.nz/tag/drupal-8.html">Drupal 8</a>,              <a href="https://seth.fischer.nz/tag/drupal.html">Drupal</a>
+    </p>
+  </header>
+  <div>
+      <p class="first last">The use of third party components in Drupal 8 has inspired two new
+tools for Drupal 8 developers: the Drupal Console and the Drupal Web
+Profiler. Based on the Symfony Console component, the Drupal Console is a
+scaffolding generator which allows developers to reduce development time by
+automating the generation of boilerplate code. The Drupal Web Profiler is a
+port of the Symfony 2 Web Profiler Bundle as a Drupal 8 module providing a
+toolbar with convenient access to performance and profile information.</p>
+
+        <br>
+        <a class="btn"
+           href="https://seth.fischer.nz/drupal-8-development-tools.html#drupal-8-development-tools">
+          Continue reading
+        </a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://seth.fischer.nz/drupal-8-fabric-deploy.html#drupal-8-fabric-deploy">Deploying Drupal 8 with Fabric</a></h2>
+    <p>
+      Posted on 06 February 2015 in <a href="https://seth.fischer.nz/category/devops.html">DevOps</a>
+
+          &#8226; Tagged with
+              <a href="https://seth.fischer.nz/tag/drupal-8.html">Drupal 8</a>,              <a href="https://seth.fischer.nz/tag/drupal.html">Drupal</a>,              <a href="https://seth.fischer.nz/tag/fabric.html">Fabric</a>,              <a href="https://seth.fischer.nz/tag/python.html">Python</a>
+    </p>
+  </header>
+  <div>
+      <p class="first last">An automated build and deployment process saves time and, more
 importantly, provides a safeguard against failed deployments. Fabric is a
 tool that can be used to automate application deployment and related tasks.
 This article describes using Fabric to deploy a Drupal 8 site.</p>
 
-                <a class="readmore" href="https://seth.fischer.nz/drupal-8-fabric-deploy.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
+        <br>
+        <a class="btn"
+           href="https://seth.fischer.nz/drupal-8-fabric-deploy.html#drupal-8-fabric-deploy">
+          Continue reading
+        </a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merging.html#drupal-8-workflow-using-git-subtree-merging">A Drupal 8 workflow using the Git subtree merge strategy</a></h2>
+    <p>
+      Posted on 23 January 2015 in <a href="https://seth.fischer.nz/category/web-development.html">Web development</a>
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merging.html" rel="bookmark"
-                           title="Permalink to A Drupal 8 workflow using the Git subtree merge strategy">A Drupal 8 workflow using the Git subtree merge strategy</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2015-01-23T19:20:00+13:00">
-                Published: 23 January 2015
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="https://seth.fischer.nz/author/seth-fischer.html">Seth Fischer</a>
-        </address>
-<p>In <a href="https://seth.fischer.nz/category/web-development.html">Web development</a>.</p>
-<p>tags: <a href="https://seth.fischer.nz/tag/drupal-8.html">Drupal 8</a> <a href="https://seth.fischer.nz/tag/drupal.html">Drupal</a> <a href="https://seth.fischer.nz/tag/git.html">Git</a> </p>
-</footer><!-- /.post-info -->                <p class="first last">Often there are components of a Drupal website that should not be
+          &#8226; Tagged with
+              <a href="https://seth.fischer.nz/tag/drupal-8.html">Drupal 8</a>,              <a href="https://seth.fischer.nz/tag/drupal.html">Drupal</a>,              <a href="https://seth.fischer.nz/tag/git.html">Git</a>
+    </p>
+  </header>
+  <div>
+      <p class="first last">Often there are components of a Drupal website that should not be
 located in the document root such as configuration files. It is convenient
 to keep these files in version control but outside of the Drupal root. By
 utilising Git subtrees, a Drupal installation root may be below the root of
 the main repository, and upstream changes to Drupal core conveniently
 merged with git read-tree.</p>
 
-                <a class="readmore" href="https://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merging.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
+        <br>
+        <a class="btn"
+           href="https://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merging.html#drupal-8-workflow-using-git-subtree-merging">
+          Continue reading
+        </a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://seth.fischer.nz/drupal-8-getting-started.html#drupal-8-getting-started">Getting started with Drupal 8</a></h2>
+    <p>
+      Posted on 28 November 2014 in <a href="https://seth.fischer.nz/category/web-development.html">Web development</a>
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://seth.fischer.nz/drupal-8-getting-started.html" rel="bookmark"
-                           title="Permalink to Getting started with Drupal 8">Getting started with Drupal 8</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2014-11-28T22:22:00+13:00">
-                Published: 28 November 2014
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="https://seth.fischer.nz/author/seth-fischer.html">Seth Fischer</a>
-        </address>
-<p>In <a href="https://seth.fischer.nz/category/web-development.html">Web development</a>.</p>
-<p>tags: <a href="https://seth.fischer.nz/tag/drupal-8.html">Drupal 8</a> <a href="https://seth.fischer.nz/tag/drupal.html">Drupal</a> </p>
-</footer><!-- /.post-info -->                <p class="first last">Now that Drupal 8 is in beta phase it is a great time for site
+          &#8226; Tagged with
+              <a href="https://seth.fischer.nz/tag/drupal-8.html">Drupal 8</a>,              <a href="https://seth.fischer.nz/tag/drupal.html">Drupal</a>
+    </p>
+  </header>
+  <div>
+      <p class="first last">Now that Drupal 8 is in beta phase it is a great time for site
 developers to start exploring the API. This article serves as an
 introduction to installing and configuring Drupal 8 using Git and Drush.</p>
 
-                <a class="readmore" href="https://seth.fischer.nz/drupal-8-getting-started.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>Project sites</h2>
-                        <ul>
-                            <li><a href="https://leaf-obd.readthedocs.io/">Nissan Leaf OBD-II manual</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>Code</h2>
-                        <ul>
-                            <li><a href="https://seth.fischer.nz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+        <br>
+        <a class="btn"
+           href="https://seth.fischer.nz/drupal-8-getting-started.html#drupal-8-getting-started">
+          Continue reading
+        </a>
+  </div>
+</article>
 
-                            <li><a href="https://github.com/sethfischer">GitHub</a></li>
-                            <li><a href="https://gist.github.com/sethfischer">Code snippets</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
-                </address><!-- /#about -->
 
-                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
+
+    <footer>
+<p>&copy; 2020 Seth Fischer</p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " sethfischer ",
+  "url" : "https://seth.fischer.nz",
+  "image": "images/terminal.svg",
+  "description": ""
+}
+</script>
+
 
 </body>
 </html>
