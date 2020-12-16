@@ -1,14 +1,18 @@
-=====
-About
-=====
-
-My public repositories are on `GitHub`_.
-
-I also have accounts on `Bitbucket`_ and `gitlab.com`_ for private projects.
+========
+Projects
+========
 
 
-Private projects
-----------------
+Public
+------
+
+My public repositories are hosted on `GitHub.com`_.
+
+
+Private
+-------
+
+My private repositories are hosted on `GitLab.com`_.
 
 
 reptiles.org.nz
@@ -81,6 +85,5 @@ Android application for rendering geographically-aware electronic tour guides.
     Obsolete.
 
 
-.. _`GitHub`: https://github.com/sethfischer
-.. _`Bitbucket`: https://bitbucket.org/sethfischer
-.. _`gitlab.com`: https://gitlab.com/sethfischer
+.. _`GitHub.com`: https://github.com/sethfischer
+.. _`GitLab.com`: https://gitlab.com/sethfischer
