@@ -28,10 +28,7 @@ LINKS = (("Nissan Leaf OBD-II manual", "https://leaf-obd.readthedocs.io/"),)
 LINKS_WIDGET_NAME = "Project sites"
 
 # Social widget
-SOCIAL = (
-    ("GitHub", "https://github.com/sethfischer"),
-    ("Code snippets", "https://gist.github.com/sethfischer"),
-)
+SOCIAL = (("GitHub", "https://github.com/sethfischer"),)
 SOCIAL_WIDGET_NAME = "Code"
 
 DEFAULT_PAGINATION = False
