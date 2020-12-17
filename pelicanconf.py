@@ -34,6 +34,7 @@ PAGE_SAVE_AS = "{slug}.html"
 # Time and date
 
 DEFAULT_DATE_FORMAT = "%d %B %Y"
+LOCALE = "en_NZ.UTF-8"
 TIMEZONE = "Pacific/Auckland"
 
 
