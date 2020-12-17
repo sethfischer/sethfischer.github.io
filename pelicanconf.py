@@ -91,4 +91,5 @@ THEME = "Flex"
 COPYRIGHT_NAME = AUTHOR
 COPYRIGHT_YEAR = datetime.now().year
 MAIN_MENU = True
+OG_LOCALE = "en_GB"
 SITELOGO = "images/terminal.svg"
