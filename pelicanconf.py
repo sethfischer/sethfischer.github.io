@@ -56,11 +56,6 @@ CATEGORY_FEED_ATOM = None
 FEED_ALL_ATOM = None
 
 
-# Pagination
-
-DEFAULT_PAGINATION = False
-
-
 # Translations
 
 DEFAULT_LANG = "en"
