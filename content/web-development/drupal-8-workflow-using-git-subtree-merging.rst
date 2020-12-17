@@ -12,7 +12,10 @@ A Drupal 8 workflow using the Git subtree merge strategy
 :software: Drush: 7.0-dev
 :software: Git: 1.7.10.4
 :software: PHP: 5.4.36-0+deb7u3
-:summary: Often there are components of a Drupal website that should not be
+:summary:
+    This Drupal 8 article is obsolete.
+
+    Often there are components of a Drupal website that should not be
     located in the document root such as configuration files. It is convenient
     to keep these files in version control but outside of the Drupal root. By
     utilising Git subtrees, a Drupal installation root may be below the root of
@@ -22,8 +25,8 @@ A Drupal 8 workflow using the Git subtree merge strategy
 
 .. warning::
 
-    This article is obsolete. It was published in January 2015, eleven months
-    before Drupal 8 was released.
+    This Drupal 8 article is obsolete. It was published in January 2015, eleven
+    months before Drupal 8 was released.
 
 
 Often there are components of a Drupal website that should not be located in

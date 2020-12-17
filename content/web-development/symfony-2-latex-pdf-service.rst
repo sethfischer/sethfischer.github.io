@@ -11,7 +11,10 @@ Symfony 2 PDF service using LaTeX
 :software: LaTeX: pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian)
 :software: PHP: 5.4.36-0+deb7u3
 :software: rubber-pipe: 1.1
-:summary:  Portable Document Format (PDF) has become a universally accepted
+:summary:
+    This Symfony 2 article is obsolete.
+
+    Portable Document Format (PDF) has become a universally accepted
     format for sharing documentation making the dynamic generation of PDF
     documents an expected feature of many web applications. After reviewing a
     number of libraries for generating PDF documents it was decided to write a
@@ -21,7 +24,8 @@ Symfony 2 PDF service using LaTeX
 
 .. warning::
 
-    This article is obsolete. Symfony 2 reached end-of-life in November 2018.
+    This Symfony 2 article is obsolete. Symfony 2 reached end-of-life in
+    November 2018.
 
 
 Portable Document Format (PDF) has become a universally accepted format for

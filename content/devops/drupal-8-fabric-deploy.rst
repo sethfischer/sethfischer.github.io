@@ -14,7 +14,10 @@ Deploying Drupal 8 with Fabric
 :software: Paramiko 1.15.2
 :software: PHP: 5.4.36-0+deb7u3
 :tags: Drupal 8, Drupal, Fabric, Python
-:summary: An automated build and deployment process saves time and, more
+:summary:
+    This Drupal 8 article is obsolete.
+
+    An automated build and deployment process saves time and, more
     importantly, provides a safeguard against failed deployments. Fabric is a
     tool that can be used to automate application deployment and related tasks.
     This article describes using Fabric to deploy a Drupal 8 site.
@@ -22,8 +25,8 @@ Deploying Drupal 8 with Fabric
 
 .. warning::
 
-    This article is obsolete. It was published in February 2015, nine months
-    before Drupal 8 was released.
+    This Drupal 8 article is obsolete. It was published in February 2015, nine
+    months before Drupal 8 was released.
 
 
 An automated build and deployment process saves time and, more importantly,

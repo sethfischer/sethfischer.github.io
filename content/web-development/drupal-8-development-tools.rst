@@ -7,7 +7,10 @@ An introduction to Drupal 8 development tools
 :date: 2015-07-07 21:19
 :slug: drupal-8-development-tools
 :tags: Drupal 8, Drupal
-:summary: The use of third party components in Drupal 8 has inspired two new
+:summary:
+    This Drupal 8 article is obsolete.
+
+    The use of third party components in Drupal 8 has inspired two new
     tools for Drupal 8 developers: the Drupal Console and the Drupal Web
     Profiler. Based on the Symfony Console component, the Drupal Console is a
     scaffolding generator which allows developers to reduce development time by
@@ -18,8 +21,8 @@ An introduction to Drupal 8 development tools
 
 .. warning::
 
-    This article is obsolete. It was published in July 2015, four months before
-    Drupal 8 was released.
+    This Drupal 8 article is obsolete. It was published in July 2015, four
+    months before Drupal 8 was released.
 
 
 The use of third party components in `Drupal 8`_ has inspired two new tools for

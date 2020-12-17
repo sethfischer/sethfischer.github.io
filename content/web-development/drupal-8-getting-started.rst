@@ -12,14 +12,17 @@ Getting started with Drupal 8
 :software: Git: 1.7.10.4
 :software: PHP: 5.4.35-0+deb7u2
 :tags: Drupal 8, Drupal
-:summary: Now that Drupal 8 is in beta phase it is a great time for site
+:summary:
+    This Drupal 8 article is obsolete.
+
+    Now that Drupal 8 is in beta phase it is a great time for site
     developers to start exploring the API. This article serves as an
     introduction to installing and configuring Drupal 8 using Git and Drush.
 
 
 .. warning::
 
-    This article is obsolete. It was published in November 2014, 12 months
+    This Drupal 8 article is obsolete. It was published in November 2014, 12 months
     before Drupal 8 was released.
 
 
