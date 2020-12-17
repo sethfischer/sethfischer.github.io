@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>sethfischer - DevOps</title><link href="https://seth.fischer.nz/" rel="alternate"></link><link href="https://seth.fischer.nz/feeds/devops.atom.xml" rel="self"></link><id>https://seth.fischer.nz/</id><updated>2015-02-06T09:38:00+13:00</updated><entry><title>Deploying Drupal 8 with Fabric</title><link href="https://seth.fischer.nz/drupal-8-fabric-deploy.html" rel="alternate"></link><published>2015-02-06T09:38:00+13:00</published><updated>2015-02-06T09:38:00+13:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2015-02-06:/drupal-8-fabric-deploy.html</id><summary type="html">&lt;p class="first last"&gt;An automated build and deployment process saves time and, more
+<feed xmlns="http://www.w3.org/2005/Atom"><title>sethfischer - DevOps</title><link href="https://seth.fischer.nz/" rel="alternate"></link><link href="https://seth.fischer.nz/feeds/devops.atom.xml" rel="self"></link><id>https://seth.fischer.nz/</id><updated>2015-02-06T09:38:00+13:00</updated><entry><title>Deploying Drupal 8 with Fabric</title><link href="https://seth.fischer.nz/drupal-8-fabric-deploy.html" rel="alternate"></link><published>2015-02-06T09:38:00+13:00</published><updated>2015-02-06T09:38:00+13:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2015-02-06:/drupal-8-fabric-deploy.html</id><summary type="html">&lt;p class="first"&gt;This Drupal 8 article is obsolete.&lt;/p&gt;
+&lt;p class="last"&gt;An automated build and deployment process saves time and, more
 importantly, provides a safeguard against failed deployments. Fabric is a
 tool that can be used to automate application deployment and related tasks.
 This article describes using Fabric to deploy a Drupal 8 site.&lt;/p&gt;
 </summary><content type="html">&lt;div class="admonition warning"&gt;
 &lt;p class="first admonition-title"&gt;Warning&lt;/p&gt;
-&lt;p class="last"&gt;This article is obsolete. It was published in February 2015, nine months
-before Drupal&amp;nbsp;8 was released.&lt;/p&gt;
+&lt;p class="last"&gt;This Drupal&amp;nbsp;8 article is obsolete. It was published in February 2015, nine
+months before Drupal&amp;nbsp;8 was released.&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;An automated build and deployment process saves time and, more importantly,
 provides a safeguard against failed deployments. &lt;a class="reference external" href="http://www.fabfile.org/"&gt;Fabric&lt;/a&gt; is a tool that can
