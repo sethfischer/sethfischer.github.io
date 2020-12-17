@@ -76,7 +76,6 @@ SOCIAL = (
     ("github", "https://github.com/sethfischer"),
     ("gitlab", "https://gitlab.com/sethfischer"),
 )
-SOCIAL_WIDGET_NAME = "Code"
 
 
 # Theme Flex
