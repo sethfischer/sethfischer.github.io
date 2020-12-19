@@ -64,8 +64,6 @@ TRANSLATION_FEED_ATOM = None
 
 # Theme
 
-LINKS = (("Leaf OBD-II manual", "https://leaf-obd.readthedocs.io/"),)
-LINKS_WIDGET_NAME = "Project sites"
 MENUITEMS = (
     ("Archives", "/archives"),
     ("Categories", "/categories"),
