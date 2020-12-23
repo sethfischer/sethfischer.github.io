@@ -21,7 +21,7 @@ reptiles.org.nz
 Website for The New Zealand Herpetological Society.
 
 :Date:
-    2016-09/2019-03
+    September 2016 – March 2019
 :Language:
     PHP
 :Framework:
@@ -29,7 +29,7 @@ Website for The New Zealand Herpetological Society.
 :Source code:
     \https://gitlab.com/sethfischer/reptiles.org.nz (private)
 :Status:
-    Handed over 2019-03.
+    Handed over March 2019.
 
 
 mundoplugs.com
@@ -39,7 +39,7 @@ Flask application which presents data from the mundoplugs.com Mains Electricity
 Database.
 
 :Date:
-    2013-09/2017-02
+    September 2013 – February 2017
 :Language:
     Python
 :Framework:
@@ -57,7 +57,7 @@ Management information system for inspection bodies with a focus on generating
 AS 2980 welder qualification certificates.
 
 :Date:
-    2013-02/2014-08
+    February 2013 – August 2014
 :Language:
     PHP
 :Framework:
@@ -65,7 +65,7 @@ AS 2980 welder qualification certificates.
 :Source code:
     \https://gitlab.com/sethfischer/ib2020 (private)
 :Status:
-    Handed over 2014-08.
+    Handed over August 2014.
 
 
 Infotag electronic tour guide
@@ -74,7 +74,7 @@ Infotag electronic tour guide
 Android application for rendering geographically-aware electronic tour guides.
 
 :Date:
-    2012-10/2012-07
+    July 2012 – October 2012
 :Language:
     Java
 :Framework:
