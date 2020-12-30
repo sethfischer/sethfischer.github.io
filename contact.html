@@ -38,7 +38,9 @@
 <meta property="og:url" content="https://seth.fischer.nz"/>
 <meta property="og:image" content="images/terminal.svg">
 
-  <title>sethfischer &ndash; Tag Symfony 2</title>
+
+
+  <title>sethfischer &ndash; Contact</title>
 
 </head>
 <body class="light-theme">
@@ -103,37 +105,48 @@
 
     </nav>
 
-
-
-<article>
+<article class="single">
   <header>
-    <h2><a href="https://seth.fischer.nz/symfony-2-latex-pdf-service.html#symfony-2-latex-pdf-service">Symfony 2 PDF service using LaTeX</a></h2>
-    <p>
-      Posted on 19 April 2015 in <a href="https://seth.fischer.nz/category/web-development.html">Web development</a>
-
-          &#8226; Tagged with
-              <a href="https://seth.fischer.nz/tag/symfony-2.html">Symfony 2</a>,              <a href="https://seth.fischer.nz/tag/latex.html">LaTeX</a>
-    </p>
+    
+    <h1 id="contact">Contact</h1>
   </header>
   <div>
-      <p class="first">This Symfony 2 article is obsolete.</p>
-<p class="last">Portable Document Format (PDF) has become a universally accepted
-format for sharing documentation making the dynamic generation of PDF
-documents an expected feature of many web applications. After reviewing a
-number of libraries for generating PDF documents it was decided to write a
-service wrapping LaTeX; a typesetting system with features suited to the
-production of scientific and technical documentation.</p>
+<style>
+    input[type=text], input[type=email], textarea {
+        margin-bottom: 16px;
+        margin-top: 6px;
+        padding: 12px;
+        width: 100%;
+    }
 
-        <br>
-        <a class="btn"
-           href="https://seth.fischer.nz/symfony-2-latex-pdf-service.html#symfony-2-latex-pdf-service">
-          Continue reading
-        </a>
-  </div>
+    textarea {
+        resize: vertical;
+    }
+
+    input[type=submit] {
+        padding: 12px 20px;
+    }
+
+    .kwes-form {
+        padding: 20px;
+    }
+</style>
+
+<form class="kwes-form" action="https://kwes.io/api/foreign/forms/w08wbS7OrgXAljfRZYJd">
+    <label for="name">Name</label>
+    <input id="name" name="name" type="text" rules="required|max:255"><br/>
+
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" rules="required|email|max:255"><br/>
+
+    <label for="message">Message</label>
+    <textarea id="message" name="message" cols="50" rows="20" rules="required"></textarea><br/>
+
+    <button type="submit">Submit</button>
+</form>
+
+<script src="https://kwes.io/v2/kwes-script.js" defer></script>  </div>
 </article>
-
-
-
 
     <footer>
 <p>&copy; 2020 Seth Fischer</p>
