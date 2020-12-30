@@ -88,3 +88,4 @@ CUSTOM_CSS = "css/flex-custom.css"
 MAIN_MENU = True
 OG_LOCALE = "en_GB"
 SITELOGO = "images/terminal.svg"
+SITETITLE = SITENAME
