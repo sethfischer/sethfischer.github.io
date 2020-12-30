@@ -76,7 +76,6 @@ SOCIAL = (
     ("gitlab", "https://gitlab.com/sethfischer"),
 )
 
-
 # Theme Flex
 # https://github.com/alexandrevicenzi/Flex
 
@@ -87,5 +86,6 @@ COPYRIGHT_YEAR = datetime.now().year
 CUSTOM_CSS = "css/flex-custom.css"
 MAIN_MENU = True
 OG_LOCALE = "en_GB"
+ROBOTS = "index, follow"
 SITELOGO = "images/terminal.svg"
 SITETITLE = SITENAME
