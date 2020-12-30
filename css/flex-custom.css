@@ -1,0 +1,18 @@
+input[type=text], input[type=email], textarea {
+    margin-bottom: 16px;
+    margin-top: 6px;
+    padding: 12px;
+    width: 100%;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input[type=submit] {
+    padding: 12px 20px;
+}
+
+.kwes-form {
+    padding: 20px;
+}
