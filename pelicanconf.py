@@ -15,6 +15,7 @@ PAGE_URL = "{slug}.html"
 PATH = "content"
 READERS = {"html": None}
 STATIC_PATHS = [
+    "css",
     "files",
     "images",
     "extra/CNAME",
@@ -83,6 +84,7 @@ THEME = "Flex"
 
 COPYRIGHT_NAME = AUTHOR
 COPYRIGHT_YEAR = datetime.now().year
+CUSTOM_CSS = "css/flex-custom.css"
 MAIN_MENU = True
 OG_LOCALE = "en_GB"
 SITELOGO = "images/terminal.svg"
