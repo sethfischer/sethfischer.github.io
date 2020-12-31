@@ -16,12 +16,12 @@ PATH = "content"
 READERS = {"html": None}
 STATIC_PATHS = [
     "css",
-    "files",
-    "images",
     "extra/CNAME",
     "extra/googledce9df78937f634a.html",
     "extra/humans.txt",
     "extra/robots.txt",
+    "files",
+    "images",
 ]
 
 
