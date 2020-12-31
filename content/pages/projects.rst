@@ -26,7 +26,7 @@ Website for The New Zealand Herpetological Society.
     PHP
 :Framework:
     Drupal 8
-:Source code:
+:Code:
     \https://gitlab.com/sethfischer/reptiles.org.nz (private)
 :Status:
     Handed over March 2019.
@@ -44,7 +44,7 @@ Database.
     Python
 :Framework:
     Flask
-:Source code:
+:Code:
     \https://gitlab.com/sethfischer/mundoplugs.com (private)
 :Demonstration:
     \http://mundoplugs.com
@@ -62,7 +62,7 @@ AS 2980 welder qualification certificates.
     PHP
 :Framework:
     Symfony 2
-:Source code:
+:Code:
     \https://gitlab.com/sethfischer/ib2020 (private)
 :Status:
     Handed over August 2014.
@@ -79,7 +79,7 @@ Android application for rendering geographically-aware electronic tour guides.
     Java
 :Framework:
     Android
-:Source code:
+:Code:
     \https://gitlab.com/sethfischer/infotag-browser (private)
 :Status:
     Obsolete.
