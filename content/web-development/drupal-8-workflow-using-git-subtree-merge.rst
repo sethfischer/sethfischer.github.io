@@ -26,7 +26,8 @@ A Drupal 8 workflow using the Git subtree merge strategy
 .. warning::
 
     This Drupal 8 article is obsolete. It was published in January 2015, eleven
-    months before Drupal 8 was released.
+    months before Drupal 8 was released and prior to a
+    `composer-based workflow`_ being implemented.
 
 
 Often there are components of a Drupal website that should not be located in
@@ -297,6 +298,8 @@ Further reading
 *   `How to use the subtree merge strategy`_
 *   `Deploying Drupal 8 with Fabric`_
 
+
+.. _`composer-based workflow`: https://www.drupal.org/docs/develop/using-composer/using-composer-with-drupal
 .. _`Composer template for Drupal projects`: https://github.com/drupal-composer/drupal-project
 .. _`Access Control Lists`: https://wiki.debian.org/Permissions#Access_Control_Lists_in_Linux
 .. _`Git subtree merge strategy`: http://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging
