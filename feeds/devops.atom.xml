@@ -44,7 +44,7 @@ fabfile for the deployment of Drupal&amp;nbsp;7 sites.&lt;/p&gt;
 &lt;div class="section" id="drupal-project-structure"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;Drupal project structure&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The fabfile is designed to deploy a site having a project structure as
-described in &lt;a class="reference external" href="https://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merging.html"&gt;A Drupal&amp;nbsp;8 workflow using the Git subtree merge strategy&lt;/a&gt;, but
+described in &lt;a class="reference external" href="https://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merge.html"&gt;A Drupal&amp;nbsp;8 workflow using the Git subtree merge strategy&lt;/a&gt;, but
 may be easily adapted to accommodate another project structure.&lt;/p&gt;
 &lt;div class="section" id="synchronise-site-uuid-across-instances"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id2"&gt;Synchronise site UUID across instances&lt;/a&gt;&lt;/h3&gt;

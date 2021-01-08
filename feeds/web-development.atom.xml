@@ -1308,7 +1308,7 @@ following dependencies:&lt;/p&gt;
 &lt;li&gt;&lt;a class="reference external" href="http://tools.pingdom.com/fpt/"&gt;Pingdom tools website speed test&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</content><category term="Web development"></category><category term="Front end"></category><category term="Pelican"></category></entry><entry><title>A Drupal 8 workflow using the Git subtree merge strategy</title><link href="https://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merging.html" rel="alternate"></link><published>2015-01-23T19:20:00+13:00</published><updated>2015-01-23T19:20:00+13:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2015-01-23:/drupal-8-workflow-using-git-subtree-merging.html</id><summary type="html">&lt;p class="first"&gt;This Drupal 8 article is obsolete.&lt;/p&gt;
+</content><category term="Web development"></category><category term="Front end"></category><category term="Pelican"></category></entry><entry><title>A Drupal 8 workflow using the Git subtree merge strategy</title><link href="https://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merge.html" rel="alternate"></link><published>2015-01-23T19:20:00+13:00</published><updated>2015-01-23T19:20:00+13:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2015-01-23:/drupal-8-workflow-using-git-subtree-merge.html</id><summary type="html">&lt;p class="first"&gt;This Drupal 8 article is obsolete.&lt;/p&gt;
 &lt;p class="last"&gt;Often there are components of a Drupal website that should not be
 located in the document root such as configuration files. It is convenient
 to keep these files in version control but outside of the Drupal root. By
@@ -1318,7 +1318,8 @@ merged with git read-tree.&lt;/p&gt;
 </summary><content type="html">&lt;div class="admonition warning"&gt;
 &lt;p class="first admonition-title"&gt;Warning&lt;/p&gt;
 &lt;p class="last"&gt;This Drupal&amp;nbsp;8 article is obsolete. It was published in January 2015, eleven
-months before Drupal&amp;nbsp;8 was released.&lt;/p&gt;
+months before Drupal&amp;nbsp;8 was released and prior to a
+&lt;a class="reference external" href="https://www.drupal.org/docs/develop/using-composer/using-composer-with-drupal"&gt;composer-based workflow&lt;/a&gt; being implemented.&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Often there are components of a Drupal website that should not be located in
 the document root such as configuration files, deployment scripts, and

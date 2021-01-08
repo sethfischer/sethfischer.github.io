@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>sethfischer</title><link href="https://seth.fischer.nz/" rel="alternate"></link><link href="https://seth.fischer.nz/feeds/all.atom.xml" rel="self"></link><id>https://seth.fischer.nz/</id><updated>2015-07-07T21:19:00+12:00</updated><entry><title>An introduction to Drupal 8 development tools</title><link href="https://seth.fischer.nz/drupal-8-development-tools.html" rel="alternate"></link><published>2015-07-07T21:19:00+12:00</published><updated>2015-07-07T21:19:00+12:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2015-07-07:/drupal-8-development-tools.html</id><summary type="html">&lt;p class="first"&gt;This Drupal 8 article is obsolete.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>sethfischer</title><link href="https://seth.fischer.nz/" rel="alternate"></link><link href="https://seth.fischer.nz/feeds/all.atom.xml" rel="self"></link><id>https://seth.fischer.nz/</id><updated>2021-01-01T22:40:00+13:00</updated><entry><title>Nissan Leaf battery degradation case study A: AZE0 24 kW⋅h - part 1</title><link href="https://seth.fischer.nz/leaf-battery-degradation-case-a-part-1.html" rel="alternate"></link><published>2021-01-01T22:40:00+13:00</published><updated>2021-01-01T22:40:00+13:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2021-01-01:/leaf-battery-degradation-case-a-part-1.html</id><content type="html"></content><category term="EV"></category><category term="EV"></category><category term="Nissan Leaf"></category></entry><entry><title>An introduction to Drupal 8 development tools</title><link href="https://seth.fischer.nz/drupal-8-development-tools.html" rel="alternate"></link><published>2015-07-07T21:19:00+12:00</published><updated>2015-07-07T21:19:00+12:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2015-07-07:/drupal-8-development-tools.html</id><summary type="html">&lt;p class="first"&gt;This Drupal 8 article is obsolete.&lt;/p&gt;
 &lt;p class="last"&gt;The use of third party components in Drupal 8 has inspired two new
 tools for Drupal 8 developers: the Drupal Console and the Drupal Web
 Profiler. Based on the Symfony Console component, the Drupal Console is a
@@ -1353,7 +1353,7 @@ fabfile for the deployment of Drupal&amp;nbsp;7 sites.&lt;/p&gt;
 &lt;div class="section" id="drupal-project-structure"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;Drupal project structure&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The fabfile is designed to deploy a site having a project structure as
-described in &lt;a class="reference external" href="https://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merging.html"&gt;A Drupal&amp;nbsp;8 workflow using the Git subtree merge strategy&lt;/a&gt;, but
+described in &lt;a class="reference external" href="https://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merge.html"&gt;A Drupal&amp;nbsp;8 workflow using the Git subtree merge strategy&lt;/a&gt;, but
 may be easily adapted to accommodate another project structure.&lt;/p&gt;
 &lt;div class="section" id="synchronise-site-uuid-across-instances"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id2"&gt;Synchronise site UUID across instances&lt;/a&gt;&lt;/h3&gt;
@@ -1805,7 +1805,7 @@ configuration&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://www.drupal.org/documentation/administer/config"&gt;Managing configuration in Drupal 8&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</content><category term="DevOps"></category><category term="Drupal 8"></category><category term="Drupal"></category><category term="Fabric"></category><category term="Python"></category></entry><entry><title>A Drupal 8 workflow using the Git subtree merge strategy</title><link href="https://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merging.html" rel="alternate"></link><published>2015-01-23T19:20:00+13:00</published><updated>2015-01-23T19:20:00+13:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2015-01-23:/drupal-8-workflow-using-git-subtree-merging.html</id><summary type="html">&lt;p class="first"&gt;This Drupal 8 article is obsolete.&lt;/p&gt;
+</content><category term="DevOps"></category><category term="Drupal 8"></category><category term="Drupal"></category><category term="Fabric"></category><category term="Python"></category></entry><entry><title>A Drupal 8 workflow using the Git subtree merge strategy</title><link href="https://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merge.html" rel="alternate"></link><published>2015-01-23T19:20:00+13:00</published><updated>2015-01-23T19:20:00+13:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2015-01-23:/drupal-8-workflow-using-git-subtree-merge.html</id><summary type="html">&lt;p class="first"&gt;This Drupal 8 article is obsolete.&lt;/p&gt;
 &lt;p class="last"&gt;Often there are components of a Drupal website that should not be
 located in the document root such as configuration files. It is convenient
 to keep these files in version control but outside of the Drupal root. By
@@ -1815,7 +1815,8 @@ merged with git read-tree.&lt;/p&gt;
 </summary><content type="html">&lt;div class="admonition warning"&gt;
 &lt;p class="first admonition-title"&gt;Warning&lt;/p&gt;
 &lt;p class="last"&gt;This Drupal&amp;nbsp;8 article is obsolete. It was published in January 2015, eleven
-months before Drupal&amp;nbsp;8 was released.&lt;/p&gt;
+months before Drupal&amp;nbsp;8 was released and prior to a
+&lt;a class="reference external" href="https://www.drupal.org/docs/develop/using-composer/using-composer-with-drupal"&gt;composer-based workflow&lt;/a&gt; being implemented.&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Often there are components of a Drupal website that should not be located in
 the document root such as configuration files, deployment scripts, and
