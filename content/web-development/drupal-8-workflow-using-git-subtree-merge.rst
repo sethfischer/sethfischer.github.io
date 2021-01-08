@@ -5,7 +5,7 @@ A Drupal 8 workflow using the Git subtree merge strategy
 :authors: Seth Fischer
 :category: Web development
 :date: 2015-01-23 19:20
-:slug: drupal-8-workflow-using-git-subtree-merging
+:slug: drupal-8-workflow-using-git-subtree-merge
 :tags: Drupal 8, Drupal, Git
 :software: Composer: 1.0-dev
 :software: Drupal: 8.0.0-beta4

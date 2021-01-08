@@ -274,7 +274,7 @@ Further reading
 .. _`Fabric`: http://www.fabfile.org/
 .. _`github.com/sethfischer/fabric-deploy`: https://github.com/sethfischer/fabric-deploy
 .. _`fabric-deploy by halcyonCorsair`: https://github.com/halcyonCorsair/fabric-deploy
-.. _`A Drupal 8 workflow using the Git subtree merge strategy`: |filename|/web-development/drupal-8-workflow-using-git-subtree-merging.rst
+.. _`A Drupal 8 workflow using the Git subtree merge strategy`: |filename|/web-development/drupal-8-workflow-using-git-subtree-merge.rst
 .. _`An approach to code-driven development in Drupal 8`: http://dcycleproject.org/blog/68/approach-code-driven-development-drupal-8
 .. _`Albert Albala`: https://github.com/alberto56/
 .. _`export-ignore attribute`: http://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes#Exporting-Your-Repository
