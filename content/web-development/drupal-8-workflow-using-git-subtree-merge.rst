@@ -300,7 +300,6 @@ Further reading
 
 
 .. _`composer-based workflow`: https://www.drupal.org/docs/develop/using-composer/using-composer-with-drupal
-.. _`Composer template for Drupal projects`: https://github.com/drupal-composer/drupal-project
 .. _`Access Control Lists`: https://wiki.debian.org/Permissions#Access_Control_Lists_in_Linux
 .. _`Git subtree merge strategy`: http://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging
 .. _`Git Tools - Subtree Merging`: http://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging
