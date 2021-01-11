@@ -1,0 +1,353 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://seth.fischer.nz/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="https://seth.fischer.nz/theme/pygments/github.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://seth.fischer.nz/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://seth.fischer.nz/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://seth.fischer.nz/theme/font-awesome/css/solid.css">
+
+    <link href="https://seth.fischer.nz/css/flex-custom.css" rel="stylesheet">
+
+    <link href="https://seth.fischer.nz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="sethfischer Atom">
+
+
+
+
+
+<meta name="author" content="Seth Fischer" />
+<meta name="description" content="Part 2 in a series detailing the state of health (SoH) degradation of a Nissan Leaf AZE0 24 kW⋅h battery." />
+<meta name="keywords" content="EV, Nissan Leaf">
+
+
+<meta property="og:site_name" content="sethfischer"/>
+<meta property="og:title" content="Leaf battery degradation case A: AZE0 24 kW⋅h — part 2 2020-10"/>
+<meta property="og:description" content="Part 2 in a series detailing the state of health (SoH) degradation of a Nissan Leaf AZE0 24 kW⋅h battery."/>
+<meta property="og:locale" content="en_GB"/>
+<meta property="og:url" content="https://seth.fischer.nz/leaf-battery-degradation-case-a-part-2.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2021-01-11 22:14:00+13:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://seth.fischer.nz/author/seth-fischer.html">
+<meta property="article:section" content="Electric vehicles"/>
+<meta property="article:tag" content="EV"/>
+<meta property="article:tag" content="Nissan Leaf"/>
+<meta property="og:image" content="images/terminal.svg">
+
+  <title>sethfischer &ndash; Leaf battery degradation case A: AZE0 24 kW⋅h — part 2 2020-10</title>
+
+</head>
+<body class="light-theme">
+  <aside>
+    <div>
+      <a href="https://seth.fischer.nz">
+        <img src="images/terminal.svg" alt="sethfischer" title="sethfischer">
+      </a>
+
+      <h1>
+        <a href="https://seth.fischer.nz">sethfischer</a>
+      </h1>
+
+
+
+      <nav>
+        <ul class="list">
+
+
+              <li>
+                <a target="_self"
+                   href="https://seth.fischer.nz/contact.html#contact">
+                  Contact
+                </a>
+              </li>
+              <li>
+                <a target="_self"
+                   href="https://seth.fischer.nz/projects.html#projects">
+                  Projects
+                </a>
+              </li>
+
+        </ul>
+      </nav>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/sethfischer" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-gitlab" href="https://gitlab.com/sethfischer" target="_blank">
+              <i class="fab fa-gitlab"></i>
+            </a>
+          </li>
+      </ul>
+    </div>
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://seth.fischer.nz">Home</a>
+
+      <a href="/archives">Archives</a>
+      <a href="/categories">Categories</a>
+      <a href="/tags">Tags</a>
+      <a href="https://github.com/sethfischer">GitHub</a>
+
+      <a href="https://seth.fischer.nz/feeds/all.atom.xml">Atom</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="leaf-battery-degradation-case-a-part-2">Leaf battery degradation case&nbsp;A: AZE0 24&nbsp;kW⋅h — part&nbsp;2 2020-10</h1>
+    <p>
+      Posted on 11 January 2021 in <a href="https://seth.fischer.nz/category/electric-vehicles.html">Electric vehicles</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>Part&nbsp;2 in a series following the state of health (SoH) degradation of a Nissan
+Leaf AZE0 24&nbsp;kW⋅h battery.</p>
+<p>Vehicle specification:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Vehicle:</th><td class="field-body">Nissan Leaf</td>
+</tr>
+<tr class="field"><th class="field-name">Type:</th><td class="field-body">ZAA-AZE0</td>
+</tr>
+<tr class="field"><th class="field-name">MY:</th><td class="field-body">2013</td>
+</tr>
+</tbody>
+</table>
+<p>Articles in the series <em>Nissan Leaf battery degradation case&nbsp;A: AZE0 24&nbsp;kW⋅h</em>:</p>
+<ol class="arabic simple">
+<li><a class="reference external" href="https://seth.fischer.nz/leaf-battery-degradation-case-a-part-1.html">Part&nbsp;1 2019-10</a>.</li>
+<li>Part&nbsp;2 2020-10 (this article).</li>
+</ol>
+<div class="section" id="summary">
+<h2>Summary</h2>
+<table border="1" class="docutils">
+<caption>2019-10/2020-10</caption>
+<colgroup>
+<col width="23%" />
+<col width="23%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Period</th>
+<th class="head">Distance</th>
+<th class="head">∆SoH</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>12&nbsp;months</td>
+<td>8 421&nbsp;km</td>
+<td>−2.77 percentage points</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>A series of DC fast charges gave the SoH a temporary boost of 4.10
+percentage points.</li>
+<li>In the year ending October 2019 the vehicle travelled 8 421&nbsp;km and the SoH
+reduced by 2.77 percentage points.</li>
+</ul>
+</div>
+<div class="section" id="data">
+<h2>Data</h2>
+<p>Battery parameters were recorded using <a class="reference external" href="https://play.google.com/store/apps/details?id=com.Turbo3.Leaf_Spy_Lite">Leaf Spy for Android</a>. The table below
+shows the battery parameters for the year ending October 2020.</p>
+<table border="1" class="docutils">
+<caption>Battery degradation 2019-10/2020-10 as recorded by Leaf Spy.</caption>
+<colgroup>
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Date</th>
+<th class="head">Odometer (km)</th>
+<th class="head">A⋅h</th>
+<th class="head">SoH (%)</th>
+<th class="head">Hx (%)</th>
+<th class="head">Fast charges</th>
+<th class="head">Type 1,2 charges</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>2019-10-07</td>
+<td>31060</td>
+<td>55.31</td>
+<td>84.53</td>
+<td>77.15</td>
+<td>12</td>
+<td>1160</td>
+</tr>
+<tr><td>2019-10-12</td>
+<td>31873</td>
+<td>57.96</td>
+<td>88.63</td>
+<td>83.85</td>
+<td>21</td>
+<td>1173</td>
+</tr>
+<tr><td>2019-10-20</td>
+<td>32013</td>
+<td>57.05</td>
+<td>87.24</td>
+<td>82.10</td>
+<td>21</td>
+<td>1176</td>
+</tr>
+<tr><td>2019-10-27</td>
+<td>32184</td>
+<td>56.45</td>
+<td>86.32</td>
+<td>80.94</td>
+<td>21</td>
+<td>1178</td>
+</tr>
+<tr><td>2019-11-03</td>
+<td>32322</td>
+<td>55.99</td>
+<td>85.61</td>
+<td>80.04</td>
+<td>21</td>
+<td>1179</td>
+</tr>
+<tr><td>2019-12-01</td>
+<td>33031</td>
+<td>55.16</td>
+<td>84.35</td>
+<td>78.46</td>
+<td>21</td>
+<td>1189</td>
+</tr>
+<tr><td>2019-12-09</td>
+<td>33309</td>
+<td>55.28</td>
+<td>84.52</td>
+<td>78.67</td>
+<td>22</td>
+<td>1192</td>
+</tr>
+<tr><td>2019-12-15</td>
+<td>33463</td>
+<td>55.05</td>
+<td>84.18</td>
+<td>78.24</td>
+<td>23</td>
+<td>1199</td>
+</tr>
+<tr><td>2019-12-22</td>
+<td>33661</td>
+<td>55.90</td>
+<td>85.47</td>
+<td>79.87</td>
+<td>25</td>
+<td>1206</td>
+</tr>
+<tr><td>2020-03-10</td>
+<td>35585</td>
+<td>54.45</td>
+<td>83.26</td>
+<td>77.15</td>
+<td>25</td>
+<td>1275</td>
+</tr>
+<tr><td>2020-08-23</td>
+<td>38123</td>
+<td>54.09</td>
+<td>82.71</td>
+<td>76.50</td>
+<td>27</td>
+<td>1359</td>
+</tr>
+<tr><td>2020-10-25</td>
+<td>39481</td>
+<td>53.48</td>
+<td>81.77</td>
+<td>75.38</td>
+<td>27</td>
+<td>1396</td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference external" href="https://seth.fischer.nz/static/leaf-battery-degradation-case-a/part-2/battery-2019-10--2020-10.csv">Battery degradation 2019-10/2020-10 CSV file</a>.</p>
+</div>
+<div class="section" id="observations">
+<h2>Observations</h2>
+<ol class="arabic simple">
+<li>The count of Type 1 and 2 charges is higher than actual due to the Leaf's
+built-in charge timer recording one charge when the vehicle is plugged in,
+and a second when the timer initiates charging.</li>
+<li>The increase in SoH from 84.53% to 88.63% in October 2019 is due to nine
+quick charges with in a 36 hour period while making the delivery journey.</li>
+<li>In the year ending October 2019 the vehicle travelled 8 421&nbsp;km and the SoH
+reduced 2.77 percentage points.</li>
+</ol>
+</div>
+
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://seth.fischer.nz/tag/ev.html">EV</a>
+      <a href="https://seth.fischer.nz/tag/nissan-leaf.html">Nissan Leaf</a>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy; 2021 Seth Fischer</p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " sethfischer ",
+  "url" : "https://seth.fischer.nz",
+  "image": "images/terminal.svg",
+  "description": ""
+}
+</script>
+
+
+</body>
+</html>
