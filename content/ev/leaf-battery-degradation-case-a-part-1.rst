@@ -24,6 +24,7 @@ Vehicle specification:
 Articles in the series *Nissan Leaf battery degradation case A: AZE0 24 kW⋅h*:
 
 1.  Part 1 2019-10 (this article).
+2.  `Part 2 2020-10 <{filename}./leaf-battery-degradation-case-a-part-2.rst>`_.
 
 
 Summary
