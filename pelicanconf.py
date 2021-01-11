@@ -22,6 +22,7 @@ STATIC_PATHS = [
     "extra/robots.txt",
     "files",
     "images",
+    "static",
 ]
 
 
