@@ -20,8 +20,6 @@ STATIC_PATHS = [
     "extra/googledce9df78937f634a.html",
     "extra/humans.txt",
     "extra/robots.txt",
-    "files",
-    "images",
     "static",
 ]
 
@@ -88,5 +86,5 @@ CUSTOM_CSS = "css/flex-custom.css"
 MAIN_MENU = True
 OG_LOCALE = "en_GB"
 ROBOTS = "index, follow"
-SITELOGO = "images/terminal.svg"
+SITELOGO = "static/icons/terminal.svg"
 SITETITLE = SITENAME

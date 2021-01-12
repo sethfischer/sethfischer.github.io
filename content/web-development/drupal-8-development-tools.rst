@@ -288,9 +288,9 @@ which is displayed along the lower edge of the viewport.
 
     <figure>
         <picture>
-            <source srcset="/images/drupal-8-webprofiler-toolbar-large.png"
+            <source srcset="/static/drupal-8-development-tools/drupal-8-webprofiler-toolbar-large.png"
                 media="(min-width: 950px)"/>
-            <img src="/images/drupal-8-webprofiler-toolbar-medium.png"
+            <img src="/static/drupal-8-development-tools/drupal-8-webprofiler-toolbar-medium.png"
                 alt="Drupal 8 Web Profiler toolbar"/>
         </picture>
         <figcaption>The Drupal 8 Web Profiler toolbar.</figcaption>
@@ -304,11 +304,11 @@ load timeline.
 
     <figure>
         <picture>
-            <source srcset="/images/drupal-8-webprofiler-report-large.png"
+            <source srcset="/static/drupal-8-development-tools/drupal-8-webprofiler-report-large.png"
                 media="(min-width: 950px)"/>
-            <source srcset="/images/drupal-8-webprofiler-report-medium.png"
+            <source srcset="/static/drupal-8-development-tools/drupal-8-webprofiler-report-medium.png"
                 media="(min-width: 600px)"/>
-            <img src="/images/drupal-8-webprofiler-report-small.png"
+            <img src="/static/drupal-8-development-tools/drupal-8-webprofiler-report-small.png"
                 alt="Drupal 8 Web Profiler toolbar"/>
         </picture>
         <figcaption>Example of a Drupal 8 Web Profiler report timeline.</figcaption>

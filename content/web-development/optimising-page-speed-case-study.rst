@@ -47,7 +47,7 @@ Google PageSpeed score (mobile)  74/100
 Google PageSpeed score (desktop) 87/100
 ================================ ================
 
-.. figure:: images/seth.fischer.nz_2015-03-15_1905_pingdom.png
+.. figure:: /static/optimising-page-speed-case-study/seth.fischer.nz_2015-03-15_1905_pingdom.png
     :width: 582
     :height: 133
     :alt: Pingdom speed test summary pre-optimisation;
@@ -258,7 +258,7 @@ Google PageSpeed score (mobile)  74/100           89/100            +15/100
 Google PageSpeed score (desktop) 87/100           95/100            +8/100
 ================================ ================ ================= ============
 
-.. figure:: images/seth.fischer.nz_2015-03-16_2149_pingdom.png
+.. figure:: /static/optimising-page-speed-case-study/seth.fischer.nz_2015-03-16_2149_pingdom.png
     :width: 582
     :height: 133
     :alt: Pingdom speed test summary post-optimisation;
@@ -351,7 +351,7 @@ Further reading
 .. _`sethfischer/pelican-bootstrap3`: https://github.com/sethfischer/pelican-bootstrap3
 .. _`Pelican`: http://docs.getpelican.com/
 .. _`pelican-bootstrap3`: https://github.com/DandyDev/pelican-bootstrap3
-.. _`pre-optimisation HAR file`: |static|/files/seth.fischer.nz_2015-03-15_1905.har
+.. _`pre-optimisation HAR file`: |static|/static/optimising-page-speed-case-study/seth.fischer.nz_2015-03-15_1905.har
 .. _`FontAwesome`: https://github.com/FortAwesome/Font-Awesome
 .. _`Font Custom`: http://fontcustom.com/
 .. _`Font-Awesome-SVG-PNG`: https://github.com/encharm/Font-Awesome-SVG-PNG
@@ -368,7 +368,7 @@ Further reading
 .. _`Pelican assets plug-in`: https://github.com/getpelican/pelican-plugins
 .. _`YUI Compressor`: http://yui.github.io/yuicompressor/
 .. _`pngcrush`: http://pmt.sourceforge.net/pngcrush/
-.. _`post-optimisation HAR file`: |static|/files/seth.fischer.nz_2015-03-16_2149.har
+.. _`post-optimisation HAR file`: |static|/static/optimising-page-speed-case-study/seth.fischer.nz_2015-03-16_2149.har
 .. _`GitHub Pages`: https://pages.github.com/
 .. _`HTTP Archive (HAR) format specification`: https://w3c.github.io/web-performance/specs/HAR/Overview.html
 .. _`URL Expiry (cache busting)`: http://webassets.readthedocs.org/en/latest/expiring.html

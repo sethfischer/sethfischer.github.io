@@ -257,7 +257,7 @@ For the latest code ``git clone https://github.com/sethfischer/fabric-deploy``
 or `create a fork`_.
 
 
-.. include:: ../code/drupal-8-fabric-deploy.py
+.. include:: ../static/drupal-8-fabric-deploy/drupal-8-fabric-deploy.py
     :code: python
 
 
