@@ -30,7 +30,7 @@ endif
 
 
 help:
-	@echo 'Makefile for a pelican Web site                                           '
+	@echo 'Makefile for seth.fischer.nz                                              '
 	@echo '                                                                          '
 	@echo 'Usage:                                                                    '
 	@echo '   make html                           (re)generate the web site          '
@@ -43,6 +43,7 @@ help:
 	@echo '   make ssh_upload                     upload the web site via SSH        '
 	@echo '   make rsync_upload                   upload the web site via rsync+ssh  '
 	@echo '   make github                         upload the web site via gh-pages   '
+	@echo '   make test-linkcheck                 test HTML links                    '
 	@echo '                                                                          '
 	@echo 'Set the DEBUG variable to 1 to enable debugging, e.g. make DEBUG=1 html   '
 	@echo 'Set the RELATIVE variable to 1 to enable relative urls                    '
@@ -76,5 +77,7 @@ github: publish
 	ghp-import --no-jekyll -m "Generate Pelican site" -b $(GITHUB_PAGES_BRANCH) "$(OUTPUTDIR)"
 	git push origin $(GITHUB_PAGES_BRANCH)
 
+test-linkcheck: clean html
+	linkchecker output/*.html
 
-.PHONY: html help clean regenerate serve serve-global devserver publish github
+.PHONY: html help clean regenerate serve serve-global devserver publish github test-linkcheck
