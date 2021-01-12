@@ -85,5 +85,5 @@ CUSTOM_CSS = "css/flex-custom.css"
 MAIN_MENU = True
 OG_LOCALE = "en_GB"
 ROBOTS = "index, follow"
-SITELOGO = "static/icons/terminal.svg"
+SITELOGO = "/static/icons/terminal.svg"
 SITETITLE = SITENAME
