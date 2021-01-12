@@ -54,6 +54,7 @@ shows the battery parameters for the year ending October 2020.
 
 .. csv-table:: Battery degradation 2019-10/2020-10 as recorded by Leaf Spy.
     :header-rows: 1
+    :widths: auto
     :file: ../static/leaf-battery-degradation-case-a/part-2/battery-2019-10--2020-10.csv
 
 `Battery degradation 2019-10/2020-10 CSV file

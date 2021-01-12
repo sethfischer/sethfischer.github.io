@@ -55,6 +55,7 @@ readings dated 2019-10-07 were made with `Leaf Spy for Android`_.
 
 .. csv-table:: Battery degradation 2013-12/2019-10.
     :header-rows: 1
+    :widths: auto
     :file: ../static/leaf-battery-degradation-case-a/part-1/battery-2013-12--2019-10.csv
 
 `Battery degradation 2013-12/2019-10 CSV file
