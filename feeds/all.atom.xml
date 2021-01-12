@@ -553,9 +553,9 @@ performance and profile information on a per request basis.&lt;/p&gt;
 which is displayed along the lower edge of the viewport.&lt;/p&gt;
 &lt;figure&gt;
     &lt;picture&gt;
-        &lt;source srcset="/images/drupal-8-webprofiler-toolbar-large.png"
+        &lt;source srcset="/static/drupal-8-development-tools/drupal-8-webprofiler-toolbar-large.png"
             media="(min-width: 950px)"/&gt;
-        &lt;img src="/images/drupal-8-webprofiler-toolbar-medium.png"
+        &lt;img src="/static/drupal-8-development-tools/drupal-8-webprofiler-toolbar-medium.png"
             alt="Drupal 8 Web Profiler toolbar"/&gt;
     &lt;/picture&gt;
     &lt;figcaption&gt;The Drupal 8 Web Profiler toolbar.&lt;/figcaption&gt;
@@ -564,11 +564,11 @@ relevant icon in the toolbar overlay. Below is the detailed report for the page
 load timeline.&lt;/p&gt;
 &lt;figure&gt;
     &lt;picture&gt;
-        &lt;source srcset="/images/drupal-8-webprofiler-report-large.png"
+        &lt;source srcset="/static/drupal-8-development-tools/drupal-8-webprofiler-report-large.png"
             media="(min-width: 950px)"/&gt;
-        &lt;source srcset="/images/drupal-8-webprofiler-report-medium.png"
+        &lt;source srcset="/static/drupal-8-development-tools/drupal-8-webprofiler-report-medium.png"
             media="(min-width: 600px)"/&gt;
-        &lt;img src="/images/drupal-8-webprofiler-report-small.png"
+        &lt;img src="/static/drupal-8-development-tools/drupal-8-webprofiler-report-small.png"
             alt="Drupal 8 Web Profiler toolbar"/&gt;
     &lt;/picture&gt;
     &lt;figcaption&gt;Example of a Drupal 8 Web Profiler report timeline.&lt;/figcaption&gt;
@@ -1303,10 +1303,10 @@ page by 66% and the page size was reduced by 62%.&lt;/p&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;div class="figure"&gt;
-&lt;img alt="Pingdom speed test summary pre-optimisation; Performance grade: 81/100; Requests: 17; Load time: 591 ms; Page size 182.9 kB" src="images/seth.fischer.nz_2015-03-15_1905_pingdom.png" style="width: 582px; height: 133px;" /&gt;
+&lt;img alt="Pingdom speed test summary pre-optimisation; Performance grade: 81/100; Requests: 17; Load time: 591 ms; Page size 182.9 kB" src="/static/optimising-page-speed-case-study/seth.fischer.nz_2015-03-15_1905_pingdom.png" style="width: 582px; height: 133px;" /&gt;
 &lt;p class="caption"&gt;Pingdom speed test summary pre-optimisation.&lt;/p&gt;
 &lt;/div&gt;
-&lt;p&gt;Full details are available in the &lt;a class="reference external" href="https://seth.fischer.nz/files/seth.fischer.nz_2015-03-15_1905.har"&gt;pre-optimisation HAR file&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Full details are available in the &lt;a class="reference external" href="https://seth.fischer.nz/static/optimising-page-speed-case-study/seth.fischer.nz_2015-03-15_1905.har"&gt;pre-optimisation HAR file&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="optimisations"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id2"&gt;Optimisations&lt;/a&gt;&lt;/h2&gt;
@@ -1515,10 +1515,10 @@ browsers.&lt;/li&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;div class="figure"&gt;
-&lt;img alt="Pingdom speed test summary post-optimisation; Performance grade: 88/100; Requests: 6; Load time: 194 ms; Page size 69.0 kB" src="images/seth.fischer.nz_2015-03-16_2149_pingdom.png" style="width: 582px; height: 133px;" /&gt;
+&lt;img alt="Pingdom speed test summary post-optimisation; Performance grade: 88/100; Requests: 6; Load time: 194 ms; Page size 69.0 kB" src="/static/optimising-page-speed-case-study/seth.fischer.nz_2015-03-16_2149_pingdom.png" style="width: 582px; height: 133px;" /&gt;
 &lt;p class="caption"&gt;Pingdom speed test summary pre-optimisation.&lt;/p&gt;
 &lt;/div&gt;
-&lt;p&gt;Full details are available in the &lt;a class="reference external" href="https://seth.fischer.nz/files/seth.fischer.nz_2015-03-16_2149.har"&gt;post-optimisation HAR file&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Full details are available in the &lt;a class="reference external" href="https://seth.fischer.nz/static/optimising-page-speed-case-study/seth.fischer.nz_2015-03-16_2149.har"&gt;post-optimisation HAR file&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="hosting-environment"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id10"&gt;Hosting environment&lt;/a&gt;&lt;/h2&gt;
