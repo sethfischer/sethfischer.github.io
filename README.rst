@@ -2,6 +2,8 @@
 seth.fischer.nz
 ===============
 
+|test-status|
+
 Built with `Pelican`_.
 
 
@@ -16,3 +18,7 @@ Built with `Pelican`_.
 
 
 .. _`Pelican`: http://getpelican.com/
+
+.. |test-status| image:: https://github.com/sethfischer/sethfischer.github.io/workflows/test/badge.svg
+    :target: https://github.com/sethfischer/sethfischer.github.io/actions?query=workflow%3Atest
+    :alt: Test Status

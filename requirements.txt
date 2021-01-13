@@ -27,7 +27,6 @@ packaging==20.3
 pathspec==0.8.1
 pelican==4.5.3
 pep517==0.8.2
-pkg-resources==0.0.0
 progress==1.5
 Pygments==2.6.1
 pyparsing==2.4.6
