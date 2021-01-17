@@ -21,7 +21,7 @@ reptiles.org.nz
 Website for The New Zealand Herpetological Society.
 
 :Date:
-    September 2016 – March 2019
+    September 2016—March 2019
 :Language:
     PHP
 :Framework:
@@ -39,7 +39,7 @@ Flask application which presents data from the mundoplugs.com Mains Electricity
 Database.
 
 :Date:
-    September 2013 – February 2017
+    September 2013—February 2017
 :Language:
     Python
 :Framework:
@@ -57,7 +57,7 @@ Management information system for inspection bodies with a focus on generating
 AS 2980 welder qualification certificates.
 
 :Date:
-    February 2013 – August 2014
+    February 2013—August 2014
 :Language:
     PHP
 :Framework:
@@ -74,7 +74,7 @@ Infotag electronic tour guide
 Android application for rendering geographically-aware electronic tour guides.
 
 :Date:
-    July 2012 – October 2012
+    July 2012—October 2012
 :Language:
     Java
 :Framework:
