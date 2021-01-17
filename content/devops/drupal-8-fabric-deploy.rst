@@ -85,7 +85,7 @@ As an enhancement files can be excluded from the release tarball by including
 a ``.gitattributes`` file in the root of the repository and specifying the
 `export-ignore attribute`_ for files that should not be included in the
 release. Use this
-`.gitattributes export-ignore template for Druapl 8 projects`_.
+`.gitattributes export-ignore template for Drupal 8 projects`_.
 
 
 Target host configuration
@@ -278,7 +278,7 @@ Further reading
 .. _`An approach to code-driven development in Drupal 8`: http://dcycleproject.org/blog/68/approach-code-driven-development-drupal-8
 .. _`Albert Albala`: https://github.com/alberto56/
 .. _`export-ignore attribute`: http://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes#Exporting-Your-Repository
-.. _`.gitattributes export-ignore template for Druapl 8 projects`: https://gist.github.com/sethfischer/bdda9753837ab1da680a
+.. _`.gitattributes export-ignore template for Drupal 8 projects`: https://gist.github.com/sethfischer/bdda9753837ab1da680a
 .. _`OpenSSH server`: https://wiki.debian.org/SSH
 .. _`Drush`: http://docs.drush.org/en/master/install/#composer-one-drush-for-all-projects
 .. _`YAML`: http://yaml.org/
