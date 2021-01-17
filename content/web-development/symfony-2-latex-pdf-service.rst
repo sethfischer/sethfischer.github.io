@@ -63,7 +63,7 @@ were considered:
 3.  `wkhtmltopdf`_
 
     *   Command line tools to render HTML into PDF (and various other image
-        formats) using the QT Webkit rendering engine.
+        formats) using the QT WebKit rendering engine.
 
 4.  `KnpLabs/KnpSnappyBundle`_
 
