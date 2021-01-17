@@ -1,0 +1,6 @@
+[filtering]
+check-extern=1
+ignore=
+    ^https://www.drupal.org
+    ^https://api.drupal.org
+    ^https://kwes.io/api

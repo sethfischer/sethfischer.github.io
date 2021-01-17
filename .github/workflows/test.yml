@@ -28,4 +28,4 @@ jobs:
         run: make html
 
       - name: Check links
-        run: make test-links
+        run: make test-links-internal

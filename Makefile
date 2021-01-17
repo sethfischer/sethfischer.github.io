@@ -41,7 +41,8 @@ help:
 	@echo '   make serve-global [SERVER=0.0.0.0]  serve (as root) to $(SERVER):80    '
 	@echo '   make devserver [PORT=8000]          serve and regenerate together      '
 	@echo '   make github                         upload the web site via gh-pages   '
-	@echo '   make test-links                     test HTML links                    '
+	@echo '   make test-links-internal            test internal HTML links           '
+	@echo '   make test-links-prod                test production HTML links         '
 	@echo '                                                                          '
 	@echo 'Set the DEBUG variable to 1 to enable debugging, e.g. make DEBUG=1 html   '
 	@echo 'Set the RELATIVE variable to 1 to enable relative urls                    '
@@ -75,7 +76,10 @@ github: publish
 	ghp-import --no-jekyll -m "Generate Pelican site" -b $(GITHUB_PAGES_BRANCH) "$(OUTPUTDIR)"
 	git push origin $(GITHUB_PAGES_BRANCH)
 
-test-links: clean html
+test-links-internal: clean html
 	linkchecker output/*.html
 
-.PHONY: html help clean regenerate serve serve-global devserver publish github test-links
+test-links-prod:
+	./test-links.sh
+
+.PHONY: html help clean regenerate serve serve-global devserver publish github test-links-internal test-links-prod
