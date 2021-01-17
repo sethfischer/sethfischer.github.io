@@ -68,7 +68,7 @@ AS 2980 welder qualification certificates.
     Handed over August 2014.
 
 
-Infotag electronic tour guide
+InfoTag electronic tour guide
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Android application for rendering geographically-aware electronic tour guides.
