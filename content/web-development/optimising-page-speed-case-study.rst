@@ -217,8 +217,8 @@ significantly reduced by optimising images. For example, the two Pingdom screen
 shots were reduced by `pngcrush`_ to approximately 27 % of the original size.
 
 
-Eliminate unnecessary resources and DNS lookups
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Eliminate unnecessary resources and DNS look-ups
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Improvements:
 
