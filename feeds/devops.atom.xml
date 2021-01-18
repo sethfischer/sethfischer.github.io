@@ -74,7 +74,7 @@ a robust approach to synchronising UUIDs across instances of a site see
 a &lt;tt class="docutils literal"&gt;.gitattributes&lt;/tt&gt; file in the root of the repository and specifying the
 &lt;a class="reference external" href="http://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes#Exporting-Your-Repository"&gt;export-ignore attribute&lt;/a&gt; for files that should not be included in the
 release. Use this
-&lt;a class="reference external" href="https://gist.github.com/sethfischer/bdda9753837ab1da680a"&gt;.gitattributes export-ignore template for Druapl&amp;nbsp;8 projects&lt;/a&gt;.&lt;/p&gt;
+&lt;a class="reference external" href="https://gist.github.com/sethfischer/bdda9753837ab1da680a"&gt;.gitattributes export-ignore template for Drupal&amp;nbsp;8 projects&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="target-host-configuration"&gt;

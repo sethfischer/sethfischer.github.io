@@ -558,10 +558,8 @@ token and link provided in the HTTP response headers &lt;tt class="docutils lite
 &lt;span class="na"&gt;Date&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="l"&gt;Fri, 26 Jun 2015 23:53:36 GMT&lt;/span&gt;
 &lt;span class="na"&gt;Server&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="l"&gt;Apache/2.2.22 (Debian)&lt;/span&gt;
 &lt;span class="na"&gt;X-Generator&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="l"&gt;Drupal 8 (https://www.drupal.org)&lt;/span&gt;
-&lt;span class="err"&gt;⋮&lt;/span&gt;
-X-Debug-Token: 0ac668
-X-Debug-Token-Link: /admin/reports/profiler/view/0ac668
-⋮
+&lt;span class="na"&gt;X-Debug-Token&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="l"&gt;0ac668&lt;/span&gt;
+&lt;span class="na"&gt;X-Debug-Token-Link&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="l"&gt;/admin/reports/profiler/view/0ac668&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Visiting the X-Debug-Token-Link (in this case
 &lt;tt class="docutils literal"&gt;/admin/reports/profiler/view/0ac668&lt;/tt&gt;) will provide access to the report for
@@ -571,12 +569,12 @@ he relevant request.&lt;/p&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id11"&gt;Web Profiler console commands&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Web profiler provides three console commands:&lt;/p&gt;
 &lt;dl class="docutils"&gt;
-&lt;dt&gt;webprofiler:benchmark&lt;/dt&gt;
-&lt;dd&gt;Benchmark a url.&lt;/dd&gt;
-&lt;dt&gt;webprofiler:export&lt;/dt&gt;
-&lt;dd&gt;Export Webprofiler profiles to file.&lt;/dd&gt;
-&lt;dt&gt;webprofiler:list&lt;/dt&gt;
-&lt;dd&gt;List Webprofiler profiles.&lt;/dd&gt;
+&lt;dt&gt;&lt;tt class="docutils literal"&gt;webprofiler:benchmark&lt;/tt&gt;&lt;/dt&gt;
+&lt;dd&gt;Benchmark a URL.&lt;/dd&gt;
+&lt;dt&gt;&lt;tt class="docutils literal"&gt;webprofiler:export&lt;/tt&gt;&lt;/dt&gt;
+&lt;dd&gt;Export Web Profiler profiles to file.&lt;/dd&gt;
+&lt;dt&gt;&lt;tt class="docutils literal"&gt;webprofiler:list&lt;/tt&gt;&lt;/dt&gt;
+&lt;dd&gt;List Web Profiler profiles.&lt;/dd&gt;
 &lt;/dl&gt;
 &lt;p class="rubric"&gt;benchmark&lt;/p&gt;
 &lt;p&gt;Benchmark a URL.&lt;/p&gt;
@@ -674,11 +672,11 @@ were considered:&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://github.com/wkhtmltopdf/wkhtmltopdf"&gt;wkhtmltopdf&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;Command line tools to render HTML into PDF (and various other image
-formats) using the QT Webkit rendering engine.&lt;/li&gt;
+formats) using the QT WebKit rendering engine.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://github.com/KnpLabs/KnpSnappyBundle"&gt;KnpLabs/KnpSnappyBundle&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;Symfony&amp;nbsp;2 bundle wrapping wkhtmltopdf.&lt;/li&gt;
+&lt;li&gt;Symfony&amp;nbsp;2 bundle wrapping &lt;tt class="docutils literal"&gt;wkhtmltopdf&lt;/tt&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://github.com/zendframework/ZendPdf/"&gt;zendframework/ZendPdf&lt;/a&gt;&lt;ul&gt;
@@ -1227,7 +1225,7 @@ page by 66% and the page size was reduced by 62%.&lt;/p&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#reduce-ajax-requests" id="id5"&gt;Reduce AJAX requests&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#custom-jquery" id="id6"&gt;Custom jQuery&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#merge-and-minify-assets" id="id7"&gt;Merge and minify assets&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#eliminate-unnecessary-resources-and-dns-lookups" id="id8"&gt;Eliminate unnecessary resources and DNS lookups&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#eliminate-unnecessary-resources-and-dns-look-ups" id="id8"&gt;Eliminate unnecessary resources and DNS look-ups&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#post-optimisation" id="id9"&gt;Post-optimisation&lt;/a&gt;&lt;/li&gt;
@@ -1407,8 +1405,8 @@ Compressor.&lt;/p&gt;
 significantly reduced by optimising images. For example, the two Pingdom screen
 shots were reduced by &lt;a class="reference external" href="http://pmt.sourceforge.net/pngcrush/"&gt;pngcrush&lt;/a&gt; to approximately 27&amp;nbsp;% of the original size.&lt;/p&gt;
 &lt;/div&gt;
-&lt;div class="section" id="eliminate-unnecessary-resources-and-dns-lookups"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id8"&gt;Eliminate unnecessary resources and DNS lookups&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="section" id="eliminate-unnecessary-resources-and-dns-look-ups"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id8"&gt;Eliminate unnecessary resources and DNS look-ups&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Improvements:&lt;/p&gt;
 &lt;dl class="docutils"&gt;
 &lt;dt&gt;Requests&lt;/dt&gt;
@@ -1497,8 +1495,8 @@ browsers.&lt;/li&gt;
 &lt;p&gt;This site is currently hosted by &lt;a class="reference external" href="https://pages.github.com/"&gt;GitHub Pages&lt;/a&gt;. Besides free-of-charge
 managed hosting, GitHub Pages also offers all the advantages of their global
 content delivery network.&lt;/p&gt;
-&lt;p&gt;GitHub Pages compresses *.html, *.css, and *.js files using gzip and sets
-the appropriate HTTP header &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;Content-Encoding:&lt;/span&gt; gzip&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;GitHub Pages compresses &lt;tt class="docutils literal"&gt;*.html&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;*.css&lt;/tt&gt;, and &lt;tt class="docutils literal"&gt;*.js&lt;/tt&gt; files using gzip
+and sets the appropriate HTTP header &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;Content-Encoding:&lt;/span&gt; gzip&lt;/tt&gt;.&lt;/p&gt;
 &lt;p&gt;A disadvantage of using GitHub Pages as a hosting platform (in relation to page
 speed) is the inability to modify HTTP headers to control client-side caching.&lt;/p&gt;
 &lt;p&gt;The cache control HTTP headers set by GitHub Pages at the time of writing were:&lt;/p&gt;
@@ -1651,7 +1649,7 @@ a robust approach to synchronising UUIDs across instances of a site see
 a &lt;tt class="docutils literal"&gt;.gitattributes&lt;/tt&gt; file in the root of the repository and specifying the
 &lt;a class="reference external" href="http://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes#Exporting-Your-Repository"&gt;export-ignore attribute&lt;/a&gt; for files that should not be included in the
 release. Use this
-&lt;a class="reference external" href="https://gist.github.com/sethfischer/bdda9753837ab1da680a"&gt;.gitattributes export-ignore template for Druapl&amp;nbsp;8 projects&lt;/a&gt;.&lt;/p&gt;
+&lt;a class="reference external" href="https://gist.github.com/sethfischer/bdda9753837ab1da680a"&gt;.gitattributes export-ignore template for Drupal&amp;nbsp;8 projects&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="target-host-configuration"&gt;
