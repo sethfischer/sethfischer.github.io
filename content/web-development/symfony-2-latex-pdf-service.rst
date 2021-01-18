@@ -67,7 +67,7 @@ were considered:
 
 4.  `KnpLabs/KnpSnappyBundle`_
 
-    *   Symfony 2 bundle wrapping wkhtmltopdf.
+    *   Symfony 2 bundle wrapping ``wkhtmltopdf``.
 
 5.  `zendframework/ZendPdf`_
 
