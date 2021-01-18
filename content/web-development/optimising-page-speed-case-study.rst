@@ -277,8 +277,8 @@ This site is currently hosted by `GitHub Pages`_. Besides free-of-charge
 managed hosting, GitHub Pages also offers all the advantages of their global
 content delivery network.
 
-GitHub Pages compresses \*.html, \*.css, and \*.js files using gzip and sets
-the appropriate HTTP header ``Content-Encoding: gzip``.
+GitHub Pages compresses ``*.html``, ``*.css``, and ``*.js`` files using gzip
+and sets the appropriate HTTP header ``Content-Encoding: gzip``.
 
 A disadvantage of using GitHub Pages as a hosting platform (in relation to page
 speed) is the inability to modify HTTP headers to control client-side caching.
