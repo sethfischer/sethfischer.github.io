@@ -334,10 +334,8 @@ token and link provided in the HTTP response headers ``X-Debug-Token`` and
     Date: Fri, 26 Jun 2015 23:53:36 GMT
     Server: Apache/2.2.22 (Debian)
     X-Generator: Drupal 8 (https://www.drupal.org)
-    ⋮
     X-Debug-Token: 0ac668
     X-Debug-Token-Link: /admin/reports/profiler/view/0ac668
-    ⋮
 
 Visiting the X-Debug-Token-Link (in this case
 ``/admin/reports/profiler/view/0ac668``) will provide access to the report for
