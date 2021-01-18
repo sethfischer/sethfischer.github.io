@@ -347,12 +347,12 @@ Web Profiler console commands
 
 Web profiler provides three console commands:
 
-webprofiler:benchmark
+``webprofiler:benchmark``
     Benchmark a URL.
-webprofiler:export
-    Export Webprofiler profiles to file.
-webprofiler:list
-    List Webprofiler profiles.
+``webprofiler:export``
+    Export Web Profiler profiles to file.
+``webprofiler:list``
+    List Web Profiler profiles.
 
 
 .. rubric:: benchmark
