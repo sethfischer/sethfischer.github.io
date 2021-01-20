@@ -411,20 +411,20 @@ Further reading
 *   `Headless websites: What’s the big deal?`_
 
 
-.. _`Drupal 8`: https://www.drupal.org/drupal-8.0
-.. _`Symfony 2 Console`: http://symfony.com/doc/current/components/console/introduction.html
-.. _`Drupal Console`: http://drupalconsole.com/
+.. _`Drupal 8`: https://www.drupal.org/8
+.. _`Symfony 2 Console`: https://symfony.com/doc/2.7/components/console.html
+.. _`Drupal Console`: https://drupalconsole.com/
 .. _`Drupal Web Profiler`: https://www.drupal.org/project/webprofiler
-.. _`Symfony 2 WebProfiler bundle`: https://github.com/symfony/WebProfilerBundle
-.. _`hechoendrupal/DrupalConsole`: https://github.com/hechoendrupal/DrupalConsole
-.. _`Symfony 2 console application`: http://symfony.com/doc/current/components/console/introduction.html
+.. _`Symfony 2 WebProfiler bundle`: https://github.com/symfony/web-profiler-bundle
+.. _`hechoendrupal/DrupalConsole`: https://github.com/hechoendrupal/drupal-console
+.. _`Symfony 2 console application`: https://symfony.com/doc/2.7/components/console.html
 .. _`PSR-4 compliant directory structure`: https://www.drupal.org/node/2156625
-.. _`Symfony 2 Console Component documentation`: http://symfony.com/doc/current/components/console/introduction.html
+.. _`Symfony 2 Console Component documentation`: https://symfony.com/doc/2.7/components/console.html
 .. _`Drupal Web Profiler`: https://www.drupal.org/project/webprofiler
-.. _`HTTP routing framework`: https://www.drupal.org/developing/api/8/routing
-.. _`REST API`: https://www.drupal.org/documentation/modules/rest
-.. _`ember.js`: http://emberjs.com/
+.. _`HTTP routing framework`: https://www.drupal.org/docs/8/api/routing-system/routing-system-overview
+.. _`REST API`: https://www.drupal.org/docs/8/core/modules/rest/overview
+.. _`ember.js`: https://emberjs.com/
 .. _`The Drupal Console book`: https://www.gitbook.com/book/hechoendrupal/drupal-console/details
-.. _`How to create a custom data collector`: http://symfony.com/doc/current/cookbook/profiler/data_collector.html
+.. _`How to create a custom data collector`: https://symfony.com/doc/2.7/profiler/data_collector.html
 .. _`An introduction to RESTful web services in Drupal 8`: https://drupalize.me/blog/201401/introduction-restful-web-services-drupal-8
-.. _`Headless websites: What’s the big deal?`: https://pantheon.io/blog/headless-websites-whats-big-deal
+.. _`Headless websites: What’s the big deal?`: https://pantheon.io/blog/headless-websites-whats-big-deal-decoupled-architecture

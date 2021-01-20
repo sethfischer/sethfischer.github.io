@@ -275,15 +275,15 @@ Further reading
 .. _`github.com/sethfischer/fabric-deploy`: https://github.com/sethfischer/fabric-deploy
 .. _`fabric-deploy by halcyonCorsair`: https://github.com/halcyonCorsair/fabric-deploy
 .. _`A Drupal 8 workflow using the Git subtree merge strategy`: |filename|/web-development/drupal-8-workflow-using-git-subtree-merge.rst
-.. _`An approach to code-driven development in Drupal 8`: http://dcycleproject.org/blog/68/approach-code-driven-development-drupal-8
+.. _`An approach to code-driven development in Drupal 8`: https://blog.dcycle.com/blog/68/approach-code-driven-development-drupal-8/
 .. _`Albert Albala`: https://github.com/alberto56/
 .. _`export-ignore attribute`: http://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes#Exporting-Your-Repository
 .. _`.gitattributes export-ignore template for Drupal 8 projects`: https://gist.github.com/sethfischer/bdda9753837ab1da680a
 .. _`OpenSSH server`: https://wiki.debian.org/SSH
-.. _`Drush`: http://docs.drush.org/en/master/install/#composer-one-drush-for-all-projects
-.. _`YAML`: http://yaml.org/
+.. _`Drush`: https://docs.drush.org/en/7.x/install/
+.. _`YAML`: https://yaml.org/
 .. _`create a fork`: https://github.com/sethfischer/fabric-deploy/fork
-.. _`Drush 7.x commands`: http://www.drushcommands.com/drush-7x/
-.. _`Fabric’s documentation`: http://docs.fabfile.org/en/1.10/
+.. _`Drush 7.x commands`: https://drushcommands.com/drush-7x/
+.. _`Fabric’s documentation`: https://docs.fabfile.org/en/1.10/
 .. _`Drupal core issue: Allow a site to be installed from existing configuration`: https://www.drupal.org/node/1613424
-.. _`Managing configuration in Drupal 8`: https://www.drupal.org/documentation/administer/config
+.. _`Managing configuration in Drupal 8`: https://www.drupal.org/docs/configuration-management/managing-your-sites-configuration

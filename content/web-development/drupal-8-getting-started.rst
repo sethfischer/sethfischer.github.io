@@ -270,19 +270,19 @@ Further reading
 ---------------
 
 *   `Building a Drupal site with Git`_
-*   `Git Reference`_
+*   `git-scm.com`_
 
 
 .. _`Composer template for Drupal projects`: https://github.com/drupal-composer/drupal-project
-.. _`Drupal 8`: https://www.drupal.org/drupal-8.0
-.. _`issues tagged with D8 upgrade path`: https://www.drupal.org/project/issues/search/drupal?project_issue_followers=&status%5B%5D=1&status%5B%5D=13&status%5B%5D=8&status%5B%5D=14&status%5B%5D=15&status%5B%5D=4&priorities%5B%5D=400&categories%5B%5D=1&categories%5B%5D=2&version%5B%5D=8.x&issue_tags_op=%3D&issue_tags=D8+upgrade+path
-.. _`Drupal 8 system requirements`: https://api.drupal.org/api/drupal/core!INSTALL.txt/8
+.. _`Drupal 8`: https://www.drupal.org/8
+.. _`issues tagged with D8 upgrade path`: https://www.drupal.org/project/issues/search/drupal?project_issue_followers=&status%5B0%5D=1&status%5B1%5D=13&status%5B2%5D=8&status%5B3%5D=14&status%5B4%5D=15&status%5B5%5D=4&priorities%5B0%5D=400&categories%5B0%5D=1&categories%5B1%5D=2&version%5B0%5D=any_8.&issue_tags_op=%3D&issue_tags=D8%20upgrade%20path
+.. _`Drupal 8 system requirements`: https://api.drupal.org/api/drupal/core!INSTALL.txt/8.2.x
 .. _`install git`: http://git-scm.com/book/en/v2/Getting-Started-Installing-Git
-.. _`install Composer`: https://getcomposer.org/doc/00-intro.md#installation-nix
+.. _`install Composer`: https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos
 .. _`install Drush 7.x (dev)`: https://github.com/drush-ops/drush#installupdate---composer
 .. _`Access Control Lists`: https://wiki.debian.org/Permissions#Access_Control_Lists_in_Linux
-.. _`Installing and Configuring Symfony`: http://Symfony.com/doc/2.3/book/installation.html#configuration-and-set-up
+.. _`Installing and Configuring Symfony`: https://symfony.com/doc/2.3/book/installation.html#configuration-and-set-up
 .. _`devel`: https://www.drupal.org/project/devel
 .. _`examples`: https://www.drupal.org/project/examples
 .. _`Building a Drupal site with Git`: https://www.drupal.org/node/803746
-.. _`Git Reference`: http://gitref.org/
+.. _`git-scm.com`: http://git-scm.com/

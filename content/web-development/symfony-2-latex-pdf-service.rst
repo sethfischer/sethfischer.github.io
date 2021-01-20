@@ -623,18 +623,19 @@ Further reading
 *   `How to define controllers as services`_.
 *   `The not so short introduction to LaTeX 2ε`_ by Tobias Oetiker.
 
-.. _`LaTeX`: http://www.latex-project.org/
-.. _`Symfony`: http://symfony.com/
-.. _`TCPDF`: http://sourceforge.net/projects/tcpdf/
+
+.. _`LaTeX`: https://www.latex-project.org/
+.. _`Symfony`: https://symfony.com/
+.. _`TCPDF`: https://sourceforge.net/projects/tcpdf/
 .. _`dompdf`: https://github.com/dompdf/dompdf
 .. _`wkhtmltopdf`: https://github.com/wkhtmltopdf/wkhtmltopdf
 .. _`KnpLabs/KnpSnappyBundle`: https://github.com/KnpLabs/KnpSnappyBundle
 .. _`zendframework/ZendPdf`: https://github.com/zendframework/ZendPdf/
 .. _`TeX macro language`: http://tug.org/
-.. _`Services`: http://symfony.com/doc/2.3/book/service_container.html
-.. _`definition of a service`: http://symfony.com/doc/2.3/glossary.html#term-service
-.. _`YAML`: http://yaml.org/
-.. _`Twig`: http://twig.sensiolabs.org/
-.. _`custom Twig filter`: http://twig.sensiolabs.org/doc/advanced.html#filters
-.. _`How to define controllers as services`: http://symfony.com/doc/2.3/cookbook/controller/service.html
+.. _`Services`: https://symfony.com/doc/2.3/book/service_container.html
+.. _`definition of a service`: https://symfony.com/doc/2.3/glossary.html#term-service
+.. _`YAML`: https://yaml.org/
+.. _`Twig`: https://twig.symfony.com/
+.. _`custom Twig filter`: https://twig.symfony.com/doc/3.x/advanced.html#filters
+.. _`How to define controllers as services`: https://symfony.com/doc/2.3/cookbook/controller/service.html
 .. _`The not so short introduction to LaTeX 2ε`: https://tobi.oetiker.ch/lshort/lshort.pdf

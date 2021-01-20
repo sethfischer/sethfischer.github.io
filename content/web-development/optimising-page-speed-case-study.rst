@@ -349,15 +349,15 @@ Further reading
 
 
 .. _`sethfischer/pelican-bootstrap3`: https://github.com/sethfischer/pelican-bootstrap3
-.. _`Pelican`: http://docs.getpelican.com/
+.. _`Pelican`: https://docs.getpelican.com/
 .. _`pelican-bootstrap3`: https://github.com/DandyDev/pelican-bootstrap3
 .. _`pre-optimisation HAR file`: |static|/static/optimising-page-speed-case-study/seth.fischer.nz_2015-03-15_1905.har
 .. _`FontAwesome`: https://github.com/FortAwesome/Font-Awesome
-.. _`Font Custom`: http://fontcustom.com/
+.. _`Font Custom`: https://github.com/FontCustom/fontcustom
 .. _`Font-Awesome-SVG-PNG`: https://github.com/encharm/Font-Awesome-SVG-PNG
-.. _`Grunt`: http://gruntjs.com/
+.. _`Grunt`: https://gruntjs.com/
 .. _`grunt-webfont`: https://github.com/sapegin/grunt-webfont
-.. _`Bootstrap`: http://getbootstrap.com/
+.. _`Bootstrap`: https://getbootstrap.com/
 .. _`Compass`: http://compass-style.org/
 .. _`grunt-contrib-compass`: https://github.com/gruntjs/grunt-contrib-compass
 .. _`GitHub API`: https://developer.github.com/
@@ -366,12 +366,12 @@ Further reading
 .. _`jQuery README file`: https://github.com/jquery/jquery/blob/master/README.md
 .. _`webassets`: https://github.com/miracle2k/webassets
 .. _`Pelican assets plug-in`: https://github.com/getpelican/pelican-plugins
-.. _`YUI Compressor`: http://yui.github.io/yuicompressor/
-.. _`pngcrush`: http://pmt.sourceforge.net/pngcrush/
+.. _`YUI Compressor`: https://yui.github.io/yuicompressor/
+.. _`pngcrush`: https://pmt.sourceforge.io/pngcrush/
 .. _`post-optimisation HAR file`: |static|/static/optimising-page-speed-case-study/seth.fischer.nz_2015-03-16_2149.har
 .. _`GitHub Pages`: https://pages.github.com/
 .. _`HTTP Archive (HAR) format specification`: https://w3c.github.io/web-performance/specs/HAR/Overview.html
-.. _`URL Expiry (cache busting)`: http://webassets.readthedocs.org/en/latest/expiring.html
+.. _`URL Expiry (cache busting)`: https://webassets.readthedocs.io/en/latest/expiring.html
 .. _`Make the web faster`: https://developers.google.com/speed/pagespeed/
 .. _`Best Practices for Speeding Up Your Web Site`: https://developer.yahoo.com/performance/rules.html
-.. _`Pingdom tools website speed test`: http://tools.pingdom.com/fpt/
+.. _`Pingdom tools website speed test`: https://tools.pingdom.com/
