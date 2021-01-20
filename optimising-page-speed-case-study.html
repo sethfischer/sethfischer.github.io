@@ -129,10 +129,10 @@
 <p class="first admonition-title">Note</p>
 <p class="last">This site is no longer using the theme <a class="reference external" href="https://github.com/sethfischer/pelican-bootstrap3">sethfischer/pelican-bootstrap3</a>.</p>
 </div>
-<p>As an exercise in optimising page speed the <a class="reference external" href="http://docs.getpelican.com/">Pelican</a> theme
-<a class="reference external" href="https://github.com/DandyDev/pelican-bootstrap3">pelican-bootstrap3</a> by Daan Debie was customised in order to improve page
-speed. The customisations reduced the total number of requests on the index
-page by 66% and the page size was reduced by 62%.</p>
+<p>As an exercise in optimising page speed the <a class="reference external" href="https://docs.getpelican.com/">Pelican</a> theme
+<a class="reference external" href="https://github.com/DandyDev/pelican-bootstrap3">DandyDev/pelican-bootstrap3</a> was customised to improve page speed. The
+customisations reduced the total number of requests on the index page by 66%
+and the page size was reduced by 62%.</p>
 <div class="contents topic" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
@@ -213,11 +213,11 @@ sizes specified are for minified but uncompressed versions of the file.</p>
 the size to to 7.4&nbsp;kB.</p>
 <p>The associated style sheet <tt class="docutils literal"><span class="pre">font-awesome.min.css</span></tt> with a file size of 20.8&nbsp;kB
 was replaced with <tt class="docutils literal"><span class="pre">font-custom.css</span></tt> having a file size of 1.1&nbsp;kB.</p>
-<p><a class="reference external" href="http://fontcustom.com/">Font Custom</a> was used to create the custom font and Font Custom vectors were
-obtained from <a class="reference external" href="https://github.com/encharm/Font-Awesome-SVG-PNG">Font-Awesome-SVG-PNG</a> by Code Charm.</p>
+<p><a class="reference external" href="https://github.com/FontCustom/fontcustom">Font Custom</a> was used to create the custom font and Font Custom vectors were
+obtained from <a class="reference external" href="https://github.com/encharm/Font-Awesome-SVG-PNG">encharm/Font-Awesome-SVG-PNG</a>.</p>
 <p>Font Custom configuration is stored in <tt class="docutils literal">fontcustom.yml</tt>, or can be integrated
-into a <a class="reference external" href="http://gruntjs.com/">Grunt</a> build with <a class="reference external" href="https://github.com/sapegin/grunt-webfont">grunt-webfont</a> by Artem Sapegin. See the next
-section for the <tt class="docutils literal">Gruntfile.js</tt> which includes a <tt class="docutils literal"><span class="pre">grunt-webfont</span></tt> task.</p>
+into a <a class="reference external" href="https://gruntjs.com/">Grunt</a> build with <a class="reference external" href="https://github.com/sapegin/grunt-webfont">sapegin/grunt-webfont</a>. See the next section for
+the <tt class="docutils literal">Gruntfile.js</tt> which includes a <tt class="docutils literal"><span class="pre">grunt-webfont</span></tt> task.</p>
 </div>
 <div class="section" id="custom-bootstrap">
 <h3><a class="toc-backref" href="#id4">Custom Bootstrap</a></h3>
@@ -226,11 +226,11 @@ section for the <tt class="docutils literal">Gruntfile.js</tt> which includes a 
 <dt>Page size</dt>
 <dd>−15.3&nbsp;kB</dd>
 </dl>
-<p>A custom build of <a class="reference external" href="http://getbootstrap.com/">Bootstrap</a> was built with <a class="reference external" href="http://compass-style.org/">Compass</a>. By excluding ten
+<p>A custom build of <a class="reference external" href="https://getbootstrap.com/">Bootstrap</a> was built with <a class="reference external" href="http://compass-style.org/">Compass</a>. By excluding ten
 unused components from the build <tt class="docutils literal">bootstrap.min.css</tt> was reduced from
 109.5&nbsp;kB to 94.2&nbsp;kB.</p>
 <p>The Bootstrap build process was included as a Grunt task using
-<a class="reference external" href="https://github.com/gruntjs/grunt-contrib-compass">grunt-contrib-compass</a> by Sindre Sorhus.</p>
+<a class="reference external" href="https://github.com/gruntjs/grunt-contrib-compass">gruntjs/grunt-contrib-compass</a>.</p>
 <p>Below is the <tt class="docutils literal">Gruntfile.js</tt> for this theme which includes both a
 <tt class="docutils literal"><span class="pre">grunt-webfont</span></tt> task and a <tt class="docutils literal"><span class="pre">grunt-contrib-compass</span></tt> task.</p>
 <div class="highlight"><pre><span></span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
@@ -281,7 +281,7 @@ unused components from the build <tt class="docutils literal">bootstrap.min.css<
 <p>The original theme included a script which obtained a list of GitHub
 repositories directly from the <a class="reference external" href="https://developer.github.com/">GitHub API</a>. To reduce the overhead of a SSL
 request the list of GitHub repositories was generated during the build process
-with <a class="reference external" href="https://github.com/kura/pelican-githubprojects">pelican-githubprojects</a> by Kura.</p>
+with <a class="reference external" href="https://github.com/kura/pelican-githubprojects">kura/pelican-githubprojects</a>.</p>
 </div>
 <div class="section" id="custom-jquery">
 <h3><a class="toc-backref" href="#id6">Custom jQuery</a></h3>
@@ -308,7 +308,7 @@ with <a class="reference external" href="https://github.com/kura/pelican-githubp
 <p>Both JavaScript and CSS were combined using <a class="reference external" href="https://github.com/miracle2k/webassets">webassets</a> via the
 <a class="reference external" href="https://github.com/getpelican/pelican-plugins">Pelican assets plug-in</a>.</p>
 <p>Five CSS files were merged into a single file and compressed with the
-<a class="reference external" href="http://yui.github.io/yuicompressor/">YUI Compressor</a>.</p>
+<a class="reference external" href="https://yui.github.io/yuicompressor/">YUI Compressor</a>.</p>
 <div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">assets</span> <span class="nv">filters</span><span class="o">=</span><span class="s2">&quot;yui_css&quot;</span><span class="o">,</span> <span class="nv">output</span><span class="o">=</span><span class="s2">&quot;css/styles.%(version)s.min.css&quot;</span><span class="o">,</span> <span class="s2">&quot;css/bootstrap-custom.css&quot;</span><span class="o">,</span> <span class="s2">&quot;css/font-custom.css&quot;</span><span class="o">,</span> <span class="s2">&quot;css/github-repos.css&quot;</span><span class="o">,</span> <span class="s2">&quot;css/style.css&quot;</span><span class="o">,</span> <span class="s2">&quot;pygments&quot;</span> <span class="cp">%}</span><span class="x"></span>
 <span class="x">    &lt;link href=&quot;</span><span class="cp">{{</span> <span class="nv">SITEURL</span> <span class="cp">}}</span><span class="x">/</span><span class="cp">{{</span> <span class="nv">ASSET_URL</span> <span class="cp">}}</span><span class="x">&quot; rel=&quot;stylesheet&quot; /&gt;</span>
 <span class="cp">{%</span> <span class="k">endassets</span> <span class="cp">%}</span><span class="x"></span>
@@ -321,7 +321,7 @@ Compressor.</p>
 </pre></div>
 <p>While the homepage of this site did not include images, page size can often be
 significantly reduced by optimising images. For example, the two Pingdom screen
-shots were reduced by <a class="reference external" href="http://pmt.sourceforge.net/pngcrush/">pngcrush</a> to approximately 27&nbsp;% of the original size.</p>
+shots were reduced by <a class="reference external" href="https://pmt.sourceforge.io/pngcrush/">pngcrush</a> to approximately 27&nbsp;% of the original size.</p>
 </div>
 <div class="section" id="eliminate-unnecessary-resources-and-dns-look-ups">
 <h3><a class="toc-backref" href="#id8">Eliminate unnecessary resources and DNS look-ups</a></h3>
@@ -451,9 +451,9 @@ a version identifier to the filename of those content types.</p>
 requests by twelve. These improvements result in a significantly improved page
 load time.</p>
 <p>As a result of the modifications made to achieve these improvements the
-functionality and flexibility of the original theme has been reduced. In
-addition, due to the extensive nature of the modifications merging upstream
-commits is no longer a trivial task.</p>
+capability and flexibility of the original theme has been reduced. In addition,
+due to the extensive nature of the modifications merging upstream commits is no
+longer a trivial task.</p>
 <p>The ease of use of the original theme has also been affected by introducing the
 following dependencies:</p>
 <ul class="simple">
@@ -485,11 +485,11 @@ following dependencies:</p>
 <h2><a class="toc-backref" href="#id12">Further reading</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="https://w3c.github.io/web-performance/specs/HAR/Overview.html">HTTP Archive (HAR) format specification</a></li>
-<li><a class="reference external" href="http://webassets.readthedocs.org/en/latest/expiring.html">URL Expiry (cache busting)</a> webassets documentation</li>
+<li><a class="reference external" href="https://webassets.readthedocs.io/en/latest/expiring.html">URL Expiry (cache busting)</a> webassets documentation</li>
 <li><a class="reference external" href="https://developers.google.com/speed/pagespeed/">Make the web faster</a> Google Developers documentation</li>
-<li><a class="reference external" href="https://developer.yahoo.com/performance/rules.html">Best Practices for Speeding Up Your Web Site</a> Yahoo! Developer Network</li>
+<li><a class="reference external" href="https://developer.yahoo.com/performance/rules.html">Best Practices for Speeding Up Your Web Site</a> Yahoo Developer Network</li>
 <li><a class="reference external" href="https://pages.github.com/">GitHub Pages</a></li>
-<li><a class="reference external" href="http://tools.pingdom.com/fpt/">Pingdom tools website speed test</a></li>
+<li><a class="reference external" href="https://tools.pingdom.com/">Pingdom tools website speed test</a></li>
 </ul>
 </div>
 

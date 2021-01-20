@@ -145,8 +145,8 @@ upstream changes to Drupal core may be conveniently merged with
 <li><a class="reference internal" href="#add-upstream-remote" id="id2">Add upstream remote</a></li>
 <li><a class="reference internal" href="#checkout-a-local-copy-of-the-upstream-branch" id="id3">Checkout a local copy of the upstream branch</a></li>
 <li><a class="reference internal" href="#pull-upstream-into-a-subdirectory-in-the-master-branch" id="id4">Pull upstream into a subdirectory in the master branch</a></li>
-<li><a class="reference internal" href="#create-a-gitingore-for-drupal-core" id="id5">Create a .gitingore for Drupal core</a></li>
-<li><a class="reference internal" href="#create-directories-above-the-document-root" id="id6">Create directories above the document root</a></li>
+<li><a class="reference internal" href="#create-a-gitingore-for-drupal-core" id="id5">Create a <tt class="docutils literal">.gitingore</tt> for Drupal core</a></li>
+<li><a class="reference internal" href="#create-directories-outside-the-document-root" id="id6">Create directories outside the document root</a></li>
 <li><a class="reference internal" href="#create-the-files-directory-and-set-permissions" id="id7">Create the files directory and set permissions</a></li>
 <li><a class="reference internal" href="#create-database" id="id8">Create database</a></li>
 <li><a class="reference internal" href="#site-installation" id="id9">Site installation</a></li>
@@ -201,7 +201,7 @@ specified with the <tt class="docutils literal"><span class="pre">--prefix</span
 <span class="gp">$</span> git commit
 <span class="go">[master bd410e7] Merge remote-tracking branch &#39;upstream/8.0.x&#39;</span>
 </pre></div>
-<p>The upstream branch will now be a subdirectory of the master branch.</p>
+<p>The upstream branch is now a subdirectory of the master branch.</p>
 <div class="highlight"><pre><span></span><span class="gp">$</span> tree -L <span class="m">2</span>
 <span class="go">.</span>
 <span class="go">|-- drupal</span>
@@ -222,7 +222,7 @@ specified with the <tt class="docutils literal"><span class="pre">--prefix</span
 </pre></div>
 </div>
 <div class="section" id="create-a-gitingore-for-drupal-core">
-<h2><a class="toc-backref" href="#id5">Create a .gitingore for Drupal core</a></h2>
+<h2><a class="toc-backref" href="#id5">Create a <tt class="docutils literal">.gitingore</tt> for Drupal core</a></h2>
 <p>Drupal core has an example <tt class="docutils literal">.gitignore</tt> file which provides an excellent
 starting point and is sufficient for most projects.</p>
 <div class="highlight"><pre><span></span><span class="gp">$</span> cp drupal/example.gitignore drupal/.gitignore
@@ -230,12 +230,12 @@ starting point and is sufficient for most projects.</p>
 <span class="gp">$</span> git commit -m <span class="s2">&quot;Add .gitignore for Drupal core&quot;</span>
 </pre></div>
 </div>
-<div class="section" id="create-directories-above-the-document-root">
-<h2><a class="toc-backref" href="#id6">Create directories above the document root</a></h2>
+<div class="section" id="create-directories-outside-the-document-root">
+<h2><a class="toc-backref" href="#id6">Create directories outside the document root</a></h2>
 <p>As the document root is now below the repository root, files and directories
 may be committed to the repository without exposing them to the web server.</p>
-<p>In this example -- when configuring the web server -- the document root will be
-set to <tt class="docutils literal">/var/www/myproject/drupal</tt>.</p>
+<p>In this example—when configuring the web server—the document root is set to
+<tt class="docutils literal">/var/www/myproject/drupal</tt>.</p>
 <div class="highlight"><pre><span></span><span class="gp">$</span> mkdir -p config/active config/staging config/deploy
 <span class="gp">$</span> tree -L <span class="m">2</span>
 <span class="go">.</span>
@@ -289,7 +289,7 @@ grep -v root <span class="p">|</span> head -1 <span class="p">|</span> cut -d<sp
 </div>
 <div class="section" id="site-installation">
 <h2><a class="toc-backref" href="#id9">Site installation</a></h2>
-<p>Install the site with the standard install profile and change the admin
+<p>Install the site with the standard install profile and change the administrator
 password.</p>
 <div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> drupal
 <span class="gp">$</span> drush site-install standard --db-url<span class="o">=</span>mysql://dbuser:password@localhost/db <span class="se">\</span>
@@ -325,11 +325,11 @@ command <tt class="docutils literal">drush <span class="pre">config-import</span
 </div>
 <div class="section" id="update-drupal-core">
 <h2><a class="toc-backref" href="#id12">Update Drupal core</a></h2>
-<p>To merge upstream change to Drupal core the <a class="reference external" href="http://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging">Git subtree merge strategy</a> is
+<p>To merge upstream change to Drupal core the <a class="reference external" href="https://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging">Git subtree merge strategy</a> is
 used.</p>
 <div class="highlight"><pre><span></span><span class="gp">$</span> git pull -s subtree upstream <span class="m">8</span>.0.x
 </pre></div>
-<p>The above command will merge the history of <tt class="docutils literal">upstream</tt> with the main
+<p>The preceding command merges the history of <tt class="docutils literal">upstream</tt> with the main
 repository. If it is not preferable to merge histories the <tt class="docutils literal"><span class="pre">--squash</span></tt> and
 <tt class="docutils literal"><span class="pre">--no-commit</span></tt> options can be used along with the <tt class="docutils literal"><span class="pre">-s</span> subtree</tt> strategy
 option:</p>
@@ -345,7 +345,7 @@ option:</p>
 <div class="section" id="further-reading">
 <h2><a class="toc-backref" href="#id13">Further reading</a></h2>
 <ul class="simple">
-<li><a class="reference external" href="http://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging">Git Tools - Subtree Merging</a></li>
+<li><a class="reference external" href="https://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging">Git Tools - Subtree Merging</a></li>
 <li><a class="reference external" href="https://www.kernel.org/pub/software/scm/git/docs/howto/using-merge-subtree.html">How to use the subtree merge strategy</a></li>
 <li><a class="reference external" href="https://seth.fischer.nz/drupal-8-fabric-deploy.html">Deploying Drupal&nbsp;8 with Fabric</a></li>
 </ul>

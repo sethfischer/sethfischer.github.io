@@ -13,9 +13,9 @@ months before Drupal&amp;nbsp;8 was released.&lt;/p&gt;
 provides a safeguard against failed deployments. &lt;a class="reference external" href="http://www.fabfile.org/"&gt;Fabric&lt;/a&gt; is a tool that can
 be used to automate application deployment and related tasks. This article
 describes using Fabric to deploy a Drupal&amp;nbsp;8 site.&lt;/p&gt;
-&lt;p&gt;Visit &lt;a class="reference external" href="https://github.com/sethfischer/fabric-deploy"&gt;github.com/sethfischer/fabric-deploy&lt;/a&gt; for the most recent version of
-the fabfile which is an adaptation of &lt;a class="reference external" href="https://github.com/halcyonCorsair/fabric-deploy"&gt;fabric-deploy by halcyonCorsair&lt;/a&gt; -- a
-fabfile for the deployment of Drupal&amp;nbsp;7 sites.&lt;/p&gt;
+&lt;p&gt;Visit &lt;a class="reference external" href="https://github.com/sethfischer/fabric-deploy"&gt;sethfischer/fabric-deploy&lt;/a&gt; for the most recent version of the fabfile
+which is an adaptation of &lt;a class="reference external" href="https://github.com/halcyonCorsair/fabric-deploy"&gt;halcyonCorsair/fabric-deploy&lt;/a&gt; — a fabfile for the
+deployment of Drupal&amp;nbsp;7 sites.&lt;/p&gt;
 &lt;div class="contents topic" id="contents"&gt;
 &lt;p class="topic-title"&gt;Contents&lt;/p&gt;
 &lt;ul class="simple"&gt;
@@ -66,7 +66,7 @@ staging, production) they must share a common
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The site UUID may be edited with the command &lt;tt class="docutils literal"&gt;drush cedit system.site&lt;/tt&gt;. For
 a robust approach to synchronising UUIDs across instances of a site see
-&lt;a class="reference external" href="http://dcycleproject.org/blog/68/approach-code-driven-development-drupal-8"&gt;An approach to code-driven development in Drupal 8&lt;/a&gt; by &lt;a class="reference external" href="https://github.com/alberto56/"&gt;Albert Albala&lt;/a&gt;.&lt;/p&gt;
+&lt;a class="reference external" href="https://blog.dcycle.com/blog/68/approach-code-driven-development-drupal-8/"&gt;An approach to code-driven development in Drupal 8&lt;/a&gt; by &lt;a class="reference external" href="https://github.com/alberto56/"&gt;Albert Albala&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="exclude-files-from-release-tarball"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id3"&gt;Exclude files from release tarball&lt;/a&gt;&lt;/h3&gt;
@@ -132,7 +132,7 @@ variable data being created during deployment.&lt;/p&gt;
 &lt;p&gt;The following tools must be installed on the target host:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://wiki.debian.org/SSH"&gt;OpenSSH server&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="http://docs.drush.org/en/master/install/#composer-one-drush-for-all-projects"&gt;Drush&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://docs.drush.org/en/7.x/install/"&gt;Drush&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class="section" id="manual-configuration"&gt;
@@ -157,10 +157,10 @@ target host and edit as appropriate according to the environment.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="fabfile"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id9"&gt;Fabfile&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Source code is hosted at &lt;a class="reference external" href="https://github.com/sethfischer/fabric-deploy"&gt;github.com/sethfischer/fabric-deploy&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Source code is hosted at &lt;a class="reference external" href="https://github.com/sethfischer/fabric-deploy"&gt;sethfischer/fabric-deploy&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="section" id="configuration"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id10"&gt;Configuration&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;Configuration is expressed via &lt;a class="reference external" href="http://yaml.org/"&gt;YAML&lt;/a&gt; with one file per project. Below is an
+&lt;p&gt;Configuration is expressed via &lt;a class="reference external" href="https://yaml.org/"&gt;YAML&lt;/a&gt; with one file per project. Below is an
 example configuration file.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# example.yml&lt;/span&gt;
 
@@ -184,8 +184,7 @@ example configuration file.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="available-commands"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id11"&gt;Available commands&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;tt class="docutils literal"&gt;fab &lt;span class="pre"&gt;-f&lt;/span&gt; drupal8 &lt;span class="pre"&gt;-l&lt;/span&gt;&lt;/tt&gt; will list the available commands with a short
-description:&lt;/p&gt;
+&lt;p&gt;&lt;tt class="docutils literal"&gt;fab &lt;span class="pre"&gt;-f&lt;/span&gt; drupal8 &lt;span class="pre"&gt;-l&lt;/span&gt;&lt;/tt&gt; lists the available commands with a short description:&lt;/p&gt;
 &lt;dl class="docutils"&gt;
 &lt;dt&gt;deploy&lt;/dt&gt;
 &lt;dd&gt;Deploy release&lt;/dd&gt;
@@ -489,11 +488,11 @@ or &lt;a class="reference external" href="https://github.com/sethfischer/fabric-
 &lt;div class="section" id="further-reading"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id14"&gt;Further reading&lt;/a&gt;&lt;/h2&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;&lt;a class="reference external" href="http://www.drushcommands.com/drush-7x/"&gt;Drush 7.x commands&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="http://docs.fabfile.org/en/1.10/"&gt;Fabric’s documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://drushcommands.com/drush-7x/"&gt;Drush 7.x commands&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://docs.fabfile.org/en/1.10/"&gt;Fabric’s documentation&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://www.drupal.org/node/1613424"&gt;Drupal core issue: Allow a site to be installed from existing
 configuration&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="https://www.drupal.org/documentation/administer/config"&gt;Managing configuration in Drupal 8&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://www.drupal.org/docs/configuration-management/managing-your-sites-configuration"&gt;Managing configuration in Drupal 8&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 </content><category term="DevOps"></category><category term="Drupal 8"></category><category term="Drupal"></category><category term="Fabric"></category><category term="Python"></category></entry></feed>

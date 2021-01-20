@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>sethfischer</title><link href="https://seth.fischer.nz/" rel="alternate"></link><link href="https://seth.fischer.nz/feeds/all.atom.xml" rel="self"></link><id>https://seth.fischer.nz/</id><updated>2021-01-11T22:14:00+13:00</updated><entry><title>Leaf battery degradation case A: AZE0 24 kW⋅h — part 2 2020-10</title><link href="https://seth.fischer.nz/leaf-battery-degradation-case-a-part-2.html" rel="alternate"></link><published>2021-01-11T22:14:00+13:00</published><updated>2021-01-11T22:14:00+13:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2021-01-11:/leaf-battery-degradation-case-a-part-2.html</id><summary type="html">&lt;p class="first last"&gt;Part&amp;nbsp;2 in a series detailing the state of health (SoH) degradation of
+<feed xmlns="http://www.w3.org/2005/Atom"><title>sethfischer</title><link href="https://seth.fischer.nz/" rel="alternate"></link><link href="https://seth.fischer.nz/feeds/all.atom.xml" rel="self"></link><id>https://seth.fischer.nz/</id><updated>2021-01-11T22:14:00+13:00</updated><entry><title>Leaf battery degradation case A: AZE0 24 kW⋅h—part 2 2020-10</title><link href="https://seth.fischer.nz/leaf-battery-degradation-case-a-part-2.html" rel="alternate"></link><published>2021-01-11T22:14:00+13:00</published><updated>2021-01-11T22:14:00+13:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2021-01-11:/leaf-battery-degradation-case-a-part-2.html</id><summary type="html">&lt;p class="first last"&gt;Part&amp;nbsp;2 in a series detailing the state of health (SoH) degradation of
 a Nissan Leaf AZE0 24&amp;nbsp;kW⋅h battery.&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;Part&amp;nbsp;2 in a series following the state of health (SoH) degradation of a Nissan
 Leaf AZE0 24&amp;nbsp;kW⋅h battery.&lt;/p&gt;
@@ -174,7 +174,7 @@ quick charges with in a 36 hour period while making the delivery journey.&lt;/li
 reduced 2.77 percentage points.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
-</content><category term="Electric vehicles"></category><category term="EV"></category><category term="Nissan Leaf"></category></entry><entry><title>Leaf battery degradation case A: AZE0 24 kW⋅h — part 1 2019-10</title><link href="https://seth.fischer.nz/leaf-battery-degradation-case-a-part-1.html" rel="alternate"></link><published>2021-01-11T21:48:00+13:00</published><updated>2021-01-11T21:48:00+13:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2021-01-11:/leaf-battery-degradation-case-a-part-1.html</id><summary type="html">&lt;p class="first last"&gt;Part&amp;nbsp;1 in a series detailing the state of health (SoH) degradation of
+</content><category term="Electric vehicles"></category><category term="EV"></category><category term="Nissan Leaf"></category></entry><entry><title>Leaf battery degradation case A: AZE0 24 kW⋅h—part 1 2019-10</title><link href="https://seth.fischer.nz/leaf-battery-degradation-case-a-part-1.html" rel="alternate"></link><published>2021-01-11T21:48:00+13:00</published><updated>2021-01-11T21:48:00+13:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2021-01-11:/leaf-battery-degradation-case-a-part-1.html</id><summary type="html">&lt;p class="first last"&gt;Part&amp;nbsp;1 in a series detailing the state of health (SoH) degradation of
 a Nissan Leaf AZE0 24&amp;nbsp;kW⋅h battery.&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;Part&amp;nbsp;1 in a series following the state of health (SoH) degradation of a Nissan
 Leaf AZE0 24&amp;nbsp;kW⋅h battery.&lt;/p&gt;
@@ -280,12 +280,12 @@ toolbar with convenient access to performance and profile information.&lt;/p&gt;
 &lt;p class="last"&gt;This Drupal&amp;nbsp;8 article is obsolete. It was published in July 2015, four
 months before Drupal&amp;nbsp;8 was released.&lt;/p&gt;
 &lt;/div&gt;
-&lt;p&gt;The use of third party components in &lt;a class="reference external" href="https://www.drupal.org/drupal-8.0"&gt;Drupal&amp;nbsp;8&lt;/a&gt; has inspired two new tools for
+&lt;p&gt;The use of third party components in &lt;a class="reference external" href="https://www.drupal.org/8"&gt;Drupal&amp;nbsp;8&lt;/a&gt; has inspired two new tools for
 Drupal&amp;nbsp;8 developers: the Drupal Console and the Drupal Web Profiler. Based on
-the &lt;a class="reference external" href="http://symfony.com/doc/current/components/console/introduction.html"&gt;Symfony&amp;nbsp;2 Console&lt;/a&gt; component, the &lt;a class="reference external" href="http://drupalconsole.com/"&gt;Drupal Console&lt;/a&gt; is a scaffolding
+the &lt;a class="reference external" href="https://symfony.com/doc/2.7/components/console.html"&gt;Symfony&amp;nbsp;2 Console&lt;/a&gt; component, the &lt;a class="reference external" href="https://drupalconsole.com/"&gt;Drupal Console&lt;/a&gt; is a scaffolding
 generator which allows developers to reduce development time by automating the
 generation of boilerplate code. The &lt;a class="reference external" href="https://www.drupal.org/project/webprofiler"&gt;Drupal Web Profiler&lt;/a&gt; is a port of the
-&lt;a class="reference external" href="https://github.com/symfony/WebProfilerBundle"&gt;Symfony 2 WebProfiler bundle&lt;/a&gt; as a Drupal&amp;nbsp;8 module providing a toolbar with
+&lt;a class="reference external" href="https://github.com/symfony/web-profiler-bundle"&gt;Symfony 2 WebProfiler bundle&lt;/a&gt; as a Drupal&amp;nbsp;8 module providing a toolbar with
 convenient access to performance and profile information.&lt;/p&gt;
 &lt;div class="contents topic" id="contents"&gt;
 &lt;p class="topic-title"&gt;Contents&lt;/p&gt;
@@ -308,8 +308,8 @@ convenient access to performance and profile information.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="drupal-console"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id3"&gt;Drupal Console&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;The Drupal Console (&lt;a class="reference external" href="https://github.com/hechoendrupal/DrupalConsole"&gt;hechoendrupal/DrupalConsole&lt;/a&gt; on GitHub) is a
-&lt;a class="reference external" href="http://symfony.com/doc/current/components/console/introduction.html"&gt;Symfony 2 console application&lt;/a&gt; which provides a number of generators to
+&lt;p&gt;The Drupal Console (&lt;a class="reference external" href="https://github.com/hechoendrupal/drupal-console"&gt;hechoendrupal/DrupalConsole&lt;/a&gt; on GitHub) is a
+&lt;a class="reference external" href="https://symfony.com/doc/2.7/components/console.html"&gt;Symfony 2 console application&lt;/a&gt; which provides a number of generators to
 assist developers in creating boilerplate code. In addition to increasing
 productivity Drupal Console is a valuable learning tool which allows developers
 to get up and running with best practice code by kick-starting a
@@ -331,33 +331,33 @@ to get up and running with best practice code by kick-starting a
 &lt;h3&gt;&lt;a class="toc-backref" href="#id4"&gt;Commands in the generate namespace&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Drupal Console currently has thirteen commands in the generate namespace:&lt;/p&gt;
 &lt;dl class="docutils"&gt;
-&lt;dt&gt;generate:authentication:provider&lt;/dt&gt;
+&lt;dt&gt;&lt;tt class="docutils literal"&gt;generate:authentication:provider&lt;/tt&gt;&lt;/dt&gt;
 &lt;dd&gt;Generate an authentication provider.&lt;/dd&gt;
-&lt;dt&gt;generate:command&lt;/dt&gt;
+&lt;dt&gt;&lt;tt class="docutils literal"&gt;generate:command&lt;/tt&gt;&lt;/dt&gt;
 &lt;dd&gt;Generate commands for the console.&lt;/dd&gt;
-&lt;dt&gt;generate:controller&lt;/dt&gt;
+&lt;dt&gt;&lt;tt class="docutils literal"&gt;generate:controller&lt;/tt&gt;&lt;/dt&gt;
 &lt;dd&gt;Generate &amp;amp; register a controller.&lt;/dd&gt;
-&lt;dt&gt;generate:entity&lt;/dt&gt;
+&lt;dt&gt;&lt;tt class="docutils literal"&gt;generate:entity&lt;/tt&gt;&lt;/dt&gt;
 &lt;dd&gt;&lt;ul class="first last simple"&gt;
-&lt;li&gt;&lt;strong&gt;generate:entity:config&lt;/strong&gt; Generate a new “EntityConfig”.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;generate:entity:content&lt;/strong&gt; Generate a new “EntityContent”.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;generate:entity:config&lt;/tt&gt; Generate a new “EntityConfig”.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;generate:entity:content&lt;/tt&gt; Generate a new “EntityContent”.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/dd&gt;
-&lt;dt&gt;generate:form:config&lt;/dt&gt;
+&lt;dt&gt;&lt;tt class="docutils literal"&gt;generate:form:config&lt;/tt&gt;&lt;/dt&gt;
 &lt;dd&gt;Generate a new “ConfigFormBase”.&lt;/dd&gt;
-&lt;dt&gt;generate:module&lt;/dt&gt;
+&lt;dt&gt;&lt;tt class="docutils literal"&gt;generate:module&lt;/tt&gt;&lt;/dt&gt;
 &lt;dd&gt;Generate a module.&lt;/dd&gt;
-&lt;dt&gt;generate:permissions&lt;/dt&gt;
+&lt;dt&gt;&lt;tt class="docutils literal"&gt;generate:permissions&lt;/tt&gt;&lt;/dt&gt;
 &lt;dd&gt;Generate module permissions.&lt;/dd&gt;
-&lt;dt&gt;generate:plugin&lt;/dt&gt;
+&lt;dt&gt;&lt;tt class="docutils literal"&gt;generate:plugin&lt;/tt&gt;&lt;/dt&gt;
 &lt;dd&gt;&lt;ul class="first last simple"&gt;
-&lt;li&gt;&lt;strong&gt;generate:plugin:block&lt;/strong&gt; Generate a plugin block.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;generate:plugin:imageeffect&lt;/strong&gt; Generate image effect plugin.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;generate:plugin:rest:resource&lt;/strong&gt; Generate plugin rest resource.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;generate:plugin:rulesaction&lt;/strong&gt; Generate a plugin rule action.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;generate:plugin:block&lt;/tt&gt; Generate a plugin block.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;generate:plugin:imageeffect&lt;/tt&gt; Generate image effect plugin.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;generate:plugin:rest:resource&lt;/tt&gt; Generate plugin rest resource.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;generate:plugin:rulesaction&lt;/tt&gt; Generate a plugin rule action.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/dd&gt;
-&lt;dt&gt;generate:service&lt;/dt&gt;
+&lt;dt&gt;&lt;tt class="docutils literal"&gt;generate:service&lt;/tt&gt;&lt;/dt&gt;
 &lt;dd&gt;Generate a service.&lt;/dd&gt;
 &lt;/dl&gt;
 &lt;p class="rubric"&gt;Example: Generating a module&lt;/p&gt;
@@ -410,7 +410,7 @@ installed.&lt;/p&gt;
 optionally passing the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;--format=json&lt;/span&gt;&lt;/tt&gt; option.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drupal site:status --format&lt;span class="o"&gt;=&lt;/span&gt;json
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Output of above command:&lt;/p&gt;
+&lt;p&gt;Output of preceding command:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="nt"&gt;&amp;quot;system&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="nt"&gt;&amp;quot;Drupal&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;8.0.0-dev&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -466,7 +466,7 @@ optionally passing the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&g
 &lt;p&gt;Modules may define commands by extending
 &lt;tt class="docutils literal"&gt;Symfony\Component\Console\Command\Command&lt;/tt&gt;. Drupal Console can create
 scaffolding for a custom command with the command &lt;tt class="docutils literal"&gt;generate:command&lt;/tt&gt;. Refer
-to the &lt;a class="reference external" href="http://symfony.com/doc/current/components/console/introduction.html"&gt;Symfony&amp;nbsp;2 Console Component documentation&lt;/a&gt; for additional information.
+to the &lt;a class="reference external" href="https://symfony.com/doc/2.7/components/console.html"&gt;Symfony&amp;nbsp;2 Console Component documentation&lt;/a&gt; for additional information.
 For an example implementation refer to the source code of Web Profiler
 &lt;tt class="docutils literal"&gt;git clone &lt;span class="pre"&gt;http://git.drupal.org/project/webprofiler.git&lt;/span&gt;&lt;/tt&gt;.&lt;/p&gt;
 &lt;/div&gt;
@@ -475,8 +475,8 @@ For an example implementation refer to the source code of Web Profiler
 &lt;p&gt;Commands may be recorded in YAML and executed with the &lt;tt class="docutils literal"&gt;chain&lt;/tt&gt; command:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drupal chain --file&lt;span class="o"&gt;=&lt;/span&gt;~/d8-project-init.yml
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;In the example below a module will be created, followed by a controller
-for that module.&lt;/p&gt;
+&lt;p&gt;In the example below a module is created, followed by a controller for that
+module.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# d8-project-init.yml&lt;/span&gt;
 &lt;span class="nt"&gt;commands&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="nt"&gt;command&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;generate:module&lt;/span&gt;
@@ -547,9 +547,9 @@ load timeline.&lt;/p&gt;
 &lt;/figure&gt;&lt;/div&gt;
 &lt;div class="section" id="profiling-decoupled-or-headless-requests"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id10"&gt;Profiling decoupled (or headless) requests&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;The inclusion of a &lt;a class="reference external" href="https://www.drupal.org/developing/api/8/routing"&gt;HTTP routing framework&lt;/a&gt; and &lt;a class="reference external" href="https://www.drupal.org/documentation/modules/rest"&gt;REST API&lt;/a&gt; in Drupal&amp;nbsp;8 core
-will make it significantly easier to develop decoupled applications using a
-client-side framework such as &lt;a class="reference external" href="http://emberjs.com/"&gt;ember.js&lt;/a&gt; which connects to a Drupal backend.&lt;/p&gt;
+&lt;p&gt;The inclusion of a &lt;a class="reference external" href="https://www.drupal.org/docs/8/api/routing-system/routing-system-overview"&gt;HTTP routing framework&lt;/a&gt; and &lt;a class="reference external" href="https://www.drupal.org/docs/8/core/modules/rest/overview"&gt;REST API&lt;/a&gt; in Drupal&amp;nbsp;8 core
+makes it significantly easier to develop decoupled applications using a
+client-side framework such as &lt;a class="reference external" href="https://emberjs.com/"&gt;ember.js&lt;/a&gt; which connects to a Drupal backend.&lt;/p&gt;
 &lt;p&gt;When profiling an API or headless request the Web Profiler toolbar is not
 available. However the profile data remains available for each request via a
 token and link provided in the HTTP response headers &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;X-Debug-Token&lt;/span&gt;&lt;/tt&gt; and
@@ -562,8 +562,8 @@ token and link provided in the HTTP response headers &lt;tt class="docutils lite
 &lt;span class="na"&gt;X-Debug-Token-Link&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="l"&gt;/admin/reports/profiler/view/0ac668&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Visiting the X-Debug-Token-Link (in this case
-&lt;tt class="docutils literal"&gt;/admin/reports/profiler/view/0ac668&lt;/tt&gt;) will provide access to the report for
-he relevant request.&lt;/p&gt;
+&lt;tt class="docutils literal"&gt;/admin/reports/profiler/view/0ac668&lt;/tt&gt;) provides access to the report for the
+relevant request.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="web-profiler-console-commands"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id11"&gt;Web Profiler console commands&lt;/a&gt;&lt;/h3&gt;
@@ -614,9 +614,9 @@ he relevant request.&lt;/p&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id12"&gt;Further reading&lt;/a&gt;&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://www.gitbook.com/book/hechoendrupal/drupal-console/details"&gt;The Drupal Console book&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="http://symfony.com/doc/current/cookbook/profiler/data_collector.html"&gt;How to create a custom data collector&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://symfony.com/doc/2.7/profiler/data_collector.html"&gt;How to create a custom data collector&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://drupalize.me/blog/201401/introduction-restful-web-services-drupal-8"&gt;An introduction to RESTful web services in Drupal 8&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="https://pantheon.io/blog/headless-websites-whats-big-deal"&gt;Headless websites: What’s the big deal?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://pantheon.io/blog/headless-websites-whats-big-deal-decoupled-architecture"&gt;Headless websites: What’s the big deal?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 </content><category term="Web development"></category><category term="Drupal 8"></category><category term="Drupal"></category></entry><entry><title>Symfony 2 PDF service using LaTeX</title><link href="https://seth.fischer.nz/symfony-2-latex-pdf-service.html" rel="alternate"></link><published>2015-04-19T20:11:00+12:00</published><updated>2015-04-19T20:11:00+12:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2015-04-19:/symfony-2-latex-pdf-service.html</id><summary type="html">&lt;p class="first"&gt;This Symfony 2 article is obsolete.&lt;/p&gt;
@@ -635,10 +635,10 @@ November 2018.&lt;/p&gt;
 sharing documentation. As a result, the dynamic generation of PDF documents is
 an expected feature of many web applications. After reviewing a number of
 libraries for generating PDF documents it was decided to write a service
-wrapping &lt;a class="reference external" href="http://www.latex-project.org/"&gt;LaTeX&lt;/a&gt;; a typesetting system with features suited to the production
+wrapping &lt;a class="reference external" href="https://www.latex-project.org/"&gt;LaTeX&lt;/a&gt;; a typesetting system with features suited to the production
 of scientific and technical documentation.&lt;/p&gt;
 &lt;p&gt;The code examples used in this article are from the certificate generation
-component of IB2020, a &lt;a class="reference external" href="http://symfony.com/"&gt;Symfony&lt;/a&gt; 2 web application for the management of
+component of IB2020, a &lt;a class="reference external" href="https://symfony.com/"&gt;Symfony&lt;/a&gt; 2 web application for the management of
 welder qualifications.&lt;/p&gt;
 &lt;div class="contents topic" id="contents"&gt;
 &lt;p class="topic-title"&gt;Contents&lt;/p&gt;
@@ -660,7 +660,7 @@ welder qualifications.&lt;/p&gt;
 &lt;p&gt;Before implementing the LaTeX service the following PDF generating libraries
 were considered:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
-&lt;li&gt;&lt;a class="reference external" href="http://sourceforge.net/projects/tcpdf/"&gt;TCPDF&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://sourceforge.net/projects/tcpdf/"&gt;TCPDF&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;HTML layout and rendering engine written in PHP.&lt;/li&gt;
 &lt;li&gt;Coordinate-based interface.&lt;/li&gt;
 &lt;/ul&gt;
@@ -704,8 +704,8 @@ turn invokes &lt;tt class="docutils literal"&gt;pdflatex&lt;/tt&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="symfony-2-service"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id4"&gt;Symfony 2 service&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;a class="reference external" href="http://symfony.com/doc/2.3/book/service_container.html"&gt;Services&lt;/a&gt; are re-usable, decoupled components, that may be accessed from any
-part of the application. The &lt;a class="reference external" href="http://symfony.com/doc/2.3/glossary.html#term-service"&gt;definition of a service&lt;/a&gt; from the Symfony
+&lt;p&gt;&lt;a class="reference external" href="https://symfony.com/doc/2.3/book/service_container.html"&gt;Services&lt;/a&gt; are re-usable, decoupled components, that may be accessed from any
+part of the application. The &lt;a class="reference external" href="https://symfony.com/doc/2.3/glossary.html#term-service"&gt;definition of a service&lt;/a&gt; from the Symfony
 documentation:&lt;/p&gt;
 &lt;blockquote&gt;
 A service is usually used “globally”, such as a database connection
@@ -715,15 +715,15 @@ container.&lt;/blockquote&gt;
 &lt;p&gt;The PDF LaTeX service consists of the following three components:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
 &lt;li&gt;The &lt;strong&gt;Symfony service container&lt;/strong&gt; configured in &lt;tt class="docutils literal"&gt;services.yml&lt;/tt&gt;.&lt;/li&gt;
-&lt;li&gt;A &lt;strong&gt;class&lt;/strong&gt; &lt;tt class="docutils literal"&gt;Pdflatex&lt;/tt&gt; of which an instance will be available in the
-service container.&lt;/li&gt;
+&lt;li&gt;A &lt;strong&gt;class&lt;/strong&gt; &lt;tt class="docutils literal"&gt;Pdflatex&lt;/tt&gt; of which an instance is available in the service
+container.&lt;/li&gt;
 &lt;li&gt;A &lt;strong&gt;Twig template&lt;/strong&gt; &lt;tt class="docutils literal"&gt;show.tex.twig&lt;/tt&gt; used to output the LaTeX source
 document.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class="section" id="configure-the-service-container"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id5"&gt;Configure the service container&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;The service container is configured with &lt;tt class="docutils literal"&gt;services.yml&lt;/tt&gt;. Two services are
-defined in the &lt;a class="reference external" href="http://yaml.org/"&gt;YAML&lt;/a&gt; below: 1. &lt;tt class="docutils literal"&gt;electrotech.twig.ib2020_extension&lt;/tt&gt;, which
+defined in the &lt;a class="reference external" href="https://yaml.org/"&gt;YAML&lt;/a&gt; below: 1. &lt;tt class="docutils literal"&gt;electrotech.twig.ib2020_extension&lt;/tt&gt;, which
 provides a Twig filer to escape LaTeX special characters; and
 2. &lt;tt class="docutils literal"&gt;electrotech.pdf.pdflatex&lt;/tt&gt;, the PDF LaTeX service itself.&lt;/p&gt;
 &lt;p&gt;For convenience the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;rubber-pipe&lt;/span&gt;&lt;/tt&gt; binary is defined as a parameter.&lt;/p&gt;
@@ -933,7 +933,7 @@ a LaTeX source document and returns a PDF document.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="twig-template"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id7"&gt;Twig template&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;A &lt;a class="reference external" href="http://twig.sensiolabs.org/"&gt;Twig&lt;/a&gt; template &lt;tt class="docutils literal"&gt;show.tex.twig&lt;/tt&gt; is used to generate the LaTeX source
+&lt;p&gt;A &lt;a class="reference external" href="https://twig.symfony.com/"&gt;Twig&lt;/a&gt; template &lt;tt class="docutils literal"&gt;show.tex.twig&lt;/tt&gt; is used to generate the LaTeX source
 document.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;% src/Electrotech/WeldqualBundle/Resources/views/Testweld/show.tex.twig&lt;/span&gt;
 
@@ -1009,7 +1009,7 @@ document.&lt;/p&gt;
 
 &lt;span class="k"&gt;\end&lt;/span&gt;&lt;span class="nb"&gt;{&lt;/span&gt;document&lt;span class="nb"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;A &lt;a class="reference external" href="http://twig.sensiolabs.org/doc/advanced.html#filters"&gt;custom Twig filter&lt;/a&gt; &lt;tt class="docutils literal"&gt;e_latex&lt;/tt&gt; is used to escape LaTeX special characters.
+&lt;p&gt;A &lt;a class="reference external" href="https://twig.symfony.com/doc/3.x/advanced.html#filters"&gt;custom Twig filter&lt;/a&gt; &lt;tt class="docutils literal"&gt;e_latex&lt;/tt&gt; is used to escape LaTeX special characters.
 Custom Twig filters are created by extending &lt;tt class="docutils literal"&gt;Twig_Extension&lt;/tt&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
 &lt;span class="c1"&gt;// src/Electrotech/WeldqualBundle/Twig/Ib2020Extension.php&lt;/span&gt;
@@ -1198,7 +1198,7 @@ Custom Twig filters are created by extending &lt;tt class="docutils literal"&gt;
 &lt;div class="section" id="further-reading"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id9"&gt;Further reading&lt;/a&gt;&lt;/h2&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;&lt;a class="reference external" href="http://symfony.com/doc/2.3/cookbook/controller/service.html"&gt;How to define controllers as services&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://symfony.com/doc/2.3/cookbook/controller/service.html"&gt;How to define controllers as services&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://tobi.oetiker.ch/lshort/lshort.pdf"&gt;The not so short introduction to LaTeX 2ε&lt;/a&gt; by Tobias Oetiker.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
@@ -1211,10 +1211,10 @@ by 62%.&lt;/p&gt;
 &lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
 &lt;p class="last"&gt;This site is no longer using the theme &lt;a class="reference external" href="https://github.com/sethfischer/pelican-bootstrap3"&gt;sethfischer/pelican-bootstrap3&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
-&lt;p&gt;As an exercise in optimising page speed the &lt;a class="reference external" href="http://docs.getpelican.com/"&gt;Pelican&lt;/a&gt; theme
-&lt;a class="reference external" href="https://github.com/DandyDev/pelican-bootstrap3"&gt;pelican-bootstrap3&lt;/a&gt; by Daan Debie was customised in order to improve page
-speed. The customisations reduced the total number of requests on the index
-page by 66% and the page size was reduced by 62%.&lt;/p&gt;
+&lt;p&gt;As an exercise in optimising page speed the &lt;a class="reference external" href="https://docs.getpelican.com/"&gt;Pelican&lt;/a&gt; theme
+&lt;a class="reference external" href="https://github.com/DandyDev/pelican-bootstrap3"&gt;DandyDev/pelican-bootstrap3&lt;/a&gt; was customised to improve page speed. The
+customisations reduced the total number of requests on the index page by 66%
+and the page size was reduced by 62%.&lt;/p&gt;
 &lt;div class="contents topic" id="contents"&gt;
 &lt;p class="topic-title"&gt;Contents&lt;/p&gt;
 &lt;ul class="simple"&gt;
@@ -1295,11 +1295,11 @@ sizes specified are for minified but uncompressed versions of the file.&lt;/p&gt
 the size to to 7.4&amp;nbsp;kB.&lt;/p&gt;
 &lt;p&gt;The associated style sheet &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;font-awesome.min.css&lt;/span&gt;&lt;/tt&gt; with a file size of 20.8&amp;nbsp;kB
 was replaced with &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;font-custom.css&lt;/span&gt;&lt;/tt&gt; having a file size of 1.1&amp;nbsp;kB.&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="http://fontcustom.com/"&gt;Font Custom&lt;/a&gt; was used to create the custom font and Font Custom vectors were
-obtained from &lt;a class="reference external" href="https://github.com/encharm/Font-Awesome-SVG-PNG"&gt;Font-Awesome-SVG-PNG&lt;/a&gt; by Code Charm.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://github.com/FontCustom/fontcustom"&gt;Font Custom&lt;/a&gt; was used to create the custom font and Font Custom vectors were
+obtained from &lt;a class="reference external" href="https://github.com/encharm/Font-Awesome-SVG-PNG"&gt;encharm/Font-Awesome-SVG-PNG&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Font Custom configuration is stored in &lt;tt class="docutils literal"&gt;fontcustom.yml&lt;/tt&gt;, or can be integrated
-into a &lt;a class="reference external" href="http://gruntjs.com/"&gt;Grunt&lt;/a&gt; build with &lt;a class="reference external" href="https://github.com/sapegin/grunt-webfont"&gt;grunt-webfont&lt;/a&gt; by Artem Sapegin. See the next
-section for the &lt;tt class="docutils literal"&gt;Gruntfile.js&lt;/tt&gt; which includes a &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;grunt-webfont&lt;/span&gt;&lt;/tt&gt; task.&lt;/p&gt;
+into a &lt;a class="reference external" href="https://gruntjs.com/"&gt;Grunt&lt;/a&gt; build with &lt;a class="reference external" href="https://github.com/sapegin/grunt-webfont"&gt;sapegin/grunt-webfont&lt;/a&gt;. See the next section for
+the &lt;tt class="docutils literal"&gt;Gruntfile.js&lt;/tt&gt; which includes a &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;grunt-webfont&lt;/span&gt;&lt;/tt&gt; task.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="custom-bootstrap"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id4"&gt;Custom Bootstrap&lt;/a&gt;&lt;/h3&gt;
@@ -1308,11 +1308,11 @@ section for the &lt;tt class="docutils literal"&gt;Gruntfile.js&lt;/tt&gt; which
 &lt;dt&gt;Page size&lt;/dt&gt;
 &lt;dd&gt;−15.3&amp;nbsp;kB&lt;/dd&gt;
 &lt;/dl&gt;
-&lt;p&gt;A custom build of &lt;a class="reference external" href="http://getbootstrap.com/"&gt;Bootstrap&lt;/a&gt; was built with &lt;a class="reference external" href="http://compass-style.org/"&gt;Compass&lt;/a&gt;. By excluding ten
+&lt;p&gt;A custom build of &lt;a class="reference external" href="https://getbootstrap.com/"&gt;Bootstrap&lt;/a&gt; was built with &lt;a class="reference external" href="http://compass-style.org/"&gt;Compass&lt;/a&gt;. By excluding ten
 unused components from the build &lt;tt class="docutils literal"&gt;bootstrap.min.css&lt;/tt&gt; was reduced from
 109.5&amp;nbsp;kB to 94.2&amp;nbsp;kB.&lt;/p&gt;
 &lt;p&gt;The Bootstrap build process was included as a Grunt task using
-&lt;a class="reference external" href="https://github.com/gruntjs/grunt-contrib-compass"&gt;grunt-contrib-compass&lt;/a&gt; by Sindre Sorhus.&lt;/p&gt;
+&lt;a class="reference external" href="https://github.com/gruntjs/grunt-contrib-compass"&gt;gruntjs/grunt-contrib-compass&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Below is the &lt;tt class="docutils literal"&gt;Gruntfile.js&lt;/tt&gt; for this theme which includes both a
 &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;grunt-webfont&lt;/span&gt;&lt;/tt&gt; task and a &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;grunt-contrib-compass&lt;/span&gt;&lt;/tt&gt; task.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nx"&gt;module&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;exports&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;grunt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
@@ -1363,7 +1363,7 @@ unused components from the build &lt;tt class="docutils literal"&gt;bootstrap.mi
 &lt;p&gt;The original theme included a script which obtained a list of GitHub
 repositories directly from the &lt;a class="reference external" href="https://developer.github.com/"&gt;GitHub API&lt;/a&gt;. To reduce the overhead of a SSL
 request the list of GitHub repositories was generated during the build process
-with &lt;a class="reference external" href="https://github.com/kura/pelican-githubprojects"&gt;pelican-githubprojects&lt;/a&gt; by Kura.&lt;/p&gt;
+with &lt;a class="reference external" href="https://github.com/kura/pelican-githubprojects"&gt;kura/pelican-githubprojects&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="custom-jquery"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id6"&gt;Custom jQuery&lt;/a&gt;&lt;/h3&gt;
@@ -1390,7 +1390,7 @@ with &lt;a class="reference external" href="https://github.com/kura/pelican-gith
 &lt;p&gt;Both JavaScript and CSS were combined using &lt;a class="reference external" href="https://github.com/miracle2k/webassets"&gt;webassets&lt;/a&gt; via the
 &lt;a class="reference external" href="https://github.com/getpelican/pelican-plugins"&gt;Pelican assets plug-in&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Five CSS files were merged into a single file and compressed with the
-&lt;a class="reference external" href="http://yui.github.io/yuicompressor/"&gt;YUI Compressor&lt;/a&gt;.&lt;/p&gt;
+&lt;a class="reference external" href="https://yui.github.io/yuicompressor/"&gt;YUI Compressor&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;assets&lt;/span&gt; &lt;span class="nv"&gt;filters&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;yui_css&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;output&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;css/styles.%(version)s.min.css&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;css/bootstrap-custom.css&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;css/font-custom.css&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;css/github-repos.css&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;css/style.css&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;pygments&amp;quot;&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
 &lt;span class="x"&gt;    &amp;lt;link href=&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;SITEURL&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="x"&gt;/&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;ASSET_URL&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="x"&gt;&amp;quot; rel=&amp;quot;stylesheet&amp;quot; /&amp;gt;&lt;/span&gt;
 &lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endassets&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
@@ -1403,7 +1403,7 @@ Compressor.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;While the homepage of this site did not include images, page size can often be
 significantly reduced by optimising images. For example, the two Pingdom screen
-shots were reduced by &lt;a class="reference external" href="http://pmt.sourceforge.net/pngcrush/"&gt;pngcrush&lt;/a&gt; to approximately 27&amp;nbsp;% of the original size.&lt;/p&gt;
+shots were reduced by &lt;a class="reference external" href="https://pmt.sourceforge.io/pngcrush/"&gt;pngcrush&lt;/a&gt; to approximately 27&amp;nbsp;% of the original size.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="eliminate-unnecessary-resources-and-dns-look-ups"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id8"&gt;Eliminate unnecessary resources and DNS look-ups&lt;/a&gt;&lt;/h3&gt;
@@ -1533,9 +1533,9 @@ a version identifier to the filename of those content types.&lt;/p&gt;
 requests by twelve. These improvements result in a significantly improved page
 load time.&lt;/p&gt;
 &lt;p&gt;As a result of the modifications made to achieve these improvements the
-functionality and flexibility of the original theme has been reduced. In
-addition, due to the extensive nature of the modifications merging upstream
-commits is no longer a trivial task.&lt;/p&gt;
+capability and flexibility of the original theme has been reduced. In addition,
+due to the extensive nature of the modifications merging upstream commits is no
+longer a trivial task.&lt;/p&gt;
 &lt;p&gt;The ease of use of the original theme has also been affected by introducing the
 following dependencies:&lt;/p&gt;
 &lt;ul class="simple"&gt;
@@ -1567,11 +1567,11 @@ following dependencies:&lt;/p&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id12"&gt;Further reading&lt;/a&gt;&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://w3c.github.io/web-performance/specs/HAR/Overview.html"&gt;HTTP Archive (HAR) format specification&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="http://webassets.readthedocs.org/en/latest/expiring.html"&gt;URL Expiry (cache busting)&lt;/a&gt; webassets documentation&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://webassets.readthedocs.io/en/latest/expiring.html"&gt;URL Expiry (cache busting)&lt;/a&gt; webassets documentation&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://developers.google.com/speed/pagespeed/"&gt;Make the web faster&lt;/a&gt; Google Developers documentation&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="https://developer.yahoo.com/performance/rules.html"&gt;Best Practices for Speeding Up Your Web Site&lt;/a&gt; Yahoo! Developer Network&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://developer.yahoo.com/performance/rules.html"&gt;Best Practices for Speeding Up Your Web Site&lt;/a&gt; Yahoo Developer Network&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://pages.github.com/"&gt;GitHub Pages&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="http://tools.pingdom.com/fpt/"&gt;Pingdom tools website speed test&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://tools.pingdom.com/"&gt;Pingdom tools website speed test&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 </content><category term="Web development"></category><category term="Front end"></category><category term="Pelican"></category></entry><entry><title>Deploying Drupal 8 with Fabric</title><link href="https://seth.fischer.nz/drupal-8-fabric-deploy.html" rel="alternate"></link><published>2015-02-06T09:38:00+13:00</published><updated>2015-02-06T09:38:00+13:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2015-02-06:/drupal-8-fabric-deploy.html</id><summary type="html">&lt;p class="first"&gt;This Drupal 8 article is obsolete.&lt;/p&gt;
@@ -1588,9 +1588,9 @@ months before Drupal&amp;nbsp;8 was released.&lt;/p&gt;
 provides a safeguard against failed deployments. &lt;a class="reference external" href="http://www.fabfile.org/"&gt;Fabric&lt;/a&gt; is a tool that can
 be used to automate application deployment and related tasks. This article
 describes using Fabric to deploy a Drupal&amp;nbsp;8 site.&lt;/p&gt;
-&lt;p&gt;Visit &lt;a class="reference external" href="https://github.com/sethfischer/fabric-deploy"&gt;github.com/sethfischer/fabric-deploy&lt;/a&gt; for the most recent version of
-the fabfile which is an adaptation of &lt;a class="reference external" href="https://github.com/halcyonCorsair/fabric-deploy"&gt;fabric-deploy by halcyonCorsair&lt;/a&gt; -- a
-fabfile for the deployment of Drupal&amp;nbsp;7 sites.&lt;/p&gt;
+&lt;p&gt;Visit &lt;a class="reference external" href="https://github.com/sethfischer/fabric-deploy"&gt;sethfischer/fabric-deploy&lt;/a&gt; for the most recent version of the fabfile
+which is an adaptation of &lt;a class="reference external" href="https://github.com/halcyonCorsair/fabric-deploy"&gt;halcyonCorsair/fabric-deploy&lt;/a&gt; — a fabfile for the
+deployment of Drupal&amp;nbsp;7 sites.&lt;/p&gt;
 &lt;div class="contents topic" id="contents"&gt;
 &lt;p class="topic-title"&gt;Contents&lt;/p&gt;
 &lt;ul class="simple"&gt;
@@ -1641,7 +1641,7 @@ staging, production) they must share a common
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The site UUID may be edited with the command &lt;tt class="docutils literal"&gt;drush cedit system.site&lt;/tt&gt;. For
 a robust approach to synchronising UUIDs across instances of a site see
-&lt;a class="reference external" href="http://dcycleproject.org/blog/68/approach-code-driven-development-drupal-8"&gt;An approach to code-driven development in Drupal 8&lt;/a&gt; by &lt;a class="reference external" href="https://github.com/alberto56/"&gt;Albert Albala&lt;/a&gt;.&lt;/p&gt;
+&lt;a class="reference external" href="https://blog.dcycle.com/blog/68/approach-code-driven-development-drupal-8/"&gt;An approach to code-driven development in Drupal 8&lt;/a&gt; by &lt;a class="reference external" href="https://github.com/alberto56/"&gt;Albert Albala&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="exclude-files-from-release-tarball"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id3"&gt;Exclude files from release tarball&lt;/a&gt;&lt;/h3&gt;
@@ -1707,7 +1707,7 @@ variable data being created during deployment.&lt;/p&gt;
 &lt;p&gt;The following tools must be installed on the target host:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://wiki.debian.org/SSH"&gt;OpenSSH server&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="http://docs.drush.org/en/master/install/#composer-one-drush-for-all-projects"&gt;Drush&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://docs.drush.org/en/7.x/install/"&gt;Drush&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class="section" id="manual-configuration"&gt;
@@ -1732,10 +1732,10 @@ target host and edit as appropriate according to the environment.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="fabfile"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id9"&gt;Fabfile&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Source code is hosted at &lt;a class="reference external" href="https://github.com/sethfischer/fabric-deploy"&gt;github.com/sethfischer/fabric-deploy&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Source code is hosted at &lt;a class="reference external" href="https://github.com/sethfischer/fabric-deploy"&gt;sethfischer/fabric-deploy&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="section" id="configuration"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id10"&gt;Configuration&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;Configuration is expressed via &lt;a class="reference external" href="http://yaml.org/"&gt;YAML&lt;/a&gt; with one file per project. Below is an
+&lt;p&gt;Configuration is expressed via &lt;a class="reference external" href="https://yaml.org/"&gt;YAML&lt;/a&gt; with one file per project. Below is an
 example configuration file.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# example.yml&lt;/span&gt;
 
@@ -1759,8 +1759,7 @@ example configuration file.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="available-commands"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id11"&gt;Available commands&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;tt class="docutils literal"&gt;fab &lt;span class="pre"&gt;-f&lt;/span&gt; drupal8 &lt;span class="pre"&gt;-l&lt;/span&gt;&lt;/tt&gt; will list the available commands with a short
-description:&lt;/p&gt;
+&lt;p&gt;&lt;tt class="docutils literal"&gt;fab &lt;span class="pre"&gt;-f&lt;/span&gt; drupal8 &lt;span class="pre"&gt;-l&lt;/span&gt;&lt;/tt&gt; lists the available commands with a short description:&lt;/p&gt;
 &lt;dl class="docutils"&gt;
 &lt;dt&gt;deploy&lt;/dt&gt;
 &lt;dd&gt;Deploy release&lt;/dd&gt;
@@ -2064,11 +2063,11 @@ or &lt;a class="reference external" href="https://github.com/sethfischer/fabric-
 &lt;div class="section" id="further-reading"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id14"&gt;Further reading&lt;/a&gt;&lt;/h2&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;&lt;a class="reference external" href="http://www.drushcommands.com/drush-7x/"&gt;Drush 7.x commands&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="http://docs.fabfile.org/en/1.10/"&gt;Fabric’s documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://drushcommands.com/drush-7x/"&gt;Drush 7.x commands&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://docs.fabfile.org/en/1.10/"&gt;Fabric’s documentation&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://www.drupal.org/node/1613424"&gt;Drupal core issue: Allow a site to be installed from existing
 configuration&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="https://www.drupal.org/documentation/administer/config"&gt;Managing configuration in Drupal 8&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://www.drupal.org/docs/configuration-management/managing-your-sites-configuration"&gt;Managing configuration in Drupal 8&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 </content><category term="DevOps"></category><category term="Drupal 8"></category><category term="Drupal"></category><category term="Fabric"></category><category term="Python"></category></entry><entry><title>A Drupal 8 workflow using the Git subtree merge strategy</title><link href="https://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merge.html" rel="alternate"></link><published>2015-01-23T19:20:00+13:00</published><updated>2015-01-23T19:20:00+13:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2015-01-23:/drupal-8-workflow-using-git-subtree-merge.html</id><summary type="html">&lt;p class="first"&gt;This Drupal 8 article is obsolete.&lt;/p&gt;
@@ -2097,8 +2096,8 @@ upstream changes to Drupal core may be conveniently merged with
 &lt;li&gt;&lt;a class="reference internal" href="#add-upstream-remote" id="id2"&gt;Add upstream remote&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#checkout-a-local-copy-of-the-upstream-branch" id="id3"&gt;Checkout a local copy of the upstream branch&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#pull-upstream-into-a-subdirectory-in-the-master-branch" id="id4"&gt;Pull upstream into a subdirectory in the master branch&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#create-a-gitingore-for-drupal-core" id="id5"&gt;Create a .gitingore for Drupal core&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#create-directories-above-the-document-root" id="id6"&gt;Create directories above the document root&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#create-a-gitingore-for-drupal-core" id="id5"&gt;Create a &lt;tt class="docutils literal"&gt;.gitingore&lt;/tt&gt; for Drupal core&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#create-directories-outside-the-document-root" id="id6"&gt;Create directories outside the document root&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#create-the-files-directory-and-set-permissions" id="id7"&gt;Create the files directory and set permissions&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#create-database" id="id8"&gt;Create database&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#site-installation" id="id9"&gt;Site installation&lt;/a&gt;&lt;/li&gt;
@@ -2153,7 +2152,7 @@ specified with the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;--
 &lt;span class="gp"&gt;$&lt;/span&gt; git commit
 &lt;span class="go"&gt;[master bd410e7] Merge remote-tracking branch &amp;#39;upstream/8.0.x&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;The upstream branch will now be a subdirectory of the master branch.&lt;/p&gt;
+&lt;p&gt;The upstream branch is now a subdirectory of the master branch.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; tree -L &lt;span class="m"&gt;2&lt;/span&gt;
 &lt;span class="go"&gt;.&lt;/span&gt;
 &lt;span class="go"&gt;|-- drupal&lt;/span&gt;
@@ -2174,7 +2173,7 @@ specified with the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;--
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="create-a-gitingore-for-drupal-core"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id5"&gt;Create a .gitingore for Drupal core&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id5"&gt;Create a &lt;tt class="docutils literal"&gt;.gitingore&lt;/tt&gt; for Drupal core&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Drupal core has an example &lt;tt class="docutils literal"&gt;.gitignore&lt;/tt&gt; file which provides an excellent
 starting point and is sufficient for most projects.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; cp drupal/example.gitignore drupal/.gitignore
@@ -2182,12 +2181,12 @@ starting point and is sufficient for most projects.&lt;/p&gt;
 &lt;span class="gp"&gt;$&lt;/span&gt; git commit -m &lt;span class="s2"&gt;&amp;quot;Add .gitignore for Drupal core&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="section" id="create-directories-above-the-document-root"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id6"&gt;Create directories above the document root&lt;/a&gt;&lt;/h2&gt;
+&lt;div class="section" id="create-directories-outside-the-document-root"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id6"&gt;Create directories outside the document root&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;As the document root is now below the repository root, files and directories
 may be committed to the repository without exposing them to the web server.&lt;/p&gt;
-&lt;p&gt;In this example -- when configuring the web server -- the document root will be
-set to &lt;tt class="docutils literal"&gt;/var/www/myproject/drupal&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;In this example—when configuring the web server—the document root is set to
+&lt;tt class="docutils literal"&gt;/var/www/myproject/drupal&lt;/tt&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; mkdir -p config/active config/staging config/deploy
 &lt;span class="gp"&gt;$&lt;/span&gt; tree -L &lt;span class="m"&gt;2&lt;/span&gt;
 &lt;span class="go"&gt;.&lt;/span&gt;
@@ -2241,7 +2240,7 @@ grep -v root &lt;span class="p"&gt;|&lt;/span&gt; head -1 &lt;span class="p"&gt;
 &lt;/div&gt;
 &lt;div class="section" id="site-installation"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id9"&gt;Site installation&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Install the site with the standard install profile and change the admin
+&lt;p&gt;Install the site with the standard install profile and change the administrator
 password.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; &lt;span class="nb"&gt;cd&lt;/span&gt; drupal
 &lt;span class="gp"&gt;$&lt;/span&gt; drush site-install standard --db-url&lt;span class="o"&gt;=&lt;/span&gt;mysql://dbuser:password@localhost/db &lt;span class="se"&gt;\&lt;/span&gt;
@@ -2277,11 +2276,11 @@ command &lt;tt class="docutils literal"&gt;drush &lt;span class="pre"&gt;config-
 &lt;/div&gt;
 &lt;div class="section" id="update-drupal-core"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id12"&gt;Update Drupal core&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;To merge upstream change to Drupal core the &lt;a class="reference external" href="http://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging"&gt;Git subtree merge strategy&lt;/a&gt; is
+&lt;p&gt;To merge upstream change to Drupal core the &lt;a class="reference external" href="https://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging"&gt;Git subtree merge strategy&lt;/a&gt; is
 used.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; git pull -s subtree upstream &lt;span class="m"&gt;8&lt;/span&gt;.0.x
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;The above command will merge the history of &lt;tt class="docutils literal"&gt;upstream&lt;/tt&gt; with the main
+&lt;p&gt;The preceding command merges the history of &lt;tt class="docutils literal"&gt;upstream&lt;/tt&gt; with the main
 repository. If it is not preferable to merge histories the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;--squash&lt;/span&gt;&lt;/tt&gt; and
 &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;--no-commit&lt;/span&gt;&lt;/tt&gt; options can be used along with the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;-s&lt;/span&gt; subtree&lt;/tt&gt; strategy
 option:&lt;/p&gt;
@@ -2297,7 +2296,7 @@ option:&lt;/p&gt;
 &lt;div class="section" id="further-reading"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id13"&gt;Further reading&lt;/a&gt;&lt;/h2&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;&lt;a class="reference external" href="http://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging"&gt;Git Tools - Subtree Merging&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging"&gt;Git Tools - Subtree Merging&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://www.kernel.org/pub/software/scm/git/docs/howto/using-merge-subtree.html"&gt;How to use the subtree merge strategy&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://seth.fischer.nz/drupal-8-fabric-deploy.html"&gt;Deploying Drupal&amp;nbsp;8 with Fabric&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -2311,10 +2310,10 @@ introduction to installing and configuring Drupal 8 using Git and Drush.&lt;/p&g
 &lt;p class="last"&gt;This Drupal&amp;nbsp;8 article is obsolete. It was published in November 2014, 12 months
 before Drupal&amp;nbsp;8 was released.&lt;/p&gt;
 &lt;/div&gt;
-&lt;p&gt;Now that &lt;a class="reference external" href="https://www.drupal.org/drupal-8.0"&gt;Drupal&amp;nbsp;8&lt;/a&gt; is in beta phase it is time for site developers to start
+&lt;p&gt;Now that &lt;a class="reference external" href="https://www.drupal.org/8"&gt;Drupal&amp;nbsp;8&lt;/a&gt; is in beta phase it is time for site developers to start
 exploring the API. This article describes the installation and configuration of
 Drupal&amp;nbsp;8 using Git and Drush. Bear in mind that as of 2014-11-28 there were 22
-&lt;a class="reference external" href="https://www.drupal.org/project/issues/search/drupal?project_issue_followers=&amp;amp;status%5B%5D=1&amp;amp;status%5B%5D=13&amp;amp;status%5B%5D=8&amp;amp;status%5B%5D=14&amp;amp;status%5B%5D=15&amp;amp;status%5B%5D=4&amp;amp;priorities%5B%5D=400&amp;amp;categories%5B%5D=1&amp;amp;categories%5B%5D=2&amp;amp;version%5B%5D=8.x&amp;amp;issue_tags_op=%3D&amp;amp;issue_tags=D8+upgrade+path"&gt;issues tagged with D8 upgrade path&lt;/a&gt;, so it may be necessary to rebuild your
+&lt;a class="reference external" href="https://www.drupal.org/project/issues/search/drupal?project_issue_followers=&amp;amp;status%5B0%5D=1&amp;amp;status%5B1%5D=13&amp;amp;status%5B2%5D=8&amp;amp;status%5B3%5D=14&amp;amp;status%5B4%5D=15&amp;amp;status%5B5%5D=4&amp;amp;priorities%5B0%5D=400&amp;amp;categories%5B0%5D=1&amp;amp;categories%5B1%5D=2&amp;amp;version%5B0%5D=any_8.&amp;amp;issue_tags_op=%3D&amp;amp;issue_tags=D8%20upgrade%20path"&gt;issues tagged with D8 upgrade path&lt;/a&gt;, so it may be necessary to rebuild your
 site with the next core update.&lt;/p&gt;
 &lt;div class="contents topic" id="contents"&gt;
 &lt;p class="topic-title"&gt;Contents&lt;/p&gt;
@@ -2339,16 +2338,15 @@ site with the next core update.&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;set-up a &lt;abbr title="Linux, Apache, MySQL, PHP"&gt;LAMP&lt;/abbr&gt; or
 &lt;abbr title="Linux, nginx, MySQL, PHP"&gt;LNMP&lt;/abbr&gt; stack conforming with the
-&lt;a class="reference external" href="https://api.drupal.org/api/drupal/core!INSTALL.txt/8"&gt;Drupal&amp;nbsp;8 system requirements&lt;/a&gt;&lt;/li&gt;
+&lt;a class="reference external" href="https://api.drupal.org/api/drupal/core!INSTALL.txt/8.2.x"&gt;Drupal&amp;nbsp;8 system requirements&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="http://git-scm.com/book/en/v2/Getting-Started-Installing-Git"&gt;install git&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="https://getcomposer.org/doc/00-intro.md#installation-nix"&gt;install Composer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos"&gt;install Composer&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;using composer, &lt;a class="reference external" href="https://github.com/drush-ops/drush#installupdate---composer"&gt;install Drush 7.x (dev)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class="section" id="clone-drupal-8"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id4"&gt;Clone Drupal&amp;nbsp;8&lt;/a&gt;&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="go"&gt;:::console&lt;/span&gt;
-&lt;span class="gp"&gt;$&lt;/span&gt; git clone -b &lt;span class="m"&gt;8&lt;/span&gt;.0.x --single-branch http://git.drupal.org/project/drupal.git
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; git clone -b &lt;span class="m"&gt;8&lt;/span&gt;.0.x --single-branch http://git.drupal.org/project/drupal.git
 &lt;span class="gp"&gt;$&lt;/span&gt; git remote rename origin upstream
 &lt;span class="gp"&gt;$&lt;/span&gt; git remote add origin &lt;span class="o"&gt;[&lt;/span&gt;url&lt;span class="o"&gt;]&lt;/span&gt;
 &lt;span class="gp"&gt;$&lt;/span&gt; git checkout -b master
@@ -2364,14 +2362,13 @@ writeable both by the web server and command line user. An alternative to
 &lt;tt class="docutils literal"&gt;chmod &lt;span class="pre"&gt;-R&lt;/span&gt; 777 sites/default/files&lt;/tt&gt; is to use &lt;a class="reference external" href="https://wiki.debian.org/Permissions#Access_Control_Lists_in_Linux"&gt;Access Control Lists&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Those familiar with the Symfony&amp;nbsp;2 documentation will recognise the following
 shell commands which have been adapted from the
-&lt;a class="reference external" href="http://Symfony.com/doc/2.3/book/installation.html#configuration-and-set-up"&gt;Installing and Configuring Symfony&lt;/a&gt; chapter of the The Symfony Book.&lt;/p&gt;
+&lt;a class="reference external" href="https://symfony.com/doc/2.3/book/installation.html#configuration-and-set-up"&gt;Installing and Configuring Symfony&lt;/a&gt; section of the The Symfony Book.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; &lt;span class="nv"&gt;HTTPDUSER&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;ps aux &lt;span class="p"&gt;|&lt;/span&gt; grep -E &lt;span class="s1"&gt;&amp;#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; grep -v root &lt;span class="p"&gt;|&lt;/span&gt; head -1 &lt;span class="p"&gt;|&lt;/span&gt; cut -d&lt;span class="se"&gt;\ &lt;/span&gt; -f1&lt;span class="sb"&gt;`&lt;/span&gt;
 &lt;span class="gp"&gt;$&lt;/span&gt; sudo setfacl -R -m u:&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$HTTPDUSER&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;:rwX -m u:&lt;span class="sb"&gt;`&lt;/span&gt;whoami&lt;span class="sb"&gt;`&lt;/span&gt;:rwX sites/default/files
 &lt;span class="gp"&gt;$&lt;/span&gt; sudo setfacl -dR -m u:&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$HTTPDUSER&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;:rwX -m u:&lt;span class="sb"&gt;`&lt;/span&gt;whoami&lt;span class="sb"&gt;`&lt;/span&gt;:rwX sites/default/files
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;tt class="docutils literal"&gt;HTTPDUSER&lt;/tt&gt; is usually &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;www-data&lt;/span&gt;&lt;/tt&gt; on Debian-based distributions.&lt;/p&gt;
-&lt;p&gt;Before setting the access control only the drush user will have &lt;tt class="docutils literal"&gt;rw&lt;/tt&gt;
-permissions:&lt;/p&gt;
+&lt;p&gt;Before setting the access control only the drush user has &lt;tt class="docutils literal"&gt;rw&lt;/tt&gt; permissions:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; getfacl sites/default/files
 &lt;span class="gp"&gt;#&lt;/span&gt; file: cache
 &lt;span class="gp"&gt;#&lt;/span&gt; owner: drushuser
@@ -2380,8 +2377,8 @@ permissions:&lt;/p&gt;
 &lt;span class="go"&gt;group::rwx&lt;/span&gt;
 &lt;span class="go"&gt;other::rwx&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;After setting the access control both the web server user and drush user will
-have &lt;tt class="docutils literal"&gt;rw&lt;/tt&gt; permissions:&lt;/p&gt;
+&lt;p&gt;After setting the access control both the web server user and drush user have
+&lt;tt class="docutils literal"&gt;rw&lt;/tt&gt; permissions:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; getfacl sites/default/files
 &lt;span class="gp"&gt;#&lt;/span&gt; file: cache
 &lt;span class="gp"&gt;#&lt;/span&gt; owner: drushuser
@@ -2443,7 +2440,7 @@ password “password”.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drush @drupal8 core-requirements
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Check the status of the site installation by running &lt;tt class="docutils literal"&gt;drush &amp;#64;drupal8 status&lt;/tt&gt;.
-The output will be similar to the following:&lt;/p&gt;
+The output is as follows:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drush @drupal8 status
 &lt;span class="go"&gt; Drupal version         :  8.0.0-dev&lt;/span&gt;
 &lt;span class="go"&gt; Site URI               :  http://drupal8&lt;/span&gt;
@@ -2491,8 +2488,8 @@ The output will be similar to the following:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drush @drupal8 pm-download examples
 &lt;span class="gp"&gt;$&lt;/span&gt; drush @drupal8 pm-enable examples
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;The single command &lt;tt class="docutils literal"&gt;drush &amp;#64;drupal8 &lt;span class="pre"&gt;pm-enable&lt;/span&gt; module&lt;/tt&gt; will download module
-(if required) before enabling it.&lt;/p&gt;
+&lt;p&gt;The single command &lt;tt class="docutils literal"&gt;drush &amp;#64;drupal8 &lt;span class="pre"&gt;pm-enable&lt;/span&gt; module&lt;/tt&gt; downloads module (if
+required) before enabling it.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="regularly-update-drupal-core"&gt;
@@ -2507,14 +2504,14 @@ latest code:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drush cache-rebuild
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Before all issues tagged with “D8 upgrade path” have been closed you may find
-that you are required to repeat the site installation commands as described
-above after updating Drupal core.&lt;/p&gt;
+that you are required to repeat the preceding site installation commands after
+updating Drupal core.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="further-reading"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id13"&gt;Further reading&lt;/a&gt;&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://www.drupal.org/node/803746"&gt;Building a Drupal site with Git&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="http://gitref.org/"&gt;Git Reference&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://git-scm.com/"&gt;git-scm.com&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 </content><category term="Web development"></category><category term="Drupal 8"></category><category term="Drupal"></category></entry></feed>

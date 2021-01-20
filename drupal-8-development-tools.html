@@ -130,12 +130,12 @@
 <p class="last">This Drupal&nbsp;8 article is obsolete. It was published in July 2015, four
 months before Drupal&nbsp;8 was released.</p>
 </div>
-<p>The use of third party components in <a class="reference external" href="https://www.drupal.org/drupal-8.0">Drupal&nbsp;8</a> has inspired two new tools for
+<p>The use of third party components in <a class="reference external" href="https://www.drupal.org/8">Drupal&nbsp;8</a> has inspired two new tools for
 Drupal&nbsp;8 developers: the Drupal Console and the Drupal Web Profiler. Based on
-the <a class="reference external" href="http://symfony.com/doc/current/components/console/introduction.html">Symfony&nbsp;2 Console</a> component, the <a class="reference external" href="http://drupalconsole.com/">Drupal Console</a> is a scaffolding
+the <a class="reference external" href="https://symfony.com/doc/2.7/components/console.html">Symfony&nbsp;2 Console</a> component, the <a class="reference external" href="https://drupalconsole.com/">Drupal Console</a> is a scaffolding
 generator which allows developers to reduce development time by automating the
 generation of boilerplate code. The <a class="reference external" href="https://www.drupal.org/project/webprofiler">Drupal Web Profiler</a> is a port of the
-<a class="reference external" href="https://github.com/symfony/WebProfilerBundle">Symfony 2 WebProfiler bundle</a> as a Drupal&nbsp;8 module providing a toolbar with
+<a class="reference external" href="https://github.com/symfony/web-profiler-bundle">Symfony 2 WebProfiler bundle</a> as a Drupal&nbsp;8 module providing a toolbar with
 convenient access to performance and profile information.</p>
 <div class="contents topic" id="contents">
 <p class="topic-title">Contents</p>
@@ -158,8 +158,8 @@ convenient access to performance and profile information.</p>
 </div>
 <div class="section" id="drupal-console">
 <h2><a class="toc-backref" href="#id3">Drupal Console</a></h2>
-<p>The Drupal Console (<a class="reference external" href="https://github.com/hechoendrupal/DrupalConsole">hechoendrupal/DrupalConsole</a> on GitHub) is a
-<a class="reference external" href="http://symfony.com/doc/current/components/console/introduction.html">Symfony 2 console application</a> which provides a number of generators to
+<p>The Drupal Console (<a class="reference external" href="https://github.com/hechoendrupal/drupal-console">hechoendrupal/DrupalConsole</a> on GitHub) is a
+<a class="reference external" href="https://symfony.com/doc/2.7/components/console.html">Symfony 2 console application</a> which provides a number of generators to
 assist developers in creating boilerplate code. In addition to increasing
 productivity Drupal Console is a valuable learning tool which allows developers
 to get up and running with best practice code by kick-starting a
@@ -181,33 +181,33 @@ to get up and running with best practice code by kick-starting a
 <h3><a class="toc-backref" href="#id4">Commands in the generate namespace</a></h3>
 <p>Drupal Console currently has thirteen commands in the generate namespace:</p>
 <dl class="docutils">
-<dt>generate:authentication:provider</dt>
+<dt><tt class="docutils literal">generate:authentication:provider</tt></dt>
 <dd>Generate an authentication provider.</dd>
-<dt>generate:command</dt>
+<dt><tt class="docutils literal">generate:command</tt></dt>
 <dd>Generate commands for the console.</dd>
-<dt>generate:controller</dt>
+<dt><tt class="docutils literal">generate:controller</tt></dt>
 <dd>Generate &amp; register a controller.</dd>
-<dt>generate:entity</dt>
+<dt><tt class="docutils literal">generate:entity</tt></dt>
 <dd><ul class="first last simple">
-<li><strong>generate:entity:config</strong> Generate a new “EntityConfig”.</li>
-<li><strong>generate:entity:content</strong> Generate a new “EntityContent”.</li>
+<li><tt class="docutils literal">generate:entity:config</tt> Generate a new “EntityConfig”.</li>
+<li><tt class="docutils literal">generate:entity:content</tt> Generate a new “EntityContent”.</li>
 </ul>
 </dd>
-<dt>generate:form:config</dt>
+<dt><tt class="docutils literal">generate:form:config</tt></dt>
 <dd>Generate a new “ConfigFormBase”.</dd>
-<dt>generate:module</dt>
+<dt><tt class="docutils literal">generate:module</tt></dt>
 <dd>Generate a module.</dd>
-<dt>generate:permissions</dt>
+<dt><tt class="docutils literal">generate:permissions</tt></dt>
 <dd>Generate module permissions.</dd>
-<dt>generate:plugin</dt>
+<dt><tt class="docutils literal">generate:plugin</tt></dt>
 <dd><ul class="first last simple">
-<li><strong>generate:plugin:block</strong> Generate a plugin block.</li>
-<li><strong>generate:plugin:imageeffect</strong> Generate image effect plugin.</li>
-<li><strong>generate:plugin:rest:resource</strong> Generate plugin rest resource.</li>
-<li><strong>generate:plugin:rulesaction</strong> Generate a plugin rule action.</li>
+<li><tt class="docutils literal">generate:plugin:block</tt> Generate a plugin block.</li>
+<li><tt class="docutils literal">generate:plugin:imageeffect</tt> Generate image effect plugin.</li>
+<li><tt class="docutils literal">generate:plugin:rest:resource</tt> Generate plugin rest resource.</li>
+<li><tt class="docutils literal">generate:plugin:rulesaction</tt> Generate a plugin rule action.</li>
 </ul>
 </dd>
-<dt>generate:service</dt>
+<dt><tt class="docutils literal">generate:service</tt></dt>
 <dd>Generate a service.</dd>
 </dl>
 <p class="rubric">Example: Generating a module</p>
@@ -260,7 +260,7 @@ installed.</p>
 optionally passing the <tt class="docutils literal"><span class="pre">--format=json</span></tt> option.</p>
 <div class="highlight"><pre><span></span><span class="gp">$</span> drupal site:status --format<span class="o">=</span>json
 </pre></div>
-<p>Output of above command:</p>
+<p>Output of preceding command:</p>
 <div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;system&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;Drupal&quot;</span><span class="p">:</span> <span class="s2">&quot;8.0.0-dev&quot;</span><span class="p">,</span>
@@ -316,7 +316,7 @@ optionally passing the <tt class="docutils literal"><span class="pre">--format=j
 <p>Modules may define commands by extending
 <tt class="docutils literal">Symfony\Component\Console\Command\Command</tt>. Drupal Console can create
 scaffolding for a custom command with the command <tt class="docutils literal">generate:command</tt>. Refer
-to the <a class="reference external" href="http://symfony.com/doc/current/components/console/introduction.html">Symfony&nbsp;2 Console Component documentation</a> for additional information.
+to the <a class="reference external" href="https://symfony.com/doc/2.7/components/console.html">Symfony&nbsp;2 Console Component documentation</a> for additional information.
 For an example implementation refer to the source code of Web Profiler
 <tt class="docutils literal">git clone <span class="pre">http://git.drupal.org/project/webprofiler.git</span></tt>.</p>
 </div>
@@ -325,8 +325,8 @@ For an example implementation refer to the source code of Web Profiler
 <p>Commands may be recorded in YAML and executed with the <tt class="docutils literal">chain</tt> command:</p>
 <div class="highlight"><pre><span></span><span class="gp">$</span> drupal chain --file<span class="o">=</span>~/d8-project-init.yml
 </pre></div>
-<p>In the example below a module will be created, followed by a controller
-for that module.</p>
+<p>In the example below a module is created, followed by a controller for that
+module.</p>
 <div class="highlight"><pre><span></span><span class="c1"># d8-project-init.yml</span>
 <span class="nt">commands</span><span class="p">:</span>
     <span class="p p-Indicator">-</span> <span class="nt">command</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">generate:module</span>
@@ -397,9 +397,9 @@ load timeline.</p>
 </figure></div>
 <div class="section" id="profiling-decoupled-or-headless-requests">
 <h3><a class="toc-backref" href="#id10">Profiling decoupled (or headless) requests</a></h3>
-<p>The inclusion of a <a class="reference external" href="https://www.drupal.org/developing/api/8/routing">HTTP routing framework</a> and <a class="reference external" href="https://www.drupal.org/documentation/modules/rest">REST API</a> in Drupal&nbsp;8 core
-will make it significantly easier to develop decoupled applications using a
-client-side framework such as <a class="reference external" href="http://emberjs.com/">ember.js</a> which connects to a Drupal backend.</p>
+<p>The inclusion of a <a class="reference external" href="https://www.drupal.org/docs/8/api/routing-system/routing-system-overview">HTTP routing framework</a> and <a class="reference external" href="https://www.drupal.org/docs/8/core/modules/rest/overview">REST API</a> in Drupal&nbsp;8 core
+makes it significantly easier to develop decoupled applications using a
+client-side framework such as <a class="reference external" href="https://emberjs.com/">ember.js</a> which connects to a Drupal backend.</p>
 <p>When profiling an API or headless request the Web Profiler toolbar is not
 available. However the profile data remains available for each request via a
 token and link provided in the HTTP response headers <tt class="docutils literal"><span class="pre">X-Debug-Token</span></tt> and
@@ -412,8 +412,8 @@ token and link provided in the HTTP response headers <tt class="docutils literal
 <span class="na">X-Debug-Token-Link</span><span class="o">:</span> <span class="l">/admin/reports/profiler/view/0ac668</span>
 </pre></div>
 <p>Visiting the X-Debug-Token-Link (in this case
-<tt class="docutils literal">/admin/reports/profiler/view/0ac668</tt>) will provide access to the report for
-he relevant request.</p>
+<tt class="docutils literal">/admin/reports/profiler/view/0ac668</tt>) provides access to the report for the
+relevant request.</p>
 </div>
 <div class="section" id="web-profiler-console-commands">
 <h3><a class="toc-backref" href="#id11">Web Profiler console commands</a></h3>
@@ -464,9 +464,9 @@ he relevant request.</p>
 <h2><a class="toc-backref" href="#id12">Further reading</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="https://www.gitbook.com/book/hechoendrupal/drupal-console/details">The Drupal Console book</a></li>
-<li><a class="reference external" href="http://symfony.com/doc/current/cookbook/profiler/data_collector.html">How to create a custom data collector</a></li>
+<li><a class="reference external" href="https://symfony.com/doc/2.7/profiler/data_collector.html">How to create a custom data collector</a></li>
 <li><a class="reference external" href="https://drupalize.me/blog/201401/introduction-restful-web-services-drupal-8">An introduction to RESTful web services in Drupal 8</a></li>
-<li><a class="reference external" href="https://pantheon.io/blog/headless-websites-whats-big-deal">Headless websites: What’s the big deal?</a></li>
+<li><a class="reference external" href="https://pantheon.io/blog/headless-websites-whats-big-deal-decoupled-architecture">Headless websites: What’s the big deal?</a></li>
 </ul>
 </div>
 
