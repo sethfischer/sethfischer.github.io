@@ -161,7 +161,7 @@ site with the next core update.</p>
 <a class="reference external" href="https://api.drupal.org/api/drupal/core!INSTALL.txt/8.2.x">Drupal&nbsp;8 system requirements</a></li>
 <li><a class="reference external" href="http://git-scm.com/book/en/v2/Getting-Started-Installing-Git">install git</a></li>
 <li><a class="reference external" href="https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos">install Composer</a></li>
-<li>using composer, <a class="reference external" href="https://github.com/drush-ops/drush#installupdate---composer">install Drush 7.x (dev)</a></li>
+<li>using composer, <a class="reference external" href="https://docs.drush.org/en/7.x/install/#composer-one-drush-for-all-projects">install Drush 7.x (dev)</a></li>
 </ul>
 </div>
 <div class="section" id="clone-drupal-8">
@@ -182,7 +182,7 @@ writeable both by the web server and command line user. An alternative to
 <tt class="docutils literal">chmod <span class="pre">-R</span> 777 sites/default/files</tt> is to use <a class="reference external" href="https://wiki.debian.org/Permissions#Access_Control_Lists_in_Linux">Access Control Lists</a>.</p>
 <p>Those familiar with the Symfony&nbsp;2 documentation will recognise the following
 shell commands which have been adapted from the
-<a class="reference external" href="https://symfony.com/doc/2.3/book/installation.html#configuration-and-set-up">Installing and Configuring Symfony</a> section of the The Symfony Book.</p>
+<a class="reference external" href="https://symfony.com/doc/2.3/book/installation.html">Installing and Configuring Symfony</a> section of the The Symfony Book.</p>
 <div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nv">HTTPDUSER</span><span class="o">=</span><span class="sb">`</span>ps aux <span class="p">|</span> grep -E <span class="s1">&#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&#39;</span> <span class="p">|</span> grep -v root <span class="p">|</span> head -1 <span class="p">|</span> cut -d<span class="se">\ </span> -f1<span class="sb">`</span>
 <span class="gp">$</span> sudo setfacl -R -m u:<span class="s2">&quot;</span><span class="nv">$HTTPDUSER</span><span class="s2">&quot;</span>:rwX -m u:<span class="sb">`</span>whoami<span class="sb">`</span>:rwX sites/default/files
 <span class="gp">$</span> sudo setfacl -dR -m u:<span class="s2">&quot;</span><span class="nv">$HTTPDUSER</span><span class="s2">&quot;</span>:rwX -m u:<span class="sb">`</span>whoami<span class="sb">`</span>:rwX sites/default/files

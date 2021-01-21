@@ -1300,7 +1300,7 @@ following dependencies:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://w3c.github.io/web-performance/specs/HAR/Overview.html"&gt;HTTP Archive (HAR) format specification&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://webassets.readthedocs.io/en/latest/expiring.html"&gt;URL Expiry (cache busting)&lt;/a&gt; webassets documentation&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference external" href="https://developers.google.com/speed/pagespeed/"&gt;Make the web faster&lt;/a&gt; Google Developers documentation&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://developers.google.com/speed"&gt;Make the web faster&lt;/a&gt; Google Developers documentation&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://developer.yahoo.com/performance/rules.html"&gt;Best Practices for Speeding Up Your Web Site&lt;/a&gt; Yahoo Developer Network&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://pages.github.com/"&gt;GitHub Pages&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://tools.pingdom.com/"&gt;Pingdom tools website speed test&lt;/a&gt;&lt;/li&gt;
@@ -1512,7 +1512,7 @@ command &lt;tt class="docutils literal"&gt;drush &lt;span class="pre"&gt;config-
 &lt;/div&gt;
 &lt;div class="section" id="update-drupal-core"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id12"&gt;Update Drupal core&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;To merge upstream change to Drupal core the &lt;a class="reference external" href="https://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging"&gt;Git subtree merge strategy&lt;/a&gt; is
+&lt;p&gt;To merge upstream change to Drupal core the &lt;a class="reference external" href="https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging#_subtree_merge"&gt;Git subtree merge strategy&lt;/a&gt; is
 used.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; git pull -s subtree upstream &lt;span class="m"&gt;8&lt;/span&gt;.0.x
 &lt;/pre&gt;&lt;/div&gt;
@@ -1532,7 +1532,7 @@ option:&lt;/p&gt;
 &lt;div class="section" id="further-reading"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id13"&gt;Further reading&lt;/a&gt;&lt;/h2&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;&lt;a class="reference external" href="https://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging"&gt;Git Tools - Subtree Merging&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging#_subtree_merge"&gt;Git Tools - Subtree Merging&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://www.kernel.org/pub/software/scm/git/docs/howto/using-merge-subtree.html"&gt;How to use the subtree merge strategy&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://seth.fischer.nz/drupal-8-fabric-deploy.html"&gt;Deploying Drupal&amp;nbsp;8 with Fabric&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -1577,7 +1577,7 @@ site with the next core update.&lt;/p&gt;
 &lt;a class="reference external" href="https://api.drupal.org/api/drupal/core!INSTALL.txt/8.2.x"&gt;Drupal&amp;nbsp;8 system requirements&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="http://git-scm.com/book/en/v2/Getting-Started-Installing-Git"&gt;install git&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos"&gt;install Composer&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;using composer, &lt;a class="reference external" href="https://github.com/drush-ops/drush#installupdate---composer"&gt;install Drush 7.x (dev)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;using composer, &lt;a class="reference external" href="https://docs.drush.org/en/7.x/install/#composer-one-drush-for-all-projects"&gt;install Drush 7.x (dev)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class="section" id="clone-drupal-8"&gt;
@@ -1598,7 +1598,7 @@ writeable both by the web server and command line user. An alternative to
 &lt;tt class="docutils literal"&gt;chmod &lt;span class="pre"&gt;-R&lt;/span&gt; 777 sites/default/files&lt;/tt&gt; is to use &lt;a class="reference external" href="https://wiki.debian.org/Permissions#Access_Control_Lists_in_Linux"&gt;Access Control Lists&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Those familiar with the Symfony&amp;nbsp;2 documentation will recognise the following
 shell commands which have been adapted from the
-&lt;a class="reference external" href="https://symfony.com/doc/2.3/book/installation.html#configuration-and-set-up"&gt;Installing and Configuring Symfony&lt;/a&gt; section of the The Symfony Book.&lt;/p&gt;
+&lt;a class="reference external" href="https://symfony.com/doc/2.3/book/installation.html"&gt;Installing and Configuring Symfony&lt;/a&gt; section of the The Symfony Book.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; &lt;span class="nv"&gt;HTTPDUSER&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;ps aux &lt;span class="p"&gt;|&lt;/span&gt; grep -E &lt;span class="s1"&gt;&amp;#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; grep -v root &lt;span class="p"&gt;|&lt;/span&gt; head -1 &lt;span class="p"&gt;|&lt;/span&gt; cut -d&lt;span class="se"&gt;\ &lt;/span&gt; -f1&lt;span class="sb"&gt;`&lt;/span&gt;
 &lt;span class="gp"&gt;$&lt;/span&gt; sudo setfacl -R -m u:&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$HTTPDUSER&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;:rwX -m u:&lt;span class="sb"&gt;`&lt;/span&gt;whoami&lt;span class="sb"&gt;`&lt;/span&gt;:rwX sites/default/files
 &lt;span class="gp"&gt;$&lt;/span&gt; sudo setfacl -dR -m u:&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$HTTPDUSER&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;:rwX -m u:&lt;span class="sb"&gt;`&lt;/span&gt;whoami&lt;span class="sb"&gt;`&lt;/span&gt;:rwX sites/default/files

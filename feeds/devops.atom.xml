@@ -14,7 +14,7 @@ provides a safeguard against failed deployments. &lt;a class="reference external
 be used to automate application deployment and related tasks. This article
 describes using Fabric to deploy a Drupal&amp;nbsp;8 site.&lt;/p&gt;
 &lt;p&gt;Visit &lt;a class="reference external" href="https://github.com/sethfischer/fabric-deploy"&gt;sethfischer/fabric-deploy&lt;/a&gt; for the most recent version of the fabfile
-which is an adaptation of &lt;a class="reference external" href="https://github.com/halcyonCorsair/fabric-deploy"&gt;halcyonCorsair/fabric-deploy&lt;/a&gt; — a fabfile for the
+which is an adaptation of &lt;a class="reference external" href="https://github.com/halcyonCorsair/fabric-deploy"&gt;halcyonCorsair/fabric-deploy&lt;/a&gt;—a fabfile for the
 deployment of Drupal&amp;nbsp;7 sites.&lt;/p&gt;
 &lt;div class="contents topic" id="contents"&gt;
 &lt;p class="topic-title"&gt;Contents&lt;/p&gt;
@@ -72,7 +72,7 @@ a robust approach to synchronising UUIDs across instances of a site see
 &lt;h3&gt;&lt;a class="toc-backref" href="#id3"&gt;Exclude files from release tarball&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;As an enhancement files can be excluded from the release tarball by including
 a &lt;tt class="docutils literal"&gt;.gitattributes&lt;/tt&gt; file in the root of the repository and specifying the
-&lt;a class="reference external" href="http://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes#Exporting-Your-Repository"&gt;export-ignore attribute&lt;/a&gt; for files that should not be included in the
+&lt;a class="reference external" href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes#_exporting_your_repository"&gt;export-ignore attribute&lt;/a&gt; for files that should not be included in the
 release. Use this
 &lt;a class="reference external" href="https://gist.github.com/sethfischer/bdda9753837ab1da680a"&gt;.gitattributes export-ignore template for Drupal&amp;nbsp;8 projects&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
