@@ -67,7 +67,7 @@ Create the files directory and set permissions
 
     $ mkdir sites/default/files
 
-To work efficiently with drush the files in ``sites/default/files`` should be
+To work efficiently with Drush the files in ``sites/default/files`` should be
 writeable both by the web server and command line user. An alternative to
 ``chmod -R 777 sites/default/files`` is to use `Access Control Lists`_.
 
@@ -83,7 +83,7 @@ shell commands which have been adapted from the
 
 ``HTTPDUSER`` is usually ``www-data`` on Debian-based distributions.
 
-Before setting the access control only the drush user has ``rw`` permissions:
+Before setting the access control only the Drush user has ``rw`` permissions:
 
 .. code-block:: console
 
@@ -95,7 +95,7 @@ Before setting the access control only the drush user has ``rw`` permissions:
     group::rwx
     other::rwx
 
-After setting the access control both the web server user and drush user have
+After setting the access control both the web server user and Drush user have
 ``rw`` permissions:
 
 .. code-block:: console

@@ -183,7 +183,7 @@ The Drupal ``files`` directory must be manually created.
 
     $ mkdir drupal/sites/default/files
 
-To work efficiently with drush the files in ``sites/default/files`` should be
+To work efficiently with Drush the files in ``sites/default/files`` should be
 writeable both by the web server and command-line user. An alternative to
 ``chmod -R 777 sites/default/files`` is to use `Access Control Lists`_.
 
