@@ -67,29 +67,27 @@ Commands in the generate namespace
 
 Drupal Console currently has thirteen commands in the generate namespace:
 
-generate:authentication:provider
+``generate:authentication:provider``
     Generate an authentication provider.
-generate:command
+``generate:command``
     Generate commands for the console.
-generate:controller
+``generate:controller``
     Generate & register a controller.
-generate:entity
-    - **generate:entity:config** Generate a new “EntityConfig”.
-    - **generate:entity:content** Generate a new “EntityContent”.
-
-generate:form:config
+``generate:entity``
+    - ``generate:entity:config`` Generate a new “EntityConfig”.
+    - ``generate:entity:content`` Generate a new “EntityContent”.
+``generate:form:config``
     Generate a new “ConfigFormBase”.
-generate:module
+``generate:module``
     Generate a module.
-generate:permissions
+``generate:permissions``
     Generate module permissions.
-generate:plugin
-    - **generate:plugin:block** Generate a plugin block.
-    - **generate:plugin:imageeffect** Generate image effect plugin.
-    - **generate:plugin:rest:resource** Generate plugin rest resource.
-    - **generate:plugin:rulesaction** Generate a plugin rule action.
-
-generate:service
+``generate:plugin``
+    - ``generate:plugin:block`` Generate a plugin block.
+    - ``generate:plugin:imageeffect`` Generate image effect plugin.
+    - ``generate:plugin:rest:resource`` Generate plugin rest resource.
+    - ``generate:plugin:rulesaction`` Generate a plugin rule action.
+``generate:service``
     Generate a service.
 
 
@@ -155,7 +153,7 @@ optionally passing the ``--format=json`` option.
 
     $ drupal site:status --format=json
 
-Output of above command:
+Output of preceding command:
 
 .. code-block:: json
 
@@ -229,8 +227,8 @@ Commands may be recorded in YAML and executed with the ``chain`` command:
 
     $ drupal chain --file=~/d8-project-init.yml
 
-In the example below a module will be created, followed by a controller
-for that module.
+In the example below a module is created, followed by a controller for that
+module.
 
 .. code-block:: yaml
 
@@ -320,7 +318,7 @@ Profiling decoupled (or headless) requests
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The inclusion of a `HTTP routing framework`_ and `REST API`_ in Drupal 8 core
-will make it significantly easier to develop decoupled applications using a
+makes it significantly easier to develop decoupled applications using a
 client-side framework such as `ember.js`_ which connects to a Drupal backend.
 
 When profiling an API or headless request the Web Profiler toolbar is not
@@ -338,8 +336,8 @@ token and link provided in the HTTP response headers ``X-Debug-Token`` and
     X-Debug-Token-Link: /admin/reports/profiler/view/0ac668
 
 Visiting the X-Debug-Token-Link (in this case
-``/admin/reports/profiler/view/0ac668``) will provide access to the report for
-he relevant request.
+``/admin/reports/profiler/view/0ac668``) provides access to the report for the
+relevant request.
 
 
 Web Profiler console commands

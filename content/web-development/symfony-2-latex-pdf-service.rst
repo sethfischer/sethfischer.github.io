@@ -113,8 +113,8 @@ documentation:
 The PDF LaTeX service consists of the following three components:
 
 1.  The **Symfony service container** configured in ``services.yml``.
-2.  A **class** ``Pdflatex`` of which an instance will be available in the
-    service container.
+2.  A **class** ``Pdflatex`` of which an instance is available in the service
+    container.
 3.  A **Twig template** ``show.tex.twig`` used to output the LaTeX source
     document.
 

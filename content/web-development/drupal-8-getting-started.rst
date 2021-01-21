@@ -53,7 +53,6 @@ Clone Drupal 8
 
 .. code-block:: console
 
-    :::console
     $ git clone -b 8.0.x --single-branch http://git.drupal.org/project/drupal.git
     $ git remote rename origin upstream
     $ git remote add origin [url]
@@ -74,7 +73,7 @@ writeable both by the web server and command line user. An alternative to
 
 Those familiar with the Symfony 2 documentation will recognise the following
 shell commands which have been adapted from the
-`Installing and Configuring Symfony`_ chapter of the The Symfony Book.
+`Installing and Configuring Symfony`_ section of the The Symfony Book.
 
 .. code-block:: console
 
@@ -84,8 +83,7 @@ shell commands which have been adapted from the
 
 ``HTTPDUSER`` is usually ``www-data`` on Debian-based distributions.
 
-Before setting the access control only the drush user will have ``rw``
-permissions:
+Before setting the access control only the drush user has ``rw`` permissions:
 
 .. code-block:: console
 
@@ -97,8 +95,8 @@ permissions:
     group::rwx
     other::rwx
 
-After setting the access control both the web server user and drush user will
-have ``rw`` permissions:
+After setting the access control both the web server user and drush user have
+``rw`` permissions:
 
 .. code-block:: console
 
@@ -179,7 +177,7 @@ Check that your system meets the minimum core requirements:
     $ drush @drupal8 core-requirements
 
 Check the status of the site installation by running ``drush @drupal8 status``.
-The output will be similar to the following:
+The output is as follows:
 
 .. code-block:: console
 
@@ -239,8 +237,8 @@ Examples
     $ drush @drupal8 pm-download examples
     $ drush @drupal8 pm-enable examples
 
-The single command ``drush @drupal8 pm-enable module`` will download module
-(if required) before enabling it.
+The single command ``drush @drupal8 pm-enable module`` downloads module (if
+required) before enabling it.
 
 
 Regularly update Drupal core
@@ -262,8 +260,8 @@ Remember to rebuild the site after each merge:
     $ drush cache-rebuild
 
 Before all issues tagged with “D8 upgrade path” have been closed you may find
-that you are required to repeat the site installation commands as described
-above after updating Drupal core.
+that you are required to repeat the preceding site installation commands after
+updating Drupal core.
 
 
 Further reading

@@ -15,8 +15,12 @@ Private
 My private repositories are hosted on `GitLab.com`_.
 
 
+.. vale off
+
 reptiles.org.nz
 ~~~~~~~~~~~~~~~
+
+.. vale on
 
 Website for The New Zealand Herpetological Society.
 
@@ -32,10 +36,14 @@ Website for The New Zealand Herpetological Society.
     Handed over March 2019.
 
 
+.. vale off
+
 mundoplugs.com
 ~~~~~~~~~~~~~~
 
-Flask application which presents data from the mundoplugs.com Mains Electricity
+.. vale on
+
+Flask web app which presents data from the mundoplugs.com Mains Electricity
 Database.
 
 :Date:
@@ -71,7 +79,7 @@ AS 2980 welder qualification certificates.
 InfoTag electronic tour guide
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Android application for rendering geographically aware electronic tour guides.
+Android app for rendering geographically aware electronic tour guides.
 
 :Date:
     July 2012—October 2012

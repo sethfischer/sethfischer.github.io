@@ -103,7 +103,7 @@ specified with the ``--prefix`` option; in this case ``drupal/``.
     $ git commit
     [master bd410e7] Merge remote-tracking branch 'upstream/8.0.x'
 
-The upstream branch will now be a subdirectory of the master branch.
+The upstream branch is now a subdirectory of the master branch.
 
 .. code-block:: console
 
@@ -126,8 +126,8 @@ The upstream branch will now be a subdirectory of the master branch.
     6 directories, 7 files
 
 
-Create a .gitingore for Drupal core
------------------------------------
+Create a ``.gitingore`` for Drupal core
+---------------------------------------
 
 Drupal core has an example ``.gitignore`` file which provides an excellent
 starting point and is sufficient for most projects.
@@ -139,14 +139,14 @@ starting point and is sufficient for most projects.
     $ git commit -m "Add .gitignore for Drupal core"
 
 
-Create directories above the document root
-------------------------------------------
+Create directories outside the document root
+--------------------------------------------
 
 As the document root is now below the repository root, files and directories
 may be committed to the repository without exposing them to the web server.
 
-In this example -- when configuring the web server -- the document root will be
-set to ``/var/www/myproject/drupal``.
+In this example—when configuring the web server—the document root is set to
+``/var/www/myproject/drupal``.
 
 .. code-block:: console
 
@@ -216,7 +216,7 @@ Create database
 Site installation
 -----------------
 
-Install the site with the standard install profile and change the admin
+Install the site with the standard install profile and change the administrator
 password.
 
 .. code-block:: console
@@ -272,7 +272,7 @@ used.
 
     $ git pull -s subtree upstream 8.0.x
 
-The above command will merge the history of ``upstream`` with the main
+The preceding command merges the history of ``upstream`` with the main
 repository. If it is not preferable to merge histories the ``--squash`` and
 ``--no-commit`` options can be used along with the ``-s subtree`` strategy
 option:

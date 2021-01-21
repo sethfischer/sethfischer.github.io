@@ -34,9 +34,9 @@ provides a safeguard against failed deployments. `Fabric`_ is a tool that can
 be used to automate application deployment and related tasks. This article
 describes using Fabric to deploy a Drupal 8 site.
 
-Visit `github.com/sethfischer/fabric-deploy`_ for the most recent version of
-the fabfile which is an adaptation of `fabric-deploy by halcyonCorsair`_ -- a
-fabfile for the deployment of Drupal 7 sites.
+Visit `sethfischer/fabric-deploy`_ for the most recent version of the fabfile
+which is an adaptation of `halcyonCorsair/fabric-deploy`_—a fabfile for the
+deployment of Drupal 7 sites.
 
 
 .. contents::
@@ -187,7 +187,7 @@ target host and edit as appropriate according to the environment.
 Fabfile
 -------
 
-Source code is hosted at `github.com/sethfischer/fabric-deploy`_.
+Source code is hosted at `sethfischer/fabric-deploy`_.
 
 
 Configuration
@@ -221,8 +221,7 @@ example configuration file.
 Available commands
 ~~~~~~~~~~~~~~~~~~
 
-``fab -f drupal8 -l`` will list the available commands with a short
-description:
+``fab -f drupal8 -l`` lists the available commands with a short description:
 
 deploy
     Deploy release
@@ -272,8 +271,8 @@ Further reading
 
 
 .. _`Fabric`: http://www.fabfile.org/
-.. _`github.com/sethfischer/fabric-deploy`: https://github.com/sethfischer/fabric-deploy
-.. _`fabric-deploy by halcyonCorsair`: https://github.com/halcyonCorsair/fabric-deploy
+.. _`sethfischer/fabric-deploy`: https://github.com/sethfischer/fabric-deploy
+.. _`halcyonCorsair/fabric-deploy`: https://github.com/halcyonCorsair/fabric-deploy
 .. _`A Drupal 8 workflow using the Git subtree merge strategy`: |filename|/web-development/drupal-8-workflow-using-git-subtree-merge.rst
 .. _`An approach to code-driven development in Drupal 8`: https://blog.dcycle.com/blog/68/approach-code-driven-development-drupal-8/
 .. _`Albert Albala`: https://github.com/alberto56/

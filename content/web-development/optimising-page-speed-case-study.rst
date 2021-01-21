@@ -20,9 +20,9 @@ Optimising page speed: a case study
 
 
 As an exercise in optimising page speed the `Pelican`_ theme
-`pelican-bootstrap3`_ by Daan Debie was customised in order to improve page
-speed. The customisations reduced the total number of requests on the index
-page by 66% and the page size was reduced by 62%.
+`DandyDev/pelican-bootstrap3`_ was customised to improve page speed. The
+customisations reduced the total number of requests on the index page by 66%
+and the page size was reduced by 62%.
 
 
 .. contents::
@@ -83,11 +83,11 @@ The associated style sheet ``font-awesome.min.css`` with a file size of 20.8 kB
 was replaced with ``font-custom.css`` having a file size of 1.1 kB.
 
 `Font Custom`_ was used to create the custom font and Font Custom vectors were
-obtained from `Font-Awesome-SVG-PNG`_ by Code Charm.
+obtained from `encharm/Font-Awesome-SVG-PNG`_.
 
 Font Custom configuration is stored in ``fontcustom.yml``, or can be integrated
-into a `Grunt`_ build with `grunt-webfont`_ by Artem Sapegin. See the next
-section for the ``Gruntfile.js`` which includes a ``grunt-webfont`` task.
+into a `Grunt`_ build with `sapegin/grunt-webfont`_. See the next section for
+the ``Gruntfile.js`` which includes a ``grunt-webfont`` task.
 
 
 Custom Bootstrap
@@ -103,7 +103,7 @@ unused components from the build ``bootstrap.min.css`` was reduced from
 109.5 kB to 94.2 kB.
 
 The Bootstrap build process was included as a Grunt task using
-`grunt-contrib-compass`_ by Sindre Sorhus.
+`gruntjs/grunt-contrib-compass`_.
 
 Below is the ``Gruntfile.js`` for this theme which includes both a
 ``grunt-webfont`` task and a ``grunt-contrib-compass`` task.
@@ -159,7 +159,7 @@ Requests (SSL)
 The original theme included a script which obtained a list of GitHub
 repositories directly from the `GitHub API`_. To reduce the overhead of a SSL
 request the list of GitHub repositories was generated during the build process
-with `pelican-githubprojects`_ by Kura.
+with `kura/pelican-githubprojects`_.
 
 
 Custom jQuery
@@ -307,9 +307,9 @@ requests by twelve. These improvements result in a significantly improved page
 load time.
 
 As a result of the modifications made to achieve these improvements the
-functionality and flexibility of the original theme has been reduced. In
-addition, due to the extensive nature of the modifications merging upstream
-commits is no longer a trivial task.
+capability and flexibility of the original theme has been reduced. In addition,
+due to the extensive nature of the modifications merging upstream commits is no
+longer a trivial task.
 
 The ease of use of the original theme has also been affected by introducing the
 following dependencies:
@@ -343,25 +343,25 @@ Further reading
 *   `HTTP Archive (HAR) format specification`_
 *   `URL Expiry (cache busting)`_ webassets documentation
 *   `Make the web faster`_ Google Developers documentation
-*   `Best Practices for Speeding Up Your Web Site`_ Yahoo! Developer Network
+*   `Best Practices for Speeding Up Your Web Site`_ Yahoo Developer Network
 *   `GitHub Pages`_
 *   `Pingdom tools website speed test`_
 
 
 .. _`sethfischer/pelican-bootstrap3`: https://github.com/sethfischer/pelican-bootstrap3
 .. _`Pelican`: https://docs.getpelican.com/
-.. _`pelican-bootstrap3`: https://github.com/DandyDev/pelican-bootstrap3
+.. _`DandyDev/pelican-bootstrap3`: https://github.com/DandyDev/pelican-bootstrap3
 .. _`pre-optimisation HAR file`: |static|/static/optimising-page-speed-case-study/seth.fischer.nz_2015-03-15_1905.har
 .. _`FontAwesome`: https://github.com/FortAwesome/Font-Awesome
 .. _`Font Custom`: https://github.com/FontCustom/fontcustom
-.. _`Font-Awesome-SVG-PNG`: https://github.com/encharm/Font-Awesome-SVG-PNG
+.. _`encharm/Font-Awesome-SVG-PNG`: https://github.com/encharm/Font-Awesome-SVG-PNG
 .. _`Grunt`: https://gruntjs.com/
-.. _`grunt-webfont`: https://github.com/sapegin/grunt-webfont
+.. _`sapegin/grunt-webfont`: https://github.com/sapegin/grunt-webfont
 .. _`Bootstrap`: https://getbootstrap.com/
 .. _`Compass`: http://compass-style.org/
-.. _`grunt-contrib-compass`: https://github.com/gruntjs/grunt-contrib-compass
+.. _`gruntjs/grunt-contrib-compass`: https://github.com/gruntjs/grunt-contrib-compass
 .. _`GitHub API`: https://developer.github.com/
-.. _`pelican-githubprojects`: https://github.com/kura/pelican-githubprojects
+.. _`kura/pelican-githubprojects`: https://github.com/kura/pelican-githubprojects
 .. _`jQuery`: https://github.com/jquery/jquery
 .. _`jQuery README file`: https://github.com/jquery/jquery/blob/master/README.md
 .. _`webassets`: https://github.com/miracle2k/webassets
