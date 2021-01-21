@@ -276,7 +276,7 @@ Further reading
 .. _`A Drupal 8 workflow using the Git subtree merge strategy`: |filename|/web-development/drupal-8-workflow-using-git-subtree-merge.rst
 .. _`An approach to code-driven development in Drupal 8`: https://blog.dcycle.com/blog/68/approach-code-driven-development-drupal-8/
 .. _`Albert Albala`: https://github.com/alberto56/
-.. _`export-ignore attribute`: http://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes#Exporting-Your-Repository
+.. _`export-ignore attribute`: https://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes#_exporting_your_repository
 .. _`.gitattributes export-ignore template for Drupal 8 projects`: https://gist.github.com/sethfischer/bdda9753837ab1da680a
 .. _`OpenSSH server`: https://wiki.debian.org/SSH
 .. _`Drush`: https://docs.drush.org/en/7.x/install/

@@ -301,7 +301,7 @@ Further reading
 
 .. _`composer-based workflow`: https://www.drupal.org/docs/develop/using-composer/using-composer-with-drupal
 .. _`Access Control Lists`: https://wiki.debian.org/Permissions#Access_Control_Lists_in_Linux
-.. _`Git subtree merge strategy`: https://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging
-.. _`Git Tools - Subtree Merging`: https://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging
+.. _`Git subtree merge strategy`: https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging#_subtree_merge
+.. _`Git Tools - Subtree Merging`: https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging#_subtree_merge
 .. _`How to use the subtree merge strategy`: https://www.kernel.org/pub/software/scm/git/docs/howto/using-merge-subtree.html
 .. _`Deploying Drupal 8 with Fabric`: |filename|/devops/drupal-8-fabric-deploy.rst

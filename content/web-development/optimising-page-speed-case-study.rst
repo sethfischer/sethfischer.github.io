@@ -372,6 +372,6 @@ Further reading
 .. _`GitHub Pages`: https://pages.github.com/
 .. _`HTTP Archive (HAR) format specification`: https://w3c.github.io/web-performance/specs/HAR/Overview.html
 .. _`URL Expiry (cache busting)`: https://webassets.readthedocs.io/en/latest/expiring.html
-.. _`Make the web faster`: https://developers.google.com/speed/pagespeed/
+.. _`Make the web faster`: https://developers.google.com/speed
 .. _`Best Practices for Speeding Up Your Web Site`: https://developer.yahoo.com/performance/rules.html
 .. _`Pingdom tools website speed test`: https://tools.pingdom.com/

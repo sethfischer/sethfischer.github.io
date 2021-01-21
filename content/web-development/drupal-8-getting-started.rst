@@ -277,9 +277,9 @@ Further reading
 .. _`Drupal 8 system requirements`: https://api.drupal.org/api/drupal/core!INSTALL.txt/8.2.x
 .. _`install git`: http://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 .. _`install Composer`: https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos
-.. _`install Drush 7.x (dev)`: https://github.com/drush-ops/drush#installupdate---composer
+.. _`install Drush 7.x (dev)`: https://docs.drush.org/en/7.x/install/#composer-one-drush-for-all-projects
 .. _`Access Control Lists`: https://wiki.debian.org/Permissions#Access_Control_Lists_in_Linux
-.. _`Installing and Configuring Symfony`: https://symfony.com/doc/2.3/book/installation.html#configuration-and-set-up
+.. _`Installing and Configuring Symfony`: https://symfony.com/doc/2.3/book/installation.html
 .. _`devel`: https://www.drupal.org/project/devel
 .. _`examples`: https://www.drupal.org/project/examples
 .. _`Building a Drupal site with Git`: https://www.drupal.org/node/803746
