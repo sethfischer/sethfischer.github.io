@@ -2216,7 +2216,7 @@ may be committed to the repository without exposing them to the web server.&lt;/
 &lt;p&gt;The Drupal &lt;tt class="docutils literal"&gt;files&lt;/tt&gt; directory must be manually created.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; mkdir drupal/sites/default/files
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;To work efficiently with drush the files in &lt;tt class="docutils literal"&gt;sites/default/files&lt;/tt&gt; should be
+&lt;p&gt;To work efficiently with Drush the files in &lt;tt class="docutils literal"&gt;sites/default/files&lt;/tt&gt; should be
 writeable both by the web server and command-line user. An alternative to
 &lt;tt class="docutils literal"&gt;chmod &lt;span class="pre"&gt;-R&lt;/span&gt; 777 sites/default/files&lt;/tt&gt; is to use &lt;a class="reference external" href="https://wiki.debian.org/Permissions#Access_Control_Lists_in_Linux"&gt;Access Control Lists&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; &lt;span class="nv"&gt;HTTPDUSER&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;``&lt;/span&gt;ps aux &lt;span class="p"&gt;|&lt;/span&gt; grep -E &lt;span class="s1"&gt;&amp;#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
@@ -2357,7 +2357,7 @@ site with the next core update.&lt;/p&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id5"&gt;Create the files directory and set permissions&lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; mkdir sites/default/files
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;To work efficiently with drush the files in &lt;tt class="docutils literal"&gt;sites/default/files&lt;/tt&gt; should be
+&lt;p&gt;To work efficiently with Drush the files in &lt;tt class="docutils literal"&gt;sites/default/files&lt;/tt&gt; should be
 writeable both by the web server and command line user. An alternative to
 &lt;tt class="docutils literal"&gt;chmod &lt;span class="pre"&gt;-R&lt;/span&gt; 777 sites/default/files&lt;/tt&gt; is to use &lt;a class="reference external" href="https://wiki.debian.org/Permissions#Access_Control_Lists_in_Linux"&gt;Access Control Lists&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Those familiar with the Symfony&amp;nbsp;2 documentation will recognise the following
@@ -2368,7 +2368,7 @@ shell commands which have been adapted from the
 &lt;span class="gp"&gt;$&lt;/span&gt; sudo setfacl -dR -m u:&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$HTTPDUSER&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;:rwX -m u:&lt;span class="sb"&gt;`&lt;/span&gt;whoami&lt;span class="sb"&gt;`&lt;/span&gt;:rwX sites/default/files
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;tt class="docutils literal"&gt;HTTPDUSER&lt;/tt&gt; is usually &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;www-data&lt;/span&gt;&lt;/tt&gt; on Debian-based distributions.&lt;/p&gt;
-&lt;p&gt;Before setting the access control only the drush user has &lt;tt class="docutils literal"&gt;rw&lt;/tt&gt; permissions:&lt;/p&gt;
+&lt;p&gt;Before setting the access control only the Drush user has &lt;tt class="docutils literal"&gt;rw&lt;/tt&gt; permissions:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; getfacl sites/default/files
 &lt;span class="gp"&gt;#&lt;/span&gt; file: cache
 &lt;span class="gp"&gt;#&lt;/span&gt; owner: drushuser
@@ -2377,7 +2377,7 @@ shell commands which have been adapted from the
 &lt;span class="go"&gt;group::rwx&lt;/span&gt;
 &lt;span class="go"&gt;other::rwx&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;After setting the access control both the web server user and drush user have
+&lt;p&gt;After setting the access control both the web server user and Drush user have
 &lt;tt class="docutils literal"&gt;rw&lt;/tt&gt; permissions:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; getfacl sites/default/files
 &lt;span class="gp"&gt;#&lt;/span&gt; file: cache

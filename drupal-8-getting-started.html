@@ -177,7 +177,7 @@ site with the next core update.</p>
 <h2><a class="toc-backref" href="#id5">Create the files directory and set permissions</a></h2>
 <div class="highlight"><pre><span></span><span class="gp">$</span> mkdir sites/default/files
 </pre></div>
-<p>To work efficiently with drush the files in <tt class="docutils literal">sites/default/files</tt> should be
+<p>To work efficiently with Drush the files in <tt class="docutils literal">sites/default/files</tt> should be
 writeable both by the web server and command line user. An alternative to
 <tt class="docutils literal">chmod <span class="pre">-R</span> 777 sites/default/files</tt> is to use <a class="reference external" href="https://wiki.debian.org/Permissions#Access_Control_Lists_in_Linux">Access Control Lists</a>.</p>
 <p>Those familiar with the Symfony&nbsp;2 documentation will recognise the following
@@ -188,7 +188,7 @@ shell commands which have been adapted from the
 <span class="gp">$</span> sudo setfacl -dR -m u:<span class="s2">&quot;</span><span class="nv">$HTTPDUSER</span><span class="s2">&quot;</span>:rwX -m u:<span class="sb">`</span>whoami<span class="sb">`</span>:rwX sites/default/files
 </pre></div>
 <p><tt class="docutils literal">HTTPDUSER</tt> is usually <tt class="docutils literal"><span class="pre">www-data</span></tt> on Debian-based distributions.</p>
-<p>Before setting the access control only the drush user has <tt class="docutils literal">rw</tt> permissions:</p>
+<p>Before setting the access control only the Drush user has <tt class="docutils literal">rw</tt> permissions:</p>
 <div class="highlight"><pre><span></span><span class="gp">$</span> getfacl sites/default/files
 <span class="gp">#</span> file: cache
 <span class="gp">#</span> owner: drushuser
@@ -197,7 +197,7 @@ shell commands which have been adapted from the
 <span class="go">group::rwx</span>
 <span class="go">other::rwx</span>
 </pre></div>
-<p>After setting the access control both the web server user and drush user have
+<p>After setting the access control both the web server user and Drush user have
 <tt class="docutils literal">rw</tt> permissions:</p>
 <div class="highlight"><pre><span></span><span class="gp">$</span> getfacl sites/default/files
 <span class="gp">#</span> file: cache

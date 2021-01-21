@@ -265,7 +265,7 @@ may be committed to the repository without exposing them to the web server.</p>
 <p>The Drupal <tt class="docutils literal">files</tt> directory must be manually created.</p>
 <div class="highlight"><pre><span></span><span class="gp">$</span> mkdir drupal/sites/default/files
 </pre></div>
-<p>To work efficiently with drush the files in <tt class="docutils literal">sites/default/files</tt> should be
+<p>To work efficiently with Drush the files in <tt class="docutils literal">sites/default/files</tt> should be
 writeable both by the web server and command-line user. An alternative to
 <tt class="docutils literal">chmod <span class="pre">-R</span> 777 sites/default/files</tt> is to use <a class="reference external" href="https://wiki.debian.org/Permissions#Access_Control_Lists_in_Linux">Access Control Lists</a>.</p>
 <div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nv">HTTPDUSER</span><span class="o">=</span><span class="sb">``</span>ps aux <span class="p">|</span> grep -E <span class="s1">&#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&#39;</span> <span class="p">|</span> <span class="se">\</span>
