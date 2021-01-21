@@ -1093,7 +1093,7 @@ unused components from the build &lt;tt class="docutils literal"&gt;bootstrap.mi
 &lt;dd&gt;−1&lt;/dd&gt;
 &lt;/dl&gt;
 &lt;p&gt;The original theme included a script which obtained a list of GitHub
-repositories directly from the &lt;a class="reference external" href="https://developer.github.com/"&gt;GitHub API&lt;/a&gt;. To reduce the overhead of a SSL
+repositories directly from the &lt;a class="reference external" href="https://docs.github.com/en/rest"&gt;GitHub API&lt;/a&gt;. To reduce the overhead of a SSL
 request the list of GitHub repositories was generated during the build process
 with &lt;a class="reference external" href="https://github.com/kura/pelican-githubprojects"&gt;kura/pelican-githubprojects&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
