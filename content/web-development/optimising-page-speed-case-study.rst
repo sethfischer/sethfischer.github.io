@@ -360,7 +360,7 @@ Further reading
 .. _`Bootstrap`: https://getbootstrap.com/
 .. _`Compass`: http://compass-style.org/
 .. _`gruntjs/grunt-contrib-compass`: https://github.com/gruntjs/grunt-contrib-compass
-.. _`GitHub API`: https://developer.github.com/
+.. _`GitHub API`: https://docs.github.com/en/rest
 .. _`kura/pelican-githubprojects`: https://github.com/kura/pelican-githubprojects
 .. _`jQuery`: https://github.com/jquery/jquery
 .. _`jQuery README file`: https://github.com/jquery/jquery/blob/master/README.md
