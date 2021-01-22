@@ -351,9 +351,7 @@ Web profiler provides three console commands:
     List Web Profiler profiles.
 
 
-.. rubric:: benchmark
-
-Benchmark a URL.
+.. rubric:: Benchmark a URL
 
 .. code-block:: console
 
@@ -369,9 +367,7 @@ Benchmark a URL.
         95_percentile: { time: '326 ms', memory: '38.8 MB' }
 
 
-.. rubric:: export
-
-Export profile data to a file for later analysis.
+.. rubric:: Export profile data to a file for later analysis
 
 .. code-block:: console
 
@@ -380,9 +376,7 @@ Export profile data to a file for later analysis.
     Exported 264 profiles
 
 
-.. rubric:: list
-
-List and filter profiles.
+.. rubric:: List and filter profiles
 
 .. code-block:: console
 
