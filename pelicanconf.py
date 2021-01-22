@@ -14,10 +14,6 @@ PAGE_URL = "{slug}.html"
 PATH = "content"
 READERS = {"html": None}
 STATIC_PATHS = [
-    "extra/CNAME",
-    "extra/googledce9df78937f634a.html",
-    "extra/humans.txt",
-    "extra/robots.txt",
     "static",
 ]
 
@@ -39,10 +35,10 @@ TIMEZONE = "Pacific/Auckland"
 # Metadata
 
 EXTRA_PATH_METADATA = {
-    "extra/CNAME": {"path": "CNAME"},
-    "extra/googledce9df78937f634a.html": {"path": "googledce9df78937f634a.html"},
-    "extra/humans.txt": {"path": "humans.txt"},
-    "extra/robots.txt": {"path": "robots.txt"},
+    "static/extra/CNAME": {"path": "CNAME"},
+    "static/extra/googledce9df78937f634a.html": {"path": "googledce9df78937f634a.html"},
+    "static/extra/humans.txt": {"path": "humans.txt"},
+    "static/extra/robots.txt": {"path": "robots.txt"},
 }
 
 
