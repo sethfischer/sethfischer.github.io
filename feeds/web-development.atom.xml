@@ -307,8 +307,7 @@ relevant request.&lt;/p&gt;
 &lt;dt&gt;&lt;tt class="docutils literal"&gt;webprofiler:list&lt;/tt&gt;&lt;/dt&gt;
 &lt;dd&gt;List Web Profiler profiles.&lt;/dd&gt;
 &lt;/dl&gt;
-&lt;p class="rubric"&gt;benchmark&lt;/p&gt;
-&lt;p&gt;Benchmark a URL.&lt;/p&gt;
+&lt;p class="rubric"&gt;Benchmark a URL&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drupal webprofiler:benchmark http://drupal8/
 &lt;span class="go"&gt; 105/105 [============================] 100% Done.&lt;/span&gt;
 &lt;span class="go"&gt;date: &amp;#39;Sun, 06/28/2015 - 21:00:43&amp;#39;&lt;/span&gt;
@@ -320,14 +319,12 @@ relevant request.&lt;/p&gt;
 &lt;span class="go"&gt;    median: { time: &amp;#39;336 ms&amp;#39;, memory: &amp;#39;38.8 MB&amp;#39; }&lt;/span&gt;
 &lt;span class="go"&gt;    95_percentile: { time: &amp;#39;326 ms&amp;#39;, memory: &amp;#39;38.8 MB&amp;#39; }&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p class="rubric"&gt;export&lt;/p&gt;
-&lt;p&gt;Export profile data to a file for later analysis.&lt;/p&gt;
+&lt;p class="rubric"&gt;Export profile data to a file for later analysis&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drupal webprofiler:export --directory&lt;span class="o"&gt;=&lt;/span&gt;/tmp/
 &lt;span class="go"&gt; 266/266 [============================] 100% Done.&lt;/span&gt;
 &lt;span class="go"&gt;Exported 264 profiles&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p class="rubric"&gt;list&lt;/p&gt;
-&lt;p&gt;List and filter profiles.&lt;/p&gt;
+&lt;p class="rubric"&gt;List and filter profiles&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drupal webprofiler:list --url&lt;span class="o"&gt;=&lt;/span&gt;http://drupal8/ --method&lt;span class="o"&gt;=&lt;/span&gt;GET --limit&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt;
 &lt;span class="go"&gt;+--------+-----------+--------+-----------------+----------------------------+&lt;/span&gt;
 &lt;span class="go"&gt;| Token  | IP        | Method | URL             | Time                       |&lt;/span&gt;

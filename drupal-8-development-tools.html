@@ -425,8 +425,7 @@ relevant request.</p>
 <dt><tt class="docutils literal">webprofiler:list</tt></dt>
 <dd>List Web Profiler profiles.</dd>
 </dl>
-<p class="rubric">benchmark</p>
-<p>Benchmark a URL.</p>
+<p class="rubric">Benchmark a URL</p>
 <div class="highlight"><pre><span></span><span class="gp">$</span> drupal webprofiler:benchmark http://drupal8/
 <span class="go"> 105/105 [============================] 100% Done.</span>
 <span class="go">date: &#39;Sun, 06/28/2015 - 21:00:43&#39;</span>
@@ -438,14 +437,12 @@ relevant request.</p>
 <span class="go">    median: { time: &#39;336 ms&#39;, memory: &#39;38.8 MB&#39; }</span>
 <span class="go">    95_percentile: { time: &#39;326 ms&#39;, memory: &#39;38.8 MB&#39; }</span>
 </pre></div>
-<p class="rubric">export</p>
-<p>Export profile data to a file for later analysis.</p>
+<p class="rubric">Export profile data to a file for later analysis</p>
 <div class="highlight"><pre><span></span><span class="gp">$</span> drupal webprofiler:export --directory<span class="o">=</span>/tmp/
 <span class="go"> 266/266 [============================] 100% Done.</span>
 <span class="go">Exported 264 profiles</span>
 </pre></div>
-<p class="rubric">list</p>
-<p>List and filter profiles.</p>
+<p class="rubric">List and filter profiles</p>
 <div class="highlight"><pre><span></span><span class="gp">$</span> drupal webprofiler:list --url<span class="o">=</span>http://drupal8/ --method<span class="o">=</span>GET --limit<span class="o">=</span><span class="m">5</span>
 <span class="go">+--------+-----------+--------+-----------------+----------------------------+</span>
 <span class="go">| Token  | IP        | Method | URL             | Time                       |</span>
