@@ -14,12 +14,12 @@ Symfony 2 PDF service using LaTeX
 :summary:
     This Symfony 2 article is obsolete.
 
-    Portable Document Format (PDF) has become a universally accepted
-    format for sharing documentation making the dynamic generation of PDF
-    documents an expected feature of many web applications. After reviewing a
-    number of libraries for generating PDF documents it was decided to write a
-    service wrapping LaTeX; a typesetting system with features suited to the
-    production of scientific and technical documentation.
+    Portable Document Format (PDF) has become a universally accepted format
+    for sharing documentation. As a result, the dynamic generation of PDF
+    documents is an expected feature of many web applications. After reviewing
+    a number of libraries for generating PDF documents it was decided to write
+    a service wrapping the LaTeX typesetting system . LaTeX is ideally suited
+    to the production of scientific and technical documentation.
 
 
 .. warning::
@@ -32,8 +32,8 @@ Portable Document Format (PDF) has become a universally accepted format for
 sharing documentation. As a result, the dynamic generation of PDF documents is
 an expected feature of many web applications. After reviewing a number of
 libraries for generating PDF documents it was decided to write a service
-wrapping `LaTeX`_; a typesetting system with features suited to the production
-of scientific and technical documentation.
+wrapping the `LaTeX`_ typesetting system . LaTeX is ideally suited to the
+production of scientific and technical documentation.
 
 The code examples used in this article are from the certificate generation
 component of IB2020, a `Symfony`_ 2 web application for the management of
@@ -82,9 +82,9 @@ The LaTeX system is a markup language and high-quality typesetting system. It
 is written in the `TeX macro language`_.
 
 A PDF document may be generated directly from a LaTeX source document with the
-``pdflatex`` binary which is distributed as part of the Debian ``texlive-full``
-meta-package. Some LaTeX documents require multiple passes with ``pdflatex``, a
-process which is automated with the script ``rubber-pipe``.
+``pdflatex`` binary, part of the Debian ``texlive-full`` meta-package. Some
+LaTeX documents require multiple passes with ``pdflatex``, a process which is
+automated with the script ``rubber-pipe``.
 
 LaTeX and ``rubber-pipe`` may be installed on Debian-based distributions with
 the following commands:

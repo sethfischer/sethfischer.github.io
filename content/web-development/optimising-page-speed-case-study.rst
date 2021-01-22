@@ -47,6 +47,8 @@ Google PageSpeed score (mobile)  74/100
 Google PageSpeed score (desktop) 87/100
 ================================ ================
 
+Full details are available in the `pre-optimisation HAR file`_.
+
 .. figure:: /static/optimising-page-speed-case-study/seth.fischer.nz_2015-03-15_1905_pingdom.png
     :width: 582
     :height: 133
@@ -55,8 +57,6 @@ Google PageSpeed score (desktop) 87/100
         Page size 182.9 kB
 
     Pingdom speed test summary pre-optimisation.
-
-Full details are available in the `pre-optimisation HAR file`_.
 
 
 Optimisations
@@ -258,6 +258,8 @@ Google PageSpeed score (mobile)  74/100           89/100            +15/100
 Google PageSpeed score (desktop) 87/100           95/100            +8/100
 ================================ ================ ================= ============
 
+Full details are available in the `post-optimisation HAR file`_.
+
 .. figure:: /static/optimising-page-speed-case-study/seth.fischer.nz_2015-03-16_2149_pingdom.png
     :width: 582
     :height: 133
@@ -266,8 +268,6 @@ Google PageSpeed score (desktop) 87/100           95/100            +8/100
         Page size 69.0 kB
 
     Pingdom speed test summary pre-optimisation.
-
-Full details are available in the `post-optimisation HAR file`_.
 
 
 Hosting environment

@@ -28,9 +28,12 @@ Getting started with Drupal 8
 
 Now that `Drupal 8`_ is in beta phase it is time for site developers to start
 exploring the API. This article describes the installation and configuration of
-Drupal 8 using Git and Drush. Bear in mind that as of 2014-11-28 there were 22
-`issues tagged with D8 upgrade path`_, so it may be necessary to rebuild your
-site with the next core update.
+Drupal 8 using Git and Drush.
+
+.. warning::
+
+    As of 28 November 2014 there were 22 `issues tagged with D8 upgrade path`_,
+    so it may be necessary to rebuild your site with the next core update.
 
 
 .. contents::
@@ -71,8 +74,7 @@ To work efficiently with Drush the files in ``sites/default/files`` should be
 writeable both by the web server and command line user. An alternative to
 ``chmod -R 777 sites/default/files`` is to use `Access Control Lists`_.
 
-Those familiar with the Symfony 2 documentation will recognise the following
-shell commands which have been adapted from the
+The following shell commands have been adapted from the
 `Installing and Configuring Symfony`_ section of the The Symfony Book.
 
 .. code-block:: console
@@ -121,14 +123,20 @@ After setting the access control both the web server user and Drush user have
 Create database
 ---------------
 
+Open a MySQL console:
+
 .. code-block:: console
 
     $ mysql -uroot -p
-    mysql> CREATE DATABASE db;
-    mysql> CREATE USER 'dbuser'@'localhost' IDENTIFIED BY 'password';
-    mysql> GRANT ALL PRIVILEGES ON db.* TO 'dbuser'@'localhost';
-    mysql> FLUSH PRIVILEGES;
-    mysql> \q
+
+Create database and user:
+
+.. code-block:: mysql
+
+    CREATE DATABASE db;
+    CREATE USER 'dbuser'@'localhost' IDENTIFIED BY 'password';
+    GRANT ALL PRIVILEGES ON db.* TO 'dbuser'@'localhost';
+    FLUSH PRIVILEGES;
 
 
 Site installation

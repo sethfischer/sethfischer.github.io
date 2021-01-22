@@ -47,8 +47,8 @@ Drupal project structure
 ------------------------
 
 The fabfile is designed to deploy a site having a project structure as
-described in `A Drupal 8 workflow using the Git subtree merge strategy`_, but
-may be easily adapted to accommodate another project structure.
+described in `A Drupal 8 workflow using the Git subtree merge strategy`_.
+However it may be easily adapted to accommodate another project structure.
 
 
 Synchronise site UUID across instances
@@ -82,9 +82,9 @@ Exclude files from release tarball
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 As an enhancement files can be excluded from the release tarball by including
-a ``.gitattributes`` file in the root of the repository and specifying the
-`export-ignore attribute`_ for files that should not be included in the
-release. Use this
+a ``.gitattributes`` file in the root of the repository. For each file that
+should be excluded from the release the `export-ignore attribute`_ should be
+specified. Use this
 `.gitattributes export-ignore template for Drupal 8 projects`_.
 
 
@@ -163,17 +163,21 @@ Manual configuration
 The database, ``settings.php`` and ``services.yml`` must be manually created on
 the target host before the first deployment.
 
-Create the database and database user:
+Open a MySQL console:
 
 .. code-block:: console
 
     $ ssh host
     $ mysql -uroot -p
-    mysql> CREATE DATABASE db;
-    mysql> CREATE USER 'dbuser'@'localhost' IDENTIFIED BY 'password';
-    mysql> GRANT ALL PRIVILEGES ON db.* TO 'dbuser'@'localhost';
-    mysql> FLUSH PRIVILEGES;
-    mysql> \q
+
+Create database and user:
+
+.. code-block:: mysql
+
+    CREATE DATABASE db;
+    CREATE USER 'dbuser'@'localhost' IDENTIFIED BY 'password';
+    GRANT ALL PRIVILEGES ON db.* TO 'dbuser'@'localhost';
+    FLUSH PRIVILEGES;
 
 Copy ``sites/default/settings.php`` and ``sites/default/services.yml`` to the
 target host and edit as appropriate according to the environment.

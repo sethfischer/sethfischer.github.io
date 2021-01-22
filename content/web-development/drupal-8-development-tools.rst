@@ -43,10 +43,9 @@ Drupal Console
 
 The Drupal Console (`hechoendrupal/DrupalConsole`_ on GitHub) is a
 `Symfony 2 console application`_ which provides a number of generators to
-assist developers in creating boilerplate code. In addition to increasing
-productivity Drupal Console is a valuable learning tool which allows developers
-to get up and running with best practice code by kick-starting a
-`PSR-4 compliant directory structure`_.
+assist developers in creating boilerplate code. Drupal Console is a valuable
+learning tool which allows developers to get up and running with best practice
+code by kick-starting a `PSR-4 compliant directory structure`_.
 
 Commands are namespaced, the top-level namespaces currently being:
 
@@ -313,13 +312,12 @@ load timeline.
     </figure>
 
 
-
 Profiling decoupled (or headless) requests
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The inclusion of a `HTTP routing framework`_ and `REST API`_ in Drupal 8 core
-makes it significantly easier to develop decoupled applications using a
-client-side framework such as `ember.js`_ which connects to a Drupal backend.
+The inclusion of a `HTTP routing framework`_ and `REST API`_ in Drupal 8 core,
+along with frontend framework such as `ember.js`_, make it significantly easier
+to develop decoupled applications.
 
 When profiling an API or headless request the Web Profiler toolbar is not
 available. However the profile data remains available for each request via a

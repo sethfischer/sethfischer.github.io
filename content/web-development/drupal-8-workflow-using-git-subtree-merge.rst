@@ -33,9 +33,8 @@ A Drupal 8 workflow using the Git subtree merge strategy
 Often there are components of a Drupal website that should not be located in
 the document root such as configuration files, deployment scripts, and
 functional tests. By utilising Git subtrees, a Drupal installation root (or web
-server document root) may be below the root of the main repository, and
-upstream changes to Drupal core may be conveniently merged with
-``git read-tree``.
+server document root) may be below the root of the main repository. Upstream
+changes to Drupal core may be conveniently merged with ``git read-tree``.
 
 
 .. contents::
@@ -203,14 +202,20 @@ It may be convenient to add similar ACL permissions to the ``config/active``,
 Create database
 ---------------
 
+Open a MySQL console:
+
 .. code-block:: console
 
     $ mysql -uroot -p
-    mysql> CREATE DATABASE db;
-    mysql> CREATE USER 'dbuser'@'localhost' IDENTIFIED BY 'password';
-    mysql> GRANT ALL PRIVILEGES ON db.* TO 'dbuser'@'localhost';
-    mysql> FLUSH PRIVILEGES;
-    mysql> \q
+
+Create database and user:
+
+.. code-block:: mysql
+
+    CREATE DATABASE db;
+    CREATE USER 'dbuser'@'localhost' IDENTIFIED BY 'password';
+    GRANT ALL PRIVILEGES ON db.* TO 'dbuser'@'localhost';
+    FLUSH PRIVILEGES;
 
 
 Site installation
