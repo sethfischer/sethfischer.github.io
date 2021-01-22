@@ -42,10 +42,9 @@ convenient access to performance and profile information.&lt;/p&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id3"&gt;Drupal Console&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The Drupal Console (&lt;a class="reference external" href="https://github.com/hechoendrupal/drupal-console"&gt;hechoendrupal/DrupalConsole&lt;/a&gt; on GitHub) is a
 &lt;a class="reference external" href="https://symfony.com/doc/2.7/components/console.html"&gt;Symfony 2 console application&lt;/a&gt; which provides a number of generators to
-assist developers in creating boilerplate code. In addition to increasing
-productivity Drupal Console is a valuable learning tool which allows developers
-to get up and running with best practice code by kick-starting a
-&lt;a class="reference external" href="https://www.drupal.org/node/2156625"&gt;PSR-4 compliant directory structure&lt;/a&gt;.&lt;/p&gt;
+assist developers in creating boilerplate code. Drupal Console is a valuable
+learning tool which allows developers to get up and running with best practice
+code by kick-starting a &lt;a class="reference external" href="https://www.drupal.org/node/2156625"&gt;PSR-4 compliant directory structure&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Commands are namespaced, the top-level namespaces currently being:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;tt class="docutils literal"&gt;cache&lt;/tt&gt;&lt;/li&gt;
@@ -279,9 +278,9 @@ load timeline.&lt;/p&gt;
 &lt;/figure&gt;&lt;/div&gt;
 &lt;div class="section" id="profiling-decoupled-or-headless-requests"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id10"&gt;Profiling decoupled (or headless) requests&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;The inclusion of a &lt;a class="reference external" href="https://www.drupal.org/docs/8/api/routing-system/routing-system-overview"&gt;HTTP routing framework&lt;/a&gt; and &lt;a class="reference external" href="https://www.drupal.org/docs/8/core/modules/rest/overview"&gt;REST API&lt;/a&gt; in Drupal&amp;nbsp;8 core
-makes it significantly easier to develop decoupled applications using a
-client-side framework such as &lt;a class="reference external" href="https://emberjs.com/"&gt;ember.js&lt;/a&gt; which connects to a Drupal backend.&lt;/p&gt;
+&lt;p&gt;The inclusion of a &lt;a class="reference external" href="https://www.drupal.org/docs/8/api/routing-system/routing-system-overview"&gt;HTTP routing framework&lt;/a&gt; and &lt;a class="reference external" href="https://www.drupal.org/docs/8/core/modules/rest/overview"&gt;REST API&lt;/a&gt; in Drupal&amp;nbsp;8 core,
+along with frontend framework such as &lt;a class="reference external" href="https://emberjs.com/"&gt;ember.js&lt;/a&gt;, make it significantly easier
+to develop decoupled applications.&lt;/p&gt;
 &lt;p&gt;When profiling an API or headless request the Web Profiler toolbar is not
 available. However the profile data remains available for each request via a
 token and link provided in the HTTP response headers &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;X-Debug-Token&lt;/span&gt;&lt;/tt&gt; and
@@ -352,12 +351,12 @@ relevant request.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 </content><category term="Web development"></category><category term="Drupal 8"></category><category term="Drupal"></category></entry><entry><title>Symfony 2 PDF service using LaTeX</title><link href="https://seth.fischer.nz/symfony-2-latex-pdf-service.html" rel="alternate"></link><published>2015-04-19T20:11:00+12:00</published><updated>2015-04-19T20:11:00+12:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2015-04-19:/symfony-2-latex-pdf-service.html</id><summary type="html">&lt;p class="first"&gt;This Symfony 2 article is obsolete.&lt;/p&gt;
-&lt;p class="last"&gt;Portable Document Format (PDF) has become a universally accepted
-format for sharing documentation making the dynamic generation of PDF
-documents an expected feature of many web applications. After reviewing a
-number of libraries for generating PDF documents it was decided to write a
-service wrapping LaTeX; a typesetting system with features suited to the
-production of scientific and technical documentation.&lt;/p&gt;
+&lt;p class="last"&gt;Portable Document Format (PDF) has become a universally accepted format
+for sharing documentation. As a result, the dynamic generation of PDF
+documents is an expected feature of many web applications. After reviewing
+a number of libraries for generating PDF documents it was decided to write
+a service wrapping the LaTeX typesetting system . LaTeX is ideally suited
+to the production of scientific and technical documentation.&lt;/p&gt;
 </summary><content type="html">&lt;div class="admonition warning"&gt;
 &lt;p class="first admonition-title"&gt;Warning&lt;/p&gt;
 &lt;p class="last"&gt;This Symfony&amp;nbsp;2 article is obsolete. Symfony&amp;nbsp;2 reached end-of-life in
@@ -367,8 +366,8 @@ November 2018.&lt;/p&gt;
 sharing documentation. As a result, the dynamic generation of PDF documents is
 an expected feature of many web applications. After reviewing a number of
 libraries for generating PDF documents it was decided to write a service
-wrapping &lt;a class="reference external" href="https://www.latex-project.org/"&gt;LaTeX&lt;/a&gt;; a typesetting system with features suited to the production
-of scientific and technical documentation.&lt;/p&gt;
+wrapping the &lt;a class="reference external" href="https://www.latex-project.org/"&gt;LaTeX&lt;/a&gt; typesetting system . LaTeX is ideally suited to the
+production of scientific and technical documentation.&lt;/p&gt;
 &lt;p&gt;The code examples used in this article are from the certificate generation
 component of IB2020, a &lt;a class="reference external" href="https://symfony.com/"&gt;Symfony&lt;/a&gt; 2 web application for the management of
 welder qualifications.&lt;/p&gt;
@@ -423,9 +422,9 @@ formats) using the QT WebKit rendering engine.&lt;/li&gt;
 &lt;p&gt;The LaTeX system is a markup language and high-quality typesetting system. It
 is written in the &lt;a class="reference external" href="http://tug.org/"&gt;TeX macro language&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;A PDF document may be generated directly from a LaTeX source document with the
-&lt;tt class="docutils literal"&gt;pdflatex&lt;/tt&gt; binary which is distributed as part of the Debian &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;texlive-full&lt;/span&gt;&lt;/tt&gt;
-meta-package. Some LaTeX documents require multiple passes with &lt;tt class="docutils literal"&gt;pdflatex&lt;/tt&gt;, a
-process which is automated with the script &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;rubber-pipe&lt;/span&gt;&lt;/tt&gt;.&lt;/p&gt;
+&lt;tt class="docutils literal"&gt;pdflatex&lt;/tt&gt; binary, part of the Debian &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;texlive-full&lt;/span&gt;&lt;/tt&gt; meta-package. Some
+LaTeX documents require multiple passes with &lt;tt class="docutils literal"&gt;pdflatex&lt;/tt&gt;, a process which is
+automated with the script &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;rubber-pipe&lt;/span&gt;&lt;/tt&gt;.&lt;/p&gt;
 &lt;p&gt;LaTeX and &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;rubber-pipe&lt;/span&gt;&lt;/tt&gt; may be installed on Debian-based distributions with
 the following commands:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; sudo apt-get install texlive-full
@@ -1004,11 +1003,11 @@ and the page size was reduced by 62%.&lt;/p&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;p&gt;Full details are available in the &lt;a class="reference external" href="https://seth.fischer.nz/static/optimising-page-speed-case-study/seth.fischer.nz_2015-03-15_1905.har"&gt;pre-optimisation HAR file&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="figure"&gt;
 &lt;img alt="Pingdom speed test summary pre-optimisation; Performance grade: 81/100; Requests: 17; Load time: 591 ms; Page size 182.9 kB" src="/static/optimising-page-speed-case-study/seth.fischer.nz_2015-03-15_1905_pingdom.png" style="width: 582px; height: 133px;" /&gt;
 &lt;p class="caption"&gt;Pingdom speed test summary pre-optimisation.&lt;/p&gt;
 &lt;/div&gt;
-&lt;p&gt;Full details are available in the &lt;a class="reference external" href="https://seth.fischer.nz/static/optimising-page-speed-case-study/seth.fischer.nz_2015-03-15_1905.har"&gt;pre-optimisation HAR file&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="optimisations"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id2"&gt;Optimisations&lt;/a&gt;&lt;/h2&gt;
@@ -1216,11 +1215,11 @@ browsers.&lt;/li&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;p&gt;Full details are available in the &lt;a class="reference external" href="https://seth.fischer.nz/static/optimising-page-speed-case-study/seth.fischer.nz_2015-03-16_2149.har"&gt;post-optimisation HAR file&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="figure"&gt;
 &lt;img alt="Pingdom speed test summary post-optimisation; Performance grade: 88/100; Requests: 6; Load time: 194 ms; Page size 69.0 kB" src="/static/optimising-page-speed-case-study/seth.fischer.nz_2015-03-16_2149_pingdom.png" style="width: 582px; height: 133px;" /&gt;
 &lt;p class="caption"&gt;Pingdom speed test summary pre-optimisation.&lt;/p&gt;
 &lt;/div&gt;
-&lt;p&gt;Full details are available in the &lt;a class="reference external" href="https://seth.fischer.nz/static/optimising-page-speed-case-study/seth.fischer.nz_2015-03-16_2149.har"&gt;post-optimisation HAR file&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="hosting-environment"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id10"&gt;Hosting environment&lt;/a&gt;&lt;/h2&gt;
@@ -1322,9 +1321,8 @@ months before Drupal&amp;nbsp;8 was released and prior to a
 &lt;p&gt;Often there are components of a Drupal website that should not be located in
 the document root such as configuration files, deployment scripts, and
 functional tests. By utilising Git subtrees, a Drupal installation root (or web
-server document root) may be below the root of the main repository, and
-upstream changes to Drupal core may be conveniently merged with
-&lt;tt class="docutils literal"&gt;git &lt;span class="pre"&gt;read-tree&lt;/span&gt;&lt;/tt&gt;.&lt;/p&gt;
+server document root) may be below the root of the main repository. Upstream
+changes to Drupal core may be conveniently merged with &lt;tt class="docutils literal"&gt;git &lt;span class="pre"&gt;read-tree&lt;/span&gt;&lt;/tt&gt;.&lt;/p&gt;
 &lt;div class="contents topic" id="contents"&gt;
 &lt;p class="topic-title"&gt;Contents&lt;/p&gt;
 &lt;ul class="simple"&gt;
@@ -1466,12 +1464,14 @@ grep -v root &lt;span class="p"&gt;|&lt;/span&gt; head -1 &lt;span class="p"&gt;
 &lt;/div&gt;
 &lt;div class="section" id="create-database"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id8"&gt;Create database&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Open a MySQL console:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; mysql -uroot -p
-&lt;span class="go"&gt;mysql&amp;gt; CREATE DATABASE db;&lt;/span&gt;
-&lt;span class="go"&gt;mysql&amp;gt; CREATE USER &amp;#39;dbuser&amp;#39;@&amp;#39;localhost&amp;#39; IDENTIFIED BY &amp;#39;password&amp;#39;;&lt;/span&gt;
-&lt;span class="go"&gt;mysql&amp;gt; GRANT ALL PRIVILEGES ON db.* TO &amp;#39;dbuser&amp;#39;@&amp;#39;localhost&amp;#39;;&lt;/span&gt;
-&lt;span class="go"&gt;mysql&amp;gt; FLUSH PRIVILEGES;&lt;/span&gt;
-&lt;span class="go"&gt;mysql&amp;gt; \q&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Create database and user:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;DATABASE&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="n"&gt;USER&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt; &lt;span class="n"&gt;IDENTIFIED&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;password&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;GRANT&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt; &lt;span class="n"&gt;PRIVILEGES&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;TO&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;FLUSH&lt;/span&gt; &lt;span class="n"&gt;PRIVILEGES&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="site-installation"&gt;
@@ -1548,9 +1548,12 @@ before Drupal&amp;nbsp;8 was released.&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Now that &lt;a class="reference external" href="https://www.drupal.org/8"&gt;Drupal&amp;nbsp;8&lt;/a&gt; is in beta phase it is time for site developers to start
 exploring the API. This article describes the installation and configuration of
-Drupal&amp;nbsp;8 using Git and Drush. Bear in mind that as of 2014-11-28 there were 22
-&lt;a class="reference external" href="https://www.drupal.org/project/issues/search/drupal?project_issue_followers=&amp;amp;status%5B0%5D=1&amp;amp;status%5B1%5D=13&amp;amp;status%5B2%5D=8&amp;amp;status%5B3%5D=14&amp;amp;status%5B4%5D=15&amp;amp;status%5B5%5D=4&amp;amp;priorities%5B0%5D=400&amp;amp;categories%5B0%5D=1&amp;amp;categories%5B1%5D=2&amp;amp;version%5B0%5D=any_8.&amp;amp;issue_tags_op=%3D&amp;amp;issue_tags=D8%20upgrade%20path"&gt;issues tagged with D8 upgrade path&lt;/a&gt;, so it may be necessary to rebuild your
-site with the next core update.&lt;/p&gt;
+Drupal&amp;nbsp;8 using Git and Drush.&lt;/p&gt;
+&lt;div class="admonition warning"&gt;
+&lt;p class="first admonition-title"&gt;Warning&lt;/p&gt;
+&lt;p class="last"&gt;As of 28 November 2014 there were 22 &lt;a class="reference external" href="https://www.drupal.org/project/issues/search/drupal?project_issue_followers=&amp;amp;status%5B0%5D=1&amp;amp;status%5B1%5D=13&amp;amp;status%5B2%5D=8&amp;amp;status%5B3%5D=14&amp;amp;status%5B4%5D=15&amp;amp;status%5B5%5D=4&amp;amp;priorities%5B0%5D=400&amp;amp;categories%5B0%5D=1&amp;amp;categories%5B1%5D=2&amp;amp;version%5B0%5D=any_8.&amp;amp;issue_tags_op=%3D&amp;amp;issue_tags=D8%20upgrade%20path"&gt;issues tagged with D8 upgrade path&lt;/a&gt;,
+so it may be necessary to rebuild your site with the next core update.&lt;/p&gt;
+&lt;/div&gt;
 &lt;div class="contents topic" id="contents"&gt;
 &lt;p class="topic-title"&gt;Contents&lt;/p&gt;
 &lt;ul class="simple"&gt;
@@ -1596,8 +1599,7 @@ site with the next core update.&lt;/p&gt;
 &lt;p&gt;To work efficiently with Drush the files in &lt;tt class="docutils literal"&gt;sites/default/files&lt;/tt&gt; should be
 writeable both by the web server and command line user. An alternative to
 &lt;tt class="docutils literal"&gt;chmod &lt;span class="pre"&gt;-R&lt;/span&gt; 777 sites/default/files&lt;/tt&gt; is to use &lt;a class="reference external" href="https://wiki.debian.org/Permissions#Access_Control_Lists_in_Linux"&gt;Access Control Lists&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Those familiar with the Symfony&amp;nbsp;2 documentation will recognise the following
-shell commands which have been adapted from the
+&lt;p&gt;The following shell commands have been adapted from the
 &lt;a class="reference external" href="https://symfony.com/doc/2.3/book/installation.html"&gt;Installing and Configuring Symfony&lt;/a&gt; section of the The Symfony Book.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; &lt;span class="nv"&gt;HTTPDUSER&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;ps aux &lt;span class="p"&gt;|&lt;/span&gt; grep -E &lt;span class="s1"&gt;&amp;#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; grep -v root &lt;span class="p"&gt;|&lt;/span&gt; head -1 &lt;span class="p"&gt;|&lt;/span&gt; cut -d&lt;span class="se"&gt;\ &lt;/span&gt; -f1&lt;span class="sb"&gt;`&lt;/span&gt;
 &lt;span class="gp"&gt;$&lt;/span&gt; sudo setfacl -R -m u:&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$HTTPDUSER&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;:rwX -m u:&lt;span class="sb"&gt;`&lt;/span&gt;whoami&lt;span class="sb"&gt;`&lt;/span&gt;:rwX sites/default/files
@@ -1635,12 +1637,14 @@ shell commands which have been adapted from the
 &lt;/div&gt;
 &lt;div class="section" id="create-database"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id6"&gt;Create database&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Open a MySQL console:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; mysql -uroot -p
-&lt;span class="go"&gt;mysql&amp;gt; CREATE DATABASE db;&lt;/span&gt;
-&lt;span class="go"&gt;mysql&amp;gt; CREATE USER &amp;#39;dbuser&amp;#39;@&amp;#39;localhost&amp;#39; IDENTIFIED BY &amp;#39;password&amp;#39;;&lt;/span&gt;
-&lt;span class="go"&gt;mysql&amp;gt; GRANT ALL PRIVILEGES ON db.* TO &amp;#39;dbuser&amp;#39;@&amp;#39;localhost&amp;#39;;&lt;/span&gt;
-&lt;span class="go"&gt;mysql&amp;gt; FLUSH PRIVILEGES;&lt;/span&gt;
-&lt;span class="go"&gt;mysql&amp;gt; \q&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Create database and user:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;DATABASE&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="n"&gt;USER&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt; &lt;span class="n"&gt;IDENTIFIED&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;password&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;GRANT&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt; &lt;span class="n"&gt;PRIVILEGES&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;TO&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;FLUSH&lt;/span&gt; &lt;span class="n"&gt;PRIVILEGES&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="site-installation"&gt;

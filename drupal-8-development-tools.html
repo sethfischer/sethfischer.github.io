@@ -160,10 +160,9 @@ convenient access to performance and profile information.</p>
 <h2><a class="toc-backref" href="#id3">Drupal Console</a></h2>
 <p>The Drupal Console (<a class="reference external" href="https://github.com/hechoendrupal/drupal-console">hechoendrupal/DrupalConsole</a> on GitHub) is a
 <a class="reference external" href="https://symfony.com/doc/2.7/components/console.html">Symfony 2 console application</a> which provides a number of generators to
-assist developers in creating boilerplate code. In addition to increasing
-productivity Drupal Console is a valuable learning tool which allows developers
-to get up and running with best practice code by kick-starting a
-<a class="reference external" href="https://www.drupal.org/node/2156625">PSR-4 compliant directory structure</a>.</p>
+assist developers in creating boilerplate code. Drupal Console is a valuable
+learning tool which allows developers to get up and running with best practice
+code by kick-starting a <a class="reference external" href="https://www.drupal.org/node/2156625">PSR-4 compliant directory structure</a>.</p>
 <p>Commands are namespaced, the top-level namespaces currently being:</p>
 <ul class="simple">
 <li><tt class="docutils literal">cache</tt></li>
@@ -397,9 +396,9 @@ load timeline.</p>
 </figure></div>
 <div class="section" id="profiling-decoupled-or-headless-requests">
 <h3><a class="toc-backref" href="#id10">Profiling decoupled (or headless) requests</a></h3>
-<p>The inclusion of a <a class="reference external" href="https://www.drupal.org/docs/8/api/routing-system/routing-system-overview">HTTP routing framework</a> and <a class="reference external" href="https://www.drupal.org/docs/8/core/modules/rest/overview">REST API</a> in Drupal&nbsp;8 core
-makes it significantly easier to develop decoupled applications using a
-client-side framework such as <a class="reference external" href="https://emberjs.com/">ember.js</a> which connects to a Drupal backend.</p>
+<p>The inclusion of a <a class="reference external" href="https://www.drupal.org/docs/8/api/routing-system/routing-system-overview">HTTP routing framework</a> and <a class="reference external" href="https://www.drupal.org/docs/8/core/modules/rest/overview">REST API</a> in Drupal&nbsp;8 core,
+along with frontend framework such as <a class="reference external" href="https://emberjs.com/">ember.js</a>, make it significantly easier
+to develop decoupled applications.</p>
 <p>When profiling an API or headless request the Web Profiler toolbar is not
 available. However the profile data remains available for each request via a
 token and link provided in the HTTP response headers <tt class="docutils literal"><span class="pre">X-Debug-Token</span></tt> and

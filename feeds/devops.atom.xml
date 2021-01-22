@@ -44,8 +44,8 @@ deployment of Drupal&amp;nbsp;7 sites.&lt;/p&gt;
 &lt;div class="section" id="drupal-project-structure"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;Drupal project structure&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The fabfile is designed to deploy a site having a project structure as
-described in &lt;a class="reference external" href="https://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merge.html"&gt;A Drupal&amp;nbsp;8 workflow using the Git subtree merge strategy&lt;/a&gt;, but
-may be easily adapted to accommodate another project structure.&lt;/p&gt;
+described in &lt;a class="reference external" href="https://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merge.html"&gt;A Drupal&amp;nbsp;8 workflow using the Git subtree merge strategy&lt;/a&gt;.
+However it may be easily adapted to accommodate another project structure.&lt;/p&gt;
 &lt;div class="section" id="synchronise-site-uuid-across-instances"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id2"&gt;Synchronise site UUID across instances&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;So that configuration can be shared between instances of the site (development,
@@ -71,9 +71,9 @@ a robust approach to synchronising UUIDs across instances of a site see
 &lt;div class="section" id="exclude-files-from-release-tarball"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id3"&gt;Exclude files from release tarball&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;As an enhancement files can be excluded from the release tarball by including
-a &lt;tt class="docutils literal"&gt;.gitattributes&lt;/tt&gt; file in the root of the repository and specifying the
-&lt;a class="reference external" href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes#_exporting_your_repository"&gt;export-ignore attribute&lt;/a&gt; for files that should not be included in the
-release. Use this
+a &lt;tt class="docutils literal"&gt;.gitattributes&lt;/tt&gt; file in the root of the repository. For each file that
+should be excluded from the release the &lt;a class="reference external" href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes#_exporting_your_repository"&gt;export-ignore attribute&lt;/a&gt; should be
+specified. Use this
 &lt;a class="reference external" href="https://gist.github.com/sethfischer/bdda9753837ab1da680a"&gt;.gitattributes export-ignore template for Drupal&amp;nbsp;8 projects&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -139,14 +139,15 @@ variable data being created during deployment.&lt;/p&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id8"&gt;Manual configuration&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;The database, &lt;tt class="docutils literal"&gt;settings.php&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;services.yml&lt;/tt&gt; must be manually created on
 the target host before the first deployment.&lt;/p&gt;
-&lt;p&gt;Create the database and database user:&lt;/p&gt;
+&lt;p&gt;Open a MySQL console:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; ssh host
 &lt;span class="gp"&gt;$&lt;/span&gt; mysql -uroot -p
-&lt;span class="go"&gt;mysql&amp;gt; CREATE DATABASE db;&lt;/span&gt;
-&lt;span class="go"&gt;mysql&amp;gt; CREATE USER &amp;#39;dbuser&amp;#39;@&amp;#39;localhost&amp;#39; IDENTIFIED BY &amp;#39;password&amp;#39;;&lt;/span&gt;
-&lt;span class="go"&gt;mysql&amp;gt; GRANT ALL PRIVILEGES ON db.* TO &amp;#39;dbuser&amp;#39;@&amp;#39;localhost&amp;#39;;&lt;/span&gt;
-&lt;span class="go"&gt;mysql&amp;gt; FLUSH PRIVILEGES;&lt;/span&gt;
-&lt;span class="go"&gt;mysql&amp;gt; \q&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Create database and user:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;DATABASE&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="n"&gt;USER&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt; &lt;span class="n"&gt;IDENTIFIED&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;password&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;GRANT&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt; &lt;span class="n"&gt;PRIVILEGES&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;TO&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;FLUSH&lt;/span&gt; &lt;span class="n"&gt;PRIVILEGES&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Copy &lt;tt class="docutils literal"&gt;sites/default/settings.php&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;sites/default/services.yml&lt;/tt&gt; to the
 target host and edit as appropriate according to the environment.&lt;/p&gt;

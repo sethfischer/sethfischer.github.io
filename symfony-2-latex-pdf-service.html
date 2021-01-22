@@ -30,13 +30,13 @@
 
 
 <meta name="author" content="Seth Fischer" />
-<meta name="description" content="This Symfony 2 article is obsolete. Portable Document Format (PDF) has become a universally accepted format for sharing documentation making the dynamic generation of PDF documents an expected feature of many web applications. After reviewing a number of libraries for generating PDF documents it was decided to write a service wrapping LaTeX; a typesetting system with features suited to the production of scientific and technical documentation." />
+<meta name="description" content="This Symfony 2 article is obsolete. Portable Document Format (PDF) has become a universally accepted format for sharing documentation. As a result, the dynamic generation of PDF documents is an expected feature of many web applications. After reviewing a number of libraries for generating PDF documents it was decided to write a service wrapping the LaTeX typesetting system . LaTeX is ideally suited to the production of scientific and technical documentation." />
 <meta name="keywords" content="Symfony 2, LaTeX">
 
 
 <meta property="og:site_name" content="sethfischer"/>
 <meta property="og:title" content="Symfony 2 PDF service using LaTeX"/>
-<meta property="og:description" content="This Symfony 2 article is obsolete. Portable Document Format (PDF) has become a universally accepted format for sharing documentation making the dynamic generation of PDF documents an expected feature of many web applications. After reviewing a number of libraries for generating PDF documents it was decided to write a service wrapping LaTeX; a typesetting system with features suited to the production of scientific and technical documentation."/>
+<meta property="og:description" content="This Symfony 2 article is obsolete. Portable Document Format (PDF) has become a universally accepted format for sharing documentation. As a result, the dynamic generation of PDF documents is an expected feature of many web applications. After reviewing a number of libraries for generating PDF documents it was decided to write a service wrapping the LaTeX typesetting system . LaTeX is ideally suited to the production of scientific and technical documentation."/>
 <meta property="og:locale" content="en_GB"/>
 <meta property="og:url" content="https://seth.fischer.nz/symfony-2-latex-pdf-service.html"/>
 <meta property="og:type" content="article"/>
@@ -134,8 +134,8 @@ November 2018.</p>
 sharing documentation. As a result, the dynamic generation of PDF documents is
 an expected feature of many web applications. After reviewing a number of
 libraries for generating PDF documents it was decided to write a service
-wrapping <a class="reference external" href="https://www.latex-project.org/">LaTeX</a>; a typesetting system with features suited to the production
-of scientific and technical documentation.</p>
+wrapping the <a class="reference external" href="https://www.latex-project.org/">LaTeX</a> typesetting system . LaTeX is ideally suited to the
+production of scientific and technical documentation.</p>
 <p>The code examples used in this article are from the certificate generation
 component of IB2020, a <a class="reference external" href="https://symfony.com/">Symfony</a> 2 web application for the management of
 welder qualifications.</p>
@@ -190,9 +190,9 @@ formats) using the QT WebKit rendering engine.</li>
 <p>The LaTeX system is a markup language and high-quality typesetting system. It
 is written in the <a class="reference external" href="http://tug.org/">TeX macro language</a>.</p>
 <p>A PDF document may be generated directly from a LaTeX source document with the
-<tt class="docutils literal">pdflatex</tt> binary which is distributed as part of the Debian <tt class="docutils literal"><span class="pre">texlive-full</span></tt>
-meta-package. Some LaTeX documents require multiple passes with <tt class="docutils literal">pdflatex</tt>, a
-process which is automated with the script <tt class="docutils literal"><span class="pre">rubber-pipe</span></tt>.</p>
+<tt class="docutils literal">pdflatex</tt> binary, part of the Debian <tt class="docutils literal"><span class="pre">texlive-full</span></tt> meta-package. Some
+LaTeX documents require multiple passes with <tt class="docutils literal">pdflatex</tt>, a process which is
+automated with the script <tt class="docutils literal"><span class="pre">rubber-pipe</span></tt>.</p>
 <p>LaTeX and <tt class="docutils literal"><span class="pre">rubber-pipe</span></tt> may be installed on Debian-based distributions with
 the following commands:</p>
 <div class="highlight"><pre><span></span><span class="gp">$</span> sudo apt-get install texlive-full
