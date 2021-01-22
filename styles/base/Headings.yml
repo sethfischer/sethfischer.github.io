@@ -1,0 +1,13 @@
+extends: capitalization
+message: "'%s' should use sentence-style capitalization."
+level: warning
+scope: heading
+match: $sentence
+exceptions:
+  - "Drupal Console"
+  - "Web Profiler"
+  - Drupal
+  - Fabric
+  - Git
+  - LaTeX
+  - AZE

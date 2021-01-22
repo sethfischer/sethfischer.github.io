@@ -85,6 +85,19 @@ github: publish
 	ghp-import --no-jekyll -m "Generate Pelican site" -b $(GITHUB_PAGES_BRANCH) "$(OUTPUTDIR)"
 	git push origin $(GITHUB_PAGES_BRANCH)
 
+.PHONY: install-vale-styles
+install-vale-styles:
+	rm -rf styles/Google
+	curl -sL https://github.com/errata-ai/Google/archive/v0.3.1.tar.gz \
+	| tar zxf - -C styles/ --strip-components=1 Google-0.3.1/Google
+
+.PHONY: lint
+lint: lint-prose
+
+.PHONY: lint-prose
+lint-prose:
+	./$@.sh
+
 .PHONY: test-links-internal
 test-links-internal: clean html
 	linkchecker output/*.html
