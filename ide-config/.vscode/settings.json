@@ -1,0 +1,30 @@
+{
+    "[html]": {
+        "editor.rulers": [
+            120
+        ]
+    },
+    "[python]": {
+        "editor.rulers": [
+            88
+        ]
+    },
+    "[restructuredtext]": {
+        "editor.rulers": [
+            80
+        ]
+    },
+    "python.formatting.provider": "black",
+    "python.pipenvPath": ".venv",
+    "python.pythonPath": ".venv/bin/python",
+    "spellright.documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext",
+        "restructuredtext"
+    ],
+    "spellright.language": [
+        "en_GB"
+    ],
+    "vale.core.useCLI": true
+}

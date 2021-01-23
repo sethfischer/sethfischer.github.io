@@ -42,6 +42,7 @@ help:
 	@echo '   make devserver [PORT=8000]          serve and regenerate together      '
 	@echo '   make github                         upload the web site via gh-pages   '
 	@echo '   make install-git-hooks              install Git hooks                  '
+	@echo '   make install-ide-config             install IDE configuration          '
 	@echo '   make install-vale-styles            install Vale styles                '
 	@echo '   make lint                           run all linters                    '
 	@echo '   make lint-prose                     lint prose                         '
@@ -94,6 +95,10 @@ install-git-hooks: .git/hooks/pre-commit
 
 .git/hooks/%: git-hooks/%.sh
 	install --mode=700 $< $@
+
+.PHONY: install-ide-config
+install-ide-config:
+	rsync --recursive ide-config/ .
 
 .PHONY: install-vale-styles
 install-vale-styles:
