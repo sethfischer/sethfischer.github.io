@@ -278,9 +278,9 @@ load timeline.&lt;/p&gt;
 &lt;/figure&gt;&lt;/div&gt;
 &lt;div class="section" id="profiling-decoupled-or-headless-requests"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id10"&gt;Profiling decoupled (or headless) requests&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;The inclusion of a &lt;a class="reference external" href="https://www.drupal.org/docs/8/api/routing-system/routing-system-overview"&gt;HTTP routing framework&lt;/a&gt; and &lt;a class="reference external" href="https://www.drupal.org/docs/8/core/modules/rest/overview"&gt;REST API&lt;/a&gt; in Drupal&amp;nbsp;8 core,
-along with frontend framework such as &lt;a class="reference external" href="https://emberjs.com/"&gt;ember.js&lt;/a&gt;, make it significantly easier
-to develop decoupled applications.&lt;/p&gt;
+&lt;p&gt;The included &lt;a class="reference external" href="https://www.drupal.org/docs/8/api/routing-system/routing-system-overview"&gt;HTTP routing framework&lt;/a&gt; and &lt;a class="reference external" href="https://www.drupal.org/docs/8/core/modules/rest/overview"&gt;REST API&lt;/a&gt; modules in Drupal&amp;nbsp;8
+make it easier to develop decoupled applications using a client-side
+framework such as &lt;a class="reference external" href="https://emberjs.com/"&gt;ember.js&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;When profiling an API or headless request the Web Profiler toolbar is not
 available. However the profile data remains available for each request via a
 token and link provided in the HTTP response headers &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;X-Debug-Token&lt;/span&gt;&lt;/tt&gt; and
@@ -1302,7 +1302,7 @@ following dependencies:&lt;/p&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://tools.pingdom.com/"&gt;Pingdom tools website speed test&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</content><category term="Web development"></category><category term="Front end"></category><category term="Pelican"></category></entry><entry><title>A Drupal 8 workflow using the Git subtree merge strategy</title><link href="https://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merge.html" rel="alternate"></link><published>2015-01-23T19:20:00+13:00</published><updated>2015-01-23T19:20:00+13:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2015-01-23:/drupal-8-workflow-using-git-subtree-merge.html</id><summary type="html">&lt;p class="first"&gt;This Drupal 8 article is obsolete.&lt;/p&gt;
+</content><category term="Web development"></category><category term="Client side"></category><category term="Pelican"></category></entry><entry><title>A Drupal 8 workflow using the Git subtree merge strategy</title><link href="https://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merge.html" rel="alternate"></link><published>2015-01-23T19:20:00+13:00</published><updated>2015-01-23T19:20:00+13:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2015-01-23:/drupal-8-workflow-using-git-subtree-merge.html</id><summary type="html">&lt;p class="first"&gt;This Drupal 8 article is obsolete.&lt;/p&gt;
 &lt;p class="last"&gt;Often there are components of a Drupal website that should not be
 located in the document root such as configuration files. It is convenient
 to keep these files in version control but outside of the Drupal root. By
