@@ -41,6 +41,7 @@ help:
 	@echo '   make serve-global [SERVER=0.0.0.0]  serve (as root) to $(SERVER):80    '
 	@echo '   make devserver [PORT=8000]          serve and regenerate together      '
 	@echo '   make github                         upload the web site via gh-pages   '
+	@echo '   make install-git-hooks              install Git hooks                  '
 	@echo '   make test-links-internal            test internal HTML links           '
 	@echo '   make test-links-prod                test production HTML links         '
 	@echo '                                                                          '
@@ -84,6 +85,12 @@ publish:
 github: publish
 	ghp-import --no-jekyll -m "Generate Pelican site" -b $(GITHUB_PAGES_BRANCH) "$(OUTPUTDIR)"
 	git push origin $(GITHUB_PAGES_BRANCH)
+
+.PHONY: install-git-hooks
+install-git-hooks: .git/hooks/pre-commit
+
+.git/hooks/%: git-hooks/%.sh
+	install --mode=700 $< $@
 
 .PHONY: install-vale-styles
 install-vale-styles:
