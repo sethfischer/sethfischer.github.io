@@ -6,8 +6,8 @@ match: $sentence
 exceptions:
   - "Drupal Console"
   - "Web Profiler"
+  - AZE
   - Drupal
   - Fabric
   - Git
   - LaTeX
-  - AZE
