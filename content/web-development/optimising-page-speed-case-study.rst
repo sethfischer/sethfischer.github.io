@@ -6,7 +6,7 @@ Optimising page speed: a case study
 :category: Web development
 :date: 2015-03-27 20:47
 :slug: optimising-page-speed-case-study
-:tags: Front end, Pelican
+:tags: Client side, Pelican
 :summary: As an exercise in optimising page speed the Pelican theme
     pelican-bootstrap3 by Daan Debie was customised according to the specific
     requirements of seth.fischer.nz. The customisations reduced the total
