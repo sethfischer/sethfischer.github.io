@@ -18,8 +18,8 @@
     "python.pipenvPath": ".venv",
     "python.pythonPath": ".venv/bin/python",
     "spellright.documentTypes": [
-        "markdown",
         "latex",
+        "markdown",
         "plaintext",
         "restructuredtext"
     ],
