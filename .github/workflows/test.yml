@@ -29,3 +29,18 @@ jobs:
 
       - name: Check internal links
         run: make test-links-internal
+
+      - name: Install Vale styles
+        run: make install-vale-styles
+
+      - name: Install Vale
+        run: |
+          curl --location https://github.com/errata-ai/vale/releases/download/v2.6.3/vale_2.6.3_Linux_64-bit.tar.gz --output vale.tar.gz
+          mkdir "${GITHUB_WORKSPACE}/bin"
+          tar xvfz vale.tar.gz --directory "${GITHUB_WORKSPACE}/bin" vale
+          echo "${GITHUB_WORKSPACE}/bin" >> $GITHUB_PATH
+
+      - name: Lint prose
+        run: |
+          vale --version
+          bash lint-prose.sh
