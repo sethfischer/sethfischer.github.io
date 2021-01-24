@@ -312,12 +312,12 @@ load timeline.
     </figure>
 
 
-Profiling decoupled (or headless) requests
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Profiling decoupled requests
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The included `HTTP routing framework`_ and `REST API`_ modules in Drupal 8
-make it easier to develop decoupled applications using a client-side
-framework such as `ember.js`_.
+make it easier to develop decoupled, or headless, applications using a
+client-side framework such as `ember.js`_.
 
 When profiling an API or headless request the Web Profiler toolbar is not
 available. However the profile data remains available for each request via a
