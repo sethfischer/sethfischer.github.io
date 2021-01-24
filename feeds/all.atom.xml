@@ -1619,8 +1619,8 @@ described in &lt;a class="reference external" href="https://seth.fischer.nz/drup
 However it may be easily adapted to accommodate another project structure.&lt;/p&gt;
 &lt;div class="section" id="synchronise-site-uuid-across-instances"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id2"&gt;Synchronise site UUID across instances&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;So that configuration can be shared between instances of the site (development,
-staging, production) they must share a common
+&lt;p&gt;To share configuration between instances of the site (development, staging,
+production) they must share a common
 &lt;abbr title="Universally unique identifier"&gt;UUID&lt;/abbr&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drush cget system.site
 &lt;span class="go"&gt;uuid: cdd9a662-e53d-0944-be57-8765c04d38f1&lt;/span&gt;
