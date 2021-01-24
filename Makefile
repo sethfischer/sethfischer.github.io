@@ -105,6 +105,9 @@ install-vale-styles:
 	rm -rf styles/Google
 	curl -sL https://github.com/errata-ai/Google/archive/v0.3.1.tar.gz \
 	| tar zxf - -C styles/ --strip-components=1 Google-0.3.1/Google
+	rm -rf styles/write-good
+	curl -sL https://github.com/errata-ai/write-good/archive/v0.4.0.tar.gz \
+	| tar zxf - -C styles/ --strip-components=1 write-good-0.4.0/write-good
 
 .PHONY: lint
 lint: lint-prose
