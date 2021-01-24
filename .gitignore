@@ -2,6 +2,4 @@ __pycache__
 .venv/
 /styles/Google
 /styles/write-good
-build/
-cache/
 output/
