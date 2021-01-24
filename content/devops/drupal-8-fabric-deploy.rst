@@ -54,8 +54,8 @@ However it may be easily adapted to accommodate another project structure.
 Synchronise site UUID across instances
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-So that configuration can be shared between instances of the site (development,
-staging, production) they must share a common
+To share configuration between instances of the site (development, staging,
+production) they must share a common
 :abbr:`UUID (Universally unique identifier)`.
 
 .. code-block:: console
