@@ -31,7 +31,7 @@ convenient access to performance and profile information.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#web-profiler" id="id8"&gt;Web Profiler&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#data-collectors" id="id9"&gt;Data collectors&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#profiling-decoupled-or-headless-requests" id="id10"&gt;Profiling decoupled (or headless) requests&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#profiling-decoupled-requests" id="id10"&gt;Profiling decoupled requests&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#web-profiler-console-commands" id="id11"&gt;Web Profiler console commands&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
@@ -276,11 +276,11 @@ load timeline.&lt;/p&gt;
     &lt;/picture&gt;
     &lt;figcaption&gt;Example of a Drupal 8 Web Profiler report timeline.&lt;/figcaption&gt;
 &lt;/figure&gt;&lt;/div&gt;
-&lt;div class="section" id="profiling-decoupled-or-headless-requests"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id10"&gt;Profiling decoupled (or headless) requests&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="section" id="profiling-decoupled-requests"&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#id10"&gt;Profiling decoupled requests&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;The included &lt;a class="reference external" href="https://www.drupal.org/docs/8/api/routing-system/routing-system-overview"&gt;HTTP routing framework&lt;/a&gt; and &lt;a class="reference external" href="https://www.drupal.org/docs/8/core/modules/rest/overview"&gt;REST API&lt;/a&gt; modules in Drupal&amp;nbsp;8
-make it easier to develop decoupled applications using a client-side
-framework such as &lt;a class="reference external" href="https://emberjs.com/"&gt;ember.js&lt;/a&gt;.&lt;/p&gt;
+make it easier to develop decoupled, or headless, applications using a
+client-side framework such as &lt;a class="reference external" href="https://emberjs.com/"&gt;ember.js&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;When profiling an API or headless request the Web Profiler toolbar is not
 available. However the profile data remains available for each request via a
 token and link provided in the HTTP response headers &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;X-Debug-Token&lt;/span&gt;&lt;/tt&gt; and

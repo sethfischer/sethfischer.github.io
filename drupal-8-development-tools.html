@@ -150,7 +150,7 @@ convenient access to performance and profile information.</p>
 </li>
 <li><a class="reference internal" href="#web-profiler" id="id8">Web Profiler</a><ul>
 <li><a class="reference internal" href="#data-collectors" id="id9">Data collectors</a></li>
-<li><a class="reference internal" href="#profiling-decoupled-or-headless-requests" id="id10">Profiling decoupled (or headless) requests</a></li>
+<li><a class="reference internal" href="#profiling-decoupled-requests" id="id10">Profiling decoupled requests</a></li>
 <li><a class="reference internal" href="#web-profiler-console-commands" id="id11">Web Profiler console commands</a></li>
 </ul>
 </li>
@@ -395,11 +395,11 @@ load timeline.</p>
     </picture>
     <figcaption>Example of a Drupal 8 Web Profiler report timeline.</figcaption>
 </figure></div>
-<div class="section" id="profiling-decoupled-or-headless-requests">
-<h3><a class="toc-backref" href="#id10">Profiling decoupled (or headless) requests</a></h3>
+<div class="section" id="profiling-decoupled-requests">
+<h3><a class="toc-backref" href="#id10">Profiling decoupled requests</a></h3>
 <p>The included <a class="reference external" href="https://www.drupal.org/docs/8/api/routing-system/routing-system-overview">HTTP routing framework</a> and <a class="reference external" href="https://www.drupal.org/docs/8/core/modules/rest/overview">REST API</a> modules in Drupal&nbsp;8
-make it easier to develop decoupled applications using a client-side
-framework such as <a class="reference external" href="https://emberjs.com/">ember.js</a>.</p>
+make it easier to develop decoupled, or headless, applications using a
+client-side framework such as <a class="reference external" href="https://emberjs.com/">ember.js</a>.</p>
 <p>When profiling an API or headless request the Web Profiler toolbar is not
 available. However the profile data remains available for each request via a
 token and link provided in the HTTP response headers <tt class="docutils literal"><span class="pre">X-Debug-Token</span></tt> and
