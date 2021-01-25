@@ -105,10 +105,14 @@ Symfony 2 service
 part of the application. The `definition of a service`_ from the Symfony
 documentation:
 
+.. vale off
+
     A service is usually used “globally”, such as a database connection
     object or an object that delivers email messages. In Symfony,
     services are often configured and retrieved from the service
     container.
+
+.. vale on
 
 The PDF LaTeX service consists of the following three components:
 
