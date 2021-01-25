@@ -73,10 +73,10 @@ Drupal Console currently has thirteen commands in the generate namespace:
 ``generate:controller``
     Generate & register a controller.
 ``generate:entity``
-    - ``generate:entity:config`` Generate a new “EntityConfig”.
-    - ``generate:entity:content`` Generate a new “EntityContent”.
+    - ``generate:entity:config`` Generate a new ``EntityConfig``.
+    - ``generate:entity:content`` Generate a new ``EntityContent``.
 ``generate:form:config``
-    Generate a new “ConfigFormBase”.
+    Generate a new ``ConfigFormBase``.
 ``generate:module``
     Generate a module.
 ``generate:permissions``
