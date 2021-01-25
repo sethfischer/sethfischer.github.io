@@ -207,11 +207,13 @@ turn invokes <tt class="docutils literal">pdflatex</tt>.</p>
 <p><a class="reference external" href="https://symfony.com/doc/2.3/book/service_container.html">Services</a> are re-usable, decoupled components, that may be accessed from any
 part of the application. The <a class="reference external" href="https://symfony.com/doc/2.3/glossary.html#term-service">definition of a service</a> from the Symfony
 documentation:</p>
-<blockquote>
+<!-- vale off
+
 A service is usually used “globally”, such as a database connection
 object or an object that delivers email messages. In Symfony,
 services are often configured and retrieved from the service
-container.</blockquote>
+container. -->
+<!-- vale on -->
 <p>The PDF LaTeX service consists of the following three components:</p>
 <ol class="arabic simple">
 <li>The <strong>Symfony service container</strong> configured in <tt class="docutils literal">services.yml</tt>.</li>

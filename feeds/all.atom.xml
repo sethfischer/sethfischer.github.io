@@ -338,12 +338,12 @@ code by kick-starting a &lt;a class="reference external" href="https://www.drupa
 &lt;dd&gt;Generate &amp;amp; register a controller.&lt;/dd&gt;
 &lt;dt&gt;&lt;tt class="docutils literal"&gt;generate:entity&lt;/tt&gt;&lt;/dt&gt;
 &lt;dd&gt;&lt;ul class="first last simple"&gt;
-&lt;li&gt;&lt;tt class="docutils literal"&gt;generate:entity:config&lt;/tt&gt; Generate a new “EntityConfig”.&lt;/li&gt;
-&lt;li&gt;&lt;tt class="docutils literal"&gt;generate:entity:content&lt;/tt&gt; Generate a new “EntityContent”.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;generate:entity:config&lt;/tt&gt; Generate a new &lt;tt class="docutils literal"&gt;EntityConfig&lt;/tt&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;generate:entity:content&lt;/tt&gt; Generate a new &lt;tt class="docutils literal"&gt;EntityContent&lt;/tt&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/dd&gt;
 &lt;dt&gt;&lt;tt class="docutils literal"&gt;generate:form:config&lt;/tt&gt;&lt;/dt&gt;
-&lt;dd&gt;Generate a new “ConfigFormBase”.&lt;/dd&gt;
+&lt;dd&gt;Generate a new &lt;tt class="docutils literal"&gt;ConfigFormBase&lt;/tt&gt;.&lt;/dd&gt;
 &lt;dt&gt;&lt;tt class="docutils literal"&gt;generate:module&lt;/tt&gt;&lt;/dt&gt;
 &lt;dd&gt;Generate a module.&lt;/dd&gt;
 &lt;dt&gt;&lt;tt class="docutils literal"&gt;generate:permissions&lt;/tt&gt;&lt;/dt&gt;
@@ -703,11 +703,13 @@ turn invokes &lt;tt class="docutils literal"&gt;pdflatex&lt;/tt&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://symfony.com/doc/2.3/book/service_container.html"&gt;Services&lt;/a&gt; are re-usable, decoupled components, that may be accessed from any
 part of the application. The &lt;a class="reference external" href="https://symfony.com/doc/2.3/glossary.html#term-service"&gt;definition of a service&lt;/a&gt; from the Symfony
 documentation:&lt;/p&gt;
-&lt;blockquote&gt;
+&lt;!-- vale off
+
 A service is usually used “globally”, such as a database connection
 object or an object that delivers email messages. In Symfony,
 services are often configured and retrieved from the service
-container.&lt;/blockquote&gt;
+container. --&gt;
+&lt;!-- vale on --&gt;
 &lt;p&gt;The PDF LaTeX service consists of the following three components:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
 &lt;li&gt;The &lt;strong&gt;Symfony service container&lt;/strong&gt; configured in &lt;tt class="docutils literal"&gt;services.yml&lt;/tt&gt;.&lt;/li&gt;
