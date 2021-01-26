@@ -26,5 +26,6 @@
     "spellright.language": [
         "en_GB"
     ],
-    "vale.core.useCLI": true
+    "vale.core.useCLI": true,
+    "xmlTools.splitAttributesOnFormat": true
 }
