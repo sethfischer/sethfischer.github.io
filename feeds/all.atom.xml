@@ -2096,7 +2096,7 @@ changes to Drupal core may be conveniently merged with &lt;tt class="docutils li
 &lt;li&gt;&lt;a class="reference internal" href="#pull-upstream-into-a-subdirectory-in-the-master-branch" id="id4"&gt;Pull upstream into a subdirectory in the master branch&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#create-a-gitingore-for-drupal-core" id="id5"&gt;Create a &lt;tt class="docutils literal"&gt;.gitingore&lt;/tt&gt; for Drupal core&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#create-directories-outside-the-document-root" id="id6"&gt;Create directories outside the document root&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#create-the-files-directory-and-set-permissions" id="id7"&gt;Create the files directory and set permissions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#create-the-files-directory-and-set-permissions" id="id7"&gt;Create the &lt;tt class="docutils literal"&gt;files&lt;/tt&gt; directory and set permissions&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#create-database" id="id8"&gt;Create database&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#site-installation" id="id9"&gt;Site installation&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#drupal-configuration-directories" id="id10"&gt;Drupal configuration directories&lt;/a&gt;&lt;/li&gt;
@@ -2210,7 +2210,7 @@ may be committed to the repository without exposing them to the web server.&lt;/
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="create-the-files-directory-and-set-permissions"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id7"&gt;Create the files directory and set permissions&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id7"&gt;Create the &lt;tt class="docutils literal"&gt;files&lt;/tt&gt; directory and set permissions&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The Drupal &lt;tt class="docutils literal"&gt;files&lt;/tt&gt; directory must be manually created.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; mkdir drupal/sites/default/files
 &lt;/pre&gt;&lt;/div&gt;
@@ -2323,7 +2323,7 @@ so it may be necessary to rebuild your site with the next core update.&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#before-starting" id="id3"&gt;Before starting&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#clone-drupal-8" id="id4"&gt;Clone Drupal&amp;nbsp;8&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#create-the-files-directory-and-set-permissions" id="id5"&gt;Create the files directory and set permissions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#create-the-files-directory-and-set-permissions" id="id5"&gt;Create the &lt;tt class="docutils literal"&gt;files&lt;/tt&gt; directory and set permissions&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#create-database" id="id6"&gt;Create database&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#site-installation" id="id7"&gt;Site installation&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference internal" href="#configure-a-drush-alias" id="id8"&gt;Configure a Drush alias&lt;/a&gt;&lt;/li&gt;
@@ -2357,7 +2357,7 @@ so it may be necessary to rebuild your site with the next core update.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="create-the-files-directory-and-set-permissions"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id5"&gt;Create the files directory and set permissions&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id5"&gt;Create the &lt;tt class="docutils literal"&gt;files&lt;/tt&gt; directory and set permissions&lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; mkdir sites/default/files
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;To work efficiently with Drush the files in &lt;tt class="docutils literal"&gt;sites/default/files&lt;/tt&gt; should be
