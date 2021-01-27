@@ -173,8 +173,8 @@ In this example—when configuring the web server—the document root is set to
     9 directories, 7 files
 
 
-Create the files directory and set permissions
-----------------------------------------------
+Create the ``files`` directory and set permissions
+--------------------------------------------------
 
 The Drupal ``files`` directory must be manually created.
 

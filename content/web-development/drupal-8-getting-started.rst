@@ -63,8 +63,8 @@ Clone Drupal 8
     $ cp example.gitignore .gitignore
 
 
-Create the files directory and set permissions
-----------------------------------------------
+Create the ``files`` directory and set permissions
+--------------------------------------------------
 
 .. code-block:: console
 
