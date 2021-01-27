@@ -5,6 +5,9 @@ seth.fischer.nz
 |test-status| |link-check|
 
 
+Getting started
+---------------
+
 .. code-block:: text
 
     virtualenv .venv
@@ -14,10 +17,18 @@ seth.fischer.nz
     pelican-themes -i ~/path/to/alexandrevicenzi/Flex
     make devserver
 
+
+Licence
+-------
+
+See the `LICENCE`_ file.
+
+
 Built with `Pelican`_.
 
 
 .. _`Pelican`: http://getpelican.com/
+.. _`LICENCE`: LICENCE
 
 
 .. |test-status| image:: https://github.com/sethfischer/sethfischer.github.io/workflows/test/badge.svg
