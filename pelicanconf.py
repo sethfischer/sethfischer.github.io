@@ -2,7 +2,6 @@
 
 from datetime import datetime
 
-
 AUTHOR = "Seth Fischer"
 SITENAME = "sethfischer"
 SITEURL = ""
