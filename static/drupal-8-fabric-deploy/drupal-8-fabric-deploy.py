@@ -3,10 +3,10 @@
 
 import os
 
+import yaml
 from fabric.api import env, lcd, local, put, run, runs_once, settings, sudo, task
 from fabric.colors import red
 from fabric.utils import abort, warn
-import yaml
 
 
 @task
