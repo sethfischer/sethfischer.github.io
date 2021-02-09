@@ -110,10 +110,10 @@ install-vale-styles:
 	| tar zxf - -C styles/ --strip-components=1 write-good-0.4.0/write-good
 
 .PHONY: lint
-lint: lint-prose
+lint: lint-prose lint-python
 
-.PHONY: lint-prose
-lint-prose:
+.PHONY: lint-prose lint-python
+lint-prose lint-python:
 	./$@.sh
 
 .PHONY: test-links-internal

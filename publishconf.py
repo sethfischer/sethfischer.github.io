@@ -7,7 +7,8 @@ import os
 import sys
 
 sys.path.append(os.curdir)
-from pelicanconf import *
+
+from pelicanconf import *  # noqa: E402 F403 F401
 
 SITEURL = "https://seth.fischer.nz"
 RELATIVE_URLS = False

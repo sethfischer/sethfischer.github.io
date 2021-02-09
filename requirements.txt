@@ -13,14 +13,17 @@ distro==1.4.0
 dnspython==2.1.0
 docutils==0.16
 feedgenerator==1.9.1
+flake8==3.8.4
 ghp-import==1.0.0
 html5lib==1.0.1
 idna==2.8
 ipaddr==2.2.0
+isort==5.7.0
 Jinja2==2.11.2
 LinkChecker @ git+https://github.com/linkchecker/linkchecker.git@21e5de90a68df65d337a1add865838bce1bb2909
 lockfile==0.12.2
 MarkupSafe==1.1.1
+mccabe==0.6.1
 msgpack==0.6.2
 mypy-extensions==0.4.3
 packaging==20.3
@@ -28,6 +31,8 @@ pathspec==0.8.1
 pelican==4.5.3
 pep517==0.8.2
 progress==1.5
+pycodestyle==2.6.0
+pyflakes==2.2.0
 Pygments==2.6.1
 pyparsing==2.4.6
 python-dateutil==2.8.1

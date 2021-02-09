@@ -44,3 +44,6 @@ jobs:
         run: |
           vale --version
           bash lint-prose.sh
+
+      - name: Lint Python
+        run: make lint-python
