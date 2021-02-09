@@ -43,7 +43,7 @@ jobs:
       - name: Lint prose
         run: |
           vale --version
-          bash lint-prose.sh
+          make lint-prose
 
       - name: Lint Python
         run: make lint-python
