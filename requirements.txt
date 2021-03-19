@@ -19,7 +19,7 @@ html5lib==1.0.1
 idna==2.8
 ipaddr==2.2.0
 isort==5.7.0
-Jinja2==2.11.2
+Jinja2==2.11.3
 LinkChecker @ git+https://github.com/linkchecker/linkchecker.git@21e5de90a68df65d337a1add865838bce1bb2909
 lockfile==0.12.2
 MarkupSafe==1.1.1
