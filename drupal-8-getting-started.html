@@ -170,42 +170,42 @@ so it may be necessary to rebuild your site with the next core update.</p>
 </div>
 <div class="section" id="clone-drupal-8">
 <h2><a class="toc-backref" href="#id4">Clone Drupal&nbsp;8</a></h2>
-<div class="highlight"><pre><span></span><span class="gp">$</span> git clone -b <span class="m">8</span>.0.x --single-branch http://git.drupal.org/project/drupal.git
-<span class="gp">$</span> git remote rename origin upstream
-<span class="gp">$</span> git remote add origin <span class="o">[</span>url<span class="o">]</span>
-<span class="gp">$</span> git checkout -b master
-<span class="gp">$</span> cp example.gitignore .gitignore
+<div class="highlight"><pre><span></span><span class="gp">$ </span>git clone -b <span class="m">8</span>.0.x --single-branch http://git.drupal.org/project/drupal.git
+<span class="gp">$ </span>git remote rename origin upstream
+<span class="gp">$ </span>git remote add origin <span class="o">[</span>url<span class="o">]</span>
+<span class="gp">$ </span>git checkout -b master
+<span class="gp">$ </span>cp example.gitignore .gitignore
 </pre></div>
 </div>
 <div class="section" id="create-the-files-directory-and-set-permissions">
 <h2><a class="toc-backref" href="#id5">Create the <tt class="docutils literal">files</tt> directory and set permissions</a></h2>
-<div class="highlight"><pre><span></span><span class="gp">$</span> mkdir sites/default/files
+<div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir sites/default/files
 </pre></div>
 <p>To work efficiently with Drush the files in <tt class="docutils literal">sites/default/files</tt> should be
 writeable both by the web server and command line user. An alternative to
 <tt class="docutils literal">chmod <span class="pre">-R</span> 777 sites/default/files</tt> is to use <a class="reference external" href="https://wiki.debian.org/Permissions#Access_Control_Lists_in_Linux">Access Control Lists</a>.</p>
 <p>The following shell commands have been adapted from the
 <a class="reference external" href="https://symfony.com/doc/2.3/book/installation.html">Installing and Configuring Symfony</a> section of the The Symfony Book.</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nv">HTTPDUSER</span><span class="o">=</span><span class="sb">`</span>ps aux <span class="p">|</span> grep -E <span class="s1">&#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&#39;</span> <span class="p">|</span> grep -v root <span class="p">|</span> head -1 <span class="p">|</span> cut -d<span class="se">\ </span> -f1<span class="sb">`</span>
-<span class="gp">$</span> sudo setfacl -R -m u:<span class="s2">&quot;</span><span class="nv">$HTTPDUSER</span><span class="s2">&quot;</span>:rwX -m u:<span class="sb">`</span>whoami<span class="sb">`</span>:rwX sites/default/files
-<span class="gp">$</span> sudo setfacl -dR -m u:<span class="s2">&quot;</span><span class="nv">$HTTPDUSER</span><span class="s2">&quot;</span>:rwX -m u:<span class="sb">`</span>whoami<span class="sb">`</span>:rwX sites/default/files
+<div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nv">HTTPDUSER</span><span class="o">=</span><span class="sb">`</span>ps aux <span class="p">|</span> grep -E <span class="s1">&#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&#39;</span> <span class="p">|</span> grep -v root <span class="p">|</span> head -1 <span class="p">|</span> cut -d<span class="se">\ </span> -f1<span class="sb">`</span>
+<span class="gp">$ </span>sudo setfacl -R -m u:<span class="s2">&quot;</span><span class="nv">$HTTPDUSER</span><span class="s2">&quot;</span>:rwX -m u:<span class="sb">`</span>whoami<span class="sb">`</span>:rwX sites/default/files
+<span class="gp">$ </span>sudo setfacl -dR -m u:<span class="s2">&quot;</span><span class="nv">$HTTPDUSER</span><span class="s2">&quot;</span>:rwX -m u:<span class="sb">`</span>whoami<span class="sb">`</span>:rwX sites/default/files
 </pre></div>
 <p><tt class="docutils literal">HTTPDUSER</tt> is usually <tt class="docutils literal"><span class="pre">www-data</span></tt> on Debian-based distributions.</p>
 <p>Before setting the access control only the Drush user has <tt class="docutils literal">rw</tt> permissions:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> getfacl sites/default/files
-<span class="gp">#</span> file: cache
-<span class="gp">#</span> owner: drushuser
-<span class="gp">#</span> group: drushuser
+<div class="highlight"><pre><span></span><span class="gp">$ </span>getfacl sites/default/files
+<span class="gp"># </span>file: cache
+<span class="gp"># </span>owner: drushuser
+<span class="gp"># </span>group: drushuser
 <span class="go">user::rwx</span>
 <span class="go">group::rwx</span>
 <span class="go">other::rwx</span>
 </pre></div>
 <p>After setting the access control both the web server user and Drush user have
 <tt class="docutils literal">rw</tt> permissions:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> getfacl sites/default/files
-<span class="gp">#</span> file: cache
-<span class="gp">#</span> owner: drushuser
-<span class="gp">#</span> group: drushuser
+<div class="highlight"><pre><span></span><span class="gp">$ </span>getfacl sites/default/files
+<span class="gp"># </span>file: cache
+<span class="gp"># </span>owner: drushuser
+<span class="gp"># </span>group: drushuser
 <span class="go">user::rwx</span>
 <span class="go">user:www-data:rwx</span>
 <span class="go">user:drushuser:rwx</span>
@@ -223,27 +223,27 @@ writeable both by the web server and command line user. An alternative to
 <div class="section" id="create-database">
 <h2><a class="toc-backref" href="#id6">Create database</a></h2>
 <p>Open a MySQL console:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> mysql -uroot -p
+<div class="highlight"><pre><span></span><span class="gp">$ </span>mysql -uroot -p
 </pre></div>
 <p>Create database and user:</p>
 <div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">db</span><span class="p">;</span>
-<span class="k">CREATE</span> <span class="n">USER</span> <span class="s1">&#39;dbuser&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;password&#39;</span><span class="p">;</span>
-<span class="k">GRANT</span> <span class="k">ALL</span> <span class="n">PRIVILEGES</span> <span class="k">ON</span> <span class="n">db</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;dbuser&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
-<span class="k">FLUSH</span> <span class="n">PRIVILEGES</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">USER</span> <span class="s1">&#39;dbuser&#39;</span><span class="nv">@&#39;localhost&#39;</span> <span class="k">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;password&#39;</span><span class="p">;</span>
+<span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">PRIVILEGES</span> <span class="k">ON</span> <span class="n">db</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;dbuser&#39;</span><span class="nv">@&#39;localhost&#39;</span><span class="p">;</span>
+<span class="k">FLUSH</span> <span class="k">PRIVILEGES</span><span class="p">;</span>
 </pre></div>
 </div>
 <div class="section" id="site-installation">
 <h2><a class="toc-backref" href="#id7">Site installation</a></h2>
-<div class="highlight"><pre><span></span><span class="gp">$</span> drush site-install standard --db-url<span class="o">=</span>mysql://dbuser:password@localhost/db --site-name<span class="o">=</span>drupal8
-<span class="gp">$</span> drush upwd admin --password<span class="o">=</span>password
+<div class="highlight"><pre><span></span><span class="gp">$ </span>drush site-install standard --db-url<span class="o">=</span>mysql://dbuser:password@localhost/db --site-name<span class="o">=</span>drupal8
+<span class="gp">$ </span>drush upwd admin --password<span class="o">=</span>password
 </pre></div>
 <p>Drupal&nbsp;8 beta is now configured and you may login with the username “admin” and
 password “password”.</p>
 </div>
 <div class="section" id="configure-a-drush-alias">
 <h2><a class="toc-backref" href="#id8">Configure a Drush alias</a></h2>
-<div class="highlight"><pre><span></span><span class="gp">$</span> cp ~/.composer/vendor/drush/drush/examples/example.aliases.drushrc.php ~/.drush/aliases.drushrc.php
-<span class="gp">$</span> drush site-alias @self --full --with-optional &gt;&gt; ~/.drush/aliases.drushrc.php
+<div class="highlight"><pre><span></span><span class="gp">$ </span>cp ~/.composer/vendor/drush/drush/examples/example.aliases.drushrc.php ~/.drush/aliases.drushrc.php
+<span class="gp">$ </span>drush site-alias @self --full --with-optional &gt;&gt; ~/.drush/aliases.drushrc.php
 </pre></div>
 <p>Edit <tt class="docutils literal"><span class="pre">~/.drush/aliases.drushrc.php</span></tt> and enter your site’s URI.</p>
 <div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
@@ -262,11 +262,11 @@ password “password”.</p>
 <span class="p">);</span>
 </pre></div>
 <p>Check that your system meets the minimum core requirements:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> drush @drupal8 core-requirements
+<div class="highlight"><pre><span></span><span class="gp">$ </span>drush @drupal8 core-requirements
 </pre></div>
 <p>Check the status of the site installation by running <tt class="docutils literal">drush &#64;drupal8 status</tt>.
 The output is as follows:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> drush @drupal8 status
+<div class="highlight"><pre><span></span><span class="gp">$ </span>drush @drupal8 status
 <span class="go"> Drupal version         :  8.0.0-dev</span>
 <span class="go"> Site URI               :  http://drupal8</span>
 <span class="go"> Database driver        :  mysql</span>
@@ -304,14 +304,14 @@ The output is as follows:</p>
 <p>Two useful modules for developers are <a class="reference external" href="https://www.drupal.org/project/devel">devel</a> and <a class="reference external" href="https://www.drupal.org/project/examples">examples</a>.</p>
 <div class="section" id="devel">
 <h3><a class="toc-backref" href="#id10">Devel</a></h3>
-<div class="highlight"><pre><span></span><span class="gp">$</span> drush @drupal8 pm-download devel
-<span class="gp">$</span> drush @drupal8 pm-enable devel
+<div class="highlight"><pre><span></span><span class="gp">$ </span>drush @drupal8 pm-download devel
+<span class="gp">$ </span>drush @drupal8 pm-enable devel
 </pre></div>
 </div>
 <div class="section" id="examples">
 <h3><a class="toc-backref" href="#id11">Examples</a></h3>
-<div class="highlight"><pre><span></span><span class="gp">$</span> drush @drupal8 pm-download examples
-<span class="gp">$</span> drush @drupal8 pm-enable examples
+<div class="highlight"><pre><span></span><span class="gp">$ </span>drush @drupal8 pm-download examples
+<span class="gp">$ </span>drush @drupal8 pm-enable examples
 </pre></div>
 <p>The single command <tt class="docutils literal">drush &#64;drupal8 <span class="pre">pm-enable</span> module</tt> downloads module (if
 required) before enabling it.</p>
@@ -321,12 +321,12 @@ required) before enabling it.</p>
 <h2><a class="toc-backref" href="#id12">Regularly update Drupal core</a></h2>
 <p>As Drupal&nbsp;8 pushes on through beta releases you should regularly merge in the
 latest code:</p>
-<div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(master)</span><span class="gp">$</span> git checkout master
-<span class="gp gp-VirtualEnv">(master)</span><span class="gp">$</span> git fetch upstream
-<span class="gp gp-VirtualEnv">(master)</span><span class="gp">$</span> git merge upstream/8.0.x
+<div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(master)</span><span class="gp">$ </span>git checkout master
+<span class="gp gp-VirtualEnv">(master)</span><span class="gp">$ </span>git fetch upstream
+<span class="gp gp-VirtualEnv">(master)</span><span class="gp">$ </span>git merge upstream/8.0.x
 </pre></div>
 <p>Remember to rebuild the site after each merge:</p>
-<div class="highlight"><pre><span></span><span class="gp">$</span> drush cache-rebuild
+<div class="highlight"><pre><span></span><span class="gp">$ </span>drush cache-rebuild
 </pre></div>
 <p>Before all issues tagged with “D8 upgrade path” have been closed you may find
 that you are required to repeat the preceding site installation commands after

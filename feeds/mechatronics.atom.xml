@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>sethfischer - Mechatronics</title><link href="https://seth.fischer.nz/" rel="alternate"></link><link href="https://seth.fischer.nz/feeds/mechatronics.atom.xml" rel="self"></link><id>https://seth.fischer.nz/</id><updated>2021-05-20T22:16:00+12:00</updated><entry><title>Include a Git revision in firmware with PlatformIO</title><link href="https://seth.fischer.nz/platformio-git-revision-in-firmware.html" rel="alternate"></link><published>2021-05-20T22:16:00+12:00</published><updated>2021-05-20T22:16:00+12:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2021-05-20:/platformio-git-revision-in-firmware.html</id><summary type="html">&lt;p class="first last"&gt;How to include a Git revision in constant your firmware at build time
+with PlatformIO.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;How to include a Git revision in your firmware at build time with &lt;a class="reference external" href="https://platformio.org/"&gt;PlatformIO&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="contents topic" id="contents"&gt;
+&lt;p class="topic-title"&gt;Contents&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#project-structure" id="id1"&gt;Project structure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#configuration-file" id="id2"&gt;Configuration file&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#user-defined-script" id="id3"&gt;User defined script&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#main-cpp" id="id4"&gt;Main.cpp&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#output" id="id5"&gt;Output&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p&gt;This article is a comprehensive write up of two PlatformIO issues I
+responded to on GitHub.com in late 2020:&lt;/p&gt;
+&lt;ul class="last simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://github.com/platformio/platformio-core/issues/3698#issuecomment-704672408"&gt;platformio/platformio-core/issues/3698&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://github.com/platformio/platformio-core/issues/3759#issuecomment-740188206"&gt;platformio/platformio-core/issues/3759&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;p&gt;PlatformIO supports the generation of &lt;a class="reference external" href="https://docs.platformio.org/en/latest/projectconf/section_env_build.html#dynamic-build-flags"&gt;dynamic build flags&lt;/a&gt;. This feature
+allows the creation of build flags by executing a user defined script. The
+script should output one or more gcc &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;-D&lt;/span&gt;&lt;/tt&gt; options to standard output. For
+example:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+-D SRC_REVISION=&amp;quot;b4837070c4b10d37acfbf0283b758d38e739a670&amp;quot;
+&lt;/pre&gt;
+&lt;p&gt;The &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;-D&lt;/span&gt;&lt;/tt&gt; option allows the defination of a macro. From the &lt;a class="reference external" href="https://linux.die.net/man/1/gcc"&gt;gcc(1) man page&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;dl class="docutils"&gt;
+&lt;dt&gt;-D name&lt;/dt&gt;
+&lt;dd&gt;Predefine name as a macro, with definition 1.&lt;/dd&gt;
+&lt;dt&gt;-D name=definition&lt;/dt&gt;
+&lt;dd&gt;The contents of definition are tokenized and processed as if they
+appeared during translation phase three in a #define directive. In
+particular, the definition will be truncated by embedded newline
+characters.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;/blockquote&gt;
+&lt;div class="section" id="project-structure"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;Project structure&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;This example uses a typical PlatformIO project structure:&lt;/p&gt;
+&lt;pre class="literal"&gt;
+.
+├── src
+│   └── main.cpp
+├── define-git-revision.py
+└── platformio.ini
+&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="section" id="configuration-file"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id2"&gt;Configuration file&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The script to run is defined by the &lt;tt class="docutils literal"&gt;build_flags&lt;/tt&gt; option in
+&lt;tt class="docutils literal"&gt;platformio.ini&lt;/tt&gt;. Scripts are indicated by prepending them with a &lt;tt class="docutils literal"&gt;!&lt;/tt&gt;.&lt;/p&gt;
+&lt;pre class="code ini literal-block"&gt;
+&lt;span class="k"&gt;[platformio]&lt;/span&gt;
+&lt;span class="na"&gt;description&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;Include Git revision in firmware with PlatformIO&lt;/span&gt;
+
+&lt;span class="k"&gt;[env:esp32dev]&lt;/span&gt;
+&lt;span class="na"&gt;board&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;esp32dev&lt;/span&gt;
+&lt;span class="na"&gt;framework&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;arduino&lt;/span&gt;
+&lt;span class="na"&gt;monitor_speed&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;115200&lt;/span&gt;
+&lt;span class="na"&gt;platform&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;espressif32&lt;/span&gt;
+&lt;span class="na"&gt;build_flags&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;
+    &lt;span class="na"&gt;!python3 define-git-revision.py&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://seth.fischer.nz/static/platformio-git-revision-in-firmware/platformio.ini"&gt;Download platformio.ini&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="user-defined-script"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id3"&gt;User defined script&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The following Python script &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;define-git-revision.py&lt;/span&gt;&lt;/tt&gt; will set two predefined
+macros:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;SRC_REVISION&lt;/tt&gt; containing the Git revision, for example
+&lt;tt class="docutils literal"&gt;97c333a4b3c732523e09742318d7acc52b33dbcc&lt;/tt&gt;, and&lt;/li&gt;
+&lt;li&gt;&lt;tt class="docutils literal"&gt;SRC_STATE&lt;/tt&gt; defining the state of the working tree as either &lt;tt class="docutils literal"&gt;clean&lt;/tt&gt; or
+&lt;tt class="docutils literal"&gt;dirty&lt;/tt&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="code python literal-block"&gt;
+&lt;span class="ch"&gt;#!/usr/bin/env python3&lt;/span&gt;
+&lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;Git revision and working tree state&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;subprocess&lt;/span&gt;
+
+&lt;span class="n"&gt;REVISION&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;subprocess&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;check_output&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;git&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;rev-parse&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;HEAD&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;strip&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;subprocess&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;check_output&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;git&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;diff&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;--stat&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;strip&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;STATE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;clean&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;STATE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;dirty&amp;quot;&lt;/span&gt;
+
+
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-D SRC_REVISION='&lt;/span&gt;&lt;span class="se"&gt;\&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="se"&gt;\&amp;quot;&lt;/span&gt;&lt;span class="s2"&gt;'&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;REVISION&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;decode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;UTF-8&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-D SRC_STATE='&lt;/span&gt;&lt;span class="se"&gt;\&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="se"&gt;\&amp;quot;&lt;/span&gt;&lt;span class="s2"&gt;'&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;STATE&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://seth.fischer.nz/static/platformio-git-revision-in-firmware/define-git-revision.py"&gt;Download define-git-revision.py&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="main-cpp"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id4"&gt;Main.cpp&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The predefined macros may be used in &lt;tt class="docutils literal"&gt;src/main.cpp&lt;/tt&gt; as follows:&lt;/p&gt;
+&lt;pre class="code cpp literal-block"&gt;
+&lt;span class="cp"&gt;#ifndef UNIT_TEST
+&lt;/span&gt;
+&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;Arduino.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;
+&lt;/span&gt;
+&lt;span class="cp"&gt;#ifndef SRC_REVISION
+#define SRC_REVISION &amp;quot;(revision not defined)&amp;quot;
+#endif
+&lt;/span&gt;
+&lt;span class="cp"&gt;#ifndef SRC_STATE
+#define SRC_STATE &amp;quot;(state not defined)&amp;quot;
+#endif
+&lt;/span&gt;
+&lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;Serial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;begin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;115200&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;loop&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;Serial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;println&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SRC_REVISION&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;Serial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;println&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SRC_STATE&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;Serial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;println&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+
+    &lt;span class="n"&gt;delay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="cp"&gt;#endif&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://seth.fischer.nz/static/platformio-git-revision-in-firmware/main.cpp"&gt;Download main.cpp&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="output"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#id5"&gt;Output&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Example output on the PlatformIO device monitor:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+&amp;gt; Executing task: platformio device monitor &amp;lt;
+
+--- Available filters and text transformations: colorize, debug, default, direct, esp32_exception_decoder, hexlify, log2file, nocontrol, printable, send_on_enter, time
+--- More details at http://bit.ly/pio-monitor-filters
+--- Miniterm on /dev/ttyUSB0  115200,8,N,1 ---
+--- Quit: Ctrl+C | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
+b4837070c4b10d37acfbf0283b758d38e739a670
+dirty
+
+b4837070c4b10d37acfbf0283b758d38e739a670
+dirty
+&lt;/pre&gt;
+&lt;/div&gt;
+</content><category term="Mechatronics"></category><category term="Arduino"></category><category term="Git"></category><category term="PlatformIO"></category><category term="Python"></category></entry></feed>

@@ -51,7 +51,7 @@ However it may be easily adapted to accommodate another project structure.&lt;/p
 &lt;p&gt;To share configuration between instances of the site (development, staging,
 production) they must share a common
 &lt;abbr title="Universally unique identifier"&gt;UUID&lt;/abbr&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drush cget system.site
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;drush cget system.site
 &lt;span class="go"&gt;uuid: cdd9a662-e53d-0944-be57-8765c04d38f1&lt;/span&gt;
 &lt;span class="go"&gt;name: example.com&lt;/span&gt;
 &lt;span class="go"&gt;mail: admin@example.com&lt;/span&gt;
@@ -89,7 +89,7 @@ usually &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;www-data&lt;/
 &lt;h3&gt;&lt;a class="toc-backref" href="#id6"&gt;Directory structure&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Variable data such as the Drupal &lt;tt class="docutils literal"&gt;files/&lt;/tt&gt; directory, &lt;tt class="docutils literal"&gt;settings.php&lt;/tt&gt;,
 and &lt;tt class="docutils literal"&gt;services.yml&lt;/tt&gt; is located in &lt;tt class="docutils literal"&gt;/var/lib/www/example.com/&lt;/tt&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; tree -AF /var/lib/www/example.com/
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;tree -AF /var/lib/www/example.com/
 &lt;span class="go"&gt;/var/lib/www/example.com/&lt;/span&gt;
 &lt;span class="go"&gt;├── files/&lt;/span&gt;
 &lt;span class="go"&gt;├── services.yml&lt;/span&gt;
@@ -97,7 +97,7 @@ and &lt;tt class="docutils literal"&gt;services.yml&lt;/tt&gt; is located in &lt
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The Drupal site code base is installed in &lt;tt class="docutils literal"&gt;/var/www/&lt;/tt&gt; with symlinks to the
 variable data being created during deployment.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; tree -AFL &lt;span class="m"&gt;4&lt;/span&gt; /var/www/example.com/
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;tree -AFL &lt;span class="m"&gt;4&lt;/span&gt; /var/www/example.com/
 &lt;span class="go"&gt;/var/www/example.com/&lt;/span&gt;
 &lt;span class="go"&gt;├── current -&amp;gt; /var/www/example.com/releases/tag_x/&lt;/span&gt;
 &lt;span class="go"&gt;└── releases/&lt;/span&gt;
@@ -120,7 +120,7 @@ variable data being created during deployment.&lt;/p&gt;
 &lt;span class="go"&gt;        │   └── web.config&lt;/span&gt;
 &lt;span class="go"&gt;        └── README.md&lt;/span&gt;
 
-&lt;span class="gp"&gt;$&lt;/span&gt; tree -AFL /var/www/example.com/releases/tag_x/drupal/sites/default/
+&lt;span class="gp"&gt;$ &lt;/span&gt;tree -AFL /var/www/example.com/releases/tag_x/drupal/sites/default/
 &lt;span class="go"&gt;/var/www/example.com/releases/tag_x/drupal/sites/default/&lt;/span&gt;
 &lt;span class="go"&gt;├── files -&amp;gt; /var/lib/www/uat.reptiles.veri.co.nz/files/&lt;/span&gt;
 &lt;span class="go"&gt;├── services.yml -&amp;gt; /var/lib/www/uat.reptiles.veri.co.nz/services.yml&lt;/span&gt;
@@ -140,19 +140,19 @@ variable data being created during deployment.&lt;/p&gt;
 &lt;p&gt;The database, &lt;tt class="docutils literal"&gt;settings.php&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;services.yml&lt;/tt&gt; must be manually created on
 the target host before the first deployment.&lt;/p&gt;
 &lt;p&gt;Open a MySQL console:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; ssh host
-&lt;span class="gp"&gt;$&lt;/span&gt; mysql -uroot -p
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;ssh host
+&lt;span class="gp"&gt;$ &lt;/span&gt;mysql -uroot -p
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Create database and user:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;DATABASE&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="n"&gt;USER&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt; &lt;span class="n"&gt;IDENTIFIED&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;password&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="k"&gt;GRANT&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt; &lt;span class="n"&gt;PRIVILEGES&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;TO&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="k"&gt;FLUSH&lt;/span&gt; &lt;span class="n"&gt;PRIVILEGES&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;USER&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;@&amp;#39;localhost&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;IDENTIFIED&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;password&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;GRANT&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt; &lt;span class="k"&gt;PRIVILEGES&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;TO&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;@&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;FLUSH&lt;/span&gt; &lt;span class="k"&gt;PRIVILEGES&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Copy &lt;tt class="docutils literal"&gt;sites/default/settings.php&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;sites/default/services.yml&lt;/tt&gt; to the
 target host and edit as appropriate according to the environment.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; scp settings.php host:/var/lib/www/example.com/settings.php
-&lt;span class="gp"&gt;$&lt;/span&gt; scp services.yml host:/var/lib/www/example.com/services.yml
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;scp settings.php host:/var/lib/www/example.com/settings.php
+&lt;span class="gp"&gt;$ &lt;/span&gt;scp services.yml host:/var/lib/www/example.com/services.yml
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -200,10 +200,10 @@ example configuration file.&lt;/p&gt;
 &lt;div class="section" id="usage"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id12"&gt;Usage&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Initialise directory structure on the &lt;tt class="docutils literal"&gt;uat&lt;/tt&gt; host of &lt;tt class="docutils literal"&gt;example.com&lt;/tt&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; fab -f drupal8 site:example.com,uat init_host
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;fab -f drupal8 site:example.com,uat init_host
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Deploy &lt;tt class="docutils literal"&gt;tag_x&lt;/tt&gt; for &lt;tt class="docutils literal"&gt;example.com&lt;/tt&gt; to &lt;tt class="docutils literal"&gt;uat&lt;/tt&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; fab -f drupal8 site:example.com,uat deploy:tag_x
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;fab -f drupal8 site:example.com,uat deploy:tag_x
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="source-code"&gt;

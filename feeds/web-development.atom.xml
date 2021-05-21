@@ -94,7 +94,7 @@ code by kick-starting a &lt;a class="reference external" href="https://www.drupa
 &lt;p class="rubric"&gt;Example: Generating a module&lt;/p&gt;
 &lt;p&gt;The examples below demonstrate how a module is generated with
 &lt;tt class="docutils literal"&gt;generate:module&lt;/tt&gt; All other commands follow a similar pattern.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drupal generate:module
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;drupal generate:module
 
 &lt;span class="go"&gt; Welcome to the Drupal module generator&lt;/span&gt;
 
@@ -120,15 +120,15 @@ code by kick-starting a &lt;a class="reference external" href="https://www.drupa
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Rather than using the default interactive prompt, options can be passed
 to the command.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drupal generate:module &lt;span class="se"&gt;\&lt;/span&gt;
---module&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;awesome&amp;quot;&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
---machine-name&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;awesome&amp;quot;&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
---module-path&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;modules/custom&amp;quot;&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
---description&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;My Awesome Module&amp;quot;&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
---core&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;8.x&amp;quot;&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
---package&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Other&amp;quot;&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
---controller &lt;span class="se"&gt;\&lt;/span&gt;
---dependencies
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;drupal generate:module &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="go"&gt;--module=&amp;quot;awesome&amp;quot; \&lt;/span&gt;
+&lt;span class="go"&gt;--machine-name=&amp;quot;awesome&amp;quot; \&lt;/span&gt;
+&lt;span class="go"&gt;--module-path=&amp;quot;modules/custom&amp;quot; \&lt;/span&gt;
+&lt;span class="go"&gt;--description=&amp;quot;My Awesome Module&amp;quot; \&lt;/span&gt;
+&lt;span class="go"&gt;--core=&amp;quot;8.x&amp;quot; \&lt;/span&gt;
+&lt;span class="go"&gt;--package=&amp;quot;Other&amp;quot; \&lt;/span&gt;
+&lt;span class="go"&gt;--controller \&lt;/span&gt;
+&lt;span class="go"&gt;--dependencies&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="additional-commands"&gt;
@@ -139,7 +139,7 @@ their own commands so the available commands may vary according to the modules
 installed.&lt;/p&gt;
 &lt;p&gt;Site status information may be viewed with the command &lt;tt class="docutils literal"&gt;site:status&lt;/tt&gt;,
 optionally passing the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;--format=json&lt;/span&gt;&lt;/tt&gt; option.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drupal site:status --format&lt;span class="o"&gt;=&lt;/span&gt;json
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;drupal site:status --format&lt;span class="o"&gt;=&lt;/span&gt;json
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Output of preceding command:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
@@ -204,7 +204,7 @@ For an example implementation refer to the source code of Web Profiler
 &lt;div class="section" id="chain-command-execution"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id7"&gt;Chain command execution&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Commands may be recorded in YAML and executed with the &lt;tt class="docutils literal"&gt;chain&lt;/tt&gt; command:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drupal chain --file&lt;span class="o"&gt;=&lt;/span&gt;~/d8-project-init.yml
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;drupal chain --file&lt;span class="o"&gt;=&lt;/span&gt;~/d8-project-init.yml
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;In the example below a module is created, followed by a controller for that
 module.&lt;/p&gt;
@@ -308,7 +308,7 @@ relevant request.&lt;/p&gt;
 &lt;dd&gt;List Web Profiler profiles.&lt;/dd&gt;
 &lt;/dl&gt;
 &lt;p class="rubric"&gt;Benchmark a URL&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drupal webprofiler:benchmark http://drupal8/
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;drupal webprofiler:benchmark http://drupal8/
 &lt;span class="go"&gt; 105/105 [============================] 100% Done.&lt;/span&gt;
 &lt;span class="go"&gt;date: &amp;#39;Sun, 06/28/2015 - 21:00:43&amp;#39;&lt;/span&gt;
 &lt;span class="go"&gt;git_commit: &amp;quot;e39a32842072bfbaa2b15c5284625ff63ebc4a08\n&amp;quot;&lt;/span&gt;
@@ -320,12 +320,12 @@ relevant request.&lt;/p&gt;
 &lt;span class="go"&gt;    95_percentile: { time: &amp;#39;326 ms&amp;#39;, memory: &amp;#39;38.8 MB&amp;#39; }&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p class="rubric"&gt;Export profile data to a file for later analysis&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drupal webprofiler:export --directory&lt;span class="o"&gt;=&lt;/span&gt;/tmp/
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;drupal webprofiler:export --directory&lt;span class="o"&gt;=&lt;/span&gt;/tmp/
 &lt;span class="go"&gt; 266/266 [============================] 100% Done.&lt;/span&gt;
 &lt;span class="go"&gt;Exported 264 profiles&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p class="rubric"&gt;List and filter profiles&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drupal webprofiler:list --url&lt;span class="o"&gt;=&lt;/span&gt;http://drupal8/ --method&lt;span class="o"&gt;=&lt;/span&gt;GET --limit&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;drupal webprofiler:list --url&lt;span class="o"&gt;=&lt;/span&gt;http://drupal8/ --method&lt;span class="o"&gt;=&lt;/span&gt;GET --limit&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt;
 &lt;span class="go"&gt;+--------+-----------+--------+-----------------+----------------------------+&lt;/span&gt;
 &lt;span class="go"&gt;| Token  | IP        | Method | URL             | Time                       |&lt;/span&gt;
 &lt;span class="go"&gt;+--------+-----------+--------+-----------------+----------------------------+&lt;/span&gt;
@@ -424,8 +424,8 @@ LaTeX documents require multiple passes with &lt;tt class="docutils literal"&gt;
 automated with the script &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;rubber-pipe&lt;/span&gt;&lt;/tt&gt;.&lt;/p&gt;
 &lt;p&gt;LaTeX and &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;rubber-pipe&lt;/span&gt;&lt;/tt&gt; may be installed on Debian-based distributions with
 the following commands:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; sudo apt-get install texlive-full
-&lt;span class="gp"&gt;$&lt;/span&gt; sudo apt-get install rubber
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;sudo apt-get install texlive-full
+&lt;span class="gp"&gt;$ &lt;/span&gt;sudo apt-get install rubber
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The PDF LaTeX service is essentially a wrapper around &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;rubber-pipe&lt;/span&gt;&lt;/tt&gt; which in
 turn invokes &lt;tt class="docutils literal"&gt;pdflatex&lt;/tt&gt;.&lt;/p&gt;
@@ -1344,13 +1344,13 @@ changes to Drupal core may be conveniently merged with &lt;tt class="docutils li
 &lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;Initialise Git repository&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Initialise Git repository and add your &lt;tt class="docutils literal"&gt;.gitignore&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;README&lt;/tt&gt;, and
 &lt;tt class="docutils literal"&gt;LICENSE&lt;/tt&gt; files.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; mkdir myproject
-&lt;span class="gp"&gt;$&lt;/span&gt; &lt;span class="nb"&gt;cd&lt;/span&gt; myproject
-&lt;span class="gp"&gt;$&lt;/span&gt; git init
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;mkdir myproject
+&lt;span class="gp"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; myproject
+&lt;span class="gp"&gt;$ &lt;/span&gt;git init
 &lt;span class="go"&gt;Initialized empty Git repository in /var/www/myproject/.git/&lt;/span&gt;
-&lt;span class="gp"&gt;$&lt;/span&gt; vi README.md
-&lt;span class="gp"&gt;$&lt;/span&gt; git add README.md
-&lt;span class="gp"&gt;$&lt;/span&gt; git commit -m &lt;span class="s2"&gt;&amp;quot;Add README.md&amp;quot;&lt;/span&gt;
+&lt;span class="gp"&gt;$ &lt;/span&gt;vi README.md
+&lt;span class="gp"&gt;$ &lt;/span&gt;git add README.md
+&lt;span class="gp"&gt;$ &lt;/span&gt;git commit -m &lt;span class="s2"&gt;&amp;quot;Add README.md&amp;quot;&lt;/span&gt;
 &lt;span class="go"&gt;[master (root-commit) 3a30763] Add README.txt&lt;/span&gt;
 &lt;span class="go"&gt; 1 file changed, 1 insertion(+)&lt;/span&gt;
 &lt;span class="go"&gt; create mode 100644 README.txt&lt;/span&gt;
@@ -1361,14 +1361,14 @@ changes to Drupal core may be conveniently merged with &lt;tt class="docutils li
 &lt;p&gt;Add the drupal.org git repository as a remote with the name &lt;tt class="docutils literal"&gt;upstream&lt;/tt&gt;. To
 improve efficiency specify that only the &lt;tt class="docutils literal"&gt;8.0.x&lt;/tt&gt; branch is to be tracked with
 the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;-t&lt;/span&gt;&lt;/tt&gt; option.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; git remote add -t &lt;span class="m"&gt;8&lt;/span&gt;.0.x upstream http://git.drupal.org/project/drupal.git
-&lt;span class="gp"&gt;$&lt;/span&gt; git fetch upstream
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;git remote add -t &lt;span class="m"&gt;8&lt;/span&gt;.0.x upstream http://git.drupal.org/project/drupal.git
+&lt;span class="gp"&gt;$ &lt;/span&gt;git fetch upstream
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="checkout-a-local-copy-of-the-upstream-branch"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id3"&gt;Checkout a local copy of the upstream branch&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Checkout a local copy of the &lt;tt class="docutils literal"&gt;upstream/8.0.x&lt;/tt&gt; branch.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; git checkout -b upstream upstream/8.0.x
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;git checkout -b upstream upstream/8.0.x
 &lt;span class="go"&gt;Branch upstream set up to track remote branch 8.0.x from upstream by rebasing.&lt;/span&gt;
 &lt;span class="go"&gt;Switched to a new branch &amp;#39;upstream&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -1378,15 +1378,15 @@ the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;-t&lt;/span&gt;&l
 &lt;p&gt;The &lt;tt class="docutils literal"&gt;upstream/8.0.x&lt;/tt&gt; branch is pulled in as a subdirectory of the master
 branch using the &lt;tt class="docutils literal"&gt;git &lt;span class="pre"&gt;read-tree&lt;/span&gt;&lt;/tt&gt; command. The name of the subdirectory is
 specified with the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;--prefix&lt;/span&gt;&lt;/tt&gt; option; in this case &lt;tt class="docutils literal"&gt;drupal/&lt;/tt&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; git checkout master
-&lt;span class="gp"&gt;$&lt;/span&gt; git merge -s ours --no-commit upstream/8.0.x
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;git checkout master
+&lt;span class="gp"&gt;$ &lt;/span&gt;git merge -s ours --no-commit upstream/8.0.x
 &lt;span class="go"&gt;Automatic merge went well; stopped before committing as requested&lt;/span&gt;
-&lt;span class="gp"&gt;$&lt;/span&gt; git read-tree --prefix&lt;span class="o"&gt;=&lt;/span&gt;drupal/ -u upstream/8.0.x
-&lt;span class="gp"&gt;$&lt;/span&gt; git commit
+&lt;span class="gp"&gt;$ &lt;/span&gt;git read-tree --prefix&lt;span class="o"&gt;=&lt;/span&gt;drupal/ -u upstream/8.0.x
+&lt;span class="gp"&gt;$ &lt;/span&gt;git commit
 &lt;span class="go"&gt;[master bd410e7] Merge remote-tracking branch &amp;#39;upstream/8.0.x&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The upstream branch is now a subdirectory of the master branch.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; tree -L &lt;span class="m"&gt;2&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;tree -L &lt;span class="m"&gt;2&lt;/span&gt;
 &lt;span class="go"&gt;.&lt;/span&gt;
 &lt;span class="go"&gt;|-- drupal&lt;/span&gt;
 &lt;span class="go"&gt;|   |-- composer.json&lt;/span&gt;
@@ -1409,9 +1409,9 @@ specified with the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;--
 &lt;h2&gt;&lt;a class="toc-backref" href="#id5"&gt;Create a &lt;tt class="docutils literal"&gt;.gitingore&lt;/tt&gt; for Drupal core&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Drupal core has an example &lt;tt class="docutils literal"&gt;.gitignore&lt;/tt&gt; file which provides an excellent
 starting point and is sufficient for most projects.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; cp drupal/example.gitignore drupal/.gitignore
-&lt;span class="gp"&gt;$&lt;/span&gt; git add drupal/.gitignore
-&lt;span class="gp"&gt;$&lt;/span&gt; git commit -m &lt;span class="s2"&gt;&amp;quot;Add .gitignore for Drupal core&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;cp drupal/example.gitignore drupal/.gitignore
+&lt;span class="gp"&gt;$ &lt;/span&gt;git add drupal/.gitignore
+&lt;span class="gp"&gt;$ &lt;/span&gt;git commit -m &lt;span class="s2"&gt;&amp;quot;Add .gitignore for Drupal core&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="create-directories-outside-the-document-root"&gt;
@@ -1420,8 +1420,8 @@ starting point and is sufficient for most projects.&lt;/p&gt;
 may be committed to the repository without exposing them to the web server.&lt;/p&gt;
 &lt;p&gt;In this example—when configuring the web server—the document root is set to
 &lt;tt class="docutils literal"&gt;/var/www/myproject/drupal&lt;/tt&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; mkdir -p config/active config/staging config/deploy
-&lt;span class="gp"&gt;$&lt;/span&gt; tree -L &lt;span class="m"&gt;2&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;mkdir -p config/active config/staging config/deploy
+&lt;span class="gp"&gt;$ &lt;/span&gt;tree -L &lt;span class="m"&gt;2&lt;/span&gt;
 &lt;span class="go"&gt;.&lt;/span&gt;
 &lt;span class="go"&gt;|-- config&lt;/span&gt;
 &lt;span class="go"&gt;|   |-- active&lt;/span&gt;
@@ -1447,15 +1447,15 @@ may be committed to the repository without exposing them to the web server.&lt;/
 &lt;div class="section" id="create-the-files-directory-and-set-permissions"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id7"&gt;Create the &lt;tt class="docutils literal"&gt;files&lt;/tt&gt; directory and set permissions&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The Drupal &lt;tt class="docutils literal"&gt;files&lt;/tt&gt; directory must be manually created.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; mkdir drupal/sites/default/files
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;mkdir drupal/sites/default/files
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;To work efficiently with Drush the files in &lt;tt class="docutils literal"&gt;sites/default/files&lt;/tt&gt; should be
 writeable both by the web server and command-line user. An alternative to
 &lt;tt class="docutils literal"&gt;chmod &lt;span class="pre"&gt;-R&lt;/span&gt; 777 sites/default/files&lt;/tt&gt; is to use &lt;a class="reference external" href="https://wiki.debian.org/Permissions#Access_Control_Lists_in_Linux"&gt;Access Control Lists&lt;/a&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; &lt;span class="nv"&gt;HTTPDUSER&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;``&lt;/span&gt;ps aux &lt;span class="p"&gt;|&lt;/span&gt; grep -E &lt;span class="s1"&gt;&amp;#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
-grep -v root &lt;span class="p"&gt;|&lt;/span&gt; head -1 &lt;span class="p"&gt;|&lt;/span&gt; cut -d&lt;span class="se"&gt;\ &lt;/span&gt; -f1&lt;span class="sb"&gt;``&lt;/span&gt;
-&lt;span class="gp"&gt;$&lt;/span&gt; sudo setfacl -R -m u:&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$HTTPDUSER&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;:rwX -m u:&lt;span class="sb"&gt;`&lt;/span&gt;whoami&lt;span class="sb"&gt;`&lt;/span&gt;:rwX drupal/sites/default/files
-&lt;span class="gp"&gt;$&lt;/span&gt; sudo setfacl -dR -m u:&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$HTTPDUSER&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;:rwX -m u:&lt;span class="sb"&gt;`&lt;/span&gt;whoami&lt;span class="sb"&gt;`&lt;/span&gt;:rwX drupal/sites/default/files
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;&lt;span class="nv"&gt;HTTPDUSER&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;``&lt;/span&gt;ps aux &lt;span class="p"&gt;|&lt;/span&gt; grep -E &lt;span class="s1"&gt;&amp;#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="go"&gt;grep -v root | head -1 | cut -d\  -f1``&lt;/span&gt;
+&lt;span class="gp"&gt;$ &lt;/span&gt;sudo setfacl -R -m u:&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$HTTPDUSER&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;:rwX -m u:&lt;span class="sb"&gt;`&lt;/span&gt;whoami&lt;span class="sb"&gt;`&lt;/span&gt;:rwX drupal/sites/default/files
+&lt;span class="gp"&gt;$ &lt;/span&gt;sudo setfacl -dR -m u:&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$HTTPDUSER&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;:rwX -m u:&lt;span class="sb"&gt;`&lt;/span&gt;whoami&lt;span class="sb"&gt;`&lt;/span&gt;:rwX drupal/sites/default/files
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;tt class="docutils literal"&gt;HTTPDUSER&lt;/tt&gt; is usually &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;www-data&lt;/span&gt;&lt;/tt&gt; on Debian-based distributions.&lt;/p&gt;
 &lt;p&gt;It may be convenient to add similar ACL permissions to the &lt;tt class="docutils literal"&gt;config/active&lt;/tt&gt;,
@@ -1464,23 +1464,23 @@ grep -v root &lt;span class="p"&gt;|&lt;/span&gt; head -1 &lt;span class="p"&gt;
 &lt;div class="section" id="create-database"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id8"&gt;Create database&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Open a MySQL console:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; mysql -uroot -p
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;mysql -uroot -p
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Create database and user:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;DATABASE&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="n"&gt;USER&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt; &lt;span class="n"&gt;IDENTIFIED&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;password&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="k"&gt;GRANT&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt; &lt;span class="n"&gt;PRIVILEGES&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;TO&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="k"&gt;FLUSH&lt;/span&gt; &lt;span class="n"&gt;PRIVILEGES&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;USER&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;@&amp;#39;localhost&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;IDENTIFIED&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;password&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;GRANT&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt; &lt;span class="k"&gt;PRIVILEGES&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;TO&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;@&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;FLUSH&lt;/span&gt; &lt;span class="k"&gt;PRIVILEGES&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="site-installation"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id9"&gt;Site installation&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Install the site with the standard install profile and change the administrator
 password.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; &lt;span class="nb"&gt;cd&lt;/span&gt; drupal
-&lt;span class="gp"&gt;$&lt;/span&gt; drush site-install standard --db-url&lt;span class="o"&gt;=&lt;/span&gt;mysql://dbuser:password@localhost/db &lt;span class="se"&gt;\&lt;/span&gt;
---site-name&lt;span class="o"&gt;=&lt;/span&gt;drupal8
-&lt;span class="gp"&gt;$&lt;/span&gt; drush upwd admin --password&lt;span class="o"&gt;=&lt;/span&gt;password
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; drupal
+&lt;span class="gp"&gt;$ &lt;/span&gt;drush site-install standard --db-url&lt;span class="o"&gt;=&lt;/span&gt;mysql://dbuser:password@localhost/db &lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="go"&gt;--site-name=drupal8&lt;/span&gt;
+&lt;span class="gp"&gt;$ &lt;/span&gt;drush upwd admin --password&lt;span class="o"&gt;=&lt;/span&gt;password
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="drupal-configuration-directories"&gt;
@@ -1501,8 +1501,8 @@ configuration directories.&lt;/p&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id11"&gt;Export configuration&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Export the configuration from the database into the &lt;tt class="docutils literal"&gt;deploy&lt;/tt&gt; configuration
 directory.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; &lt;span class="nb"&gt;cd&lt;/span&gt; drupal/
-&lt;span class="gp"&gt;$&lt;/span&gt; drush config-export deploy
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; drupal/
+&lt;span class="gp"&gt;$ &lt;/span&gt;drush config-export deploy
 &lt;span class="go"&gt;Configuration successfully exported to ../config/deploy.             [success]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Once exported, this configuration may be committed to the Git repository. As
@@ -1513,19 +1513,19 @@ command &lt;tt class="docutils literal"&gt;drush &lt;span class="pre"&gt;config-
 &lt;h2&gt;&lt;a class="toc-backref" href="#id12"&gt;Update Drupal core&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;To merge upstream change to Drupal core the &lt;a class="reference external" href="https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging#_subtree_merge"&gt;Git subtree merge strategy&lt;/a&gt; is
 used.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; git pull -s subtree upstream &lt;span class="m"&gt;8&lt;/span&gt;.0.x
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;git pull -s subtree upstream &lt;span class="m"&gt;8&lt;/span&gt;.0.x
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The preceding command merges the history of &lt;tt class="docutils literal"&gt;upstream&lt;/tt&gt; with the main
 repository. If it is not preferable to merge histories the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;--squash&lt;/span&gt;&lt;/tt&gt; and
 &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;--no-commit&lt;/span&gt;&lt;/tt&gt; options can be used along with the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;-s&lt;/span&gt; subtree&lt;/tt&gt; strategy
 option:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; git checkout master
-&lt;span class="gp"&gt;$&lt;/span&gt; git merge --squash -s subtree --no-commit upstream
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;git checkout master
+&lt;span class="gp"&gt;$ &lt;/span&gt;git merge --squash -s subtree --no-commit upstream
 &lt;span class="go"&gt;Squash commit -- not updating HEAD&lt;/span&gt;
 &lt;span class="go"&gt;Automatic merge went well; stopped before committing as requested&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Remember to rebuild the cache after each merge:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drush cache-rebuild
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;drush cache-rebuild
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="further-reading"&gt;
@@ -1584,42 +1584,42 @@ so it may be necessary to rebuild your site with the next core update.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="clone-drupal-8"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id4"&gt;Clone Drupal&amp;nbsp;8&lt;/a&gt;&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; git clone -b &lt;span class="m"&gt;8&lt;/span&gt;.0.x --single-branch http://git.drupal.org/project/drupal.git
-&lt;span class="gp"&gt;$&lt;/span&gt; git remote rename origin upstream
-&lt;span class="gp"&gt;$&lt;/span&gt; git remote add origin &lt;span class="o"&gt;[&lt;/span&gt;url&lt;span class="o"&gt;]&lt;/span&gt;
-&lt;span class="gp"&gt;$&lt;/span&gt; git checkout -b master
-&lt;span class="gp"&gt;$&lt;/span&gt; cp example.gitignore .gitignore
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;git clone -b &lt;span class="m"&gt;8&lt;/span&gt;.0.x --single-branch http://git.drupal.org/project/drupal.git
+&lt;span class="gp"&gt;$ &lt;/span&gt;git remote rename origin upstream
+&lt;span class="gp"&gt;$ &lt;/span&gt;git remote add origin &lt;span class="o"&gt;[&lt;/span&gt;url&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;span class="gp"&gt;$ &lt;/span&gt;git checkout -b master
+&lt;span class="gp"&gt;$ &lt;/span&gt;cp example.gitignore .gitignore
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="create-the-files-directory-and-set-permissions"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id5"&gt;Create the &lt;tt class="docutils literal"&gt;files&lt;/tt&gt; directory and set permissions&lt;/a&gt;&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; mkdir sites/default/files
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;mkdir sites/default/files
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;To work efficiently with Drush the files in &lt;tt class="docutils literal"&gt;sites/default/files&lt;/tt&gt; should be
 writeable both by the web server and command line user. An alternative to
 &lt;tt class="docutils literal"&gt;chmod &lt;span class="pre"&gt;-R&lt;/span&gt; 777 sites/default/files&lt;/tt&gt; is to use &lt;a class="reference external" href="https://wiki.debian.org/Permissions#Access_Control_Lists_in_Linux"&gt;Access Control Lists&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The following shell commands have been adapted from the
 &lt;a class="reference external" href="https://symfony.com/doc/2.3/book/installation.html"&gt;Installing and Configuring Symfony&lt;/a&gt; section of the The Symfony Book.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; &lt;span class="nv"&gt;HTTPDUSER&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;ps aux &lt;span class="p"&gt;|&lt;/span&gt; grep -E &lt;span class="s1"&gt;&amp;#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; grep -v root &lt;span class="p"&gt;|&lt;/span&gt; head -1 &lt;span class="p"&gt;|&lt;/span&gt; cut -d&lt;span class="se"&gt;\ &lt;/span&gt; -f1&lt;span class="sb"&gt;`&lt;/span&gt;
-&lt;span class="gp"&gt;$&lt;/span&gt; sudo setfacl -R -m u:&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$HTTPDUSER&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;:rwX -m u:&lt;span class="sb"&gt;`&lt;/span&gt;whoami&lt;span class="sb"&gt;`&lt;/span&gt;:rwX sites/default/files
-&lt;span class="gp"&gt;$&lt;/span&gt; sudo setfacl -dR -m u:&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$HTTPDUSER&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;:rwX -m u:&lt;span class="sb"&gt;`&lt;/span&gt;whoami&lt;span class="sb"&gt;`&lt;/span&gt;:rwX sites/default/files
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;&lt;span class="nv"&gt;HTTPDUSER&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;ps aux &lt;span class="p"&gt;|&lt;/span&gt; grep -E &lt;span class="s1"&gt;&amp;#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; grep -v root &lt;span class="p"&gt;|&lt;/span&gt; head -1 &lt;span class="p"&gt;|&lt;/span&gt; cut -d&lt;span class="se"&gt;\ &lt;/span&gt; -f1&lt;span class="sb"&gt;`&lt;/span&gt;
+&lt;span class="gp"&gt;$ &lt;/span&gt;sudo setfacl -R -m u:&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$HTTPDUSER&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;:rwX -m u:&lt;span class="sb"&gt;`&lt;/span&gt;whoami&lt;span class="sb"&gt;`&lt;/span&gt;:rwX sites/default/files
+&lt;span class="gp"&gt;$ &lt;/span&gt;sudo setfacl -dR -m u:&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$HTTPDUSER&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;:rwX -m u:&lt;span class="sb"&gt;`&lt;/span&gt;whoami&lt;span class="sb"&gt;`&lt;/span&gt;:rwX sites/default/files
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;tt class="docutils literal"&gt;HTTPDUSER&lt;/tt&gt; is usually &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;www-data&lt;/span&gt;&lt;/tt&gt; on Debian-based distributions.&lt;/p&gt;
 &lt;p&gt;Before setting the access control only the Drush user has &lt;tt class="docutils literal"&gt;rw&lt;/tt&gt; permissions:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; getfacl sites/default/files
-&lt;span class="gp"&gt;#&lt;/span&gt; file: cache
-&lt;span class="gp"&gt;#&lt;/span&gt; owner: drushuser
-&lt;span class="gp"&gt;#&lt;/span&gt; group: drushuser
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;getfacl sites/default/files
+&lt;span class="gp"&gt;# &lt;/span&gt;file: cache
+&lt;span class="gp"&gt;# &lt;/span&gt;owner: drushuser
+&lt;span class="gp"&gt;# &lt;/span&gt;group: drushuser
 &lt;span class="go"&gt;user::rwx&lt;/span&gt;
 &lt;span class="go"&gt;group::rwx&lt;/span&gt;
 &lt;span class="go"&gt;other::rwx&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;After setting the access control both the web server user and Drush user have
 &lt;tt class="docutils literal"&gt;rw&lt;/tt&gt; permissions:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; getfacl sites/default/files
-&lt;span class="gp"&gt;#&lt;/span&gt; file: cache
-&lt;span class="gp"&gt;#&lt;/span&gt; owner: drushuser
-&lt;span class="gp"&gt;#&lt;/span&gt; group: drushuser
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;getfacl sites/default/files
+&lt;span class="gp"&gt;# &lt;/span&gt;file: cache
+&lt;span class="gp"&gt;# &lt;/span&gt;owner: drushuser
+&lt;span class="gp"&gt;# &lt;/span&gt;group: drushuser
 &lt;span class="go"&gt;user::rwx&lt;/span&gt;
 &lt;span class="go"&gt;user:www-data:rwx&lt;/span&gt;
 &lt;span class="go"&gt;user:drushuser:rwx&lt;/span&gt;
@@ -1637,27 +1637,27 @@ writeable both by the web server and command line user. An alternative to
 &lt;div class="section" id="create-database"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id6"&gt;Create database&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Open a MySQL console:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; mysql -uroot -p
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;mysql -uroot -p
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Create database and user:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;DATABASE&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="n"&gt;USER&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt; &lt;span class="n"&gt;IDENTIFIED&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;password&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="k"&gt;GRANT&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt; &lt;span class="n"&gt;PRIVILEGES&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;TO&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;@&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="k"&gt;FLUSH&lt;/span&gt; &lt;span class="n"&gt;PRIVILEGES&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;USER&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;@&amp;#39;localhost&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;IDENTIFIED&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;password&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;GRANT&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt; &lt;span class="k"&gt;PRIVILEGES&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;TO&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;@&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;FLUSH&lt;/span&gt; &lt;span class="k"&gt;PRIVILEGES&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="site-installation"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id7"&gt;Site installation&lt;/a&gt;&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drush site-install standard --db-url&lt;span class="o"&gt;=&lt;/span&gt;mysql://dbuser:password@localhost/db --site-name&lt;span class="o"&gt;=&lt;/span&gt;drupal8
-&lt;span class="gp"&gt;$&lt;/span&gt; drush upwd admin --password&lt;span class="o"&gt;=&lt;/span&gt;password
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;drush site-install standard --db-url&lt;span class="o"&gt;=&lt;/span&gt;mysql://dbuser:password@localhost/db --site-name&lt;span class="o"&gt;=&lt;/span&gt;drupal8
+&lt;span class="gp"&gt;$ &lt;/span&gt;drush upwd admin --password&lt;span class="o"&gt;=&lt;/span&gt;password
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Drupal&amp;nbsp;8 beta is now configured and you may login with the username “admin” and
 password “password”.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="configure-a-drush-alias"&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id8"&gt;Configure a Drush alias&lt;/a&gt;&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; cp ~/.composer/vendor/drush/drush/examples/example.aliases.drushrc.php ~/.drush/aliases.drushrc.php
-&lt;span class="gp"&gt;$&lt;/span&gt; drush site-alias @self --full --with-optional &amp;gt;&amp;gt; ~/.drush/aliases.drushrc.php
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;cp ~/.composer/vendor/drush/drush/examples/example.aliases.drushrc.php ~/.drush/aliases.drushrc.php
+&lt;span class="gp"&gt;$ &lt;/span&gt;drush site-alias @self --full --with-optional &amp;gt;&amp;gt; ~/.drush/aliases.drushrc.php
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Edit &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;~/.drush/aliases.drushrc.php&lt;/span&gt;&lt;/tt&gt; and enter your site’s URI.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
@@ -1676,11 +1676,11 @@ password “password”.&lt;/p&gt;
 &lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Check that your system meets the minimum core requirements:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drush @drupal8 core-requirements
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;drush @drupal8 core-requirements
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Check the status of the site installation by running &lt;tt class="docutils literal"&gt;drush &amp;#64;drupal8 status&lt;/tt&gt;.
 The output is as follows:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drush @drupal8 status
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;drush @drupal8 status
 &lt;span class="go"&gt; Drupal version         :  8.0.0-dev&lt;/span&gt;
 &lt;span class="go"&gt; Site URI               :  http://drupal8&lt;/span&gt;
 &lt;span class="go"&gt; Database driver        :  mysql&lt;/span&gt;
@@ -1718,14 +1718,14 @@ The output is as follows:&lt;/p&gt;
 &lt;p&gt;Two useful modules for developers are &lt;a class="reference external" href="https://www.drupal.org/project/devel"&gt;devel&lt;/a&gt; and &lt;a class="reference external" href="https://www.drupal.org/project/examples"&gt;examples&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="section" id="devel"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id10"&gt;Devel&lt;/a&gt;&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drush @drupal8 pm-download devel
-&lt;span class="gp"&gt;$&lt;/span&gt; drush @drupal8 pm-enable devel
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;drush @drupal8 pm-download devel
+&lt;span class="gp"&gt;$ &lt;/span&gt;drush @drupal8 pm-enable devel
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="examples"&gt;
 &lt;h3&gt;&lt;a class="toc-backref" href="#id11"&gt;Examples&lt;/a&gt;&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drush @drupal8 pm-download examples
-&lt;span class="gp"&gt;$&lt;/span&gt; drush @drupal8 pm-enable examples
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;drush @drupal8 pm-download examples
+&lt;span class="gp"&gt;$ &lt;/span&gt;drush @drupal8 pm-enable examples
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The single command &lt;tt class="docutils literal"&gt;drush &amp;#64;drupal8 &lt;span class="pre"&gt;pm-enable&lt;/span&gt; module&lt;/tt&gt; downloads module (if
 required) before enabling it.&lt;/p&gt;
@@ -1735,12 +1735,12 @@ required) before enabling it.&lt;/p&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#id12"&gt;Regularly update Drupal core&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;As Drupal&amp;nbsp;8 pushes on through beta releases you should regularly merge in the
 latest code:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp gp-VirtualEnv"&gt;(master)&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; git checkout master
-&lt;span class="gp gp-VirtualEnv"&gt;(master)&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; git fetch upstream
-&lt;span class="gp gp-VirtualEnv"&gt;(master)&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; git merge upstream/8.0.x
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp gp-VirtualEnv"&gt;(master)&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;git checkout master
+&lt;span class="gp gp-VirtualEnv"&gt;(master)&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;git fetch upstream
+&lt;span class="gp gp-VirtualEnv"&gt;(master)&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;git merge upstream/8.0.x
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Remember to rebuild the site after each merge:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt; drush cache-rebuild
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;drush cache-rebuild
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Before all issues tagged with “D8 upgrade path” have been closed you may find
 that you are required to repeat the preceding site installation commands after
