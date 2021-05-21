@@ -7,3 +7,4 @@ action:
 swap:
   back[ -]?end: server side
   front[ -]?end: client side
+  platformio: PlatformIO

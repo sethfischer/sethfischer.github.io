@@ -10,9 +10,11 @@ gzip
 hechoendrupal
 kura
 latex
+mechatronics
 namespace
 namespaced
 namespaces
+platformio
 profiler
 seth
 sethfischer
