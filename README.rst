@@ -12,8 +12,7 @@ Getting started
 
     virtualenv .venv
     . .venv/bin/activate
-    pip install -U pip
-    pip install -r requirements.txt
+    poetry install
     pelican-themes -i ~/path/to/alexandrevicenzi/Flex
     make devserver
 
