@@ -14,21 +14,25 @@ jobs:
         with:
           python-version: "3.8"
 
-      - name: Install Python requirements
+      - name: Install Poetry
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          curl -fsS -o get-poetry.py https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py
+          python get-poetry.py -y
+          echo "$HOME/.poetry/bin" >> $GITHUB_PATH
+
+      - name: Install dependencies
+        run: poetry install --no-interaction
 
       - name: Install theme
         run: |
           git clone https://github.com/alexandrevicenzi/Flex.git
-          pelican-themes -i ./Flex
+          poetry run pelican-themes -i ./Flex
 
       - name: Build HTML
-        run: make html
+        run: poetry run make html
 
       - name: Check internal links
-        run: make test-links-internal
+        run: poetry run make test-links-internal
 
       - name: Install Vale styles
         run: make install-vale-styles
@@ -43,7 +47,7 @@ jobs:
       - name: Lint prose
         run: |
           vale --v
-          make lint-prose
+          poetry run make lint-prose
 
       - name: Lint Python
-        run: make lint-python
+        run: poetry run make lint-python

@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "sethfischer"
+version = "0.1.0"
+description = "Seth Fischer's blog."
+authors = ["Seth Fischer <seth@fischer.nz>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pelican = "^4.6.0"
+ghp-import = "^2.0.1"
+black = "^21.7b0"
+flake8 = "^3.9.2"
+isort = "^5.9.3"
+linkchecker = {git = "https://github.com/linkchecker/linkchecker.git"}
+rst2html = "^2020.7.4"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
