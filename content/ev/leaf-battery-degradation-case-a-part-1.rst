@@ -6,6 +6,7 @@ Leaf battery degradation case A: AZE0 24 kW⋅h—part 1 2019-10
 :category: Electric vehicles
 :date: 2021-01-11 21:48
 :slug: leaf-battery-degradation-case-a-part-1
+:status: published
 :tags: EV, Nissan Leaf
 :summary: Part 1 in a series detailing the state of health (SoH) degradation of
     a Nissan Leaf AZE0 24 kW⋅h battery.

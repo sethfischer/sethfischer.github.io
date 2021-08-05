@@ -6,6 +6,7 @@ An introduction to Drupal 8 development tools
 :category: Web development
 :date: 2015-07-07 21:19
 :slug: drupal-8-development-tools
+:status: published
 :tags: Drupal 8, Drupal
 :summary:
     This Drupal 8 article is obsolete.

@@ -2,6 +2,8 @@
 Projects
 ========
 
+:status: published
+
 
 Public
 ------

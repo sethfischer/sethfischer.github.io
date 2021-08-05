@@ -6,6 +6,7 @@ Getting started with Drupal 8
 :category: Web development
 :date: 2014-11-28 22:22
 :slug: drupal-8-getting-started
+:status: published
 :software: Composer: 1.0-dev
 :software: Drupal: 8.0.0-beta3
 :software: Drush: 7.0-dev

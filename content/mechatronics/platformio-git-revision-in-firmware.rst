@@ -6,6 +6,7 @@ Include a Git revision in firmware with PlatformIO
 :category: Mechatronics
 :date: 2021-05-20 22:16
 :slug: platformio-git-revision-in-firmware
+:status: published
 :tags: Arduino, Git, PlatformIO, Python
 :summary: How to include a Git revision in constant your firmware at build time
     with PlatformIO.

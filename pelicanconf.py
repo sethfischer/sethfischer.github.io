@@ -33,6 +33,9 @@ TIMEZONE = "Pacific/Auckland"
 
 # Metadata
 
+DEFAULT_METADATA = {
+    "status": "draft",
+}
 EXTRA_PATH_METADATA = {
     "static/extra/CNAME": {"path": "CNAME"},
     "static/extra/googledce9df78937f634a.html": {"path": "googledce9df78937f634a.html"},

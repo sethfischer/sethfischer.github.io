@@ -2,6 +2,8 @@
 Contact
 =======
 
+:status: published
+
 
 .. raw:: html
 

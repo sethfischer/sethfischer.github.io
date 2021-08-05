@@ -6,6 +6,7 @@ Symfony 2 PDF service using LaTeX
 :category: Web development
 :date: 2015-04-19 20:11
 :slug: symfony-2-latex-pdf-service
+:status: published
 :tags: Symfony 2, LaTeX
 :software: Symfony: 2.3.18
 :software: LaTeX: pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian)

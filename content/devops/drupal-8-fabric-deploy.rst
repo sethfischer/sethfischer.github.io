@@ -6,6 +6,7 @@ Deploying Drupal 8 with Fabric
 :category: DevOps
 :date: 2015-02-06 09:38
 :slug: drupal-8-fabric-deploy
+:status: published
 :software: Composer: 1.0-dev
 :software: Drupal: 8.0.0-beta4
 :software: Drush: 7.0-dev
