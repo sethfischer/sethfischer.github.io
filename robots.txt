@@ -1,3 +1,4 @@
 User-agent: *
 Disallow: /CNAME
+Disallow: /drafts/
 Disallow: /humans.txt
