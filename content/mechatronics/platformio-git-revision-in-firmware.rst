@@ -19,8 +19,8 @@ How to include a Git revision in your firmware at build time with `PlatformIO`_.
 
 .. note::
 
-    This article is a comprehensive write up of two PlatformIO issues I
-    responded to on GitHub.com in late 2020:
+    This article is a comprehensive write up of two PlatformIO issues the
+    `author`_ responded to on GitHub.com in late 2020:
 
     * `platformio/platformio-core/issues/3698`_
     * `platformio/platformio-core/issues/3759`_
@@ -43,7 +43,7 @@ The ``-D`` option allows the defination of a macro. From the `gcc(1) man page`_:
         The contents of definition are tokenized and processed as if they
         appeared during translation phase three in a #define directive. In
         particular, the definition will be truncated by embedded newline
-        characters. 
+        characters.
 
 
 Project structure
@@ -120,6 +120,7 @@ Example output on the PlatformIO device monitor::
     dirty
 
 
+.. _`author`: https://github.com/sethfischer
 .. _`PlatformIO`: https://platformio.org/
 .. _`platformio/platformio-core/issues/3698`: https://github.com/platformio/platformio-core/issues/3698#issuecomment-704672408
 .. _`platformio/platformio-core/issues/3759`: https://github.com/platformio/platformio-core/issues/3759#issuecomment-740188206
