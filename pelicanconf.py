@@ -3,7 +3,8 @@
 from datetime import datetime
 
 AUTHOR = "Seth Fischer"
-SITENAME = "sethfischer"
+SITENAME = "Seth Fischer"
+SITESUBTITLE = "Software Engineer"
 SITEURL = ""
 
 
