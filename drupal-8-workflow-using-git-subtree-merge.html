@@ -23,7 +23,7 @@
 
     <link rel="stylesheet" type="text/css" href="https://seth.fischer.nz/static/css/flex-custom.css">
 
-    <link href="https://seth.fischer.nz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="sethfischer Atom">
+    <link href="https://seth.fischer.nz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Seth Fischer Atom">
 
 
 
@@ -37,7 +37,7 @@
 <meta name="keywords" content="Drupal 8, Drupal, Git">
 
 
-  <meta property="og:site_name" content="sethfischer"/>
+  <meta property="og:site_name" content="Seth Fischer"/>
   <meta property="og:title" content="A Drupal 8 workflow using the Git subtree merge strategy"/>
   <meta property="og:description" content="This Drupal 8 article is obsolete. Often there are components of a Drupal website that should not be located in the document root such as configuration files. It is convenient to keep these files in version control but outside of the Drupal root. By utilising Git subtrees, a Drupal installation root may be below the root of the main repository, and upstream changes to Drupal core conveniently merged with git read-tree."/>
   <meta property="og:locale" content="en_GB"/>
@@ -52,21 +52,21 @@
   <meta property="article:tag" content="Git"/>
   <meta property="og:image" content="/static/icons/terminal.svg">
 
-  <title>sethfischer &ndash; A Drupal 8 workflow using the Git subtree merge strategy</title>
+  <title>Seth Fischer &ndash; A Drupal 8 workflow using the Git subtree merge strategy</title>
 
 </head>
 <body class="light-theme">
   <aside>
     <div>
       <a href="https://seth.fischer.nz/">
-        <img src="/static/icons/terminal.svg" alt="sethfischer" title="sethfischer">
+        <img src="/static/icons/terminal.svg" alt="Seth Fischer" title="Seth Fischer">
       </a>
 
       <h1>
-        <a href="https://seth.fischer.nz/">sethfischer</a>
+        <a href="https://seth.fischer.nz/">Seth Fischer</a>
       </h1>
 
-
+<p>Software Engineer</p>
 
       <nav>
         <ul class="list">
@@ -271,7 +271,7 @@ may be committed to the repository without exposing them to the web server.</p>
 writeable both by the web server and command-line user. An alternative to
 <tt class="docutils literal">chmod <span class="pre">-R</span> 777 sites/default/files</tt> is to use <a class="reference external" href="https://wiki.debian.org/Permissions#Access_Control_Lists_in_Linux">Access Control Lists</a>.</p>
 <div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nv">HTTPDUSER</span><span class="o">=</span><span class="sb">``</span>ps aux <span class="p">|</span> grep -E <span class="s1">&#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&#39;</span> <span class="p">|</span> <span class="se">\</span>
-<span class="go">grep -v root | head -1 | cut -d\  -f1``</span>
+grep -v root <span class="p">|</span> head -1 <span class="p">|</span> cut -d<span class="se">\ </span> -f1<span class="sb">``</span>
 <span class="gp">$ </span>sudo setfacl -R -m u:<span class="s2">&quot;</span><span class="nv">$HTTPDUSER</span><span class="s2">&quot;</span>:rwX -m u:<span class="sb">`</span>whoami<span class="sb">`</span>:rwX drupal/sites/default/files
 <span class="gp">$ </span>sudo setfacl -dR -m u:<span class="s2">&quot;</span><span class="nv">$HTTPDUSER</span><span class="s2">&quot;</span>:rwX -m u:<span class="sb">`</span>whoami<span class="sb">`</span>:rwX drupal/sites/default/files
 </pre></div>
@@ -297,7 +297,7 @@ writeable both by the web server and command-line user. An alternative to
 password.</p>
 <div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span> drupal
 <span class="gp">$ </span>drush site-install standard --db-url<span class="o">=</span>mysql://dbuser:password@localhost/db <span class="se">\</span>
-<span class="go">--site-name=drupal8</span>
+--site-name<span class="o">=</span>drupal8
 <span class="gp">$ </span>drush upwd admin --password<span class="o">=</span>password
 </pre></div>
 </div>
@@ -384,7 +384,7 @@ Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a 
 {
   "@context" : "http://schema.org",
   "@type" : "Blog",
-  "name": " sethfischer ",
+  "name": " Seth Fischer ",
   "url" : "https://seth.fischer.nz",
   "image": "/static/icons/terminal.svg",
   "description": ""

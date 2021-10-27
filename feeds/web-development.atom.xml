@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>sethfischer - Web development</title><link href="https://seth.fischer.nz/" rel="alternate"></link><link href="https://seth.fischer.nz/feeds/web-development.atom.xml" rel="self"></link><id>https://seth.fischer.nz/</id><updated>2015-07-07T21:19:00+12:00</updated><entry><title>An introduction to Drupal 8 development tools</title><link href="https://seth.fischer.nz/drupal-8-development-tools.html" rel="alternate"></link><published>2015-07-07T21:19:00+12:00</published><updated>2015-07-07T21:19:00+12:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2015-07-07:/drupal-8-development-tools.html</id><summary type="html">&lt;p class="first"&gt;This Drupal 8 article is obsolete.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Seth Fischer - Web development</title><link href="https://seth.fischer.nz/" rel="alternate"></link><link href="https://seth.fischer.nz/feeds/web-development.atom.xml" rel="self"></link><id>https://seth.fischer.nz/</id><updated>2015-07-07T21:19:00+12:00</updated><subtitle>Software Engineer</subtitle><entry><title>An introduction to Drupal 8 development tools</title><link href="https://seth.fischer.nz/drupal-8-development-tools.html" rel="alternate"></link><published>2015-07-07T21:19:00+12:00</published><updated>2015-07-07T21:19:00+12:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2015-07-07:/drupal-8-development-tools.html</id><summary type="html">&lt;p class="first"&gt;This Drupal 8 article is obsolete.&lt;/p&gt;
 &lt;p class="last"&gt;The use of third party components in Drupal 8 has inspired two new
 tools for Drupal 8 developers: the Drupal Console and the Drupal Web
 Profiler. Based on the Symfony Console component, the Drupal Console is a
@@ -121,14 +121,14 @@ code by kick-starting a &lt;a class="reference external" href="https://www.drupa
 &lt;p&gt;Rather than using the default interactive prompt, options can be passed
 to the command.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;drupal generate:module &lt;span class="se"&gt;\&lt;/span&gt;
-&lt;span class="go"&gt;--module=&amp;quot;awesome&amp;quot; \&lt;/span&gt;
-&lt;span class="go"&gt;--machine-name=&amp;quot;awesome&amp;quot; \&lt;/span&gt;
-&lt;span class="go"&gt;--module-path=&amp;quot;modules/custom&amp;quot; \&lt;/span&gt;
-&lt;span class="go"&gt;--description=&amp;quot;My Awesome Module&amp;quot; \&lt;/span&gt;
-&lt;span class="go"&gt;--core=&amp;quot;8.x&amp;quot; \&lt;/span&gt;
-&lt;span class="go"&gt;--package=&amp;quot;Other&amp;quot; \&lt;/span&gt;
-&lt;span class="go"&gt;--controller \&lt;/span&gt;
-&lt;span class="go"&gt;--dependencies&lt;/span&gt;
+--module&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;awesome&amp;quot;&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+--machine-name&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;awesome&amp;quot;&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+--module-path&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;modules/custom&amp;quot;&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+--description&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;My Awesome Module&amp;quot;&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+--core&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;8.x&amp;quot;&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+--package&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Other&amp;quot;&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
+--controller &lt;span class="se"&gt;\&lt;/span&gt;
+--dependencies
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="additional-commands"&gt;
@@ -1453,7 +1453,7 @@ may be committed to the repository without exposing them to the web server.&lt;/
 writeable both by the web server and command-line user. An alternative to
 &lt;tt class="docutils literal"&gt;chmod &lt;span class="pre"&gt;-R&lt;/span&gt; 777 sites/default/files&lt;/tt&gt; is to use &lt;a class="reference external" href="https://wiki.debian.org/Permissions#Access_Control_Lists_in_Linux"&gt;Access Control Lists&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;&lt;span class="nv"&gt;HTTPDUSER&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;``&lt;/span&gt;ps aux &lt;span class="p"&gt;|&lt;/span&gt; grep -E &lt;span class="s1"&gt;&amp;#39;[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="se"&gt;\&lt;/span&gt;
-&lt;span class="go"&gt;grep -v root | head -1 | cut -d\  -f1``&lt;/span&gt;
+grep -v root &lt;span class="p"&gt;|&lt;/span&gt; head -1 &lt;span class="p"&gt;|&lt;/span&gt; cut -d&lt;span class="se"&gt;\ &lt;/span&gt; -f1&lt;span class="sb"&gt;``&lt;/span&gt;
 &lt;span class="gp"&gt;$ &lt;/span&gt;sudo setfacl -R -m u:&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$HTTPDUSER&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;:rwX -m u:&lt;span class="sb"&gt;`&lt;/span&gt;whoami&lt;span class="sb"&gt;`&lt;/span&gt;:rwX drupal/sites/default/files
 &lt;span class="gp"&gt;$ &lt;/span&gt;sudo setfacl -dR -m u:&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$HTTPDUSER&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;:rwX -m u:&lt;span class="sb"&gt;`&lt;/span&gt;whoami&lt;span class="sb"&gt;`&lt;/span&gt;:rwX drupal/sites/default/files
 &lt;/pre&gt;&lt;/div&gt;
@@ -1479,7 +1479,7 @@ writeable both by the web server and command-line user. An alternative to
 password.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; drupal
 &lt;span class="gp"&gt;$ &lt;/span&gt;drush site-install standard --db-url&lt;span class="o"&gt;=&lt;/span&gt;mysql://dbuser:password@localhost/db &lt;span class="se"&gt;\&lt;/span&gt;
-&lt;span class="go"&gt;--site-name=drupal8&lt;/span&gt;
+--site-name&lt;span class="o"&gt;=&lt;/span&gt;drupal8
 &lt;span class="gp"&gt;$ &lt;/span&gt;drush upwd admin --password&lt;span class="o"&gt;=&lt;/span&gt;password
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;

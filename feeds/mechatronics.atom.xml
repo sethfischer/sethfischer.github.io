@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>sethfischer - Mechatronics</title><link href="https://seth.fischer.nz/" rel="alternate"></link><link href="https://seth.fischer.nz/feeds/mechatronics.atom.xml" rel="self"></link><id>https://seth.fischer.nz/</id><updated>2021-05-20T22:16:00+12:00</updated><entry><title>Include a Git revision in firmware with PlatformIO</title><link href="https://seth.fischer.nz/platformio-git-revision-in-firmware.html" rel="alternate"></link><published>2021-05-20T22:16:00+12:00</published><updated>2021-05-20T22:16:00+12:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2021-05-20:/platformio-git-revision-in-firmware.html</id><summary type="html">&lt;p class="first last"&gt;How to include a Git revision in constant your firmware at build time
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Seth Fischer - Mechatronics</title><link href="https://seth.fischer.nz/" rel="alternate"></link><link href="https://seth.fischer.nz/feeds/mechatronics.atom.xml" rel="self"></link><id>https://seth.fischer.nz/</id><updated>2021-05-20T22:16:00+12:00</updated><subtitle>Software Engineer</subtitle><entry><title>Include a Git revision in firmware with PlatformIO</title><link href="https://seth.fischer.nz/platformio-git-revision-in-firmware.html" rel="alternate"></link><published>2021-05-20T22:16:00+12:00</published><updated>2021-05-20T22:16:00+12:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2021-05-20:/platformio-git-revision-in-firmware.html</id><summary type="html">&lt;p class="first last"&gt;How to include a Git revision in constant your firmware at build time
 with PlatformIO.&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;How to include a Git revision in your firmware at build time with &lt;a class="reference external" href="https://platformio.org/"&gt;PlatformIO&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="contents topic" id="contents"&gt;
@@ -14,8 +14,8 @@ with PlatformIO.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="admonition note"&gt;
 &lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
-&lt;p&gt;This article is a comprehensive write up of two PlatformIO issues I
-responded to on GitHub.com in late 2020:&lt;/p&gt;
+&lt;p&gt;This article is a comprehensive write up of two PlatformIO issues the
+&lt;a class="reference external" href="https://github.com/sethfischer"&gt;author&lt;/a&gt; responded to on GitHub.com in late 2020:&lt;/p&gt;
 &lt;ul class="last simple"&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://github.com/platformio/platformio-core/issues/3698#issuecomment-704672408"&gt;platformio/platformio-core/issues/3698&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://github.com/platformio/platformio-core/issues/3759#issuecomment-740188206"&gt;platformio/platformio-core/issues/3759&lt;/a&gt;&lt;/li&gt;
@@ -102,31 +102,31 @@ macros:&lt;/p&gt;
 &lt;p&gt;The predefined macros may be used in &lt;tt class="docutils literal"&gt;src/main.cpp&lt;/tt&gt; as follows:&lt;/p&gt;
 &lt;pre class="code cpp literal-block"&gt;
 &lt;span class="cp"&gt;#ifndef UNIT_TEST
-&lt;/span&gt;
-&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;Arduino.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;
-&lt;/span&gt;
-&lt;span class="cp"&gt;#ifndef SRC_REVISION
+&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="cp"&gt;#include&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cpf"&gt;&amp;lt;Arduino.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;
+&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="cp"&gt;#ifndef SRC_REVISION
 #define SRC_REVISION &amp;quot;(revision not defined)&amp;quot;
 #endif
-&lt;/span&gt;
-&lt;span class="cp"&gt;#ifndef SRC_STATE
+&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="cp"&gt;#ifndef SRC_STATE
 #define SRC_STATE &amp;quot;(state not defined)&amp;quot;
 #endif
-&lt;/span&gt;
-&lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="n"&gt;Serial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;begin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;115200&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="n"&gt;Serial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;begin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;115200&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;
 
-&lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;loop&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="n"&gt;Serial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;println&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SRC_REVISION&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-    &lt;span class="n"&gt;Serial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;println&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SRC_STATE&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-    &lt;span class="n"&gt;Serial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;println&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;loop&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="n"&gt;Serial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;println&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SRC_REVISION&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="n"&gt;Serial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;println&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SRC_STATE&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="n"&gt;Serial&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;println&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;&lt;span class="w"&gt;
 
-    &lt;span class="n"&gt;delay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;/span&gt;&lt;span class="n"&gt;delay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;
 
-&lt;span class="cp"&gt;#endif&lt;/span&gt;
+&lt;/span&gt;&lt;span class="cp"&gt;#endif&lt;/span&gt;
 &lt;/pre&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://seth.fischer.nz/static/platformio-git-revision-in-firmware/main.cpp"&gt;Download main.cpp&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;

@@ -23,7 +23,7 @@
 
     <link rel="stylesheet" type="text/css" href="https://seth.fischer.nz/static/css/flex-custom.css">
 
-    <link href="https://seth.fischer.nz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="sethfischer Atom">
+    <link href="https://seth.fischer.nz/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Seth Fischer Atom">
 
 
 
@@ -37,7 +37,7 @@
 <meta name="keywords" content="Arduino, Git, PlatformIO, Python">
 
 
-  <meta property="og:site_name" content="sethfischer"/>
+  <meta property="og:site_name" content="Seth Fischer"/>
   <meta property="og:title" content="Include a Git revision in firmware with PlatformIO"/>
   <meta property="og:description" content="How to include a Git revision in constant your firmware at build time with PlatformIO."/>
   <meta property="og:locale" content="en_GB"/>
@@ -53,21 +53,21 @@
   <meta property="article:tag" content="Python"/>
   <meta property="og:image" content="/static/icons/terminal.svg">
 
-  <title>sethfischer &ndash; Include a Git revision in firmware with PlatformIO</title>
+  <title>Seth Fischer &ndash; Include a Git revision in firmware with PlatformIO</title>
 
 </head>
 <body class="light-theme">
   <aside>
     <div>
       <a href="https://seth.fischer.nz/">
-        <img src="/static/icons/terminal.svg" alt="sethfischer" title="sethfischer">
+        <img src="/static/icons/terminal.svg" alt="Seth Fischer" title="Seth Fischer">
       </a>
 
       <h1>
-        <a href="https://seth.fischer.nz/">sethfischer</a>
+        <a href="https://seth.fischer.nz/">Seth Fischer</a>
       </h1>
 
-
+<p>Software Engineer</p>
 
       <nav>
         <ul class="list">
@@ -143,8 +143,8 @@
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>This article is a comprehensive write up of two PlatformIO issues I
-responded to on GitHub.com in late 2020:</p>
+<p>This article is a comprehensive write up of two PlatformIO issues the
+<a class="reference external" href="https://github.com/sethfischer">author</a> responded to on GitHub.com in late 2020:</p>
 <ul class="last simple">
 <li><a class="reference external" href="https://github.com/platformio/platformio-core/issues/3698#issuecomment-704672408">platformio/platformio-core/issues/3698</a></li>
 <li><a class="reference external" href="https://github.com/platformio/platformio-core/issues/3759#issuecomment-740188206">platformio/platformio-core/issues/3759</a></li>
@@ -231,31 +231,31 @@ macros:</p>
 <p>The predefined macros may be used in <tt class="docutils literal">src/main.cpp</tt> as follows:</p>
 <pre class="code cpp literal-block">
 <span class="cp">#ifndef UNIT_TEST
-</span>
-<span class="cp">#include</span> <span class="cpf">&lt;Arduino.h&gt;</span><span class="cp">
-</span>
-<span class="cp">#ifndef SRC_REVISION
+</span><span class="w">
+</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Arduino.h&gt;</span><span class="cp">
+</span><span class="w">
+</span><span class="cp">#ifndef SRC_REVISION
 #define SRC_REVISION &quot;(revision not defined)&quot;
 #endif
-</span>
-<span class="cp">#ifndef SRC_STATE
+</span><span class="w">
+</span><span class="cp">#ifndef SRC_STATE
 #define SRC_STATE &quot;(state not defined)&quot;
 #endif
-</span>
-<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
-<span class="p">}</span>
+</span><span class="w">
+</span><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span><span class="w">
+</span><span class="p">}</span><span class="w">
 
-<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">SRC_REVISION</span><span class="p">);</span>
-    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">SRC_STATE</span><span class="p">);</span>
-    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">();</span>
+</span><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">SRC_REVISION</span><span class="p">);</span><span class="w">
+    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">SRC_STATE</span><span class="p">);</span><span class="w">
+    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">();</span><span class="w">
 
-    <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
-<span class="p">}</span>
+    </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w">
+</span><span class="p">}</span><span class="w">
 
-<span class="cp">#endif</span>
+</span><span class="cp">#endif</span>
 </pre>
 <p><a class="reference external" href="https://seth.fischer.nz/static/platformio-git-revision-in-firmware/main.cpp">Download main.cpp</a>.</p>
 </div>
@@ -307,7 +307,7 @@ Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a 
 {
   "@context" : "http://schema.org",
   "@type" : "Blog",
-  "name": " sethfischer ",
+  "name": " Seth Fischer ",
   "url" : "https://seth.fischer.nz",
   "image": "/static/icons/terminal.svg",
   "description": ""
