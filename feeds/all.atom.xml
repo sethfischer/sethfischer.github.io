@@ -171,12 +171,23 @@ below shows the battery parameters for the year ending October 2021.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="observations"&gt;
 &lt;h2&gt;Observations&lt;/h2&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;The count of Type 1 and 2 charges is higher than actual due to the Leaf's
+&lt;ol class="arabic"&gt;
+&lt;li&gt;&lt;p class="first"&gt;The count of Type 1 and 2 charges is higher than actual due to the Leaf's
 built-in charge timer recording one charge when the vehicle is plugged in,
-and a second when the timer initiates charging.&lt;/li&gt;
-&lt;li&gt;In the year ending October 2021 the vehicle travelled 9 379&amp;nbsp;km and the SoH
-reduced by 3.64 percentage points.&lt;/li&gt;
+and a second when the timer initiates charging.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;The increase in SoH from 81.20% to 86.27% in December 2020 is due to a
+series of quick charges made on an inter-city journey.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;In the year ending October 2021 the vehicle travelled 9 379&amp;nbsp;km and the SoH
+reduced by 3.64 percentage points.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;On 2021-09-26 it was observed that the eleventh battery capacity level bar
+had been lost.&lt;/p&gt;
+&lt;img alt="Eleventh battery capacity bar lost in September 2021." src="https://seth.fischer.nz/static/leaf-battery-degradation-case-a/part-3/eleventh-bar-lost-2021-09-26.jpg" /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;From 2021-03-13 the vehicle was parked uncovered.&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
 </content><category term="Electric vehicles"></category><category term="EV"></category><category term="Nissan Leaf"></category></entry><entry><title>Include a Git revision in firmware with PlatformIO</title><link href="https://seth.fischer.nz/platformio-git-revision-in-firmware.html" rel="alternate"></link><published>2021-05-20T22:16:00+12:00</published><updated>2021-05-20T22:16:00+12:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2021-05-20:/platformio-git-revision-in-firmware.html</id><summary type="html">&lt;p class="first last"&gt;How to include a Git revision in constant your firmware at build time
@@ -501,6 +512,7 @@ and a second when the timer initiates charging.&lt;/li&gt;
 quick charges with in a 36 hour period while making the delivery journey.&lt;/li&gt;
 &lt;li&gt;In the year ending October 2019 the vehicle travelled 8 421&amp;nbsp;km and the SoH
 reduced 2.77 percentage points.&lt;/li&gt;
+&lt;li&gt;Vehicle was parked under cover.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
 </content><category term="Electric vehicles"></category><category term="EV"></category><category term="Nissan Leaf"></category></entry><entry><title>Leaf battery degradation case A: AZE0 24 kW⋅h—part 1 2019-10</title><link href="https://seth.fischer.nz/leaf-battery-degradation-case-a-part-1.html" rel="alternate"></link><published>2021-01-11T21:48:00+13:00</published><updated>2021-01-11T21:48:00+13:00</updated><author><name>Seth Fischer</name></author><id>tag:seth.fischer.nz,2021-01-11:/leaf-battery-degradation-case-a-part-1.html</id><summary type="html">&lt;p class="first last"&gt;Part&amp;nbsp;1 in a series detailing the state of health (SoH) degradation of
