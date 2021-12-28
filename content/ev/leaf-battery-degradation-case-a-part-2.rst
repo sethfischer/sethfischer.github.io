@@ -76,5 +76,7 @@ Observations
 3.  In the year ending October 2019 the vehicle travelled 8 421 km and the SoH
     reduced 2.77 percentage points.
 
+4.  Vehicle was parked under cover.
+
 
 .. _`Leaf Spy for Android`: https://play.google.com/store/apps/details?id=com.Turbo3.Leaf_Spy_Lite

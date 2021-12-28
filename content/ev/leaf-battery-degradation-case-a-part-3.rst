@@ -68,8 +68,19 @@ Observations
     built-in charge timer recording one charge when the vehicle is plugged in,
     and a second when the timer initiates charging.
 
-2.  In the year ending October 2021 the vehicle travelled 9 379 km and the SoH
+2.  The increase in SoH from 81.20% to 86.27% in December 2020 is due to a
+    series of quick charges made on an inter-city journey.
+
+3.  In the year ending October 2021 the vehicle travelled 9 379 km and the SoH
     reduced by 3.64 percentage points.
+
+4.  On 2021-09-26 it was observed that the eleventh battery capacity level bar
+    had been lost.
+
+    .. image:: {static}/static/leaf-battery-degradation-case-a/part-3/eleventh-bar-lost-2021-09-26.jpg
+        :alt: Eleventh battery capacity bar lost in September 2021.
+
+5.  From 2021-03-13 the vehicle was parked uncovered.
 
 
 .. _`Leaf Spy Pro for Android`: https://play.google.com/store/apps/details?id=com.Turbo3.Leaf_Spy_Pro
