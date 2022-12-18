@@ -10,8 +10,9 @@ Getting started
 
 .. code-block:: text
 
-    virtualenv .venv
+    python3.9 -m venv .venv
     . .venv/bin/activate
+    pip install -U pip
     poetry install
     pelican-themes -i ~/path/to/alexandrevicenzi/Flex
     make devserver
