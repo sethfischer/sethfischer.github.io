@@ -24,7 +24,7 @@ Leaf AZE0 24&amp;nbsp;kW⋅h battery.&lt;/p&gt;
 &lt;/ol&gt;
 &lt;div class="section" id="summary"&gt;
 &lt;h2&gt;Summary&lt;/h2&gt;
-&lt;table border="1" class="colwidths-auto docutils"&gt;
+&lt;table border="1" class="docutils"&gt;
 &lt;caption&gt;2020-10/2021-10&lt;/caption&gt;
 &lt;thead valign="bottom"&gt;
 &lt;tr&gt;&lt;th class="head"&gt;Period&lt;/th&gt;
@@ -48,7 +48,7 @@ reduced by 3.64 percentage points.&lt;/li&gt;
 &lt;h2&gt;Data&lt;/h2&gt;
 &lt;p&gt;Battery parameters were recorded using &lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.Turbo3.Leaf_Spy_Pro"&gt;Leaf Spy Pro for Android&lt;/a&gt;. The table
 below shows the battery parameters for the year ending October 2021.&lt;/p&gt;
-&lt;table border="1" class="colwidths-auto docutils"&gt;
+&lt;table border="1" class="docutils"&gt;
 &lt;caption&gt;Battery degradation 2020-10/2021-10 as recorded by Leaf Spy.&lt;/caption&gt;
 &lt;thead valign="bottom"&gt;
 &lt;tr&gt;&lt;th class="head"&gt;Date&lt;/th&gt;
@@ -196,11 +196,11 @@ with PlatformIO.&lt;/p&gt;
 &lt;div class="contents topic" id="contents"&gt;
 &lt;p class="topic-title"&gt;Contents&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#project-structure" id="id1"&gt;Project structure&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#configuration-file" id="id2"&gt;Configuration file&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#user-defined-script" id="id3"&gt;User defined script&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#main-cpp" id="id4"&gt;Main.cpp&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#output" id="id5"&gt;Output&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#project-structure" id="toc-entry-1"&gt;Project structure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#configuration-file" id="toc-entry-2"&gt;Configuration file&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#user-defined-script" id="toc-entry-3"&gt;User defined script&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#main-cpp" id="toc-entry-4"&gt;Main.cpp&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#output" id="toc-entry-5"&gt;Output&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class="admonition note"&gt;
@@ -232,7 +232,7 @@ characters.&lt;/dd&gt;
 &lt;/dl&gt;
 &lt;/blockquote&gt;
 &lt;div class="section" id="project-structure"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;Project structure&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;Project structure&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;This example uses a typical PlatformIO project structure:&lt;/p&gt;
 &lt;pre class="literal"&gt;
 .
@@ -242,25 +242,25 @@ characters.&lt;/dd&gt;
 └── platformio.ini
 &lt;/pre&gt;&lt;/div&gt;
 &lt;div class="section" id="configuration-file"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id2"&gt;Configuration file&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-2"&gt;Configuration file&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The script to run is defined by the &lt;tt class="docutils literal"&gt;build_flags&lt;/tt&gt; option in
 &lt;tt class="docutils literal"&gt;platformio.ini&lt;/tt&gt;. Scripts are indicated by prepending them with a &lt;tt class="docutils literal"&gt;!&lt;/tt&gt;.&lt;/p&gt;
 &lt;pre class="code ini literal-block"&gt;
-&lt;span class="k"&gt;[platformio]&lt;/span&gt;
-&lt;span class="na"&gt;description&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;Include Git revision in firmware with PlatformIO&lt;/span&gt;
+&lt;span class="k"&gt;[platformio]&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="na"&gt;description&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;Include Git revision in firmware with PlatformIO&lt;/span&gt;&lt;span class="w"&gt;
 
-&lt;span class="k"&gt;[env:esp32dev]&lt;/span&gt;
-&lt;span class="na"&gt;board&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;esp32dev&lt;/span&gt;
-&lt;span class="na"&gt;framework&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;arduino&lt;/span&gt;
-&lt;span class="na"&gt;monitor_speed&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;115200&lt;/span&gt;
-&lt;span class="na"&gt;platform&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;espressif32&lt;/span&gt;
-&lt;span class="na"&gt;build_flags&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;
-    &lt;span class="na"&gt;!python3 define-git-revision.py&lt;/span&gt;
+&lt;/span&gt;&lt;span class="k"&gt;[env:esp32dev]&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="na"&gt;board&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;esp32dev&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="na"&gt;framework&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;arduino&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="na"&gt;monitor_speed&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;115200&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="na"&gt;platform&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;espressif32&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="na"&gt;build_flags&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="na"&gt;!python3 define-git-revision.py&lt;/span&gt;
 &lt;/pre&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://seth.fischer.nz/static/platformio-git-revision-in-firmware/platformio.ini"&gt;Download platformio.ini&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="user-defined-script"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id3"&gt;User defined script&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-3"&gt;User defined script&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The following Python script &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;define-git-revision.py&lt;/span&gt;&lt;/tt&gt; will set two predefined
 macros:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
@@ -289,7 +289,7 @@ macros:&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://seth.fischer.nz/static/platformio-git-revision-in-firmware/define-git-revision.py"&gt;Download define-git-revision.py&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="main-cpp"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id4"&gt;Main.cpp&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-4"&gt;Main.cpp&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The predefined macros may be used in &lt;tt class="docutils literal"&gt;src/main.cpp&lt;/tt&gt; as follows:&lt;/p&gt;
 &lt;pre class="code cpp literal-block"&gt;
 &lt;span class="cp"&gt;#ifndef UNIT_TEST
@@ -322,7 +322,7 @@ macros:&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://seth.fischer.nz/static/platformio-git-revision-in-firmware/main.cpp"&gt;Download main.cpp&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="output"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id5"&gt;Output&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-5"&gt;Output&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Example output on the PlatformIO device monitor:&lt;/p&gt;
 &lt;pre class="literal-block"&gt;
 &amp;gt; Executing task: platformio device monitor &amp;lt;
@@ -363,7 +363,7 @@ Leaf AZE0 24&amp;nbsp;kW⋅h battery.&lt;/p&gt;
 &lt;/ol&gt;
 &lt;div class="section" id="summary"&gt;
 &lt;h2&gt;Summary&lt;/h2&gt;
-&lt;table border="1" class="colwidths-auto docutils"&gt;
+&lt;table border="1" class="docutils"&gt;
 &lt;caption&gt;2019-10/2020-10&lt;/caption&gt;
 &lt;thead valign="bottom"&gt;
 &lt;tr&gt;&lt;th class="head"&gt;Period&lt;/th&gt;
@@ -389,7 +389,7 @@ reduced by 2.77 percentage points.&lt;/li&gt;
 &lt;h2&gt;Data&lt;/h2&gt;
 &lt;p&gt;Battery parameters were recorded using &lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.Turbo3.Leaf_Spy_Lite"&gt;Leaf Spy for Android&lt;/a&gt;. The table below
 shows the battery parameters for the year ending October 2020.&lt;/p&gt;
-&lt;table border="1" class="colwidths-auto docutils"&gt;
+&lt;table border="1" class="docutils"&gt;
 &lt;caption&gt;Battery degradation 2019-10/2020-10 as recorded by Leaf Spy.&lt;/caption&gt;
 &lt;thead valign="bottom"&gt;
 &lt;tr&gt;&lt;th class="head"&gt;Date&lt;/th&gt;
@@ -540,7 +540,7 @@ Leaf AZE0 24&amp;nbsp;kW⋅h battery.&lt;/p&gt;
 &lt;/ol&gt;
 &lt;div class="section" id="summary"&gt;
 &lt;h2&gt;Summary&lt;/h2&gt;
-&lt;table border="1" class="colwidths-auto docutils"&gt;
+&lt;table border="1" class="docutils"&gt;
 &lt;caption&gt;2013-12/2019-10&lt;/caption&gt;
 &lt;thead valign="bottom"&gt;
 &lt;tr&gt;&lt;th class="head"&gt;Period&lt;/th&gt;
@@ -566,7 +566,7 @@ average 2.65 percentage points per year to 84.53%.&lt;/li&gt;
 old (approximately six years).&lt;/p&gt;
 &lt;p&gt;The readings dated 2013-12-01 are theoretical readings of a new battery. The
 readings dated 2019-10-07 were made with &lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.Turbo3.Leaf_Spy_Lite"&gt;Leaf Spy for Android&lt;/a&gt;.&lt;/p&gt;
-&lt;table border="1" class="colwidths-auto docutils"&gt;
+&lt;table border="1" class="docutils"&gt;
 &lt;caption&gt;Battery degradation 2013-12/2019-10.&lt;/caption&gt;
 &lt;thead valign="bottom"&gt;
 &lt;tr&gt;&lt;th class="head"&gt;Date&lt;/th&gt;
@@ -632,24 +632,24 @@ convenient access to performance and profile information.&lt;/p&gt;
 &lt;div class="contents topic" id="contents"&gt;
 &lt;p class="topic-title"&gt;Contents&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#drupal-console" id="id3"&gt;Drupal Console&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#commands-in-the-generate-namespace" id="id4"&gt;Commands in the generate namespace&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#additional-commands" id="id5"&gt;Additional commands&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#custom-commands" id="id6"&gt;Custom commands&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#chain-command-execution" id="id7"&gt;Chain command execution&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#drupal-console" id="toc-entry-1"&gt;Drupal Console&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#commands-in-the-generate-namespace" id="toc-entry-2"&gt;Commands in the generate namespace&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#additional-commands" id="toc-entry-3"&gt;Additional commands&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#custom-commands" id="toc-entry-4"&gt;Custom commands&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#chain-command-execution" id="toc-entry-5"&gt;Chain command execution&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#web-profiler" id="id8"&gt;Web Profiler&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#data-collectors" id="id9"&gt;Data collectors&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#profiling-decoupled-requests" id="id10"&gt;Profiling decoupled requests&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#web-profiler-console-commands" id="id11"&gt;Web Profiler console commands&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#web-profiler" id="toc-entry-6"&gt;Web Profiler&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#data-collectors" id="toc-entry-7"&gt;Data collectors&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#profiling-decoupled-requests" id="toc-entry-8"&gt;Profiling decoupled requests&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#web-profiler-console-commands" id="toc-entry-9"&gt;Web Profiler console commands&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#further-reading" id="id12"&gt;Further reading&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#further-reading" id="toc-entry-10"&gt;Further reading&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class="section" id="drupal-console"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id3"&gt;Drupal Console&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;Drupal Console&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The Drupal Console (&lt;a class="reference external" href="https://github.com/hechoendrupal/drupal-console"&gt;hechoendrupal/DrupalConsole&lt;/a&gt; on GitHub) is a
 &lt;a class="reference external" href="https://symfony.com/doc/2.7/components/console.html"&gt;Symfony 2 console application&lt;/a&gt; which provides a number of generators to
 assist developers in creating boilerplate code. Drupal Console is a valuable
@@ -669,7 +669,7 @@ code by kick-starting a &lt;a class="reference external" href="https://www.drupa
 &lt;li&gt;&lt;tt class="docutils literal"&gt;test&lt;/tt&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="section" id="commands-in-the-generate-namespace"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id4"&gt;Commands in the generate namespace&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-2"&gt;Commands in the generate namespace&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Drupal Console currently has thirteen commands in the generate namespace:&lt;/p&gt;
 &lt;dl class="docutils"&gt;
 &lt;dt&gt;&lt;tt class="docutils literal"&gt;generate:authentication:provider&lt;/tt&gt;&lt;/dt&gt;
@@ -742,7 +742,7 @@ to the command.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="additional-commands"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id5"&gt;Additional commands&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-3"&gt;Additional commands&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;In addition to commands in the generate namespace Drupal Console has many other
 commands. Run &lt;tt class="docutils literal"&gt;drupal list&lt;/tt&gt; to list available commands. Modules can define
 their own commands so the available commands may vary according to the modules
@@ -752,58 +752,58 @@ optionally passing the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&g
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;drupal site:status --format&lt;span class="o"&gt;=&lt;/span&gt;json
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Output of preceding command:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;quot;system&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;Drupal&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;8.0.0-dev&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;Access to update.php&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Protected&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;Configuration files&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Protected&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;Cron maintenance tasks&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Last run 44 min 45 sec ago&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;D3.js library&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Enabled&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;Database system&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;MySQL, MariaDB, Percona Server, or equivalent&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;Database system version&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;5.5.43-0+deb7u1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;Database updates&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Out of date&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;Drupal core update status&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;lt;a href=\&amp;quot;\/admin\/reports\/updates\&amp;quot;&amp;gt;Unknown release date (version 8.0.0-beta11 available)&amp;lt;\/a&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;File system&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Writable (&amp;lt;em&amp;gt;public&amp;lt;\/em&amp;gt; download method)&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;GD library&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;2.0.36&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;GD library PNG support&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;2.0.36&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;Image toolkit&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;gd&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;Module and theme update status&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;lt;a href=\&amp;quot;\/admin\/reports\/updates\&amp;quot;&amp;gt;Out of date&amp;lt;\/a&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;Node Access Permissions&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Disabled&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;PHP&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;5.4.41-0+deb7u1 (&amp;lt;a href=\&amp;quot;\/admin\/reports\/status\/php\&amp;quot;&amp;gt;more information&amp;lt;\/a&amp;gt;)&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;PHP extensions&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Enabled&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;PHP memory limit&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;-1 (Unlimited)&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;Search index progress&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;100% (0 remaining)&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;Trusted Host Settings&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Not enabled&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;Unicode library&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;PHP Mbstring Extension&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;Update notifications&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Enabled&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;Upload progress&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Not enabled&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;Web server&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;null&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;highlight.js library&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Enabled&amp;quot;&lt;/span&gt;
-    &lt;span class="p"&gt;},&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;quot;database&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;Driver&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;mysql&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;Host&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;localhost&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;Database connection&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;drupal8&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;Port&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;Username&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;drupal8&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;Password&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;redacted&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;Connection&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;mysql\/\/drupal8:redacted@localhost\/drupal8&amp;quot;&lt;/span&gt;
-    &lt;span class="p"&gt;},&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;quot;theme&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;theme_default&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;bartik&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;theme_admin&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;seven&amp;quot;&lt;/span&gt;
-    &lt;span class="p"&gt;},&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;quot;directory&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;Site root directory&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;\/var\/www\/drupal8\/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;Site temporary directory&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;\/tmp&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;Default theme directory&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;\/core\/themes\/bartik&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="nt"&gt;&amp;quot;Admin theme directory&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;\/core\/themes\/seven&amp;quot;&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;system&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;Drupal&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;8.0.0-dev&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;Access to update.php&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Protected&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;Configuration files&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Protected&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;Cron maintenance tasks&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Last run 44 min 45 sec ago&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;D3.js library&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Enabled&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;Database system&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;MySQL, MariaDB, Percona Server, or equivalent&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;Database system version&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;5.5.43-0+deb7u1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;Database updates&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Out of date&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;Drupal core update status&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;lt;a href=\&amp;quot;\/admin\/reports\/updates\&amp;quot;&amp;gt;Unknown release date (version 8.0.0-beta11 available)&amp;lt;\/a&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;File system&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Writable (&amp;lt;em&amp;gt;public&amp;lt;\/em&amp;gt; download method)&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;GD library&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;2.0.36&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;GD library PNG support&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;2.0.36&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;Image toolkit&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;gd&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;Module and theme update status&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;lt;a href=\&amp;quot;\/admin\/reports\/updates\&amp;quot;&amp;gt;Out of date&amp;lt;\/a&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;Node Access Permissions&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Disabled&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;PHP&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;5.4.41-0+deb7u1 (&amp;lt;a href=\&amp;quot;\/admin\/reports\/status\/php\&amp;quot;&amp;gt;more information&amp;lt;\/a&amp;gt;)&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;PHP extensions&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Enabled&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;PHP memory limit&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-1 (Unlimited)&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;Search index progress&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;100% (0 remaining)&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;Trusted Host Settings&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Not enabled&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;Unicode library&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;PHP Mbstring Extension&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;Update notifications&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Enabled&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;Upload progress&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Not enabled&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;Web server&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;null&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;highlight.js library&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Enabled&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;database&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;Driver&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;mysql&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;Host&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;localhost&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;Database connection&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;drupal8&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;Port&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;Username&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;drupal8&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;Password&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;redacted&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;Connection&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;mysql\/\/drupal8:redacted@localhost\/drupal8&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;theme&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;theme_default&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;bartik&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;theme_admin&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;seven&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;directory&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;Site root directory&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;\/var\/www\/drupal8\/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;Site temporary directory&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;\/tmp&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;Default theme directory&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;\/core\/themes\/bartik&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;Admin theme directory&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;\/core\/themes\/seven&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="custom-commands"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id6"&gt;Custom commands&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-4"&gt;Custom commands&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Modules may define commands by extending
 &lt;tt class="docutils literal"&gt;Symfony\Component\Console\Command\Command&lt;/tt&gt;. Drupal Console can create
 scaffolding for a custom command with the command &lt;tt class="docutils literal"&gt;generate:command&lt;/tt&gt;. Refer
@@ -812,41 +812,41 @@ For an example implementation refer to the source code of Web Profiler
 &lt;tt class="docutils literal"&gt;git clone &lt;span class="pre"&gt;http://git.drupal.org/project/webprofiler.git&lt;/span&gt;&lt;/tt&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="chain-command-execution"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id7"&gt;Chain command execution&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-5"&gt;Chain command execution&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Commands may be recorded in YAML and executed with the &lt;tt class="docutils literal"&gt;chain&lt;/tt&gt; command:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;drupal chain --file&lt;span class="o"&gt;=&lt;/span&gt;~/d8-project-init.yml
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;In the example below a module is created, followed by a controller for that
 module.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# d8-project-init.yml&lt;/span&gt;
-&lt;span class="nt"&gt;commands&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="nt"&gt;command&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;generate:module&lt;/span&gt;
-      &lt;span class="nt"&gt;options&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="nt"&gt;module&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;awesome&lt;/span&gt;
-        &lt;span class="nt"&gt;machine-name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;awesome&lt;/span&gt;
-        &lt;span class="nt"&gt;module-path&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;/modules/custom/&lt;/span&gt;
-        &lt;span class="nt"&gt;description&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;My Awesome module&lt;/span&gt;
-        &lt;span class="nt"&gt;core&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;8.x&lt;/span&gt;
-        &lt;span class="nt"&gt;package&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;Test&lt;/span&gt;
-        &lt;span class="nt"&gt;controller&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;false&lt;/span&gt;
-        &lt;span class="nt"&gt;dependencies&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="nt"&gt;test&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;false&lt;/span&gt;
-    &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="nt"&gt;command&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;generate:controller&lt;/span&gt;
-      &lt;span class="nt"&gt;options&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="nt"&gt;module&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;awesome&lt;/span&gt;
-        &lt;span class="nt"&gt;class-name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;AwesomeController&lt;/span&gt;
-        &lt;span class="nt"&gt;method-name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;index&lt;/span&gt;
-        &lt;span class="nt"&gt;route&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;/awesome/index&lt;/span&gt;
-        &lt;span class="nt"&gt;services&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;twig&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# d8-project-init.yml&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="nt"&gt;commands&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;command&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;generate:module&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nt"&gt;options&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;module&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;awesome&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;machine-name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;awesome&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;module-path&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;/modules/custom/&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;description&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;My Awesome module&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;core&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;8.x&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;package&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;Test&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;controller&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;false&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;dependencies&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;test&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;false&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;command&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;generate:controller&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nt"&gt;options&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;module&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;awesome&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;class-name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;AwesomeController&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;method-name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;index&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;route&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;/awesome/index&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;services&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;twig&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="web-profiler"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id8"&gt;Web Profiler&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-6"&gt;Web Profiler&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The &lt;a class="reference external" href="https://www.drupal.org/project/webprofiler"&gt;Drupal Web Profiler&lt;/a&gt; provides convenient access to a selection of
 performance and profile information on a per request basis.&lt;/p&gt;
 &lt;div class="section" id="data-collectors"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id9"&gt;Data collectors&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-7"&gt;Data collectors&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;The Web Profiler provides a number of data collectors which include:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;PHP configuration&lt;/li&gt;
@@ -887,7 +887,7 @@ load timeline.&lt;/p&gt;
     &lt;figcaption&gt;Example of a Drupal 8 Web Profiler report timeline.&lt;/figcaption&gt;
 &lt;/figure&gt;&lt;/div&gt;
 &lt;div class="section" id="profiling-decoupled-requests"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id10"&gt;Profiling decoupled requests&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-8"&gt;Profiling decoupled requests&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;The included &lt;a class="reference external" href="https://www.drupal.org/docs/8/api/routing-system/routing-system-overview"&gt;HTTP routing framework&lt;/a&gt; and &lt;a class="reference external" href="https://www.drupal.org/docs/8/core/modules/rest/overview"&gt;REST API&lt;/a&gt; modules in Drupal&amp;nbsp;8
 make it easier to develop decoupled, or headless, applications using a
 client-side framework such as &lt;a class="reference external" href="https://emberjs.com/"&gt;ember.js&lt;/a&gt;.&lt;/p&gt;
@@ -907,7 +907,7 @@ token and link provided in the HTTP response headers &lt;tt class="docutils lite
 relevant request.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="web-profiler-console-commands"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id11"&gt;Web Profiler console commands&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-9"&gt;Web Profiler console commands&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Web profiler provides three console commands:&lt;/p&gt;
 &lt;dl class="docutils"&gt;
 &lt;dt&gt;&lt;tt class="docutils literal"&gt;webprofiler:benchmark&lt;/tt&gt;&lt;/dt&gt;
@@ -949,7 +949,7 @@ relevant request.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="further-reading"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id12"&gt;Further reading&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-10"&gt;Further reading&lt;/a&gt;&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://www.gitbook.com/book/hechoendrupal/drupal-console/details"&gt;The Drupal Console book&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://symfony.com/doc/2.7/profiler/data_collector.html"&gt;How to create a custom data collector&lt;/a&gt;&lt;/li&gt;
@@ -981,20 +981,20 @@ welder qualifications.&lt;/p&gt;
 &lt;div class="contents topic" id="contents"&gt;
 &lt;p class="topic-title"&gt;Contents&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#pdf-generating-libraries" id="id2"&gt;PDF generating libraries&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#latex" id="id3"&gt;LaTeX&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#symfony-2-service" id="id4"&gt;Symfony 2 service&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#configure-the-service-container" id="id5"&gt;Configure the service container&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#service-object" id="id6"&gt;Service object&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#twig-template" id="id7"&gt;Twig template&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#utilising-the-service" id="id8"&gt;Utilising the service&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#pdf-generating-libraries" id="toc-entry-1"&gt;PDF generating libraries&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#latex" id="toc-entry-2"&gt;LaTeX&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#symfony-2-service" id="toc-entry-3"&gt;Symfony 2 service&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#configure-the-service-container" id="toc-entry-4"&gt;Configure the service container&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#service-object" id="toc-entry-5"&gt;Service object&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#twig-template" id="toc-entry-6"&gt;Twig template&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#utilising-the-service" id="toc-entry-7"&gt;Utilising the service&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#further-reading" id="id9"&gt;Further reading&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#further-reading" id="toc-entry-8"&gt;Further reading&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class="section" id="pdf-generating-libraries"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id2"&gt;PDF generating libraries&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;PDF generating libraries&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Before implementing the LaTeX service the following PDF generating libraries
 were considered:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
@@ -1025,7 +1025,7 @@ formats) using the QT WebKit rendering engine.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
 &lt;div class="section" id="latex"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id3"&gt;LaTeX&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-2"&gt;LaTeX&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The LaTeX system is a markup language and high-quality typesetting system. It
 is written in the &lt;a class="reference external" href="http://tug.org/"&gt;TeX macro language&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;A PDF document may be generated directly from a LaTeX source document with the
@@ -1041,7 +1041,7 @@ the following commands:&lt;/p&gt;
 turn invokes &lt;tt class="docutils literal"&gt;pdflatex&lt;/tt&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="symfony-2-service"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id4"&gt;Symfony 2 service&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-3"&gt;Symfony 2 service&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://symfony.com/doc/2.3/book/service_container.html"&gt;Services&lt;/a&gt; are re-usable, decoupled components, that may be accessed from any
 part of the application. The &lt;a class="reference external" href="https://symfony.com/doc/2.3/glossary.html#term-service"&gt;definition of a service&lt;/a&gt; from the Symfony
 documentation:&lt;/p&gt;
@@ -1061,32 +1061,32 @@ container.&lt;/li&gt;
 document.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class="section" id="configure-the-service-container"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id5"&gt;Configure the service container&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-4"&gt;Configure the service container&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;The service container is configured with &lt;tt class="docutils literal"&gt;services.yml&lt;/tt&gt;. Two services are
 defined in the &lt;a class="reference external" href="https://yaml.org/"&gt;YAML&lt;/a&gt; below: 1. &lt;tt class="docutils literal"&gt;electrotech.twig.ib2020_extension&lt;/tt&gt;, which
 provides a Twig filer to escape LaTeX special characters; and
 2. &lt;tt class="docutils literal"&gt;electrotech.pdf.pdflatex&lt;/tt&gt;, the PDF LaTeX service itself.&lt;/p&gt;
 &lt;p&gt;For convenience the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;rubber-pipe&lt;/span&gt;&lt;/tt&gt; binary is defined as a parameter.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# src/Electrotech/WeldqualBundle/Resources/config/services.yml&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# src/Electrotech/WeldqualBundle/Resources/config/services.yml&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 
-&lt;span class="nt"&gt;parameters&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="nt"&gt;electrotech.twig.ib2020_extension.class&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;Electrotech\WeldqualBundle\Twig\Ib2020Extension&lt;/span&gt;
-    &lt;span class="nt"&gt;electrotech.pdf.pdflatex.rubber-pipe&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;/usr/bin/rubber-pipe&lt;/span&gt;
+&lt;span class="nt"&gt;parameters&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;electrotech.twig.ib2020_extension.class&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;Electrotech\WeldqualBundle\Twig\Ib2020Extension&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;electrotech.pdf.pdflatex.rubber-pipe&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;/usr/bin/rubber-pipe&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 
-&lt;span class="nt"&gt;services&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="nt"&gt;electrotech.twig.ib2020_extension&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="nt"&gt;class&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;%&lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;electrotech.twig.ib2020_extension.class%&lt;/span&gt;
-        &lt;span class="nt"&gt;arguments&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p p-Indicator"&gt;[&lt;/span&gt;&lt;span class="err"&gt;%&lt;/span&gt;&lt;span class="nv"&gt;kernel.bundles%&lt;/span&gt;&lt;span class="p p-Indicator"&gt;]&lt;/span&gt;
-        &lt;span class="nt"&gt;tags&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-            &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="p p-Indicator"&gt;{&lt;/span&gt;&lt;span class="nt"&gt; name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nv"&gt;twig.extension&lt;/span&gt; &lt;span class="p p-Indicator"&gt;}&lt;/span&gt;
+&lt;span class="nt"&gt;services&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;electrotech.twig.ib2020_extension&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;class&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;%&lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;electrotech.twig.ib2020_extension.class%&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;arguments&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p p-Indicator"&gt;[&lt;/span&gt;&lt;span class="err"&gt;%&lt;/span&gt;&lt;span class="nv"&gt;kernel.bundles%&lt;/span&gt;&lt;span class="p p-Indicator"&gt;]&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;tags&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p p-Indicator"&gt;{&lt;/span&gt;&lt;span class="nt"&gt; name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;twig.extension&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p p-Indicator"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 
-    &lt;span class="nt"&gt;electrotech.pdf.pdflatex&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="nt"&gt;class&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;Electrotech\WeldqualBundle\Pdf\Pdflatex&lt;/span&gt;
-        &lt;span class="nt"&gt;arguments&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="p p-Indicator"&gt;[&lt;/span&gt;&lt;span class="err"&gt;%&lt;/span&gt;&lt;span class="nv"&gt;electrotech.pdf.pdflatex.rubber-pipe%&lt;/span&gt;&lt;span class="p p-Indicator"&gt;]&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;electrotech.pdf.pdflatex&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;class&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;Electrotech\WeldqualBundle\Pdf\Pdflatex&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;arguments&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p p-Indicator"&gt;[&lt;/span&gt;&lt;span class="err"&gt;%&lt;/span&gt;&lt;span class="nv"&gt;electrotech.pdf.pdflatex.rubber-pipe%&lt;/span&gt;&lt;span class="p p-Indicator"&gt;]&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="service-object"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id6"&gt;Service object&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-5"&gt;Service object&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;An instance of the class &lt;tt class="docutils literal"&gt;Pdflatex&lt;/tt&gt; provides the service. &lt;tt class="docutils literal"&gt;Pdflatex&lt;/tt&gt; takes
 a LaTeX source document and returns a PDF document.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
@@ -1272,7 +1272,7 @@ a LaTeX source document and returns a PDF document.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="twig-template"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id7"&gt;Twig template&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-6"&gt;Twig template&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;A &lt;a class="reference external" href="https://twig.symfony.com/"&gt;Twig&lt;/a&gt; template &lt;tt class="docutils literal"&gt;show.tex.twig&lt;/tt&gt; is used to generate the LaTeX source
 document.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;% src/Electrotech/WeldqualBundle/Resources/views/Testweld/show.tex.twig&lt;/span&gt;
@@ -1415,7 +1415,7 @@ Custom Twig filters are created by extending &lt;tt class="docutils literal"&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="utilising-the-service"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id8"&gt;Utilising the service&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-7"&gt;Utilising the service&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;The service is used in the controller by passing a certificate ID to the method
 &lt;tt class="docutils literal"&gt;pdfAction()&lt;/tt&gt;. The LaTeX source document is then generated by the method
 &lt;tt class="docutils literal"&gt;latexSource()&lt;/tt&gt;.&lt;/p&gt;
@@ -1536,7 +1536,7 @@ Custom Twig filters are created by extending &lt;tt class="docutils literal"&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="further-reading"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id9"&gt;Further reading&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-8"&gt;Further reading&lt;/a&gt;&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://symfony.com/doc/2.3/cookbook/controller/service.html"&gt;How to define controllers as services&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://tobi.oetiker.ch/lshort/lshort.pdf"&gt;The not so short introduction to LaTeX 2ε&lt;/a&gt; by Tobias Oetiker.&lt;/li&gt;
@@ -1558,24 +1558,24 @@ and the page size was reduced by 62%.&lt;/p&gt;
 &lt;div class="contents topic" id="contents"&gt;
 &lt;p class="topic-title"&gt;Contents&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#pre-optimisation" id="id1"&gt;Pre-optimisation&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#optimisations" id="id2"&gt;Optimisations&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#custom-font" id="id3"&gt;Custom font&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#custom-bootstrap" id="id4"&gt;Custom Bootstrap&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#reduce-ajax-requests" id="id5"&gt;Reduce AJAX requests&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#custom-jquery" id="id6"&gt;Custom jQuery&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#merge-and-minify-assets" id="id7"&gt;Merge and minify assets&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#eliminate-unnecessary-resources-and-dns-look-ups" id="id8"&gt;Eliminate unnecessary resources and DNS look-ups&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#pre-optimisation" id="toc-entry-1"&gt;Pre-optimisation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#optimisations" id="toc-entry-2"&gt;Optimisations&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#custom-font" id="toc-entry-3"&gt;Custom font&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#custom-bootstrap" id="toc-entry-4"&gt;Custom Bootstrap&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#reduce-ajax-requests" id="toc-entry-5"&gt;Reduce AJAX requests&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#custom-jquery" id="toc-entry-6"&gt;Custom jQuery&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#merge-and-minify-assets" id="toc-entry-7"&gt;Merge and minify assets&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#eliminate-unnecessary-resources-and-dns-look-ups" id="toc-entry-8"&gt;Eliminate unnecessary resources and DNS look-ups&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#post-optimisation" id="id9"&gt;Post-optimisation&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#hosting-environment" id="id10"&gt;Hosting environment&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#summary" id="id11"&gt;Summary&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#further-reading" id="id12"&gt;Further reading&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#post-optimisation" id="toc-entry-9"&gt;Post-optimisation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#hosting-environment" id="toc-entry-10"&gt;Hosting environment&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#summary" id="toc-entry-11"&gt;Summary&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#further-reading" id="toc-entry-12"&gt;Further reading&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class="section" id="pre-optimisation"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;Pre-optimisation&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;Pre-optimisation&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Before optimisation, as configured for this site, the index page generated
 17&amp;nbsp;requests and had a total page size of 182.9&amp;nbsp;kB.&lt;/p&gt;
 &lt;table border="1" class="docutils"&gt;
@@ -1619,11 +1619,11 @@ and the page size was reduced by 62%.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="optimisations"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id2"&gt;Optimisations&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-2"&gt;Optimisations&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Six main optimisations were made as detailed below. Unless stated the file
 sizes specified are for minified but uncompressed versions of the file.&lt;/p&gt;
 &lt;div class="section" id="custom-font"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id3"&gt;Custom font&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-3"&gt;Custom font&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Improvements:&lt;/p&gt;
 &lt;dl class="docutils"&gt;
 &lt;dt&gt;Page size&lt;/dt&gt;
@@ -1642,7 +1642,7 @@ into a &lt;a class="reference external" href="https://gruntjs.com/"&gt;Grunt&lt;
 the &lt;tt class="docutils literal"&gt;Gruntfile.js&lt;/tt&gt; which includes a &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;grunt-webfont&lt;/span&gt;&lt;/tt&gt; task.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="custom-bootstrap"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id4"&gt;Custom Bootstrap&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-4"&gt;Custom Bootstrap&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Improvements:&lt;/p&gt;
 &lt;dl class="docutils"&gt;
 &lt;dt&gt;Page size&lt;/dt&gt;
@@ -1655,46 +1655,46 @@ unused components from the build &lt;tt class="docutils literal"&gt;bootstrap.mi
 &lt;a class="reference external" href="https://github.com/gruntjs/grunt-contrib-compass"&gt;gruntjs/grunt-contrib-compass&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Below is the &lt;tt class="docutils literal"&gt;Gruntfile.js&lt;/tt&gt; for this theme which includes both a
 &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;grunt-webfont&lt;/span&gt;&lt;/tt&gt; task and a &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;grunt-contrib-compass&lt;/span&gt;&lt;/tt&gt; task.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nx"&gt;module&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;exports&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;grunt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;use strict&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nx"&gt;module&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;exports&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;grunt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;use strict&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 
-    &lt;span class="nx"&gt;grunt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;initConfig&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;
-        &lt;span class="nx"&gt;compass&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-            &lt;span class="nx"&gt;dist&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-                &lt;span class="nx"&gt;options&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-                    &lt;span class="nx"&gt;config&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;config.rb&amp;#39;&lt;/span&gt;
-                &lt;span class="p"&gt;}&lt;/span&gt;
-            &lt;span class="p"&gt;}&lt;/span&gt;
-        &lt;span class="p"&gt;},&lt;/span&gt;
-        &lt;span class="nx"&gt;webfont&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-            &lt;span class="nx"&gt;icons&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-                &lt;span class="nx"&gt;src&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;fontcustom/vectors/*.svg&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-                &lt;span class="nx"&gt;dest&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;static/font&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-                &lt;span class="nx"&gt;destCss&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;static/css&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-                &lt;span class="nx"&gt;options&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-                    &lt;span class="nx"&gt;htmlDemo&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-                    &lt;span class="nx"&gt;hashes&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-                    &lt;span class="nx"&gt;font&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;font-custom&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-                    &lt;span class="nx"&gt;types&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;eot,woff,svg,ttf&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-                    &lt;span class="nx"&gt;syntax&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;bem&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-                    &lt;span class="nx"&gt;templateOptions&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-                        &lt;span class="nx"&gt;baseClass&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;fa&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-                        &lt;span class="nx"&gt;classPrefix&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;fa-&amp;#39;&lt;/span&gt;
-                    &lt;span class="p"&gt;}&lt;/span&gt;
-                &lt;span class="p"&gt;}&lt;/span&gt;
-            &lt;span class="p"&gt;}&lt;/span&gt;
-        &lt;span class="p"&gt;}&lt;/span&gt;
-    &lt;span class="p"&gt;});&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;grunt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;initConfig&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nx"&gt;compass&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="nx"&gt;dist&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="nx"&gt;options&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="nx"&gt;config&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;config.rb&amp;#39;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nx"&gt;webfont&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="nx"&gt;icons&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="nx"&gt;src&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;fontcustom/vectors/*.svg&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="nx"&gt;dest&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;static/font&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="nx"&gt;destCss&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;static/css&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="nx"&gt;options&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="nx"&gt;htmlDemo&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="nx"&gt;hashes&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="nx"&gt;font&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;font-custom&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="nx"&gt;types&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;eot,woff,svg,ttf&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="nx"&gt;syntax&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;bem&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="nx"&gt;templateOptions&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;                        &lt;/span&gt;&lt;span class="nx"&gt;baseClass&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;fa&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;                        &lt;/span&gt;&lt;span class="nx"&gt;classPrefix&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;fa-&amp;#39;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;});&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 
-    &lt;span class="nx"&gt;grunt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;loadNpmTasks&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;grunt-contrib-compass&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-    &lt;span class="nx"&gt;grunt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;loadNpmTasks&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;grunt-webfont&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;grunt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;loadNpmTasks&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;grunt-contrib-compass&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;grunt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;loadNpmTasks&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;grunt-webfont&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 
-    &lt;span class="nx"&gt;grunt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;registerTask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;default&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;compass&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;webfont&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
-&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;grunt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;registerTask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;default&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;compass&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;webfont&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="p"&gt;};&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="reduce-ajax-requests"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id5"&gt;Reduce AJAX requests&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-5"&gt;Reduce AJAX requests&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Improvements:&lt;/p&gt;
 &lt;dl class="docutils"&gt;
 &lt;dt&gt;Requests (SSL)&lt;/dt&gt;
@@ -1706,7 +1706,7 @@ request the list of GitHub repositories was generated during the build process
 with &lt;a class="reference external" href="https://github.com/kura/pelican-githubprojects"&gt;kura/pelican-githubprojects&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="custom-jquery"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id6"&gt;Custom jQuery&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-6"&gt;Custom jQuery&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Improvements:&lt;/p&gt;
 &lt;dl class="docutils"&gt;
 &lt;dt&gt;Page size&lt;/dt&gt;
@@ -1721,7 +1721,7 @@ with &lt;a class="reference external" href="https://github.com/kura/pelican-gith
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="merge-and-minify-assets"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id7"&gt;Merge and minify assets&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-7"&gt;Merge and minify assets&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Improvements:&lt;/p&gt;
 &lt;dl class="docutils"&gt;
 &lt;dt&gt;Requests&lt;/dt&gt;
@@ -1746,7 +1746,7 @@ significantly reduced by optimising images. For example, the two Pingdom screen
 shots were reduced by &lt;a class="reference external" href="https://pmt.sourceforge.io/pngcrush/"&gt;pngcrush&lt;/a&gt; to approximately 27&amp;nbsp;% of the original size.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="eliminate-unnecessary-resources-and-dns-look-ups"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id8"&gt;Eliminate unnecessary resources and DNS look-ups&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-8"&gt;Eliminate unnecessary resources and DNS look-ups&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Improvements:&lt;/p&gt;
 &lt;dl class="docutils"&gt;
 &lt;dt&gt;Requests&lt;/dt&gt;
@@ -1770,7 +1770,7 @@ browsers.&lt;/li&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="post-optimisation"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id9"&gt;Post-optimisation&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-9"&gt;Post-optimisation&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Below is a table summarising the changes made to improve page speed.&lt;/p&gt;
 &lt;table border="1" class="docutils"&gt;
 &lt;colgroup&gt;
@@ -1831,7 +1831,7 @@ browsers.&lt;/li&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="hosting-environment"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id10"&gt;Hosting environment&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-10"&gt;Hosting environment&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;This site is currently hosted by &lt;a class="reference external" href="https://pages.github.com/"&gt;GitHub Pages&lt;/a&gt;. Besides free-of-charge
 managed hosting, GitHub Pages also offers all the advantages of their global
 content delivery network.&lt;/p&gt;
@@ -1868,7 +1868,7 @@ content types text/css and application/javascript as the webassets plug-in adds
 a version identifier to the filename of those content types.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="summary"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id11"&gt;Summary&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-11"&gt;Summary&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;These optimisations have reduced the page size by 113.9&amp;nbsp;kB and the number of
 requests by twelve. These improvements result in a significantly improved page
 load time.&lt;/p&gt;
@@ -1904,7 +1904,7 @@ following dependencies:&lt;/p&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class="section" id="further-reading"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id12"&gt;Further reading&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-12"&gt;Further reading&lt;/a&gt;&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://w3c.github.io/web-performance/specs/HAR/Overview.html"&gt;HTTP Archive (HAR) format specification&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://webassets.readthedocs.io/en/latest/expiring.html"&gt;URL Expiry (cache busting)&lt;/a&gt; webassets documentation&lt;/li&gt;
@@ -1934,35 +1934,35 @@ deployment of Drupal&amp;nbsp;7 sites.&lt;/p&gt;
 &lt;div class="contents topic" id="contents"&gt;
 &lt;p class="topic-title"&gt;Contents&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#drupal-project-structure" id="id1"&gt;Drupal project structure&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#synchronise-site-uuid-across-instances" id="id2"&gt;Synchronise site UUID across instances&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#exclude-files-from-release-tarball" id="id3"&gt;Exclude files from release tarball&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#drupal-project-structure" id="toc-entry-1"&gt;Drupal project structure&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#synchronise-site-uuid-across-instances" id="toc-entry-2"&gt;Synchronise site UUID across instances&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#exclude-files-from-release-tarball" id="toc-entry-3"&gt;Exclude files from release tarball&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#target-host-configuration" id="id4"&gt;Target host configuration&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#user-account" id="id5"&gt;User account&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#directory-structure" id="id6"&gt;Directory structure&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#dependencies" id="id7"&gt;Dependencies&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#manual-configuration" id="id8"&gt;Manual configuration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#target-host-configuration" id="toc-entry-4"&gt;Target host configuration&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#user-account" id="toc-entry-5"&gt;User account&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#directory-structure" id="toc-entry-6"&gt;Directory structure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#dependencies" id="toc-entry-7"&gt;Dependencies&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#manual-configuration" id="toc-entry-8"&gt;Manual configuration&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#fabfile" id="id9"&gt;Fabfile&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#configuration" id="id10"&gt;Configuration&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#available-commands" id="id11"&gt;Available commands&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#usage" id="id12"&gt;Usage&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#source-code" id="id13"&gt;Source code&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#fabfile" id="toc-entry-9"&gt;Fabfile&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#configuration" id="toc-entry-10"&gt;Configuration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#available-commands" id="toc-entry-11"&gt;Available commands&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#usage" id="toc-entry-12"&gt;Usage&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#source-code" id="toc-entry-13"&gt;Source code&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#further-reading" id="id14"&gt;Further reading&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#further-reading" id="toc-entry-14"&gt;Further reading&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class="section" id="drupal-project-structure"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;Drupal project structure&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;Drupal project structure&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The fabfile is designed to deploy a site having a project structure as
 described in &lt;a class="reference external" href="https://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merge.html"&gt;A Drupal&amp;nbsp;8 workflow using the Git subtree merge strategy&lt;/a&gt;.
 However it may be easily adapted to accommodate another project structure.&lt;/p&gt;
 &lt;div class="section" id="synchronise-site-uuid-across-instances"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id2"&gt;Synchronise site UUID across instances&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-2"&gt;Synchronise site UUID across instances&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;To share configuration between instances of the site (development, staging,
 production) they must share a common
 &lt;abbr title="Universally unique identifier"&gt;UUID&lt;/abbr&gt;.&lt;/p&gt;
@@ -1984,7 +1984,7 @@ a robust approach to synchronising UUIDs across instances of a site see
 &lt;a class="reference external" href="https://blog.dcycle.com/blog/68/approach-code-driven-development-drupal-8/"&gt;An approach to code-driven development in Drupal 8&lt;/a&gt; by &lt;a class="reference external" href="https://github.com/alberto56/"&gt;Albert Albala&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="exclude-files-from-release-tarball"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id3"&gt;Exclude files from release tarball&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-3"&gt;Exclude files from release tarball&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;As an enhancement files can be excluded from the release tarball by including
 a &lt;tt class="docutils literal"&gt;.gitattributes&lt;/tt&gt; file in the root of the repository. For each file that
 should be excluded from the release the &lt;a class="reference external" href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes#_exporting_your_repository"&gt;export-ignore attribute&lt;/a&gt; should be
@@ -1993,15 +1993,15 @@ specified. Use this
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="target-host-configuration"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id4"&gt;Target host configuration&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-4"&gt;Target host configuration&lt;/a&gt;&lt;/h2&gt;
 &lt;div class="section" id="user-account"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id5"&gt;User account&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-5"&gt;User account&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;The user who executes the deployment must have ssh access to the target host
 and permissions to execute commands as both the &lt;tt class="docutils literal"&gt;root&lt;/tt&gt; and web server user --
 usually &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;www-data&lt;/span&gt;&lt;/tt&gt; on Debian–based systems.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="directory-structure"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id6"&gt;Directory structure&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-6"&gt;Directory structure&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Variable data such as the Drupal &lt;tt class="docutils literal"&gt;files/&lt;/tt&gt; directory, &lt;tt class="docutils literal"&gt;settings.php&lt;/tt&gt;,
 and &lt;tt class="docutils literal"&gt;services.yml&lt;/tt&gt; is located in &lt;tt class="docutils literal"&gt;/var/lib/www/example.com/&lt;/tt&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;tree -AF /var/lib/www/example.com/
@@ -2043,7 +2043,7 @@ variable data being created during deployment.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="dependencies"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id7"&gt;Dependencies&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-7"&gt;Dependencies&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;The following tools must be installed on the target host:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://wiki.debian.org/SSH"&gt;OpenSSH server&lt;/a&gt;&lt;/li&gt;
@@ -2051,7 +2051,7 @@ variable data being created during deployment.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class="section" id="manual-configuration"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id8"&gt;Manual configuration&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-8"&gt;Manual configuration&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;The database, &lt;tt class="docutils literal"&gt;settings.php&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;services.yml&lt;/tt&gt; must be manually created on
 the target host before the first deployment.&lt;/p&gt;
 &lt;p&gt;Open a MySQL console:&lt;/p&gt;
@@ -2059,10 +2059,10 @@ the target host before the first deployment.&lt;/p&gt;
 &lt;span class="gp"&gt;$ &lt;/span&gt;mysql -uroot -p
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Create database and user:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;DATABASE&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;USER&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;@&amp;#39;localhost&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;IDENTIFIED&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;password&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="k"&gt;GRANT&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt; &lt;span class="k"&gt;PRIVILEGES&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;TO&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;@&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="k"&gt;FLUSH&lt;/span&gt; &lt;span class="k"&gt;PRIVILEGES&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;CREATE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;DATABASE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;CREATE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;USER&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;@&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;IDENTIFIED&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;BY&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;password&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;GRANT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;ALL&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;PRIVILEGES&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;ON&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;TO&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;@&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;FLUSH&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;PRIVILEGES&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Copy &lt;tt class="docutils literal"&gt;sites/default/settings.php&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;sites/default/services.yml&lt;/tt&gt; to the
 target host and edit as appropriate according to the environment.&lt;/p&gt;
@@ -2072,34 +2072,34 @@ target host and edit as appropriate according to the environment.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="fabfile"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id9"&gt;Fabfile&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-9"&gt;Fabfile&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Source code is hosted at &lt;a class="reference external" href="https://github.com/sethfischer/fabric-deploy"&gt;sethfischer/fabric-deploy&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="section" id="configuration"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id10"&gt;Configuration&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-10"&gt;Configuration&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Configuration is expressed via &lt;a class="reference external" href="https://yaml.org/"&gt;YAML&lt;/a&gt; with one file per project. Below is an
 example configuration file.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# example.yml&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# example.yml&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 
-&lt;span class="c1"&gt;# global configuration common to all environments&lt;/span&gt;
-&lt;span class="nt"&gt;_global&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="nt"&gt;repository&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;     &lt;span class="l l-Scalar l-Scalar-Plain"&gt;ssh+git://github.com/user/repo.git&lt;/span&gt;
-    &lt;span class="nt"&gt;build_dir&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;/home/tmp/builds&lt;/span&gt;
-    &lt;span class="nt"&gt;remote_tmp_dir&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;/tmp&lt;/span&gt;
+&lt;span class="c1"&gt;# global configuration common to all environments&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="nt"&gt;_global&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;repository&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;ssh+git://github.com/user/repo.git&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;build_dir&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;/home/tmp/builds&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;remote_tmp_dir&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;/tmp&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 
-&lt;span class="c1"&gt;# staging environment&lt;/span&gt;
-&lt;span class="nt"&gt;staging&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="nt"&gt;hosts&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;staging.example.com&lt;/span&gt;
-    &lt;span class="nt"&gt;remote_tmp_dir&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;/tmp&lt;/span&gt;
+&lt;span class="c1"&gt;# staging environment&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="nt"&gt;staging&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;hosts&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;staging.example.com&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;remote_tmp_dir&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;/tmp&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 
-&lt;span class="c1"&gt;# production environment&lt;/span&gt;
-&lt;span class="nt"&gt;prod&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="nt"&gt;hosts&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;example.com&lt;/span&gt;
+&lt;span class="c1"&gt;# production environment&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="nt"&gt;prod&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;hosts&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;example.com&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="available-commands"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id11"&gt;Available commands&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-11"&gt;Available commands&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;&lt;tt class="docutils literal"&gt;fab &lt;span class="pre"&gt;-f&lt;/span&gt; drupal8 &lt;span class="pre"&gt;-l&lt;/span&gt;&lt;/tt&gt; lists the available commands with a short description:&lt;/p&gt;
 &lt;dl class="docutils"&gt;
 &lt;dt&gt;deploy&lt;/dt&gt;
@@ -2113,7 +2113,7 @@ example configuration file.&lt;/p&gt;
 &lt;/dl&gt;
 &lt;/div&gt;
 &lt;div class="section" id="usage"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id12"&gt;Usage&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-12"&gt;Usage&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Initialise directory structure on the &lt;tt class="docutils literal"&gt;uat&lt;/tt&gt; host of &lt;tt class="docutils literal"&gt;example.com&lt;/tt&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;fab -f drupal8 site:example.com,uat init_host
 &lt;/pre&gt;&lt;/div&gt;
@@ -2122,7 +2122,7 @@ example configuration file.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="source-code"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id13"&gt;Source code&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-13"&gt;Source code&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;For the latest code &lt;tt class="docutils literal"&gt;git clone &lt;span class="pre"&gt;https://github.com/sethfischer/fabric-deploy&lt;/span&gt;&lt;/tt&gt;
 or &lt;a class="reference external" href="https://github.com/sethfischer/fabric-deploy/fork"&gt;create a fork&lt;/a&gt;.&lt;/p&gt;
 &lt;pre class="code python literal-block"&gt;
@@ -2402,7 +2402,7 @@ or &lt;a class="reference external" href="https://github.com/sethfischer/fabric-
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="further-reading"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id14"&gt;Further reading&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-14"&gt;Further reading&lt;/a&gt;&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://drushcommands.com/drush-7x/"&gt;Drush 7.x commands&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://docs.fabfile.org/en/1.10/"&gt;Fabric’s documentation&lt;/a&gt;&lt;/li&gt;
@@ -2432,23 +2432,23 @@ changes to Drupal core may be conveniently merged with &lt;tt class="docutils li
 &lt;div class="contents topic" id="contents"&gt;
 &lt;p class="topic-title"&gt;Contents&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#initialise-git-repository" id="id1"&gt;Initialise Git repository&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#add-upstream-remote" id="id2"&gt;Add upstream remote&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#checkout-a-local-copy-of-the-upstream-branch" id="id3"&gt;Checkout a local copy of the upstream branch&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#pull-upstream-into-a-subdirectory-in-the-master-branch" id="id4"&gt;Pull upstream into a subdirectory in the master branch&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#create-a-gitingore-for-drupal-core" id="id5"&gt;Create a &lt;tt class="docutils literal"&gt;.gitingore&lt;/tt&gt; for Drupal core&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#create-directories-outside-the-document-root" id="id6"&gt;Create directories outside the document root&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#create-the-files-directory-and-set-permissions" id="id7"&gt;Create the &lt;tt class="docutils literal"&gt;files&lt;/tt&gt; directory and set permissions&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#create-database" id="id8"&gt;Create database&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#site-installation" id="id9"&gt;Site installation&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#drupal-configuration-directories" id="id10"&gt;Drupal configuration directories&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#export-configuration" id="id11"&gt;Export configuration&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#update-drupal-core" id="id12"&gt;Update Drupal core&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#further-reading" id="id13"&gt;Further reading&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#initialise-git-repository" id="toc-entry-1"&gt;Initialise Git repository&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#add-upstream-remote" id="toc-entry-2"&gt;Add upstream remote&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#checkout-a-local-copy-of-the-upstream-branch" id="toc-entry-3"&gt;Checkout a local copy of the upstream branch&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#pull-upstream-into-a-subdirectory-in-the-master-branch" id="toc-entry-4"&gt;Pull upstream into a subdirectory in the master branch&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#create-a-gitingore-for-drupal-core" id="toc-entry-5"&gt;Create a &lt;tt class="docutils literal"&gt;.gitingore&lt;/tt&gt; for Drupal core&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#create-directories-outside-the-document-root" id="toc-entry-6"&gt;Create directories outside the document root&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#create-the-files-directory-and-set-permissions" id="toc-entry-7"&gt;Create the &lt;tt class="docutils literal"&gt;files&lt;/tt&gt; directory and set permissions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#create-database" id="toc-entry-8"&gt;Create database&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#site-installation" id="toc-entry-9"&gt;Site installation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#drupal-configuration-directories" id="toc-entry-10"&gt;Drupal configuration directories&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#export-configuration" id="toc-entry-11"&gt;Export configuration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#update-drupal-core" id="toc-entry-12"&gt;Update Drupal core&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#further-reading" id="toc-entry-13"&gt;Further reading&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class="section" id="initialise-git-repository"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;Initialise Git repository&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;Initialise Git repository&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Initialise Git repository and add your &lt;tt class="docutils literal"&gt;.gitignore&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;README&lt;/tt&gt;, and
 &lt;tt class="docutils literal"&gt;LICENSE&lt;/tt&gt; files.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;mkdir myproject
@@ -2464,7 +2464,7 @@ changes to Drupal core may be conveniently merged with &lt;tt class="docutils li
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="add-upstream-remote"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id2"&gt;Add upstream remote&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-2"&gt;Add upstream remote&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Add the drupal.org git repository as a remote with the name &lt;tt class="docutils literal"&gt;upstream&lt;/tt&gt;. To
 improve efficiency specify that only the &lt;tt class="docutils literal"&gt;8.0.x&lt;/tt&gt; branch is to be tracked with
 the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;-t&lt;/span&gt;&lt;/tt&gt; option.&lt;/p&gt;
@@ -2473,7 +2473,7 @@ the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;-t&lt;/span&gt;&l
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="checkout-a-local-copy-of-the-upstream-branch"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id3"&gt;Checkout a local copy of the upstream branch&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-3"&gt;Checkout a local copy of the upstream branch&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Checkout a local copy of the &lt;tt class="docutils literal"&gt;upstream/8.0.x&lt;/tt&gt; branch.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;git checkout -b upstream upstream/8.0.x
 &lt;span class="go"&gt;Branch upstream set up to track remote branch 8.0.x from upstream by rebasing.&lt;/span&gt;
@@ -2481,7 +2481,7 @@ the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;-t&lt;/span&gt;&l
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="pull-upstream-into-a-subdirectory-in-the-master-branch"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id4"&gt;Pull upstream into a subdirectory in the master branch&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-4"&gt;Pull upstream into a subdirectory in the master branch&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The &lt;tt class="docutils literal"&gt;upstream/8.0.x&lt;/tt&gt; branch is pulled in as a subdirectory of the master
 branch using the &lt;tt class="docutils literal"&gt;git &lt;span class="pre"&gt;read-tree&lt;/span&gt;&lt;/tt&gt; command. The name of the subdirectory is
 specified with the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;--prefix&lt;/span&gt;&lt;/tt&gt; option; in this case &lt;tt class="docutils literal"&gt;drupal/&lt;/tt&gt;.&lt;/p&gt;
@@ -2513,7 +2513,7 @@ specified with the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;--
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="create-a-gitingore-for-drupal-core"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id5"&gt;Create a &lt;tt class="docutils literal"&gt;.gitingore&lt;/tt&gt; for Drupal core&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-5"&gt;Create a &lt;tt class="docutils literal"&gt;.gitingore&lt;/tt&gt; for Drupal core&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Drupal core has an example &lt;tt class="docutils literal"&gt;.gitignore&lt;/tt&gt; file which provides an excellent
 starting point and is sufficient for most projects.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;cp drupal/example.gitignore drupal/.gitignore
@@ -2522,7 +2522,7 @@ starting point and is sufficient for most projects.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="create-directories-outside-the-document-root"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id6"&gt;Create directories outside the document root&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-6"&gt;Create directories outside the document root&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;As the document root is now below the repository root, files and directories
 may be committed to the repository without exposing them to the web server.&lt;/p&gt;
 &lt;p&gt;In this example—when configuring the web server—the document root is set to
@@ -2552,7 +2552,7 @@ may be committed to the repository without exposing them to the web server.&lt;/
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="create-the-files-directory-and-set-permissions"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id7"&gt;Create the &lt;tt class="docutils literal"&gt;files&lt;/tt&gt; directory and set permissions&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-7"&gt;Create the &lt;tt class="docutils literal"&gt;files&lt;/tt&gt; directory and set permissions&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The Drupal &lt;tt class="docutils literal"&gt;files&lt;/tt&gt; directory must be manually created.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;mkdir drupal/sites/default/files
 &lt;/pre&gt;&lt;/div&gt;
@@ -2569,19 +2569,19 @@ grep -v root &lt;span class="p"&gt;|&lt;/span&gt; head -1 &lt;span class="p"&gt;
 &lt;tt class="docutils literal"&gt;config/staging&lt;/tt&gt;, and &lt;tt class="docutils literal"&gt;config/deploy&lt;/tt&gt; directories.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="create-database"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id8"&gt;Create database&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-8"&gt;Create database&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Open a MySQL console:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;mysql -uroot -p
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Create database and user:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;DATABASE&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;USER&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;@&amp;#39;localhost&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;IDENTIFIED&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;password&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="k"&gt;GRANT&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt; &lt;span class="k"&gt;PRIVILEGES&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;TO&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;@&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="k"&gt;FLUSH&lt;/span&gt; &lt;span class="k"&gt;PRIVILEGES&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;CREATE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;DATABASE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;CREATE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;USER&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;@&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;IDENTIFIED&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;BY&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;password&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;GRANT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;ALL&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;PRIVILEGES&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;ON&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;TO&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;@&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;FLUSH&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;PRIVILEGES&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="site-installation"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id9"&gt;Site installation&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-9"&gt;Site installation&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Install the site with the standard install profile and change the administrator
 password.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; drupal
@@ -2591,7 +2591,7 @@ password.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="drupal-configuration-directories"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id10"&gt;Drupal configuration directories&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-10"&gt;Drupal configuration directories&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Edit &lt;tt class="docutils literal"&gt;sites/default/settings.php&lt;/tt&gt; and update the location of the
 configuration directories.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
@@ -2605,7 +2605,7 @@ configuration directories.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="export-configuration"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id11"&gt;Export configuration&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-11"&gt;Export configuration&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Export the configuration from the database into the &lt;tt class="docutils literal"&gt;deploy&lt;/tt&gt; configuration
 directory.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; drupal/
@@ -2617,7 +2617,7 @@ part of the deployment process the configuration may be imported with the
 command &lt;tt class="docutils literal"&gt;drush &lt;span class="pre"&gt;config-import&lt;/span&gt; deploy&lt;/tt&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="update-drupal-core"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id12"&gt;Update Drupal core&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-12"&gt;Update Drupal core&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;To merge upstream change to Drupal core the &lt;a class="reference external" href="https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging#_subtree_merge"&gt;Git subtree merge strategy&lt;/a&gt; is
 used.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;git pull -s subtree upstream &lt;span class="m"&gt;8&lt;/span&gt;.0.x
@@ -2636,7 +2636,7 @@ option:&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="further-reading"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id13"&gt;Further reading&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-13"&gt;Further reading&lt;/a&gt;&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging#_subtree_merge"&gt;Git Tools - Subtree Merging&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://www.kernel.org/pub/software/scm/git/docs/howto/using-merge-subtree.html"&gt;How to use the subtree merge strategy&lt;/a&gt;&lt;/li&gt;
@@ -2663,23 +2663,23 @@ so it may be necessary to rebuild your site with the next core update.&lt;/p&gt;
 &lt;div class="contents topic" id="contents"&gt;
 &lt;p class="topic-title"&gt;Contents&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#before-starting" id="id3"&gt;Before starting&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#clone-drupal-8" id="id4"&gt;Clone Drupal&amp;nbsp;8&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#create-the-files-directory-and-set-permissions" id="id5"&gt;Create the &lt;tt class="docutils literal"&gt;files&lt;/tt&gt; directory and set permissions&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#create-database" id="id6"&gt;Create database&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#site-installation" id="id7"&gt;Site installation&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#configure-a-drush-alias" id="id8"&gt;Configure a Drush alias&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#install-contrib-modules" id="id9"&gt;Install contrib modules&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#devel" id="id10"&gt;Devel&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#examples" id="id11"&gt;Examples&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#before-starting" id="toc-entry-1"&gt;Before starting&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#clone-drupal-8" id="toc-entry-2"&gt;Clone Drupal&amp;nbsp;8&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#create-the-files-directory-and-set-permissions" id="toc-entry-3"&gt;Create the &lt;tt class="docutils literal"&gt;files&lt;/tt&gt; directory and set permissions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#create-database" id="toc-entry-4"&gt;Create database&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#site-installation" id="toc-entry-5"&gt;Site installation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#configure-a-drush-alias" id="toc-entry-6"&gt;Configure a Drush alias&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#install-contrib-modules" id="toc-entry-7"&gt;Install contrib modules&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#devel" id="toc-entry-8"&gt;Devel&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#examples" id="toc-entry-9"&gt;Examples&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#regularly-update-drupal-core" id="id12"&gt;Regularly update Drupal core&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#further-reading" id="id13"&gt;Further reading&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#regularly-update-drupal-core" id="toc-entry-10"&gt;Regularly update Drupal core&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#further-reading" id="toc-entry-11"&gt;Further reading&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class="section" id="before-starting"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id3"&gt;Before starting&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;Before starting&lt;/a&gt;&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;set-up a &lt;abbr title="Linux, Apache, MySQL, PHP"&gt;LAMP&lt;/abbr&gt; or
 &lt;abbr title="Linux, nginx, MySQL, PHP"&gt;LNMP&lt;/abbr&gt; stack conforming with the
@@ -2690,7 +2690,7 @@ so it may be necessary to rebuild your site with the next core update.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class="section" id="clone-drupal-8"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id4"&gt;Clone Drupal&amp;nbsp;8&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-2"&gt;Clone Drupal&amp;nbsp;8&lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;git clone -b &lt;span class="m"&gt;8&lt;/span&gt;.0.x --single-branch http://git.drupal.org/project/drupal.git
 &lt;span class="gp"&gt;$ &lt;/span&gt;git remote rename origin upstream
 &lt;span class="gp"&gt;$ &lt;/span&gt;git remote add origin &lt;span class="o"&gt;[&lt;/span&gt;url&lt;span class="o"&gt;]&lt;/span&gt;
@@ -2699,7 +2699,7 @@ so it may be necessary to rebuild your site with the next core update.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="create-the-files-directory-and-set-permissions"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id5"&gt;Create the &lt;tt class="docutils literal"&gt;files&lt;/tt&gt; directory and set permissions&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-3"&gt;Create the &lt;tt class="docutils literal"&gt;files&lt;/tt&gt; directory and set permissions&lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;mkdir sites/default/files
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;To work efficiently with Drush the files in &lt;tt class="docutils literal"&gt;sites/default/files&lt;/tt&gt; should be
@@ -2742,19 +2742,19 @@ writeable both by the web server and command line user. An alternative to
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="create-database"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id6"&gt;Create database&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-4"&gt;Create database&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Open a MySQL console:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;mysql -uroot -p
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Create database and user:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;DATABASE&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;USER&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;@&amp;#39;localhost&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;IDENTIFIED&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;password&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="k"&gt;GRANT&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt; &lt;span class="k"&gt;PRIVILEGES&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;TO&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;@&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="k"&gt;FLUSH&lt;/span&gt; &lt;span class="k"&gt;PRIVILEGES&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;CREATE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;DATABASE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;CREATE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;USER&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;@&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;IDENTIFIED&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;BY&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;password&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;GRANT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;ALL&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;PRIVILEGES&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;ON&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;TO&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;@&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;FLUSH&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;PRIVILEGES&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="site-installation"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id7"&gt;Site installation&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-5"&gt;Site installation&lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;drush site-install standard --db-url&lt;span class="o"&gt;=&lt;/span&gt;mysql://dbuser:password@localhost/db --site-name&lt;span class="o"&gt;=&lt;/span&gt;drupal8
 &lt;span class="gp"&gt;$ &lt;/span&gt;drush upwd admin --password&lt;span class="o"&gt;=&lt;/span&gt;password
 &lt;/pre&gt;&lt;/div&gt;
@@ -2762,7 +2762,7 @@ writeable both by the web server and command line user. An alternative to
 password “password”.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="configure-a-drush-alias"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id8"&gt;Configure a Drush alias&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-6"&gt;Configure a Drush alias&lt;/a&gt;&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;cp ~/.composer/vendor/drush/drush/examples/example.aliases.drushrc.php ~/.drush/aliases.drushrc.php
 &lt;span class="gp"&gt;$ &lt;/span&gt;drush site-alias @self --full --with-optional &amp;gt;&amp;gt; ~/.drush/aliases.drushrc.php
 &lt;/pre&gt;&lt;/div&gt;
@@ -2821,16 +2821,16 @@ The output is as follows:&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="install-contrib-modules"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id9"&gt;Install contrib modules&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-7"&gt;Install contrib modules&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Two useful modules for developers are &lt;a class="reference external" href="https://www.drupal.org/project/devel"&gt;devel&lt;/a&gt; and &lt;a class="reference external" href="https://www.drupal.org/project/examples"&gt;examples&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="section" id="devel"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id10"&gt;Devel&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-8"&gt;Devel&lt;/a&gt;&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;drush @drupal8 pm-download devel
 &lt;span class="gp"&gt;$ &lt;/span&gt;drush @drupal8 pm-enable devel
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="examples"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id11"&gt;Examples&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-9"&gt;Examples&lt;/a&gt;&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;drush @drupal8 pm-download examples
 &lt;span class="gp"&gt;$ &lt;/span&gt;drush @drupal8 pm-enable examples
 &lt;/pre&gt;&lt;/div&gt;
@@ -2839,7 +2839,7 @@ required) before enabling it.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="regularly-update-drupal-core"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id12"&gt;Regularly update Drupal core&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-10"&gt;Regularly update Drupal core&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;As Drupal&amp;nbsp;8 pushes on through beta releases you should regularly merge in the
 latest code:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp gp-VirtualEnv"&gt;(master)&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;git checkout master
@@ -2854,7 +2854,7 @@ that you are required to repeat the preceding site installation commands after
 updating Drupal core.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="further-reading"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id13"&gt;Further reading&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-11"&gt;Further reading&lt;/a&gt;&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://www.drupal.org/node/803746"&gt;Building a Drupal site with Git&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="http://git-scm.com/"&gt;git-scm.com&lt;/a&gt;&lt;/li&gt;

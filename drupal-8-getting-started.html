@@ -144,23 +144,23 @@ so it may be necessary to rebuild your site with the next core update.</p>
 <div class="contents topic" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#before-starting" id="id3">Before starting</a></li>
-<li><a class="reference internal" href="#clone-drupal-8" id="id4">Clone Drupal&nbsp;8</a></li>
-<li><a class="reference internal" href="#create-the-files-directory-and-set-permissions" id="id5">Create the <tt class="docutils literal">files</tt> directory and set permissions</a></li>
-<li><a class="reference internal" href="#create-database" id="id6">Create database</a></li>
-<li><a class="reference internal" href="#site-installation" id="id7">Site installation</a></li>
-<li><a class="reference internal" href="#configure-a-drush-alias" id="id8">Configure a Drush alias</a></li>
-<li><a class="reference internal" href="#install-contrib-modules" id="id9">Install contrib modules</a><ul>
-<li><a class="reference internal" href="#devel" id="id10">Devel</a></li>
-<li><a class="reference internal" href="#examples" id="id11">Examples</a></li>
+<li><a class="reference internal" href="#before-starting" id="toc-entry-1">Before starting</a></li>
+<li><a class="reference internal" href="#clone-drupal-8" id="toc-entry-2">Clone Drupal&nbsp;8</a></li>
+<li><a class="reference internal" href="#create-the-files-directory-and-set-permissions" id="toc-entry-3">Create the <tt class="docutils literal">files</tt> directory and set permissions</a></li>
+<li><a class="reference internal" href="#create-database" id="toc-entry-4">Create database</a></li>
+<li><a class="reference internal" href="#site-installation" id="toc-entry-5">Site installation</a></li>
+<li><a class="reference internal" href="#configure-a-drush-alias" id="toc-entry-6">Configure a Drush alias</a></li>
+<li><a class="reference internal" href="#install-contrib-modules" id="toc-entry-7">Install contrib modules</a><ul>
+<li><a class="reference internal" href="#devel" id="toc-entry-8">Devel</a></li>
+<li><a class="reference internal" href="#examples" id="toc-entry-9">Examples</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#regularly-update-drupal-core" id="id12">Regularly update Drupal core</a></li>
-<li><a class="reference internal" href="#further-reading" id="id13">Further reading</a></li>
+<li><a class="reference internal" href="#regularly-update-drupal-core" id="toc-entry-10">Regularly update Drupal core</a></li>
+<li><a class="reference internal" href="#further-reading" id="toc-entry-11">Further reading</a></li>
 </ul>
 </div>
 <div class="section" id="before-starting">
-<h2><a class="toc-backref" href="#id3">Before starting</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-1">Before starting</a></h2>
 <ul class="simple">
 <li>set-up a <abbr title="Linux, Apache, MySQL, PHP">LAMP</abbr> or
 <abbr title="Linux, nginx, MySQL, PHP">LNMP</abbr> stack conforming with the
@@ -171,7 +171,7 @@ so it may be necessary to rebuild your site with the next core update.</p>
 </ul>
 </div>
 <div class="section" id="clone-drupal-8">
-<h2><a class="toc-backref" href="#id4">Clone Drupal&nbsp;8</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-2">Clone Drupal&nbsp;8</a></h2>
 <div class="highlight"><pre><span></span><span class="gp">$ </span>git clone -b <span class="m">8</span>.0.x --single-branch http://git.drupal.org/project/drupal.git
 <span class="gp">$ </span>git remote rename origin upstream
 <span class="gp">$ </span>git remote add origin <span class="o">[</span>url<span class="o">]</span>
@@ -180,7 +180,7 @@ so it may be necessary to rebuild your site with the next core update.</p>
 </pre></div>
 </div>
 <div class="section" id="create-the-files-directory-and-set-permissions">
-<h2><a class="toc-backref" href="#id5">Create the <tt class="docutils literal">files</tt> directory and set permissions</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-3">Create the <tt class="docutils literal">files</tt> directory and set permissions</a></h2>
 <div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir sites/default/files
 </pre></div>
 <p>To work efficiently with Drush the files in <tt class="docutils literal">sites/default/files</tt> should be
@@ -223,19 +223,19 @@ writeable both by the web server and command line user. An alternative to
 </pre></div>
 </div>
 <div class="section" id="create-database">
-<h2><a class="toc-backref" href="#id6">Create database</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-4">Create database</a></h2>
 <p>Open a MySQL console:</p>
 <div class="highlight"><pre><span></span><span class="gp">$ </span>mysql -uroot -p
 </pre></div>
 <p>Create database and user:</p>
-<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">db</span><span class="p">;</span>
-<span class="k">CREATE</span> <span class="k">USER</span> <span class="s1">&#39;dbuser&#39;</span><span class="nv">@&#39;localhost&#39;</span> <span class="k">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;password&#39;</span><span class="p">;</span>
-<span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">PRIVILEGES</span> <span class="k">ON</span> <span class="n">db</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;dbuser&#39;</span><span class="nv">@&#39;localhost&#39;</span><span class="p">;</span>
-<span class="k">FLUSH</span> <span class="k">PRIVILEGES</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">db</span><span class="p">;</span><span class="w"></span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;dbuser&#39;</span><span class="nv">@&#39;localhost&#39;</span><span class="w"> </span><span class="k">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;password&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">db</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;dbuser&#39;</span><span class="nv">@&#39;localhost&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">FLUSH</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="section" id="site-installation">
-<h2><a class="toc-backref" href="#id7">Site installation</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-5">Site installation</a></h2>
 <div class="highlight"><pre><span></span><span class="gp">$ </span>drush site-install standard --db-url<span class="o">=</span>mysql://dbuser:password@localhost/db --site-name<span class="o">=</span>drupal8
 <span class="gp">$ </span>drush upwd admin --password<span class="o">=</span>password
 </pre></div>
@@ -243,7 +243,7 @@ writeable both by the web server and command line user. An alternative to
 password “password”.</p>
 </div>
 <div class="section" id="configure-a-drush-alias">
-<h2><a class="toc-backref" href="#id8">Configure a Drush alias</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-6">Configure a Drush alias</a></h2>
 <div class="highlight"><pre><span></span><span class="gp">$ </span>cp ~/.composer/vendor/drush/drush/examples/example.aliases.drushrc.php ~/.drush/aliases.drushrc.php
 <span class="gp">$ </span>drush site-alias @self --full --with-optional &gt;&gt; ~/.drush/aliases.drushrc.php
 </pre></div>
@@ -302,16 +302,16 @@ The output is as follows:</p>
 </pre></div>
 </div>
 <div class="section" id="install-contrib-modules">
-<h2><a class="toc-backref" href="#id9">Install contrib modules</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-7">Install contrib modules</a></h2>
 <p>Two useful modules for developers are <a class="reference external" href="https://www.drupal.org/project/devel">devel</a> and <a class="reference external" href="https://www.drupal.org/project/examples">examples</a>.</p>
 <div class="section" id="devel">
-<h3><a class="toc-backref" href="#id10">Devel</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-8">Devel</a></h3>
 <div class="highlight"><pre><span></span><span class="gp">$ </span>drush @drupal8 pm-download devel
 <span class="gp">$ </span>drush @drupal8 pm-enable devel
 </pre></div>
 </div>
 <div class="section" id="examples">
-<h3><a class="toc-backref" href="#id11">Examples</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-9">Examples</a></h3>
 <div class="highlight"><pre><span></span><span class="gp">$ </span>drush @drupal8 pm-download examples
 <span class="gp">$ </span>drush @drupal8 pm-enable examples
 </pre></div>
@@ -320,7 +320,7 @@ required) before enabling it.</p>
 </div>
 </div>
 <div class="section" id="regularly-update-drupal-core">
-<h2><a class="toc-backref" href="#id12">Regularly update Drupal core</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-10">Regularly update Drupal core</a></h2>
 <p>As Drupal&nbsp;8 pushes on through beta releases you should regularly merge in the
 latest code:</p>
 <div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(master)</span><span class="gp">$ </span>git checkout master
@@ -335,7 +335,7 @@ that you are required to repeat the preceding site installation commands after
 updating Drupal core.</p>
 </div>
 <div class="section" id="further-reading">
-<h2><a class="toc-backref" href="#id13">Further reading</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-11">Further reading</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="https://www.drupal.org/node/803746">Building a Drupal site with Git</a></li>
 <li><a class="reference external" href="http://git-scm.com/">git-scm.com</a></li>
@@ -357,7 +357,7 @@ updating Drupal core.</p>
 </article>
 
     <footer>
-<p>&copy; 2021 Seth Fischer</p>
+<p>&copy; 2022 Seth Fischer</p>
 <p>
 Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
 </p>    </footer>

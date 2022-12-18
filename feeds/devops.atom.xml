@@ -19,35 +19,35 @@ deployment of Drupal&amp;nbsp;7 sites.&lt;/p&gt;
 &lt;div class="contents topic" id="contents"&gt;
 &lt;p class="topic-title"&gt;Contents&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#drupal-project-structure" id="id1"&gt;Drupal project structure&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#synchronise-site-uuid-across-instances" id="id2"&gt;Synchronise site UUID across instances&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#exclude-files-from-release-tarball" id="id3"&gt;Exclude files from release tarball&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#drupal-project-structure" id="toc-entry-1"&gt;Drupal project structure&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#synchronise-site-uuid-across-instances" id="toc-entry-2"&gt;Synchronise site UUID across instances&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#exclude-files-from-release-tarball" id="toc-entry-3"&gt;Exclude files from release tarball&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#target-host-configuration" id="id4"&gt;Target host configuration&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#user-account" id="id5"&gt;User account&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#directory-structure" id="id6"&gt;Directory structure&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#dependencies" id="id7"&gt;Dependencies&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#manual-configuration" id="id8"&gt;Manual configuration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#target-host-configuration" id="toc-entry-4"&gt;Target host configuration&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#user-account" id="toc-entry-5"&gt;User account&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#directory-structure" id="toc-entry-6"&gt;Directory structure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#dependencies" id="toc-entry-7"&gt;Dependencies&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#manual-configuration" id="toc-entry-8"&gt;Manual configuration&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#fabfile" id="id9"&gt;Fabfile&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#configuration" id="id10"&gt;Configuration&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#available-commands" id="id11"&gt;Available commands&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#usage" id="id12"&gt;Usage&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#source-code" id="id13"&gt;Source code&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#fabfile" id="toc-entry-9"&gt;Fabfile&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#configuration" id="toc-entry-10"&gt;Configuration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#available-commands" id="toc-entry-11"&gt;Available commands&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#usage" id="toc-entry-12"&gt;Usage&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#source-code" id="toc-entry-13"&gt;Source code&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a class="reference internal" href="#further-reading" id="id14"&gt;Further reading&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#further-reading" id="toc-entry-14"&gt;Further reading&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class="section" id="drupal-project-structure"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id1"&gt;Drupal project structure&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;Drupal project structure&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The fabfile is designed to deploy a site having a project structure as
 described in &lt;a class="reference external" href="https://seth.fischer.nz/drupal-8-workflow-using-git-subtree-merge.html"&gt;A Drupal&amp;nbsp;8 workflow using the Git subtree merge strategy&lt;/a&gt;.
 However it may be easily adapted to accommodate another project structure.&lt;/p&gt;
 &lt;div class="section" id="synchronise-site-uuid-across-instances"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id2"&gt;Synchronise site UUID across instances&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-2"&gt;Synchronise site UUID across instances&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;To share configuration between instances of the site (development, staging,
 production) they must share a common
 &lt;abbr title="Universally unique identifier"&gt;UUID&lt;/abbr&gt;.&lt;/p&gt;
@@ -69,7 +69,7 @@ a robust approach to synchronising UUIDs across instances of a site see
 &lt;a class="reference external" href="https://blog.dcycle.com/blog/68/approach-code-driven-development-drupal-8/"&gt;An approach to code-driven development in Drupal 8&lt;/a&gt; by &lt;a class="reference external" href="https://github.com/alberto56/"&gt;Albert Albala&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="exclude-files-from-release-tarball"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id3"&gt;Exclude files from release tarball&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-3"&gt;Exclude files from release tarball&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;As an enhancement files can be excluded from the release tarball by including
 a &lt;tt class="docutils literal"&gt;.gitattributes&lt;/tt&gt; file in the root of the repository. For each file that
 should be excluded from the release the &lt;a class="reference external" href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes#_exporting_your_repository"&gt;export-ignore attribute&lt;/a&gt; should be
@@ -78,15 +78,15 @@ specified. Use this
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="target-host-configuration"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id4"&gt;Target host configuration&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-4"&gt;Target host configuration&lt;/a&gt;&lt;/h2&gt;
 &lt;div class="section" id="user-account"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id5"&gt;User account&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-5"&gt;User account&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;The user who executes the deployment must have ssh access to the target host
 and permissions to execute commands as both the &lt;tt class="docutils literal"&gt;root&lt;/tt&gt; and web server user --
 usually &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;www-data&lt;/span&gt;&lt;/tt&gt; on Debian–based systems.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="directory-structure"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id6"&gt;Directory structure&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-6"&gt;Directory structure&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Variable data such as the Drupal &lt;tt class="docutils literal"&gt;files/&lt;/tt&gt; directory, &lt;tt class="docutils literal"&gt;settings.php&lt;/tt&gt;,
 and &lt;tt class="docutils literal"&gt;services.yml&lt;/tt&gt; is located in &lt;tt class="docutils literal"&gt;/var/lib/www/example.com/&lt;/tt&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;tree -AF /var/lib/www/example.com/
@@ -128,7 +128,7 @@ variable data being created during deployment.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="dependencies"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id7"&gt;Dependencies&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-7"&gt;Dependencies&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;The following tools must be installed on the target host:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://wiki.debian.org/SSH"&gt;OpenSSH server&lt;/a&gt;&lt;/li&gt;
@@ -136,7 +136,7 @@ variable data being created during deployment.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class="section" id="manual-configuration"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id8"&gt;Manual configuration&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-8"&gt;Manual configuration&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;The database, &lt;tt class="docutils literal"&gt;settings.php&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;services.yml&lt;/tt&gt; must be manually created on
 the target host before the first deployment.&lt;/p&gt;
 &lt;p&gt;Open a MySQL console:&lt;/p&gt;
@@ -144,10 +144,10 @@ the target host before the first deployment.&lt;/p&gt;
 &lt;span class="gp"&gt;$ &lt;/span&gt;mysql -uroot -p
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Create database and user:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;DATABASE&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;USER&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;@&amp;#39;localhost&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;IDENTIFIED&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;password&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="k"&gt;GRANT&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt; &lt;span class="k"&gt;PRIVILEGES&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;TO&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;@&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="k"&gt;FLUSH&lt;/span&gt; &lt;span class="k"&gt;PRIVILEGES&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;CREATE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;DATABASE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;CREATE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;USER&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;@&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;IDENTIFIED&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;BY&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;password&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;GRANT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;ALL&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;PRIVILEGES&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;ON&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;TO&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;dbuser&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;@&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;FLUSH&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;PRIVILEGES&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Copy &lt;tt class="docutils literal"&gt;sites/default/settings.php&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;sites/default/services.yml&lt;/tt&gt; to the
 target host and edit as appropriate according to the environment.&lt;/p&gt;
@@ -157,34 +157,34 @@ target host and edit as appropriate according to the environment.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="fabfile"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id9"&gt;Fabfile&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-9"&gt;Fabfile&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Source code is hosted at &lt;a class="reference external" href="https://github.com/sethfischer/fabric-deploy"&gt;sethfischer/fabric-deploy&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="section" id="configuration"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id10"&gt;Configuration&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-10"&gt;Configuration&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Configuration is expressed via &lt;a class="reference external" href="https://yaml.org/"&gt;YAML&lt;/a&gt; with one file per project. Below is an
 example configuration file.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# example.yml&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# example.yml&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 
-&lt;span class="c1"&gt;# global configuration common to all environments&lt;/span&gt;
-&lt;span class="nt"&gt;_global&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="nt"&gt;repository&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;     &lt;span class="l l-Scalar l-Scalar-Plain"&gt;ssh+git://github.com/user/repo.git&lt;/span&gt;
-    &lt;span class="nt"&gt;build_dir&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;/home/tmp/builds&lt;/span&gt;
-    &lt;span class="nt"&gt;remote_tmp_dir&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;/tmp&lt;/span&gt;
+&lt;span class="c1"&gt;# global configuration common to all environments&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="nt"&gt;_global&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;repository&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;ssh+git://github.com/user/repo.git&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;build_dir&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;/home/tmp/builds&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;remote_tmp_dir&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;/tmp&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 
-&lt;span class="c1"&gt;# staging environment&lt;/span&gt;
-&lt;span class="nt"&gt;staging&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="nt"&gt;hosts&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;staging.example.com&lt;/span&gt;
-    &lt;span class="nt"&gt;remote_tmp_dir&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;/tmp&lt;/span&gt;
+&lt;span class="c1"&gt;# staging environment&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="nt"&gt;staging&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;hosts&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;staging.example.com&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;remote_tmp_dir&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;/tmp&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 
-&lt;span class="c1"&gt;# production environment&lt;/span&gt;
-&lt;span class="nt"&gt;prod&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="nt"&gt;hosts&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;example.com&lt;/span&gt;
+&lt;span class="c1"&gt;# production environment&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="nt"&gt;prod&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;hosts&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;example.com&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="available-commands"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id11"&gt;Available commands&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-11"&gt;Available commands&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;&lt;tt class="docutils literal"&gt;fab &lt;span class="pre"&gt;-f&lt;/span&gt; drupal8 &lt;span class="pre"&gt;-l&lt;/span&gt;&lt;/tt&gt; lists the available commands with a short description:&lt;/p&gt;
 &lt;dl class="docutils"&gt;
 &lt;dt&gt;deploy&lt;/dt&gt;
@@ -198,7 +198,7 @@ example configuration file.&lt;/p&gt;
 &lt;/dl&gt;
 &lt;/div&gt;
 &lt;div class="section" id="usage"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id12"&gt;Usage&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-12"&gt;Usage&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Initialise directory structure on the &lt;tt class="docutils literal"&gt;uat&lt;/tt&gt; host of &lt;tt class="docutils literal"&gt;example.com&lt;/tt&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;fab -f drupal8 site:example.com,uat init_host
 &lt;/pre&gt;&lt;/div&gt;
@@ -207,7 +207,7 @@ example configuration file.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="source-code"&gt;
-&lt;h3&gt;&lt;a class="toc-backref" href="#id13"&gt;Source code&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;a class="toc-backref" href="#toc-entry-13"&gt;Source code&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;For the latest code &lt;tt class="docutils literal"&gt;git clone &lt;span class="pre"&gt;https://github.com/sethfischer/fabric-deploy&lt;/span&gt;&lt;/tt&gt;
 or &lt;a class="reference external" href="https://github.com/sethfischer/fabric-deploy/fork"&gt;create a fork&lt;/a&gt;.&lt;/p&gt;
 &lt;pre class="code python literal-block"&gt;
@@ -487,7 +487,7 @@ or &lt;a class="reference external" href="https://github.com/sethfischer/fabric-
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="further-reading"&gt;
-&lt;h2&gt;&lt;a class="toc-backref" href="#id14"&gt;Further reading&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-14"&gt;Further reading&lt;/a&gt;&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://drushcommands.com/drush-7x/"&gt;Drush 7.x commands&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://docs.fabfile.org/en/1.10/"&gt;Fabric’s documentation&lt;/a&gt;&lt;/li&gt;

@@ -145,20 +145,20 @@ welder qualifications.</p>
 <div class="contents topic" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#pdf-generating-libraries" id="id2">PDF generating libraries</a></li>
-<li><a class="reference internal" href="#latex" id="id3">LaTeX</a></li>
-<li><a class="reference internal" href="#symfony-2-service" id="id4">Symfony 2 service</a><ul>
-<li><a class="reference internal" href="#configure-the-service-container" id="id5">Configure the service container</a></li>
-<li><a class="reference internal" href="#service-object" id="id6">Service object</a></li>
-<li><a class="reference internal" href="#twig-template" id="id7">Twig template</a></li>
-<li><a class="reference internal" href="#utilising-the-service" id="id8">Utilising the service</a></li>
+<li><a class="reference internal" href="#pdf-generating-libraries" id="toc-entry-1">PDF generating libraries</a></li>
+<li><a class="reference internal" href="#latex" id="toc-entry-2">LaTeX</a></li>
+<li><a class="reference internal" href="#symfony-2-service" id="toc-entry-3">Symfony 2 service</a><ul>
+<li><a class="reference internal" href="#configure-the-service-container" id="toc-entry-4">Configure the service container</a></li>
+<li><a class="reference internal" href="#service-object" id="toc-entry-5">Service object</a></li>
+<li><a class="reference internal" href="#twig-template" id="toc-entry-6">Twig template</a></li>
+<li><a class="reference internal" href="#utilising-the-service" id="toc-entry-7">Utilising the service</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#further-reading" id="id9">Further reading</a></li>
+<li><a class="reference internal" href="#further-reading" id="toc-entry-8">Further reading</a></li>
 </ul>
 </div>
 <div class="section" id="pdf-generating-libraries">
-<h2><a class="toc-backref" href="#id2">PDF generating libraries</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-1">PDF generating libraries</a></h2>
 <p>Before implementing the LaTeX service the following PDF generating libraries
 were considered:</p>
 <ol class="arabic simple">
@@ -189,7 +189,7 @@ formats) using the QT WebKit rendering engine.</li>
 </ol>
 </div>
 <div class="section" id="latex">
-<h2><a class="toc-backref" href="#id3">LaTeX</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-2">LaTeX</a></h2>
 <p>The LaTeX system is a markup language and high-quality typesetting system. It
 is written in the <a class="reference external" href="http://tug.org/">TeX macro language</a>.</p>
 <p>A PDF document may be generated directly from a LaTeX source document with the
@@ -205,7 +205,7 @@ the following commands:</p>
 turn invokes <tt class="docutils literal">pdflatex</tt>.</p>
 </div>
 <div class="section" id="symfony-2-service">
-<h2><a class="toc-backref" href="#id4">Symfony 2 service</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-3">Symfony 2 service</a></h2>
 <p><a class="reference external" href="https://symfony.com/doc/2.3/book/service_container.html">Services</a> are re-usable, decoupled components, that may be accessed from any
 part of the application. The <a class="reference external" href="https://symfony.com/doc/2.3/glossary.html#term-service">definition of a service</a> from the Symfony
 documentation:</p>
@@ -225,32 +225,32 @@ container.</li>
 document.</li>
 </ol>
 <div class="section" id="configure-the-service-container">
-<h3><a class="toc-backref" href="#id5">Configure the service container</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-4">Configure the service container</a></h3>
 <p>The service container is configured with <tt class="docutils literal">services.yml</tt>. Two services are
 defined in the <a class="reference external" href="https://yaml.org/">YAML</a> below: 1. <tt class="docutils literal">electrotech.twig.ib2020_extension</tt>, which
 provides a Twig filer to escape LaTeX special characters; and
 2. <tt class="docutils literal">electrotech.pdf.pdflatex</tt>, the PDF LaTeX service itself.</p>
 <p>For convenience the <tt class="docutils literal"><span class="pre">rubber-pipe</span></tt> binary is defined as a parameter.</p>
-<div class="highlight"><pre><span></span><span class="c1"># src/Electrotech/WeldqualBundle/Resources/config/services.yml</span>
+<div class="highlight"><pre><span></span><span class="c1"># src/Electrotech/WeldqualBundle/Resources/config/services.yml</span><span class="w"></span>
 
-<span class="nt">parameters</span><span class="p">:</span>
-    <span class="nt">electrotech.twig.ib2020_extension.class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Electrotech\WeldqualBundle\Twig\Ib2020Extension</span>
-    <span class="nt">electrotech.pdf.pdflatex.rubber-pipe</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/usr/bin/rubber-pipe</span>
+<span class="nt">parameters</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">electrotech.twig.ib2020_extension.class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Electrotech\WeldqualBundle\Twig\Ib2020Extension</span><span class="w"></span>
+<span class="w">    </span><span class="nt">electrotech.pdf.pdflatex.rubber-pipe</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/bin/rubber-pipe</span><span class="w"></span>
 
-<span class="nt">services</span><span class="p">:</span>
-    <span class="nt">electrotech.twig.ib2020_extension</span><span class="p">:</span>
-        <span class="nt">class</span><span class="p">:</span> <span class="err">%</span><span class="l l-Scalar l-Scalar-Plain">electrotech.twig.ib2020_extension.class%</span>
-        <span class="nt">arguments</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="err">%</span><span class="nv">kernel.bundles%</span><span class="p p-Indicator">]</span>
-        <span class="nt">tags</span><span class="p">:</span>
-            <span class="p p-Indicator">-</span> <span class="p p-Indicator">{</span><span class="nt"> name</span><span class="p">:</span> <span class="nv">twig.extension</span> <span class="p p-Indicator">}</span>
+<span class="nt">services</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">electrotech.twig.ib2020_extension</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="err">%</span><span class="l l-Scalar l-Scalar-Plain">electrotech.twig.ib2020_extension.class%</span><span class="w"></span>
+<span class="w">        </span><span class="nt">arguments</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="err">%</span><span class="nv">kernel.bundles%</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> name</span><span class="p">:</span><span class="w"> </span><span class="nv">twig.extension</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"></span>
 
-    <span class="nt">electrotech.pdf.pdflatex</span><span class="p">:</span>
-        <span class="nt">class</span><span class="p">:</span>        <span class="l l-Scalar l-Scalar-Plain">Electrotech\WeldqualBundle\Pdf\Pdflatex</span>
-        <span class="nt">arguments</span><span class="p">:</span>    <span class="p p-Indicator">[</span><span class="err">%</span><span class="nv">electrotech.pdf.pdflatex.rubber-pipe%</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">electrotech.pdf.pdflatex</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">class</span><span class="p">:</span><span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">Electrotech\WeldqualBundle\Pdf\Pdflatex</span><span class="w"></span>
+<span class="w">        </span><span class="nt">arguments</span><span class="p">:</span><span class="w">    </span><span class="p p-Indicator">[</span><span class="err">%</span><span class="nv">electrotech.pdf.pdflatex.rubber-pipe%</span><span class="p p-Indicator">]</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="section" id="service-object">
-<h3><a class="toc-backref" href="#id6">Service object</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-5">Service object</a></h3>
 <p>An instance of the class <tt class="docutils literal">Pdflatex</tt> provides the service. <tt class="docutils literal">Pdflatex</tt> takes
 a LaTeX source document and returns a PDF document.</p>
 <div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
@@ -436,7 +436,7 @@ a LaTeX source document and returns a PDF document.</p>
 </pre></div>
 </div>
 <div class="section" id="twig-template">
-<h3><a class="toc-backref" href="#id7">Twig template</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-6">Twig template</a></h3>
 <p>A <a class="reference external" href="https://twig.symfony.com/">Twig</a> template <tt class="docutils literal">show.tex.twig</tt> is used to generate the LaTeX source
 document.</p>
 <div class="highlight"><pre><span></span><span class="c">% src/Electrotech/WeldqualBundle/Resources/views/Testweld/show.tex.twig</span>
@@ -579,7 +579,7 @@ Custom Twig filters are created by extending <tt class="docutils literal">Twig_E
 </pre></div>
 </div>
 <div class="section" id="utilising-the-service">
-<h3><a class="toc-backref" href="#id8">Utilising the service</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-7">Utilising the service</a></h3>
 <p>The service is used in the controller by passing a certificate ID to the method
 <tt class="docutils literal">pdfAction()</tt>. The LaTeX source document is then generated by the method
 <tt class="docutils literal">latexSource()</tt>.</p>
@@ -700,7 +700,7 @@ Custom Twig filters are created by extending <tt class="docutils literal">Twig_E
 </div>
 </div>
 <div class="section" id="further-reading">
-<h2><a class="toc-backref" href="#id9">Further reading</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-8">Further reading</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="https://symfony.com/doc/2.3/cookbook/controller/service.html">How to define controllers as services</a>.</li>
 <li><a class="reference external" href="https://tobi.oetiker.ch/lshort/lshort.pdf">The not so short introduction to LaTeX 2ε</a> by Tobias Oetiker.</li>
@@ -722,7 +722,7 @@ Custom Twig filters are created by extending <tt class="docutils literal">Twig_E
 </article>
 
     <footer>
-<p>&copy; 2021 Seth Fischer</p>
+<p>&copy; 2022 Seth Fischer</p>
 <p>
 Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
 </p>    </footer>

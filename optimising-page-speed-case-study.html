@@ -139,24 +139,24 @@ and the page size was reduced by 62%.</p>
 <div class="contents topic" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#pre-optimisation" id="id1">Pre-optimisation</a></li>
-<li><a class="reference internal" href="#optimisations" id="id2">Optimisations</a><ul>
-<li><a class="reference internal" href="#custom-font" id="id3">Custom font</a></li>
-<li><a class="reference internal" href="#custom-bootstrap" id="id4">Custom Bootstrap</a></li>
-<li><a class="reference internal" href="#reduce-ajax-requests" id="id5">Reduce AJAX requests</a></li>
-<li><a class="reference internal" href="#custom-jquery" id="id6">Custom jQuery</a></li>
-<li><a class="reference internal" href="#merge-and-minify-assets" id="id7">Merge and minify assets</a></li>
-<li><a class="reference internal" href="#eliminate-unnecessary-resources-and-dns-look-ups" id="id8">Eliminate unnecessary resources and DNS look-ups</a></li>
+<li><a class="reference internal" href="#pre-optimisation" id="toc-entry-1">Pre-optimisation</a></li>
+<li><a class="reference internal" href="#optimisations" id="toc-entry-2">Optimisations</a><ul>
+<li><a class="reference internal" href="#custom-font" id="toc-entry-3">Custom font</a></li>
+<li><a class="reference internal" href="#custom-bootstrap" id="toc-entry-4">Custom Bootstrap</a></li>
+<li><a class="reference internal" href="#reduce-ajax-requests" id="toc-entry-5">Reduce AJAX requests</a></li>
+<li><a class="reference internal" href="#custom-jquery" id="toc-entry-6">Custom jQuery</a></li>
+<li><a class="reference internal" href="#merge-and-minify-assets" id="toc-entry-7">Merge and minify assets</a></li>
+<li><a class="reference internal" href="#eliminate-unnecessary-resources-and-dns-look-ups" id="toc-entry-8">Eliminate unnecessary resources and DNS look-ups</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#post-optimisation" id="id9">Post-optimisation</a></li>
-<li><a class="reference internal" href="#hosting-environment" id="id10">Hosting environment</a></li>
-<li><a class="reference internal" href="#summary" id="id11">Summary</a></li>
-<li><a class="reference internal" href="#further-reading" id="id12">Further reading</a></li>
+<li><a class="reference internal" href="#post-optimisation" id="toc-entry-9">Post-optimisation</a></li>
+<li><a class="reference internal" href="#hosting-environment" id="toc-entry-10">Hosting environment</a></li>
+<li><a class="reference internal" href="#summary" id="toc-entry-11">Summary</a></li>
+<li><a class="reference internal" href="#further-reading" id="toc-entry-12">Further reading</a></li>
 </ul>
 </div>
 <div class="section" id="pre-optimisation">
-<h2><a class="toc-backref" href="#id1">Pre-optimisation</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-1">Pre-optimisation</a></h2>
 <p>Before optimisation, as configured for this site, the index page generated
 17&nbsp;requests and had a total page size of 182.9&nbsp;kB.</p>
 <table border="1" class="docutils">
@@ -200,11 +200,11 @@ and the page size was reduced by 62%.</p>
 </div>
 </div>
 <div class="section" id="optimisations">
-<h2><a class="toc-backref" href="#id2">Optimisations</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-2">Optimisations</a></h2>
 <p>Six main optimisations were made as detailed below. Unless stated the file
 sizes specified are for minified but uncompressed versions of the file.</p>
 <div class="section" id="custom-font">
-<h3><a class="toc-backref" href="#id3">Custom font</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-3">Custom font</a></h3>
 <p>Improvements:</p>
 <dl class="docutils">
 <dt>Page size</dt>
@@ -223,7 +223,7 @@ into a <a class="reference external" href="https://gruntjs.com/">Grunt</a> build
 the <tt class="docutils literal">Gruntfile.js</tt> which includes a <tt class="docutils literal"><span class="pre">grunt-webfont</span></tt> task.</p>
 </div>
 <div class="section" id="custom-bootstrap">
-<h3><a class="toc-backref" href="#id4">Custom Bootstrap</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-4">Custom Bootstrap</a></h3>
 <p>Improvements:</p>
 <dl class="docutils">
 <dt>Page size</dt>
@@ -236,46 +236,46 @@ unused components from the build <tt class="docutils literal">bootstrap.min.css<
 <a class="reference external" href="https://github.com/gruntjs/grunt-contrib-compass">gruntjs/grunt-contrib-compass</a>.</p>
 <p>Below is the <tt class="docutils literal">Gruntfile.js</tt> for this theme which includes both a
 <tt class="docutils literal"><span class="pre">grunt-webfont</span></tt> task and a <tt class="docutils literal"><span class="pre">grunt-contrib-compass</span></tt> task.</p>
-<div class="highlight"><pre><span></span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
-    <span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">grunt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;use strict&quot;</span><span class="p">;</span><span class="w"></span>
 
-    <span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
-        <span class="nx">compass</span><span class="o">:</span> <span class="p">{</span>
-            <span class="nx">dist</span><span class="o">:</span> <span class="p">{</span>
-                <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="nx">config</span><span class="o">:</span> <span class="s1">&#39;config.rb&#39;</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">},</span>
-        <span class="nx">webfont</span><span class="o">:</span> <span class="p">{</span>
-            <span class="nx">icons</span><span class="o">:</span> <span class="p">{</span>
-                <span class="nx">src</span><span class="o">:</span> <span class="s1">&#39;fontcustom/vectors/*.svg&#39;</span><span class="p">,</span>
-                <span class="nx">dest</span><span class="o">:</span> <span class="s1">&#39;static/font&#39;</span><span class="p">,</span>
-                <span class="nx">destCss</span><span class="o">:</span> <span class="s1">&#39;static/css&#39;</span><span class="p">,</span>
-                <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="nx">htmlDemo</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-                    <span class="nx">hashes</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-                    <span class="nx">font</span><span class="o">:</span> <span class="s1">&#39;font-custom&#39;</span><span class="p">,</span>
-                    <span class="nx">types</span><span class="o">:</span> <span class="s1">&#39;eot,woff,svg,ttf&#39;</span><span class="p">,</span>
-                    <span class="nx">syntax</span><span class="o">:</span> <span class="s1">&#39;bem&#39;</span><span class="p">,</span>
-                    <span class="nx">templateOptions</span><span class="o">:</span> <span class="p">{</span>
-                        <span class="nx">baseClass</span><span class="o">:</span> <span class="s1">&#39;fa&#39;</span><span class="p">,</span>
-                        <span class="nx">classPrefix</span><span class="o">:</span> <span class="s1">&#39;fa-&#39;</span>
-                    <span class="p">}</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">});</span>
+<span class="w">    </span><span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span><span class="w"></span>
+<span class="w">        </span><span class="nx">compass</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nx">dist</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nx">options</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">config</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;config.rb&#39;</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nx">webfont</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nx">icons</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nx">src</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;fontcustom/vectors/*.svg&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">dest</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;static/font&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">destCss</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;static/css&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">options</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">htmlDemo</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">hashes</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">font</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;font-custom&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">types</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;eot,woff,svg,ttf&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">syntax</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;bem&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">templateOptions</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                        </span><span class="nx">baseClass</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;fa&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nx">classPrefix</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;fa-&#39;</span><span class="w"></span>
+<span class="w">                    </span><span class="p">}</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
 
-    <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-contrib-compass&#39;</span><span class="p">);</span>
-    <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-webfont&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-contrib-compass&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-webfont&#39;</span><span class="p">);</span><span class="w"></span>
 
-    <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s2">&quot;default&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;compass&quot;</span><span class="p">,</span> <span class="s2">&quot;webfont&quot;</span><span class="p">]);</span>
-<span class="p">};</span>
+<span class="w">    </span><span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s2">&quot;default&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;compass&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;webfont&quot;</span><span class="p">]);</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="section" id="reduce-ajax-requests">
-<h3><a class="toc-backref" href="#id5">Reduce AJAX requests</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-5">Reduce AJAX requests</a></h3>
 <p>Improvements:</p>
 <dl class="docutils">
 <dt>Requests (SSL)</dt>
@@ -287,7 +287,7 @@ request the list of GitHub repositories was generated during the build process
 with <a class="reference external" href="https://github.com/kura/pelican-githubprojects">kura/pelican-githubprojects</a>.</p>
 </div>
 <div class="section" id="custom-jquery">
-<h3><a class="toc-backref" href="#id6">Custom jQuery</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-6">Custom jQuery</a></h3>
 <p>Improvements:</p>
 <dl class="docutils">
 <dt>Page size</dt>
@@ -302,7 +302,7 @@ with <a class="reference external" href="https://github.com/kura/pelican-githubp
 </pre></div>
 </div>
 <div class="section" id="merge-and-minify-assets">
-<h3><a class="toc-backref" href="#id7">Merge and minify assets</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-7">Merge and minify assets</a></h3>
 <p>Improvements:</p>
 <dl class="docutils">
 <dt>Requests</dt>
@@ -327,7 +327,7 @@ significantly reduced by optimising images. For example, the two Pingdom screen
 shots were reduced by <a class="reference external" href="https://pmt.sourceforge.io/pngcrush/">pngcrush</a> to approximately 27&nbsp;% of the original size.</p>
 </div>
 <div class="section" id="eliminate-unnecessary-resources-and-dns-look-ups">
-<h3><a class="toc-backref" href="#id8">Eliminate unnecessary resources and DNS look-ups</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-8">Eliminate unnecessary resources and DNS look-ups</a></h3>
 <p>Improvements:</p>
 <dl class="docutils">
 <dt>Requests</dt>
@@ -351,7 +351,7 @@ browsers.</li>
 </div>
 </div>
 <div class="section" id="post-optimisation">
-<h2><a class="toc-backref" href="#id9">Post-optimisation</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-9">Post-optimisation</a></h2>
 <p>Below is a table summarising the changes made to improve page speed.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -412,7 +412,7 @@ browsers.</li>
 </div>
 </div>
 <div class="section" id="hosting-environment">
-<h2><a class="toc-backref" href="#id10">Hosting environment</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-10">Hosting environment</a></h2>
 <p>This site is currently hosted by <a class="reference external" href="https://pages.github.com/">GitHub Pages</a>. Besides free-of-charge
 managed hosting, GitHub Pages also offers all the advantages of their global
 content delivery network.</p>
@@ -449,7 +449,7 @@ content types text/css and application/javascript as the webassets plug-in adds
 a version identifier to the filename of those content types.</p>
 </div>
 <div class="section" id="summary">
-<h2><a class="toc-backref" href="#id11">Summary</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-11">Summary</a></h2>
 <p>These optimisations have reduced the page size by 113.9&nbsp;kB and the number of
 requests by twelve. These improvements result in a significantly improved page
 load time.</p>
@@ -485,7 +485,7 @@ following dependencies:</p>
 </ul>
 </div>
 <div class="section" id="further-reading">
-<h2><a class="toc-backref" href="#id12">Further reading</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-12">Further reading</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="https://w3c.github.io/web-performance/specs/HAR/Overview.html">HTTP Archive (HAR) format specification</a></li>
 <li><a class="reference external" href="https://webassets.readthedocs.io/en/latest/expiring.html">URL Expiry (cache busting)</a> webassets documentation</li>
@@ -511,7 +511,7 @@ following dependencies:</p>
 </article>
 
     <footer>
-<p>&copy; 2021 Seth Fischer</p>
+<p>&copy; 2022 Seth Fischer</p>
 <p>
 Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
 </p>    </footer>

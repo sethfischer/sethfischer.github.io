@@ -143,23 +143,23 @@ changes to Drupal core may be conveniently merged with <tt class="docutils liter
 <div class="contents topic" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#initialise-git-repository" id="id1">Initialise Git repository</a></li>
-<li><a class="reference internal" href="#add-upstream-remote" id="id2">Add upstream remote</a></li>
-<li><a class="reference internal" href="#checkout-a-local-copy-of-the-upstream-branch" id="id3">Checkout a local copy of the upstream branch</a></li>
-<li><a class="reference internal" href="#pull-upstream-into-a-subdirectory-in-the-master-branch" id="id4">Pull upstream into a subdirectory in the master branch</a></li>
-<li><a class="reference internal" href="#create-a-gitingore-for-drupal-core" id="id5">Create a <tt class="docutils literal">.gitingore</tt> for Drupal core</a></li>
-<li><a class="reference internal" href="#create-directories-outside-the-document-root" id="id6">Create directories outside the document root</a></li>
-<li><a class="reference internal" href="#create-the-files-directory-and-set-permissions" id="id7">Create the <tt class="docutils literal">files</tt> directory and set permissions</a></li>
-<li><a class="reference internal" href="#create-database" id="id8">Create database</a></li>
-<li><a class="reference internal" href="#site-installation" id="id9">Site installation</a></li>
-<li><a class="reference internal" href="#drupal-configuration-directories" id="id10">Drupal configuration directories</a></li>
-<li><a class="reference internal" href="#export-configuration" id="id11">Export configuration</a></li>
-<li><a class="reference internal" href="#update-drupal-core" id="id12">Update Drupal core</a></li>
-<li><a class="reference internal" href="#further-reading" id="id13">Further reading</a></li>
+<li><a class="reference internal" href="#initialise-git-repository" id="toc-entry-1">Initialise Git repository</a></li>
+<li><a class="reference internal" href="#add-upstream-remote" id="toc-entry-2">Add upstream remote</a></li>
+<li><a class="reference internal" href="#checkout-a-local-copy-of-the-upstream-branch" id="toc-entry-3">Checkout a local copy of the upstream branch</a></li>
+<li><a class="reference internal" href="#pull-upstream-into-a-subdirectory-in-the-master-branch" id="toc-entry-4">Pull upstream into a subdirectory in the master branch</a></li>
+<li><a class="reference internal" href="#create-a-gitingore-for-drupal-core" id="toc-entry-5">Create a <tt class="docutils literal">.gitingore</tt> for Drupal core</a></li>
+<li><a class="reference internal" href="#create-directories-outside-the-document-root" id="toc-entry-6">Create directories outside the document root</a></li>
+<li><a class="reference internal" href="#create-the-files-directory-and-set-permissions" id="toc-entry-7">Create the <tt class="docutils literal">files</tt> directory and set permissions</a></li>
+<li><a class="reference internal" href="#create-database" id="toc-entry-8">Create database</a></li>
+<li><a class="reference internal" href="#site-installation" id="toc-entry-9">Site installation</a></li>
+<li><a class="reference internal" href="#drupal-configuration-directories" id="toc-entry-10">Drupal configuration directories</a></li>
+<li><a class="reference internal" href="#export-configuration" id="toc-entry-11">Export configuration</a></li>
+<li><a class="reference internal" href="#update-drupal-core" id="toc-entry-12">Update Drupal core</a></li>
+<li><a class="reference internal" href="#further-reading" id="toc-entry-13">Further reading</a></li>
 </ul>
 </div>
 <div class="section" id="initialise-git-repository">
-<h2><a class="toc-backref" href="#id1">Initialise Git repository</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-1">Initialise Git repository</a></h2>
 <p>Initialise Git repository and add your <tt class="docutils literal">.gitignore</tt>, <tt class="docutils literal">README</tt>, and
 <tt class="docutils literal">LICENSE</tt> files.</p>
 <div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir myproject
@@ -175,7 +175,7 @@ changes to Drupal core may be conveniently merged with <tt class="docutils liter
 </pre></div>
 </div>
 <div class="section" id="add-upstream-remote">
-<h2><a class="toc-backref" href="#id2">Add upstream remote</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-2">Add upstream remote</a></h2>
 <p>Add the drupal.org git repository as a remote with the name <tt class="docutils literal">upstream</tt>. To
 improve efficiency specify that only the <tt class="docutils literal">8.0.x</tt> branch is to be tracked with
 the <tt class="docutils literal"><span class="pre">-t</span></tt> option.</p>
@@ -184,7 +184,7 @@ the <tt class="docutils literal"><span class="pre">-t</span></tt> option.</p>
 </pre></div>
 </div>
 <div class="section" id="checkout-a-local-copy-of-the-upstream-branch">
-<h2><a class="toc-backref" href="#id3">Checkout a local copy of the upstream branch</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-3">Checkout a local copy of the upstream branch</a></h2>
 <p>Checkout a local copy of the <tt class="docutils literal">upstream/8.0.x</tt> branch.</p>
 <div class="highlight"><pre><span></span><span class="gp">$ </span>git checkout -b upstream upstream/8.0.x
 <span class="go">Branch upstream set up to track remote branch 8.0.x from upstream by rebasing.</span>
@@ -192,7 +192,7 @@ the <tt class="docutils literal"><span class="pre">-t</span></tt> option.</p>
 </pre></div>
 </div>
 <div class="section" id="pull-upstream-into-a-subdirectory-in-the-master-branch">
-<h2><a class="toc-backref" href="#id4">Pull upstream into a subdirectory in the master branch</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-4">Pull upstream into a subdirectory in the master branch</a></h2>
 <p>The <tt class="docutils literal">upstream/8.0.x</tt> branch is pulled in as a subdirectory of the master
 branch using the <tt class="docutils literal">git <span class="pre">read-tree</span></tt> command. The name of the subdirectory is
 specified with the <tt class="docutils literal"><span class="pre">--prefix</span></tt> option; in this case <tt class="docutils literal">drupal/</tt>.</p>
@@ -224,7 +224,7 @@ specified with the <tt class="docutils literal"><span class="pre">--prefix</span
 </pre></div>
 </div>
 <div class="section" id="create-a-gitingore-for-drupal-core">
-<h2><a class="toc-backref" href="#id5">Create a <tt class="docutils literal">.gitingore</tt> for Drupal core</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-5">Create a <tt class="docutils literal">.gitingore</tt> for Drupal core</a></h2>
 <p>Drupal core has an example <tt class="docutils literal">.gitignore</tt> file which provides an excellent
 starting point and is sufficient for most projects.</p>
 <div class="highlight"><pre><span></span><span class="gp">$ </span>cp drupal/example.gitignore drupal/.gitignore
@@ -233,7 +233,7 @@ starting point and is sufficient for most projects.</p>
 </pre></div>
 </div>
 <div class="section" id="create-directories-outside-the-document-root">
-<h2><a class="toc-backref" href="#id6">Create directories outside the document root</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-6">Create directories outside the document root</a></h2>
 <p>As the document root is now below the repository root, files and directories
 may be committed to the repository without exposing them to the web server.</p>
 <p>In this example—when configuring the web server—the document root is set to
@@ -263,7 +263,7 @@ may be committed to the repository without exposing them to the web server.</p>
 </pre></div>
 </div>
 <div class="section" id="create-the-files-directory-and-set-permissions">
-<h2><a class="toc-backref" href="#id7">Create the <tt class="docutils literal">files</tt> directory and set permissions</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-7">Create the <tt class="docutils literal">files</tt> directory and set permissions</a></h2>
 <p>The Drupal <tt class="docutils literal">files</tt> directory must be manually created.</p>
 <div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir drupal/sites/default/files
 </pre></div>
@@ -280,19 +280,19 @@ grep -v root <span class="p">|</span> head -1 <span class="p">|</span> cut -d<sp
 <tt class="docutils literal">config/staging</tt>, and <tt class="docutils literal">config/deploy</tt> directories.</p>
 </div>
 <div class="section" id="create-database">
-<h2><a class="toc-backref" href="#id8">Create database</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-8">Create database</a></h2>
 <p>Open a MySQL console:</p>
 <div class="highlight"><pre><span></span><span class="gp">$ </span>mysql -uroot -p
 </pre></div>
 <p>Create database and user:</p>
-<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">db</span><span class="p">;</span>
-<span class="k">CREATE</span> <span class="k">USER</span> <span class="s1">&#39;dbuser&#39;</span><span class="nv">@&#39;localhost&#39;</span> <span class="k">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;password&#39;</span><span class="p">;</span>
-<span class="k">GRANT</span> <span class="k">ALL</span> <span class="k">PRIVILEGES</span> <span class="k">ON</span> <span class="n">db</span><span class="p">.</span><span class="o">*</span> <span class="k">TO</span> <span class="s1">&#39;dbuser&#39;</span><span class="nv">@&#39;localhost&#39;</span><span class="p">;</span>
-<span class="k">FLUSH</span> <span class="k">PRIVILEGES</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">db</span><span class="p">;</span><span class="w"></span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;dbuser&#39;</span><span class="nv">@&#39;localhost&#39;</span><span class="w"> </span><span class="k">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;password&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">db</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;dbuser&#39;</span><span class="nv">@&#39;localhost&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">FLUSH</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="section" id="site-installation">
-<h2><a class="toc-backref" href="#id9">Site installation</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-9">Site installation</a></h2>
 <p>Install the site with the standard install profile and change the administrator
 password.</p>
 <div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span> drupal
@@ -302,7 +302,7 @@ password.</p>
 </pre></div>
 </div>
 <div class="section" id="drupal-configuration-directories">
-<h2><a class="toc-backref" href="#id10">Drupal configuration directories</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-10">Drupal configuration directories</a></h2>
 <p>Edit <tt class="docutils literal">sites/default/settings.php</tt> and update the location of the
 configuration directories.</p>
 <div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
@@ -316,7 +316,7 @@ configuration directories.</p>
 </pre></div>
 </div>
 <div class="section" id="export-configuration">
-<h2><a class="toc-backref" href="#id11">Export configuration</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-11">Export configuration</a></h2>
 <p>Export the configuration from the database into the <tt class="docutils literal">deploy</tt> configuration
 directory.</p>
 <div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span> drupal/
@@ -328,7 +328,7 @@ part of the deployment process the configuration may be imported with the
 command <tt class="docutils literal">drush <span class="pre">config-import</span> deploy</tt>.</p>
 </div>
 <div class="section" id="update-drupal-core">
-<h2><a class="toc-backref" href="#id12">Update Drupal core</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-12">Update Drupal core</a></h2>
 <p>To merge upstream change to Drupal core the <a class="reference external" href="https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging#_subtree_merge">Git subtree merge strategy</a> is
 used.</p>
 <div class="highlight"><pre><span></span><span class="gp">$ </span>git pull -s subtree upstream <span class="m">8</span>.0.x
@@ -347,7 +347,7 @@ option:</p>
 </pre></div>
 </div>
 <div class="section" id="further-reading">
-<h2><a class="toc-backref" href="#id13">Further reading</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-13">Further reading</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging#_subtree_merge">Git Tools - Subtree Merging</a></li>
 <li><a class="reference external" href="https://www.kernel.org/pub/software/scm/git/docs/howto/using-merge-subtree.html">How to use the subtree merge strategy</a></li>
@@ -371,7 +371,7 @@ option:</p>
 </article>
 
     <footer>
-<p>&copy; 2021 Seth Fischer</p>
+<p>&copy; 2022 Seth Fischer</p>
 <p>
 Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
 </p>    </footer>

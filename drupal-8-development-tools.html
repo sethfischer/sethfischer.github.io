@@ -143,24 +143,24 @@ convenient access to performance and profile information.</p>
 <div class="contents topic" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#drupal-console" id="id3">Drupal Console</a><ul>
-<li><a class="reference internal" href="#commands-in-the-generate-namespace" id="id4">Commands in the generate namespace</a></li>
-<li><a class="reference internal" href="#additional-commands" id="id5">Additional commands</a></li>
-<li><a class="reference internal" href="#custom-commands" id="id6">Custom commands</a></li>
-<li><a class="reference internal" href="#chain-command-execution" id="id7">Chain command execution</a></li>
+<li><a class="reference internal" href="#drupal-console" id="toc-entry-1">Drupal Console</a><ul>
+<li><a class="reference internal" href="#commands-in-the-generate-namespace" id="toc-entry-2">Commands in the generate namespace</a></li>
+<li><a class="reference internal" href="#additional-commands" id="toc-entry-3">Additional commands</a></li>
+<li><a class="reference internal" href="#custom-commands" id="toc-entry-4">Custom commands</a></li>
+<li><a class="reference internal" href="#chain-command-execution" id="toc-entry-5">Chain command execution</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#web-profiler" id="id8">Web Profiler</a><ul>
-<li><a class="reference internal" href="#data-collectors" id="id9">Data collectors</a></li>
-<li><a class="reference internal" href="#profiling-decoupled-requests" id="id10">Profiling decoupled requests</a></li>
-<li><a class="reference internal" href="#web-profiler-console-commands" id="id11">Web Profiler console commands</a></li>
+<li><a class="reference internal" href="#web-profiler" id="toc-entry-6">Web Profiler</a><ul>
+<li><a class="reference internal" href="#data-collectors" id="toc-entry-7">Data collectors</a></li>
+<li><a class="reference internal" href="#profiling-decoupled-requests" id="toc-entry-8">Profiling decoupled requests</a></li>
+<li><a class="reference internal" href="#web-profiler-console-commands" id="toc-entry-9">Web Profiler console commands</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#further-reading" id="id12">Further reading</a></li>
+<li><a class="reference internal" href="#further-reading" id="toc-entry-10">Further reading</a></li>
 </ul>
 </div>
 <div class="section" id="drupal-console">
-<h2><a class="toc-backref" href="#id3">Drupal Console</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-1">Drupal Console</a></h2>
 <p>The Drupal Console (<a class="reference external" href="https://github.com/hechoendrupal/drupal-console">hechoendrupal/DrupalConsole</a> on GitHub) is a
 <a class="reference external" href="https://symfony.com/doc/2.7/components/console.html">Symfony 2 console application</a> which provides a number of generators to
 assist developers in creating boilerplate code. Drupal Console is a valuable
@@ -180,7 +180,7 @@ code by kick-starting a <a class="reference external" href="https://www.drupal.o
 <li><tt class="docutils literal">test</tt></li>
 </ul>
 <div class="section" id="commands-in-the-generate-namespace">
-<h3><a class="toc-backref" href="#id4">Commands in the generate namespace</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-2">Commands in the generate namespace</a></h3>
 <p>Drupal Console currently has thirteen commands in the generate namespace:</p>
 <dl class="docutils">
 <dt><tt class="docutils literal">generate:authentication:provider</tt></dt>
@@ -253,7 +253,7 @@ to the command.</p>
 </pre></div>
 </div>
 <div class="section" id="additional-commands">
-<h3><a class="toc-backref" href="#id5">Additional commands</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-3">Additional commands</a></h3>
 <p>In addition to commands in the generate namespace Drupal Console has many other
 commands. Run <tt class="docutils literal">drupal list</tt> to list available commands. Modules can define
 their own commands so the available commands may vary according to the modules
@@ -263,58 +263,58 @@ optionally passing the <tt class="docutils literal"><span class="pre">--format=j
 <div class="highlight"><pre><span></span><span class="gp">$ </span>drupal site:status --format<span class="o">=</span>json
 </pre></div>
 <p>Output of preceding command:</p>
-<div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;system&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;Drupal&quot;</span><span class="p">:</span> <span class="s2">&quot;8.0.0-dev&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Access to update.php&quot;</span><span class="p">:</span> <span class="s2">&quot;Protected&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Configuration files&quot;</span><span class="p">:</span> <span class="s2">&quot;Protected&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Cron maintenance tasks&quot;</span><span class="p">:</span> <span class="s2">&quot;Last run 44 min 45 sec ago&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;D3.js library&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Database system&quot;</span><span class="p">:</span> <span class="s2">&quot;MySQL, MariaDB, Percona Server, or equivalent&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Database system version&quot;</span><span class="p">:</span> <span class="s2">&quot;5.5.43-0+deb7u1&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Database updates&quot;</span><span class="p">:</span> <span class="s2">&quot;Out of date&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Drupal core update status&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;a href=\&quot;\/admin\/reports\/updates\&quot;&gt;Unknown release date (version 8.0.0-beta11 available)&lt;\/a&gt;&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;File system&quot;</span><span class="p">:</span> <span class="s2">&quot;Writable (&lt;em&gt;public&lt;\/em&gt; download method)&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;GD library&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0.36&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;GD library PNG support&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0.36&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Image toolkit&quot;</span><span class="p">:</span> <span class="s2">&quot;gd&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Module and theme update status&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;a href=\&quot;\/admin\/reports\/updates\&quot;&gt;Out of date&lt;\/a&gt;&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Node Access Permissions&quot;</span><span class="p">:</span> <span class="s2">&quot;Disabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;PHP&quot;</span><span class="p">:</span> <span class="s2">&quot;5.4.41-0+deb7u1 (&lt;a href=\&quot;\/admin\/reports\/status\/php\&quot;&gt;more information&lt;\/a&gt;)&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;PHP extensions&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;PHP memory limit&quot;</span><span class="p">:</span> <span class="s2">&quot;-1 (Unlimited)&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Search index progress&quot;</span><span class="p">:</span> <span class="s2">&quot;100% (0 remaining)&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Trusted Host Settings&quot;</span><span class="p">:</span> <span class="s2">&quot;Not enabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Unicode library&quot;</span><span class="p">:</span> <span class="s2">&quot;PHP Mbstring Extension&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Update notifications&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Upload progress&quot;</span><span class="p">:</span> <span class="s2">&quot;Not enabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Web server&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="nt">&quot;highlight.js library&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;database&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;Driver&quot;</span><span class="p">:</span> <span class="s2">&quot;mysql&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Host&quot;</span><span class="p">:</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Database connection&quot;</span><span class="p">:</span> <span class="s2">&quot;drupal8&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Port&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Username&quot;</span><span class="p">:</span> <span class="s2">&quot;drupal8&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Password&quot;</span><span class="p">:</span> <span class="s2">&quot;redacted&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Connection&quot;</span><span class="p">:</span> <span class="s2">&quot;mysql\/\/drupal8:redacted@localhost\/drupal8&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;theme&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;theme_default&quot;</span><span class="p">:</span> <span class="s2">&quot;bartik&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;theme_admin&quot;</span><span class="p">:</span> <span class="s2">&quot;seven&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;directory&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;Site root directory&quot;</span><span class="p">:</span> <span class="s2">&quot;\/var\/www\/drupal8\/&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Site temporary directory&quot;</span><span class="p">:</span> <span class="s2">&quot;\/tmp&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Default theme directory&quot;</span><span class="p">:</span> <span class="s2">&quot;\/core\/themes\/bartik&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Admin theme directory&quot;</span><span class="p">:</span> <span class="s2">&quot;\/core\/themes\/seven&quot;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Drupal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8.0.0-dev&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Access to update.php&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Protected&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Configuration files&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Protected&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Cron maintenance tasks&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Last run 44 min 45 sec ago&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;D3.js library&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enabled&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Database system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MySQL, MariaDB, Percona Server, or equivalent&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Database system version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5.5.43-0+deb7u1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Database updates&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Out of date&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Drupal core update status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;a href=\&quot;\/admin\/reports\/updates\&quot;&gt;Unknown release date (version 8.0.0-beta11 available)&lt;\/a&gt;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;File system&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Writable (&lt;em&gt;public&lt;\/em&gt; download method)&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;GD library&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0.36&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;GD library PNG support&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0.36&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Image toolkit&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gd&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Module and theme update status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;a href=\&quot;\/admin\/reports\/updates\&quot;&gt;Out of date&lt;\/a&gt;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Node Access Permissions&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Disabled&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;PHP&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5.4.41-0+deb7u1 (&lt;a href=\&quot;\/admin\/reports\/status\/php\&quot;&gt;more information&lt;\/a&gt;)&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;PHP extensions&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enabled&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;PHP memory limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-1 (Unlimited)&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Search index progress&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;100% (0 remaining)&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Trusted Host Settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Not enabled&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Unicode library&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PHP Mbstring Extension&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Update notifications&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enabled&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Upload progress&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Not enabled&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Web server&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;highlight.js library&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enabled&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;database&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Driver&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mysql&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Database connection&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;drupal8&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Username&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;drupal8&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Password&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;redacted&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Connection&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mysql\/\/drupal8:redacted@localhost\/drupal8&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;theme&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;theme_default&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bartik&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;theme_admin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;seven&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;directory&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Site root directory&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\/var\/www\/drupal8\/&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Site temporary directory&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\/tmp&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Default theme directory&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\/core\/themes\/bartik&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Admin theme directory&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\/core\/themes\/seven&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="section" id="custom-commands">
-<h3><a class="toc-backref" href="#id6">Custom commands</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-4">Custom commands</a></h3>
 <p>Modules may define commands by extending
 <tt class="docutils literal">Symfony\Component\Console\Command\Command</tt>. Drupal Console can create
 scaffolding for a custom command with the command <tt class="docutils literal">generate:command</tt>. Refer
@@ -323,41 +323,41 @@ For an example implementation refer to the source code of Web Profiler
 <tt class="docutils literal">git clone <span class="pre">http://git.drupal.org/project/webprofiler.git</span></tt>.</p>
 </div>
 <div class="section" id="chain-command-execution">
-<h3><a class="toc-backref" href="#id7">Chain command execution</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-5">Chain command execution</a></h3>
 <p>Commands may be recorded in YAML and executed with the <tt class="docutils literal">chain</tt> command:</p>
 <div class="highlight"><pre><span></span><span class="gp">$ </span>drupal chain --file<span class="o">=</span>~/d8-project-init.yml
 </pre></div>
 <p>In the example below a module is created, followed by a controller for that
 module.</p>
-<div class="highlight"><pre><span></span><span class="c1"># d8-project-init.yml</span>
-<span class="nt">commands</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="nt">command</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">generate:module</span>
-      <span class="nt">options</span><span class="p">:</span>
-        <span class="nt">module</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">awesome</span>
-        <span class="nt">machine-name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">awesome</span>
-        <span class="nt">module-path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/modules/custom/</span>
-        <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">My Awesome module</span>
-        <span class="nt">core</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8.x</span>
-        <span class="nt">package</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Test</span>
-        <span class="nt">controller</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-        <span class="nt">dependencies</span><span class="p">:</span>
-        <span class="nt">test</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="p p-Indicator">-</span> <span class="nt">command</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">generate:controller</span>
-      <span class="nt">options</span><span class="p">:</span>
-        <span class="nt">module</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">awesome</span>
-        <span class="nt">class-name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AwesomeController</span>
-        <span class="nt">method-name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">index</span>
-        <span class="nt">route</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/awesome/index</span>
-        <span class="nt">services</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">twig</span>
+<div class="highlight"><pre><span></span><span class="c1"># d8-project-init.yml</span><span class="w"></span>
+<span class="nt">commands</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">generate:module</span><span class="w"></span>
+<span class="w">      </span><span class="nt">options</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">module</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">awesome</span><span class="w"></span>
+<span class="w">        </span><span class="nt">machine-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">awesome</span><span class="w"></span>
+<span class="w">        </span><span class="nt">module-path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/modules/custom/</span><span class="w"></span>
+<span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">My Awesome module</span><span class="w"></span>
+<span class="w">        </span><span class="nt">core</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8.x</span><span class="w"></span>
+<span class="w">        </span><span class="nt">package</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Test</span><span class="w"></span>
+<span class="w">        </span><span class="nt">controller</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">        </span><span class="nt">dependencies</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">generate:controller</span><span class="w"></span>
+<span class="w">      </span><span class="nt">options</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">module</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">awesome</span><span class="w"></span>
+<span class="w">        </span><span class="nt">class-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AwesomeController</span><span class="w"></span>
+<span class="w">        </span><span class="nt">method-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index</span><span class="w"></span>
+<span class="w">        </span><span class="nt">route</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/awesome/index</span><span class="w"></span>
+<span class="w">        </span><span class="nt">services</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">twig</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="web-profiler">
-<h2><a class="toc-backref" href="#id8">Web Profiler</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-6">Web Profiler</a></h2>
 <p>The <a class="reference external" href="https://www.drupal.org/project/webprofiler">Drupal Web Profiler</a> provides convenient access to a selection of
 performance and profile information on a per request basis.</p>
 <div class="section" id="data-collectors">
-<h3><a class="toc-backref" href="#id9">Data collectors</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-7">Data collectors</a></h3>
 <p>The Web Profiler provides a number of data collectors which include:</p>
 <ul class="simple">
 <li>PHP configuration</li>
@@ -398,7 +398,7 @@ load timeline.</p>
     <figcaption>Example of a Drupal 8 Web Profiler report timeline.</figcaption>
 </figure></div>
 <div class="section" id="profiling-decoupled-requests">
-<h3><a class="toc-backref" href="#id10">Profiling decoupled requests</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-8">Profiling decoupled requests</a></h3>
 <p>The included <a class="reference external" href="https://www.drupal.org/docs/8/api/routing-system/routing-system-overview">HTTP routing framework</a> and <a class="reference external" href="https://www.drupal.org/docs/8/core/modules/rest/overview">REST API</a> modules in Drupal&nbsp;8
 make it easier to develop decoupled, or headless, applications using a
 client-side framework such as <a class="reference external" href="https://emberjs.com/">ember.js</a>.</p>
@@ -418,7 +418,7 @@ token and link provided in the HTTP response headers <tt class="docutils literal
 relevant request.</p>
 </div>
 <div class="section" id="web-profiler-console-commands">
-<h3><a class="toc-backref" href="#id11">Web Profiler console commands</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-9">Web Profiler console commands</a></h3>
 <p>Web profiler provides three console commands:</p>
 <dl class="docutils">
 <dt><tt class="docutils literal">webprofiler:benchmark</tt></dt>
@@ -460,7 +460,7 @@ relevant request.</p>
 </div>
 </div>
 <div class="section" id="further-reading">
-<h2><a class="toc-backref" href="#id12">Further reading</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-10">Further reading</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="https://www.gitbook.com/book/hechoendrupal/drupal-console/details">The Drupal Console book</a></li>
 <li><a class="reference external" href="https://symfony.com/doc/2.7/profiler/data_collector.html">How to create a custom data collector</a></li>
@@ -484,7 +484,7 @@ relevant request.</p>
 </article>
 
     <footer>
-<p>&copy; 2021 Seth Fischer</p>
+<p>&copy; 2022 Seth Fischer</p>
 <p>
 Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
 </p>    </footer>
