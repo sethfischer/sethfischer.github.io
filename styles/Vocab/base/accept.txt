@@ -8,6 +8,7 @@ Debie
 Drush
 gcc
 InfoTag
+Nginx
 Oetiker
 Paramiko
 Pingdom

@@ -45,7 +45,7 @@ Before starting
 ---------------
 
 *   set-up a :abbr:`LAMP (Linux, Apache, MySQL, PHP)` or
-    :abbr:`LNMP (Linux, nginx, MySQL, PHP)` stack conforming with the
+    :abbr:`LNMP (Linux, Nginx, MySQL, PHP)` stack conforming with the
     `Drupal 8 system requirements`_
 *   `install git`_
 *   `install Composer`_
