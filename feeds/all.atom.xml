@@ -2682,7 +2682,7 @@ so it may be necessary to rebuild your site with the next core update.&lt;/p&gt;
 &lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;Before starting&lt;/a&gt;&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;set-up a &lt;abbr title="Linux, Apache, MySQL, PHP"&gt;LAMP&lt;/abbr&gt; or
-&lt;abbr title="Linux, nginx, MySQL, PHP"&gt;LNMP&lt;/abbr&gt; stack conforming with the
+&lt;abbr title="Linux, Nginx, MySQL, PHP"&gt;LNMP&lt;/abbr&gt; stack conforming with the
 &lt;a class="reference external" href="https://api.drupal.org/api/drupal/core!INSTALL.txt/8.2.x"&gt;Drupal&amp;nbsp;8 system requirements&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="http://git-scm.com/book/en/v2/Getting-Started-Installing-Git"&gt;install git&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos"&gt;install Composer&lt;/a&gt;&lt;/li&gt;
