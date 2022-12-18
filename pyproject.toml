@@ -14,7 +14,7 @@ isort = "^5.9.3"
 linkchecker = "^10.2.1"
 rst2html = "^2020.7.4"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 
 [build-system]
 requires = ["poetry-core"]
