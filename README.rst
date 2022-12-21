@@ -2,7 +2,7 @@
 seth.fischer.nz
 ===============
 
-|test-status| |link-check|
+|test-status| |link-check| |docs-status|
 
 
 Getting started
@@ -38,3 +38,7 @@ Built with `Pelican`_.
 .. |link-check| image:: https://github.com/sethfischer/sethfischer.github.io/workflows/link%20check/badge.svg
     :target: https://github.com/sethfischer/sethfischer.github.io/actions?query=workflow%3A%22link+check%22
     :alt: Link check status
+
+.. |docs-status| image:: https://readthedocs.org/projects/sethfischergithubio/badge/?version=latest
+    :target: https://seth.fischer.nz/en/latest/?badge=latest
+    :alt: Documentation Status
