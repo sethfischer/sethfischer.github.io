@@ -8,7 +8,7 @@ build:
     - pip install poetry
     - poetry config virtualenvs.create false
     - poetry install
-    # Install theame
+    # Install theme
     - git clone https://github.com/alexandrevicenzi/Flex.git ./Flex
     - poetry run pelican-themes -i ./Flex
     # Publish site
