@@ -62,9 +62,9 @@ TRANSLATION_FEED_ATOM = None
 # Theme
 
 MENUITEMS = (
-    ("Archives", "/archives"),
-    ("Categories", "/categories"),
-    ("Tags", "/tags"),
+    ("Archives", "/archives.html"),
+    ("Categories", "/categories.html"),
+    ("Tags", "/tags.html"),
     ("GitHub", "https://github.com/sethfischer"),
 )
 SOCIAL = (
