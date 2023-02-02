@@ -23,4 +23,5 @@ infotag
 init_deploy
 init_host
 jQuery
+osr
 prepending
