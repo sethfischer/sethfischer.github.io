@@ -5,95 +5,104 @@ Projects
 :status: published
 
 
-Public
-------
+Current
+--------
 
-My public repositories are hosted on `GitHub.com`_.
-
-
-Private
--------
-
-My private repositories are hosted on `GitLab.com`_.
-
-
-.. vale off
-
-reptiles.org.nz
-~~~~~~~~~~~~~~~
-
-.. vale on
-
-Website for The New Zealand Herpetological Society.
-
-:Date:
-    September 2016—March 2019
-:Language:
-    PHP
-:Framework:
-    Drupal 8
-:Code:
-    \https://gitlab.com/sethfischer/reptiles.org.nz (private)
-:Status:
-    Handed over March 2019.
-
-
-.. vale off
-
-mundoplugs.com
+cq-electronics
 ~~~~~~~~~~~~~~
 
-.. vale on
+Pure CadQuery models of various electronic boards and components.
 
-Flask web app which presents data from the mundoplugs.com Mains Electricity
-Database.
-
-:Date:
-    September 2013—February 2017
-:Language:
+**Language**
     Python
-:Framework:
-    Flask
-:Code:
-    \https://gitlab.com/sethfischer/mundoplugs.com (private)
-:Demonstration:
-    \http://mundoplugs.com
+**Code**
+    https://github.com/sethfischer/cq-electronics
+**PyPI**
+    https://pypi.org/project/cq-electronics/
+**Documentation**
+    https://cq-electronics.readthedocs.io/
 
 
-IB2020
-~~~~~~
+sphinxcontrib-cadquery
+~~~~~~~~~~~~~~~~~~~~~~
 
-Management information system for inspection bodies with a focus on generating
-AS 2980 welder qualification certificates.
+A Sphinx extension for rendering CadQuery models.
 
-:Date:
-    February 2013—August 2014
-:Language:
-    PHP
-:Framework:
-    Symfony 2
-:Code:
-    \https://gitlab.com/sethfischer/ib2020 (private)
-:Status:
-    Handed over August 2014.
+**Language**
+    Python
+**Code**
+    https://github.com/sethfischer/sphinxcontrib-cadquery
+**PyPI**
+    https://pypi.org/project/sphinxcontrib-cadquery/
+**Documentation**
+    http://sphinxcontrib-cadquery.readthedocs.io/
 
 
-InfoTag electronic tour guide
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+osr
+~~~
 
-Android app for rendering geographically aware electronic tour guides.
+Alternative body for the NASA JPL Open Source Rover.
 
-:Date:
-    July 2012—October 2012
-:Language:
-    Java
-:Framework:
-    Android
-:Code:
-    \https://gitlab.com/sethfischer/infotag-browser (private)
-:Status:
-    Obsolete.
+**Language**
+    Python
+**Code**
+    https://github.com/sethfischer/osr
+**Documentation**
+    https://osr.fischer.nz/
 
 
-.. _`GitHub.com`: https://github.com/sethfischer
-.. _`GitLab.com`: https://gitlab.com/sethfischer
+nissan-leaf-obd-manual
+~~~~~~~~~~~~~~~~~~~~~~
+
+Guide to the Nissan Leaf CAN bus.
+
+**Language**
+    Sphinx documentation
+**Code**
+    https://github.com/sethfischer/nissan-leaf-obd-manual
+**Documentation**
+    https://leaf-obd.readthedocs.io/
+
+
+Unsupported
+-----------
+
+* `puppet-dovecot <https://github.com/sethfischer/puppet-dovecot>`_
+* `sethfischer/pelican-bootstrap3 <https://github.com/sethfischer/pelican-bootstrap3>`_
+* `fabric-deploy <https://github.com/sethfischer/fabric-deploy>`_
+* `latex-intro-slides <https://github.com/sethfischer/latex-intro-slides>`_
+
+
+Contributions
+-------------
+
+2022
+~~~~
+
+* CadQuery/cadquery `6 pull requests <https://github.com/CadQuery/cadquery/pulls?q=is%3Apr+author%3Asethfischer+merged%3A2022-01-01..2023-01-01>`_
+* nasa-jpl/open-source-rover `2 pull requests <https://github.com/nasa-jpl/open-source-rover/pulls?q=is%3Apr+author%3Asethfischer+merged%3A2022-01-01..2023-01-01>`_
+* gumyr/cq_warehouse `pr:#56 <https://github.com/gumyr/cq_warehouse/pull/56>`_, `issue:#55 <https://github.com/gumyr/cq_warehouse/issues/55>`_
+* github/explore `pr:#3155 <https://github.com/github/explore/pull/3155>`_
+* minrk/wurlitzer `pr:#69 <https://github.com/minrk/wurlitzer/pull/69>`_
+* python-poetry/poetry `issue:#7167 <https://github.com/python-poetry/poetry/issues/7167>`_
+
+
+2021
+~~~~
+
+* nasa-jpl/open-source-rover `23 pull requests <https://github.com/nasa-jpl/open-source-rover/pulls?q=is%3Apr+author%3Asethfischer+merged%3A2021-01-01..2022-01-01>`_
+
+
+2015
+~~~~
+
+* DonDebonair/pelican-bootstrap3 `pr:#196 <https://github.com/DonDebonair/pelican-bootstrap3/pull/196>`_
+* composer/composer `issue:#3946 <https://github.com/composer/composer/issues/3946>`_
+* hechoendrupal/drupal-console `pr:#612 <https://github.com/hechoendrupal/drupal-console/pull/612>`_
+* sass/libsass-python `pr:#76 <https://github.com/sass/libsass-python/pull/76>`_
+
+
+2014
+~~~~
+
+* DonDebonair/pelican-bootstrap3 `pr:#143 <https://github.com/DonDebonair/pelican-bootstrap3/pull/143>`_
