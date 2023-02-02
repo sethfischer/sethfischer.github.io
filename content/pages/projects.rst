@@ -50,7 +50,7 @@ Alternative body for the NASA JPL Open Source Rover.
 **Language**
     Python
 **Utilised**
-    CadQuery, Sphinx, jinja2, webpack, vtk.js, Python CLI app
+    Python CLI app, CadQuery, Sphinx, jinja2
 **Code**
     https://github.com/sethfischer/osr
 **Documentation**
