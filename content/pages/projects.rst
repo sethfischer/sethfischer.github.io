@@ -84,11 +84,18 @@ Unsupported
 Contributions
 -------------
 
+2023
+~~~~
+
+* CadQuery/cadquery `4 pull requests merged <https://github.com/CadQuery/cadquery/pulls?q=is%3Apr+author%3Asethfischer+merged%3A2023-01-01..2024-01-01>`_
+* readthedocs/readthedocs.org `2 pull requests merged <https://github.com/readthedocs/readthedocs.org/pulls?q=is%3Apr+is%3Aclosed+author%3Asethfischer+merged%3A2023-01-01..2024-01-01>`__, `issue:#9869 <https://github.com/readthedocs/readthedocs.org/issues/9869>`_
+
+
 2022
 ~~~~
 
-* CadQuery/cadquery `6 pull requests <https://github.com/CadQuery/cadquery/pulls?q=is%3Apr+author%3Asethfischer+merged%3A2022-01-01..2023-01-01>`_
-* nasa-jpl/open-source-rover `2 pull requests <https://github.com/nasa-jpl/open-source-rover/pulls?q=is%3Apr+author%3Asethfischer+merged%3A2022-01-01..2023-01-01>`_
+* CadQuery/cadquery `6 pull requests merged <https://github.com/CadQuery/cadquery/pulls?q=is%3Apr+author%3Asethfischer+merged%3A2022-01-01..2023-01-01>`_
+* nasa-jpl/open-source-rover `2 pull requests merged <https://github.com/nasa-jpl/open-source-rover/pulls?q=is%3Apr+author%3Asethfischer+merged%3A2022-01-01..2023-01-01>`__
 * gumyr/cq_warehouse `pr:#56 <https://github.com/gumyr/cq_warehouse/pull/56>`_, `issue:#55 <https://github.com/gumyr/cq_warehouse/issues/55>`_
 * github/explore `pr:#3155 <https://github.com/github/explore/pull/3155>`_
 * minrk/wurlitzer `pr:#69 <https://github.com/minrk/wurlitzer/pull/69>`_
@@ -98,7 +105,7 @@ Contributions
 2021
 ~~~~
 
-* nasa-jpl/open-source-rover `23 pull requests <https://github.com/nasa-jpl/open-source-rover/pulls?q=is%3Apr+author%3Asethfischer+merged%3A2021-01-01..2022-01-01>`_
+* nasa-jpl/open-source-rover `23 pull requests merged <https://github.com/nasa-jpl/open-source-rover/pulls?q=is%3Apr+author%3Asethfischer+merged%3A2021-01-01..2022-01-01>`_
 
 
 2015
