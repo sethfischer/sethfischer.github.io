@@ -25,3 +25,4 @@ init_host
 jQuery
 osr
 prepending
+webpack

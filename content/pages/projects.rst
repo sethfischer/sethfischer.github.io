@@ -15,6 +15,8 @@ Pure CadQuery models of various electronic boards and components.
 
 **Language**
     Python
+**Utilised**
+    CadQuery, Sphinx
 **Code**
     https://github.com/sethfischer/cq-electronics
 **PyPI**
@@ -30,6 +32,8 @@ A Sphinx extension for rendering CadQuery models.
 
 **Language**
     Python
+**Utilised**
+    CadQuery, Sphinx, jinja2, webpack, vtk.js
 **Code**
     https://github.com/sethfischer/sphinxcontrib-cadquery
 **PyPI**
@@ -45,6 +49,8 @@ Alternative body for the NASA JPL Open Source Rover.
 
 **Language**
     Python
+**Utilised**
+    CadQuery, Sphinx, jinja2, webpack, vtk.js, Python CLI app
 **Code**
     https://github.com/sethfischer/osr
 **Documentation**
@@ -57,7 +63,9 @@ nissan-leaf-obd-manual
 Guide to the Nissan Leaf CAN bus.
 
 **Language**
-    Sphinx documentation
+    Sphinx documentation, Python
+**Utilised**
+    Sphinx, Python
 **Code**
     https://github.com/sethfischer/nissan-leaf-obd-manual
 **Documentation**
