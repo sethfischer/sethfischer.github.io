@@ -18,11 +18,11 @@ Pure CadQuery models of various electronic boards and components.
 **Utilised**
     CadQuery, Sphinx
 **Code**
-    https://github.com/sethfischer/cq-electronics
+    `github.com/sethfischer/cq-electronics <https://github.com/sethfischer/cq-electronics>`__
 **PyPI**
-    https://pypi.org/project/cq-electronics/
+    `pypi.org/project/cq-electronics <https://pypi.org/project/cq-electronics/>`__
 **Documentation**
-    https://cq-electronics.readthedocs.io/
+    `cq-electronics.readthedocs.io <https://cq-electronics.readthedocs.io/>`__
 
 
 sphinxcontrib-cadquery
@@ -35,11 +35,11 @@ A Sphinx extension for rendering CadQuery models.
 **Utilised**
     CadQuery, Sphinx, jinja2, webpack, vtk.js
 **Code**
-    https://github.com/sethfischer/sphinxcontrib-cadquery
+    `github.com/sethfischer/sphinxcontrib-cadquery <https://github.com/sethfischer/sphinxcontrib-cadquery>`__
 **PyPI**
-    https://pypi.org/project/sphinxcontrib-cadquery/
+    `pypi.org/project/sphinxcontrib-cadquery <https://pypi.org/project/sphinxcontrib-cadquery/>`__
 **Documentation**
-    http://sphinxcontrib-cadquery.readthedocs.io/
+    `sphinxcontrib-cadquery.readthedocs.io <https://sphinxcontrib-cadquery.readthedocs.io/>`__
 
 
 osr
@@ -52,9 +52,9 @@ Alternative body for the NASA JPL Open Source Rover.
 **Utilised**
     Python CLI app, CadQuery, Sphinx, jinja2
 **Code**
-    https://github.com/sethfischer/osr
+    `github.com/sethfischer/osr <https://github.com/sethfischer/osr>`__
 **Documentation**
-    https://osr.fischer.nz/
+    `osr.fischer.nz <https://osr.fischer.nz/>`__
 
 
 nissan-leaf-obd-manual
@@ -67,16 +67,16 @@ Guide to the Nissan Leaf CAN bus.
 **Utilised**
     Sphinx, Python
 **Code**
-    https://github.com/sethfischer/nissan-leaf-obd-manual
+    `github.com/sethfischer/nissan-leaf-obd-manual <https://github.com/sethfischer/nissan-leaf-obd-manual>`__
 **Documentation**
-    https://leaf-obd.readthedocs.io/
+     `leaf-obd.readthedocs.io <https://leaf-obd.readthedocs.io/>`__
 
 
 Unsupported
 -----------
 
-* `puppet-dovecot <https://github.com/sethfischer/puppet-dovecot>`_
-* `sethfischer/pelican-bootstrap3 <https://github.com/sethfischer/pelican-bootstrap3>`_
+* `sethfischer/puppet-dovecot <https://github.com/sethfischer/puppet-dovecot>`_ (fork)
+* `sethfischer/pelican-bootstrap3 <https://github.com/sethfischer/pelican-bootstrap3>`_ (fork)
 * `fabric-deploy <https://github.com/sethfischer/fabric-deploy>`_
 * `latex-intro-slides <https://github.com/sethfischer/latex-intro-slides>`_
 
@@ -87,14 +87,14 @@ Contributions
 2023
 ~~~~
 
-* CadQuery/cadquery `4 pull requests merged <https://github.com/CadQuery/cadquery/pulls?q=is%3Apr+author%3Asethfischer+merged%3A2023-01-01..2024-01-01>`_
+* CadQuery/cadquery `4 pull requests merged <https://github.com/CadQuery/cadquery/pulls?q=is%3Apr+author%3Asethfischer+merged%3A2023-01-01..2024-01-01>`__
 * readthedocs/readthedocs.org `2 pull requests merged <https://github.com/readthedocs/readthedocs.org/pulls?q=is%3Apr+is%3Aclosed+author%3Asethfischer+merged%3A2023-01-01..2024-01-01>`__, `issue:#9869 <https://github.com/readthedocs/readthedocs.org/issues/9869>`_
 
 
 2022
 ~~~~
 
-* CadQuery/cadquery `6 pull requests merged <https://github.com/CadQuery/cadquery/pulls?q=is%3Apr+author%3Asethfischer+merged%3A2022-01-01..2023-01-01>`_
+* CadQuery/cadquery `6 pull requests merged <https://github.com/CadQuery/cadquery/pulls?q=is%3Apr+author%3Asethfischer+merged%3A2022-01-01..2023-01-01>`__
 * nasa-jpl/open-source-rover `2 pull requests merged <https://github.com/nasa-jpl/open-source-rover/pulls?q=is%3Apr+author%3Asethfischer+merged%3A2022-01-01..2023-01-01>`__
 * gumyr/cq_warehouse `pr:#56 <https://github.com/gumyr/cq_warehouse/pull/56>`_, `issue:#55 <https://github.com/gumyr/cq_warehouse/issues/55>`_
 * github/explore `pr:#3155 <https://github.com/github/explore/pull/3155>`_
