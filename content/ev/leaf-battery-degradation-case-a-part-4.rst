@@ -1,5 +1,5 @@
 ============================================================
-Leaf battery degradation case A: AZE0 24 kW⋅h—part 4 2022-10
+Leaf battery degradation case A: AZE0 24 kW⋅h—part 4 2022-11
 ============================================================
 
 :authors: Seth Fischer
