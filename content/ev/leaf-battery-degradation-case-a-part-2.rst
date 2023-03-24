@@ -26,7 +26,8 @@ Articles in the series *Nissan Leaf battery degradation case A: AZE0 24 kW⋅h
 
 1.  `Part 1 2019-10 <{filename}./leaf-battery-degradation-case-a-part-1.rst>`_.
 2.  Part 2 2020-10 (this article).
-3.  `Part 3 2021-10 <{filename}./leaf-battery-degradation-case-a-part-3.rst>`_
+3.  `Part 3 2021-10 <{filename}./leaf-battery-degradation-case-a-part-3.rst>`_.
+4.  `Part 4 2022-11 <{filename}./leaf-battery-degradation-case-a-part-4.rst>`_.
 
 
 Summary
