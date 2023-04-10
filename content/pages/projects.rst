@@ -42,8 +42,8 @@ A Sphinx extension for rendering CadQuery models.
     `sphinxcontrib-cadquery.readthedocs.io <https://sphinxcontrib-cadquery.readthedocs.io/>`__
 
 
-osr
-~~~
+sethfischer-rover
+~~~~~~~~~~~~~~~~~
 
 Alternative body for the NASA JPL Open Source Rover.
 
@@ -52,9 +52,9 @@ Alternative body for the NASA JPL Open Source Rover.
 **Utilised**
     Python CLI app, CadQuery, Sphinx, jinja2
 **Code**
-    `github.com/sethfischer/osr <https://github.com/sethfischer/osr>`__
+    `github.com/sethfischer/rover <https://github.com/sethfischer/rover>`__
 **Documentation**
-    `osr.fischer.nz <https://osr.fischer.nz/>`__
+    `rover.fischer.nz <https://rover.fischer.nz/>`__
 
 
 nissan-leaf-obd-manual
