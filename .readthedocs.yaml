@@ -12,4 +12,4 @@ build:
     - git clone https://github.com/alexandrevicenzi/Flex.git ./Flex
     - poetry run pelican-themes -i ./Flex
     # Publish site
-    - poetry run pelican --settings publishconf.py --output _readthedocs/html/ content/
+    - poetry run pelican --settings publishconf.py --extra-settings SITEURL=$(printf \"${READTHEDOCS_CANONICAL_URL}\") --output _readthedocs/html/ content/
