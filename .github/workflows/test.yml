@@ -4,7 +4,7 @@ on: [pull_request, push]
 
 jobs:
   test:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -12,7 +12,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.9"
+          python-version: "3.12"
 
       - name: Install system dependencies
         run: sudo apt-get install language-pack-en
@@ -48,7 +48,7 @@ jobs:
 
       - name: Lint prose
         run: |
-          vale --v
+          vale -v
           poetry run make lint-prose
 
       - name: Lint Python

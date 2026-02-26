@@ -1,16 +1,17 @@
 [tool.poetry]
 name = "sethfischer"
 version = "0.1.0"
+package-mode = false
 description = "Seth Fischer's blog."
 authors = ["Seth Fischer <seth@fischer.nz>"]
 
 [tool.poetry.dependencies]
-python = ">=3.9,<3.11"
+python = ">=3.12,<3.13"
 
-black = "^24.4.2"
+black = "^26.1.0"
 flake8 = "^7.0.0"
 ghp-import = "^2.0.1"
-isort = "^5.13.2"
+isort = "^8.0.0"
 linkchecker = "^10.4.0"
 pelican = "^4.6.0"
 rst2html = "^2020.7.4"
