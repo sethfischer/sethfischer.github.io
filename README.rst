@@ -10,9 +10,9 @@ Getting started
 
 .. code-block:: text
 
-    poetry env use python3.9
+    poetry env use python3.12
     poetry install
-    poetry shell
+    eval $(poetry env activate)
     pelican-themes -i ~/path/to/alexandrevicenzi/Flex
     make devserver
 
